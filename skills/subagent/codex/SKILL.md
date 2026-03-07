@@ -1,0 +1,223 @@
+---
+name: codex
+description: Execute Codex CLI for code analysis, refactoring, and automated code changes with automatic fallback. Use when you need to delegate complex code tasks to Codex AI with file references (@syntax) and structured output. Automatically falls back to OpenCode review agent with Tuzi API gpt-5.1-codex when Codex CLI is unavailable (rate limits, quota exceeded, authentication issues).
+---
+
+# Codex CLI Integration
+
+## Overview
+
+Execute Codex CLI commands and parse structured JSON responses. Supports file references via `@` syntax, multiple models, and sandbox controls. **支持自动降级**：当 Codex CLI 不可用时，自动切换到 OpenCode review agent 模式。
+
+## When to Use
+
+- Complex code analysis requiring deep understanding
+- Large-scale refactoring across multiple files
+- Automated code generation with safety controls
+- Tasks requiring specialized reasoning models (o3, gpt-5)
+
+## Priority Strategy
+
+**Default**: Prioritizes **OpenCode Agent** (`opencode run`). Falls back to **Codex CLI** (`codex e`) if the agent fails.
+**Resume Mode**: Prioritizes **Codex CLI** because it supports session resumption.
+
+To force the old behavior (Codex CLI first):
+```bash
+CODEX_USE_CLI_FIRST=1 uv run codex.py ...
+```
+
+## Automatic Fallback
+
+The script automatically switches execution engines when one fails.
+
+### Error Patterns triggering switch
+
+- `rate limit exceeded` - 速率限制
+- `quota exceeded`
+- `authentication failed` / `401` / `403`
+- `service unavailable` / `503` / `429`
+- `command not found`
+
+### Primary Strategy (OpenCode First)
+
+1. Try **OpenCode Agent** (`review` agent, `tuzi/gpt-5.1-codex`)
+2. If fails -> Try **Codex CLI** (`codex e`)
+
+### Manual Override
+
+```bash
+# Force use of CLI first
+CODEX_USE_CLI_FIRST=1 uv run ./.claude/skills/codex/scripts/codex.py "<task>"
+
+# Force use of OpenCode Agent only (skip CLI attempt)
+CODEX_FORCE_FALLBACK=1 uv run ./.claude/skills/codex/scripts/codex.py "<task>"
+```
+
+## Usage
+
+**推荐方式**（使用 uv run，自动管理 Python 环境）：
+```bash
+uv run ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+```
+
+**备选方式**（直接执行或使用 Python）：
+```bash
+./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+# 或
+python3 ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+```
+
+恢复会话:
+```bash
+uv run ./.claude/skills/codex/scripts/codex.py resume <session_id> "<task>" [model] [working_dir]
+```
+
+## Timeout Control
+
+- **Built-in**: Script enforces 2-hour timeout by default
+- **Override**: Set `CODEX_TIMEOUT` environment variable (in milliseconds, e.g., `CODEX_TIMEOUT=3600000` for 1 hour)
+- **Behavior**: On timeout, sends SIGTERM, then SIGKILL after 5s if process doesn't exit
+- **Exit code**: Returns 124 on timeout (consistent with GNU timeout)
+- **Bash tool**: Always set `timeout: 7200000` parameter for double protection
+
+### Parameters
+
+- `task` (required): Task description, supports `@file` references
+- `model` (optional): Model to use (default: gpt-5.2-codex)
+  - `gpt-5.2-codex`: Default, optimized for code
+  - `gpt-5-codex`: Previous version
+  - `gpt-5`: Fast general purpose
+- `working_dir` (optional): Working directory (default: current)
+
+### Return Format
+
+Extracts `agent_message` from Codex JSON stream and appends session ID:
+```
+Agent response text here...
+
+---
+SESSION_ID: 019a7247-ac9d-71f3-89e2-a823dbd8fd14
+```
+
+Error format (stderr):
+```
+ERROR: Error message
+```
+
+Fallback warning (stderr):
+```
+WARN: Codex CLI unavailable, falling back to OpenCode review agent
+```
+
+### Output Saving
+
+每次执行后，输出结果会自动保存到 `.tmp/docs/output/` 目录：
+- **正常模式文件名**: `out_<日期>_<时间>_codex_<任务描述>.md`
+- **降级模式文件名**: `out_<日期>_<时间>_codex_fallback_<任务描述>.md`
+- **内容包含**: 生成时间、Agent 类型、任务描述、Session ID（如适用）、完整输出
+
+保存成功后会在 stderr 输出提示：
+```
+INFO: Output saved to .tmp/docs/output/out_20240125_143052_codex_task.md
+```
+
+### Invocation Pattern
+
+When calling via Bash tool, always include the timeout parameter:
+```
+Bash tool parameters:
+- command: uv run ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+- timeout: 7200000
+- description: <brief description of the task>
+```
+
+Alternatives:
+```
+# Direct execution (simplest)
+- command: ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+
+# Using python3
+- command: python3 ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+
+# Direct fallback (skip Codex CLI attempt)
+- command: uv run ./.claude/skills/codex/scripts/codex_fallback.py "<task>" [working_dir]
+```
+
+### Examples
+
+**Basic code analysis:**
+```bash
+# Recommended: via uv run (auto-manages Python environment)
+uv run ./.claude/skills/codex/scripts/codex.py "explain @src/main.ts"
+# timeout: 7200000
+
+# Alternative: direct execution
+./.claude/skills/codex/scripts/codex.py "explain @src/main.ts"
+```
+
+**Refactoring with specific model:**
+```bash
+uv run ./.claude/skills/codex/scripts/codex.py "refactor @src/utils for performance" "gpt-5"
+# timeout: 7200000
+```
+
+**Multi-file analysis:**
+```bash
+uv run ./.claude/skills/codex/scripts/codex.py "analyze @. and find security issues" "gpt-5-codex" "/path/to/project"
+# timeout: 7200000
+```
+
+**Resume previous session:**
+```bash
+# First session
+uv run ./.claude/skills/codex/scripts/codex.py "add comments to @utils.js" "gpt-5-codex"
+# Output includes: SESSION_ID: 019a7247-ac9d-71f3-89e2-a823dbd8fd14
+
+# Continue the conversation
+uv run ./.claude/skills/codex/scripts/codex.py resume 019a7247-ac9d-71f3-89e2-a823dbd8fd14 "now add type hints"
+# timeout: 7200000
+```
+
+**Direct fallback usage:**
+```bash
+# Skip Codex CLI, directly use OpenCode review agent
+uv run ./.claude/skills/codex/scripts/codex_fallback.py "your task here"
+```
+
+## Scripts Reference
+
+| 脚本 | 用途 |
+|------|------|
+| `scripts/codex.py` | 主脚本，支持自动降级和会话恢复 |
+| `scripts/codex_fallback.py` | 独立降级脚本，直接使用 OpenCode review agent |
+
+## Notes
+
+- **Recommended**: Use `uv run` for automatic Python environment management (requires uv installed)
+- **Alternative**: Direct execution `./codex.py` (uses system Python via shebang)
+- Python implementation using standard library (zero dependencies)
+- Cross-platform compatible (Windows/macOS/Linux)
+- PEP 723 compliant (inline script metadata)
+- Runs with `--dangerously-bypass-approvals-and-sandbox` for automation (new sessions only)
+- Uses `--skip-git-repo-check` to work in any directory
+- Streams progress, returns only final agent message
+- Every execution returns a session ID for resuming conversations
+- Requires Codex CLI installed and authenticated (for primary mode)
+- **Automatic fallback**: No manual intervention needed when Codex CLI fails
+
+## Strategy Quick Reference
+
+| Mode | First Choice | Fallback |
+|------|--------------|----------|
+| Default | **OpenCode Agent** | Codex CLI |
+| Resume | **Codex CLI** | N/A (Agent no resume) |
+| `CODEX_USE_CLI_FIRST=1` | **Codex CLI** | OpenCode Agent |
+
+**Fast Commands**:
+```bash
+# Default (OpenCode First)
+uv run ./.claude/skills/codex/scripts/codex.py "<your task>"
+
+# Force CLI First
+CODEX_USE_CLI_FIRST=1 uv run ./.claude/skills/codex/scripts/codex.py "<your task>"
+```
