@@ -52,7 +52,7 @@ Execute Codex CLI for code analysis, refactoring, and automated code changes.
 
 Productivity-enhancing agent behaviors.
 
-#### [PUA](./skills/efficiency/pua/skills/pua/SKILL.md) | [English Version](./skills/efficiency/pua/skills/pua-en/SKILL.md)
+#### [PUA](./skills/efficiency/pua/SKILL.md) | [English Version](./skills/efficiency/pua-en/SKILL.md)
 Forces exhaustive problem-solving using corporate PUA rhetoric and structured debugging methodology.
 
 **Features:**
@@ -60,6 +60,34 @@ Forces exhaustive problem-solving using corporate PUA rhetoric and structured de
 - Prevents passive "I cannot" responses
 - Enforces exhaustive debugging before giving up
 - Applies to all task types: code, config, research, deployment
+
+### 🎨 Frontend Skills
+
+Frontend design and development skills from the [impeccable](https://github.com/pbakaus/impeccable) collection.
+
+#### [Frontend Design](./skills/frontend/frontend-design/SKILL.md)
+Create distinctive, production-grade frontend interfaces with high design quality.
+
+**Features:**
+- Generates creative, polished code
+- Avoids generic AI aesthetics
+- Includes reference docs for color, typography, motion, and UX design
+- Perfect for building web components, pages, and applications
+
+**Additional Frontend Skills:**
+- **animate** - Add smooth, purposeful animations
+- **audit** - Review and improve code quality
+- **clarify** - Improve code clarity and readability
+- **colorize** - Add color and visual appeal
+- **critique** - Provide constructive feedback
+- **delight** - Add delightful micro-interactions
+- **distill** - Simplify complex code
+- **extract** - Extract reusable components
+- **harden** - Improve code robustness
+- **normalize** - Standardize code patterns
+- **optimize** - Improve performance
+- **polish** - Refine and perfect details
+- **quieter** - Reduce visual noise
 
 ## Installation
 
