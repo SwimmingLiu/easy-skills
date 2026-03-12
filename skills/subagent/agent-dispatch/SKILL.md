@@ -34,6 +34,10 @@ Dispatch tasks to execution agents with isolated environments, automatic monitor
 | `agent` | Yes | Agent type: `opencode`, `gemini`, `codex`, `claude` |
 | `prompt` | Yes | Task description (quoted) |
 | `model` | No | Override default model |
+| `channel` | Yes | Channel for monitoring reports (e.g., `telegram`, `discord`) |
+| `chat-id` | Yes | Chat/Group ID for delivery (e.g., `-5247534845`) |
+
+**Important:** `channel` and `chat-id` are **REQUIRED** parameters. OpenClaw MUST provide these when calling the skill.
 
 ---
 
@@ -133,7 +137,7 @@ Use tools: cron.list, tmux, git, gh, cron.remove""",
         "model": "generic/glm-5",
         "timeoutSeconds": 120  # 2 minutes - need time to think and delete cron
     },
-    delivery={"mode": "announce", "channel": "telegram", "to": "<chat-id>"}
+    delivery={"mode": "announce", "channel": channel, "to": chat-id}
 )
 ```
 
