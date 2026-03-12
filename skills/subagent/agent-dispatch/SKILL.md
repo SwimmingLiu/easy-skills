@@ -4,7 +4,7 @@ description: Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via is
   worktrees, branches, and tmux sessions. Use when OpenClaw needs to spawn an agent
   for any code change, documentation writing, bug fixing, code review, or git
   operation. Handles the full lifecycle: environment creation, agent startup,
-  task registration, monitoring, and failure recovery via Ralph Loop.
+  task registration, monitoring via cron, and failure recovery via Ralph Loop.
 ---
 
 # Agent dispatch
@@ -58,56 +58,53 @@ and start the agent:
 Specialized aliases `code-reviewer` and `docs-writer` start Gemini with the
 corresponding skill pre-loaded in the prompt.
 
-## Reporting to the user
-
-After running `spawn-agent.sh`, always tell the user:
-
-- **Task ID** — so they can follow up.
-- **Agent selected** — so they know what's running.
-- **How to watch** — `tmux attach -t agent-<task-id>`.
-- **How to check status** — `./scripts/agent-orchestration/check-agents.sh`.
-
 ## Monitoring
 
-`check-agents.sh` runs automatically every 10 minutes via cron. It checks:
+After dispatching a task, create a temporary cron job to monitor the agent
+automatically. The cron job runs `scripts/monitor-agent.py` every 5–10 minutes,
+reports progress via `announce` delivery, and deletes itself when the task
+completes (session ends or PR is created).
 
-- Whether the tmux session is still alive.
-- Whether a PR has been created for the branch.
-- Whether CI checks have passed.
+**Create a monitoring cron job:**
 
-It notifies you when a PR is ready or when an agent has failed.
-
-To check manually:
-
-```bash
-./scripts/agent-orchestration/check-agents.sh
+```python
+# Use OpenClaw's cron tool to register a temporary monitoring job
+cron.create(
+    id=f"monitor-{task_id}",
+    schedule="*/5 * * * *",   # every 5 minutes
+    command=f"python3 scripts/agent-orchestration/monitor-agent.py {task_id}",
+    auto_delete_when="task_complete",  # removes itself on completion
+    deliver_via="announce",            # reports progress to the user
+)
 ```
 
-To attach to a running session:
+`monitor-agent.py` checks whether the tmux session is alive, captures recent
+output, checks for new commits, and returns structured status. When it detects
+completion (session exited or PR created), it signals `task_complete` so the
+cron job removes itself.
+
+**Fallback — manual checks (optional):**
 
 ```bash
+# Check all active agents
+./scripts/agent-orchestration/check-agents.sh
+
+# Attach to a running session
 tmux attach -t agent-<task-id>
 ```
 
+## Reporting to the user
+
+After running `spawn-agent.sh` and creating the monitoring cron job, always
+tell the user:
+
+- **Task ID** — so they can follow up.
+- **Agent selected** — so they know what's running.
+- **Monitoring** — confirm the cron job is set up and when they'll hear back.
+
 ## Failure recovery (Ralph Loop)
 
-When an agent session ends without a PR, `check-agents.sh` triggers
-`ralph-loop.sh`, which analyzes the failure and restarts the agent with
-added context. It retries up to three times before notifying you of a
+When the monitoring cron job detects that a session ended without a PR, it
+triggers `ralph-loop.sh`, which analyzes the failure and restarts the agent
+with added context. It retries up to three times before notifying you of a
 permanent failure.
-
-## Directory layout
-
-```
-workspace/
-├── .clawdbot/
-│   ├── active-tasks.json          # live task registry
-│   └── prompts/                   # Ralph Loop recovery prompts
-├── scripts/agent-orchestration/
-│   ├── spawn-agent.sh             # create environment and start agent
-│   ├── check-agents.sh            # monitor all active agents
-│   ├── ralph-loop.sh              # automatic failure recovery
-│   ├── notify.sh                  # send desktop/system notification
-│   └── cleanup.sh                 # remove completed worktrees
-└── ../agent-worktrees/            # agent working directories (one per task)
-```
