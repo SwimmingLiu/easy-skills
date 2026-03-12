@@ -14,7 +14,11 @@ Run `spawn-agent.sh` from the workspace root to create an isolated environment
 and start the agent:
 
 ```bash
-./scripts/agent-orchestration/spawn-agent.sh <task-id> <agent> "<prompt>" [model]
+# Use absolute path (recommended)
+/home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh <task-id> <agent> "<prompt>" [model]
+
+# Or use relative path from workspace
+cd /home/admin/openclaw/workspace && ./scripts/agent-orchestration/spawn-agent.sh <task-id> <agent> "<prompt>" [model]
 ```
 
 **Parameters:**
@@ -29,7 +33,7 @@ and start the agent:
 **Example:**
 
 ```bash
-./scripts/agent-orchestration/spawn-agent.sh feat-auth opencode \
+/home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh feat-auth opencode \
   "Implement JWT authentication in src/api/auth.ts"
 ```
 
