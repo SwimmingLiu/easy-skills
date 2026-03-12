@@ -134,9 +134,9 @@ cron.remove(jobId="d037ed80-56eb-43be-a8c0-e95132b9e426")
 - Do NOT just say "I will delete" - you MUST actually call the tool
 
 Use tools: cron.list, tmux, git, gh, cron.remove""",
-        "model": "generic/glm-5",
-        "timeoutSeconds": 120  # 2 minutes - need time to think and delete cron
+        "model": "generic/glm-5"
     },
+    timeoutSeconds=120,  # 2 minutes - job level timeout (outside payload)
     delivery={"mode": "announce", "channel": channel, "to": chat-id}
 )
 ```
@@ -145,7 +145,7 @@ Use tools: cron.list, tmux, git, gh, cron.remove""",
 
 - **MANDATORY**: Agent MUST call `cron.remove()` when task completes or fails
 - **NOT OPTIONAL**: Saying "I will delete" is NOT enough - must execute the tool
-- **Timeout**: `timeoutSeconds: 120` gives agent enough time to think and delete
+- **Timeout**: `timeoutSeconds=120` at job level (not inside payload) gives agent enough time to think and delete
 - **No Auto-Delete**: OpenClaw does not support automatic deletion based on exit codes
 
 ---
