@@ -100,10 +100,26 @@ Your goal: Check if task {task_id} is complete, and if so, DELETE this cron job.
 - If session ended with new commits → Task COMPLETE (check manually)
 - If session ended without commits → Task FAILED
 
-**Step 5: DELETE this cron job (REQUIRED for complete/failed tasks)**
-- You MUST call: cron.remove(jobId="<the-job-id-from-step-1>")
-- Report completion/failure status to user
-- This cleanup is REQUIRED
+**Step 5: DELETE this cron job (MANDATORY - NOT OPTIONAL)**
+
+You MUST execute this EXACT tool call when task is complete or failed:
+
+```
+Tool: cron
+Action: remove
+Parameters: {"action": "remove", "jobId": "<job-id-from-step-1>"}
+```
+
+**Example (replace with actual job ID):**
+```
+cron.remove(jobId="d037ed80-56eb-43be-a8c0-e95132b9e426")
+```
+
+**CRITICAL:**
+- This is NOT optional - you MUST delete the cron job
+- If you don't call cron.remove(), the monitoring job will run forever
+- Execute the tool call IMMEDIATELY after reporting status
+- Do NOT just say "I will delete" - you MUST actually call the tool
 
 Use tools: cron.list, tmux, git, gh, cron.remove""",
         "model": "generic/glm-5",
@@ -114,7 +130,8 @@ Use tools: cron.list, tmux, git, gh, cron.remove""",
 ```
 
 **Important:** 
-- The monitoring agent must explicitly call `cron.remove(jobId="<job-id>")` when task completes or fails
+- The monitoring agent MUST execute `cron.remove()` tool call when task completes or fails
+- Just saying "I will delete" is NOT enough - the agent must actually call the tool
 - `timeoutSeconds: 120` gives the agent enough time to think and delete the cron job
 - OpenClaw does not support automatic deletion based on exit codes
 
