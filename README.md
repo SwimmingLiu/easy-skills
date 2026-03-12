@@ -63,11 +63,45 @@ Forces exhaustive problem-solving using corporate PUA rhetoric and structured de
 
 ## Installation
 
-Skills are designed to be used with the [OpenCode](https://github.com/OhMyOpenCode/opencode) framework. Simply clone this repository and reference the skills in your OpenCode configuration.
+### For Agents (Automatic Installation)
+
+Agents can install skills directly from this repository using the `skills` CLI:
 
 ```bash
-git clone https://github.com/your-username/easy-skills.git
+# Install a specific skill globally
+npx skills add https://github.com/SwimmingLiu/easy-skills@<skill-path> -g -y
+
+# Examples:
+npx skills add https://github.com/SwimmingLiu/easy-skills@skills/subagent/opencode -g -y
+npx skills add https://github.com/SwimmingLiu/easy-skills@skills/efficiency/pua -g -y
+npx skills add https://github.com/SwimmingLiu/easy-skills@skills/efficiency/pua-en -g -y
 ```
+
+### For Humans (Manual Installation)
+
+1. Clone this repository:
+```bash
+git clone https://github.com/SwimmingLiu/easy-skills.git
+cd easy-skills
+```
+
+2. Install a skill to your agent:
+```bash
+# From local path
+npx skills add ./skills/subagent/opencode -g -y
+
+# Or copy the skill directory to your agent's skills folder
+cp -r skills/subagent/opencode ~/.agents/skills/
+```
+
+### Verify Installation
+
+After installation, verify the skill is available:
+```bash
+npx skills list
+```
+
+The skill should appear in the list and will be automatically loaded by your agent.
 
 ## Usage
 
