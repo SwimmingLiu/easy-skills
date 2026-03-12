@@ -175,25 +175,65 @@ When monitoring detects a session ended without a PR:
 
 ## Reporting to User
 
-After dispatching, always tell the user:
+After dispatching, **IMMEDIATELY** report to the user in this structured format:
 
-1. **Task ID** - so they can follow up
-2. **Agent selected** - so they know what's running
-3. **Monitoring** - confirm cron job is set up and when they'll hear back
+**Required Information:**
 
-**Example:**
+1. **Dispatch Status**
+   - Task ID (for follow-up)
+   - Agent selected (which agent is running)
+   - Dispatch result (success/failure)
+
+2. **Monitoring Details**
+   - Cron job created (yes/no)
+   - Job ID (for manual cleanup)
+   - Monitoring frequency (e.g., "every 5 minutes")
+   - Next check time (estimated)
+   - Auto-delete enabled (yes/no)
+
+3. **Agent Environment**
+   - Worktree path
+   - Branch name (e.g., `agent/<task-id>`)
+   - Tmux session name
+
+4. **Follow-up Commands**
+   - How to check progress manually
+   - How to attach to tmux session
+   - How to view monitoring job status
+
+**Example Report:**
 
 ```
-✅ Task dispatched!
+✅ Task Dispatched Successfully
 
-Task ID: feat-auth
-Agent: opencode
-Branch: agent/feat-auth
-Tmux: tmux attach -t agent-feat-auth
-Monitoring: Every 5 minutes via cron
+📋 Task Details:
+- Task ID: feat-auth
+- Agent: OpenCode (claude-sonnet-4.6)
+- Status: Running
 
-The agent will work on this task and report progress automatically.
+🔍 Monitoring:
+- Cron Job: ✅ Created
+- Job ID: d037ed80-56eb-43be-a8c0-e95132b9e426
+- Frequency: Every 5 minutes
+- Next Check: ~5 minutes
+- Auto-delete: ✅ Enabled (when task completes)
+
+📁 Environment:
+- Worktree: /home/admin/openclaw/workspace/../agent-worktrees/feat-auth
+- Branch: agent/feat-auth
+- Tmux: agent-feat-auth
+
+🛠️ Manual Commands:
+- Check progress: tmux attach -t agent-feat-auth
+- View monitoring: cron.list()
+- View worktree: cd ../agent-worktrees/feat-auth
 ```
+
+**Important:**
+- Report IMMEDIATELY after dispatch (don't wait for first monitoring cycle)
+- Include ALL details in first report
+- If dispatch fails, report error immediately
+- If monitoring creation fails, report it but continue with task
 
 ---
 
