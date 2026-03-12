@@ -61,27 +61,62 @@ corresponding skill pre-loaded in the prompt.
 ## Monitoring
 
 After dispatching a task, create a temporary cron job to monitor the agent
-automatically. The cron job runs `scripts/monitor-agent.py` every 5–10 minutes,
-reports progress via `announce` delivery, and deletes itself when the task
-completes (session ends or PR is created).
+automatically. The cron job runs every 5–10 minutes, checks the agent status,
+reports progress via `announce` delivery, and **deletes itself when the task
+completes**.
 
 **Create a monitoring cron job:**
 
 ```python
 # Use OpenClaw's cron tool to register a temporary monitoring job
-cron.create(
-    id=f"monitor-{task_id}",
-    schedule="*/5 * * * *",   # every 5 minutes
-    command=f"python3 scripts/agent-orchestration/monitor-agent.py {task_id}",
-    auto_delete_when="task_complete",  # removes itself on completion
-    deliver_via="announce",            # reports progress to the user
+cron.add(
+    name=f"Monitor {task_id}",
+    sessionTarget="isolated",
+    schedule={"kind": "every", "everyMs": 300000},  # 5 minutes
+    payload={
+        "kind": "agentTurn",
+        "message": f"""Check the status of task {task_id} and AUTO-DELETE this cron job when complete.
+
+**CRITICAL: You MUST read this entire prompt before starting.**
+
+Your goal: Check if task {task_id} is complete, and if so, DELETE this cron job.
+
+**Step 1: Get this cron job's ID**
+- Call: cron.list()
+- Find the job with name="Monitor {task_id}"
+- Remember the job ID (you'll need it to delete)
+
+**Step 2: Check if tmux session is running**
+- Run: tmux list-sessions | grep agent-{task_id}
+- If session exists, task is still running
+- Report progress and STOP (do NOT delete cron yet)
+
+**Step 3: If session NOT running, check completion**
+- Check for new commits: cd /home/admin/openclaw/workspace/../agent-worktrees/{task_id} && git log --oneline -5
+- Check for PR: gh pr view agent/{task_id} --json url 2>/dev/null || echo "No PR"
+
+**Step 4: Decide what to do**
+- If PR exists → Task COMPLETE
+- If session ended with new commits → Task COMPLETE (check manually)
+- If session ended without commits → Task FAILED
+
+**Step 5: DELETE this cron job (REQUIRED for complete/failed tasks)**
+- You MUST call: cron.remove(jobId="<the-job-id-from-step-1>")
+- Report completion/failure status to user
+- This cleanup is REQUIRED
+
+Use tools: cron.list, tmux, git, gh, cron.remove""",
+        "model": "generic/glm-5",
+        "timeoutSeconds": 120  # 2 minutes - need time to think and delete cron
+    },
+    delivery={"mode": "announce", "channel": "telegram", "to": "<chat-id>"}
 )
 ```
 
-`monitor-agent.py` checks whether the tmux session is alive, captures recent
-output, checks for new commits, and returns structured status. When it detects
-completion (session exited or PR created), it signals `task_complete` so the
-cron job removes itself.
+**Important:** 
+- The monitoring agent must explicitly call `cron.remove(jobId="<job-id>")` when task completes or fails
+- `timeoutSeconds: 120` gives the agent enough time to think and delete the cron job
+- OpenClaw does not support automatic deletion based on exit codes
 
 **Fallback — manual checks (optional):**
 
