@@ -1,0 +1,7 @@
+# local agent workdir
+.agent
+
+# dependencies
+node_modules/
+*.lock
+package-lock.json

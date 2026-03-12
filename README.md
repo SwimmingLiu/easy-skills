@@ -61,6 +61,66 @@ Forces exhaustive problem-solving using corporate PUA rhetoric and structured de
 - Enforces exhaustive debugging before giving up
 - Applies to all task types: code, config, research, deployment
 
+### 📊 Diagram Skills
+
+Diagram creation and validation tools.
+
+#### [Draw.io](./skills/diagram/drawio/SKILL.md)
+Generate draw.io diagrams as native `.drawio` files with optional export to PNG/SVG/PDF.
+
+**Features:**
+- Native .drawio file generation
+- Export to PNG, SVG, or PDF with embedded XML
+- Diagrams remain editable after export
+
+#### [Mermaid Diagrams](./skills/diagram/mermaid-diagrams/SKILL.md)
+Comprehensive guide for creating software diagrams using Mermaid syntax.
+
+**Features:**
+- Class diagrams, sequence diagrams, flowcharts, ERDs
+- C4 architecture diagrams, state diagrams, git graphs
+- Text-based, version-controllable diagrams
+
+#### [Mermaid Correction](./skills/diagram/mermaid-correction/SKILL.md)
+Validate, diagnose, and repair Mermaid code blocks with iterative check → correct → re-check workflow.
+
+**Features:**
+- Automatic syntax validation via Mermaid CLI
+- Detailed parse error reporting with line/column info
+- Up to 3 correction attempts with re-validation
+
+### 🌐 Language Skills
+
+Translation and localization tools.
+
+#### [Baoyu Translate](./skills/language/baoyu-translate/SKILL.md)
+Multi-mode translation skill with quick, normal, and refined workflows.
+
+**Features:**
+- Three modes: quick (direct), normal (analyze then translate), refined (full review)
+- Custom glossaries and terminology consistency
+- Supports document and article translation
+
+### 📝 Markdown Skills
+
+Markdown processing and conversion tools.
+
+#### [Baoyu Format Markdown](./skills/markdown/baoyu-format-markdown/SKILL.md)
+Format plain text or markdown with frontmatter, titles, summaries, and proper structure.
+
+**Features:**
+- Adds frontmatter, headings, bold, lists, code blocks
+- Preserves original content, only adjusts formatting
+- Outputs to {filename}-formatted.md
+
+#### [Baoyu Markdown to HTML](./skills/markdown/baoyu-markdown-to-html/SKILL.md)
+Convert Markdown to styled HTML with WeChat-compatible themes.
+
+**Features:**
+- Code highlighting, math, PlantUML support
+- Footnotes, alerts, infographics
+- Optional bottom citations for external links
+
 ### 🎨 Frontend Skills
 
 Frontend design and development skills from the [impeccable](https://github.com/pbakaus/impeccable) collection.
