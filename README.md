@@ -12,54 +12,54 @@ Easy Skills provides a set of powerful, ready-to-use agent skills designed to st
 
 AI-powered subagent integrations with automatic fallback support.
 
-#### [Gemini](./skills/subagent/gemini/SKILL.md)
-Execute Gemini CLI for AI-powered code analysis and generation with automatic fallback to OpenCode when rate limits or authentication issues occur.
+#### [Agent Dispatch](./skills/subagent/agent-dispatch/SKILL.md)
+Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated worktrees, branches, and tmux sessions with automatic monitoring and failure recovery.
 
 **Features:**
-- Automatic fallback to OpenCode paper agent
+- Isolated worktree + branch + tmux session creation
+- Automatic monitoring via cron jobs
+- Failure recovery via Ralph Loop
+- Cross-platform compatibility
+
+#### [OpenCode](./skills/subagent/opencode/SKILL.md)
+Execute OpenCode CLI for AI-powered code analysis, refactoring, and automated code changes.
+
+**Features:**
+- Multi-model support (Claude, GPT, Gemini)
+- Session resumption support
+- File reference via `@` syntax
+- Cross-platform compatibility
+
+#### [Gemini](./skills/subagent/gemini/SKILL.md)
+Execute Gemini CLI for AI-powered code analysis and generation.
+
+**Features:**
 - Support for multiple Gemini models
 - Cross-platform compatibility
 - Output saving and session management
+- No fallback - pure Gemini CLI execution
 
 #### [Codex](./skills/subagent/codex/SKILL.md)
-Execute Codex CLI for code analysis, refactoring, and automated code changes with automatic fallback support.
+Execute Codex CLI for code analysis, refactoring, and automated code changes.
 
 **Features:**
-- Priority strategy: OpenCode Agent first, Codex CLI fallback
 - Session resumption support
 - File reference via `@` syntax
 - Structured JSON output parsing
+- Default model: gpt-5.4
 
-### 📚 Scientific Skills
+### 🚀 Efficiency Skills
 
-Academic writing and research assistance tools.
+Productivity-enhancing agent behaviors.
 
-#### [Paper Rewrite](./skills/scientific/paper-rewrite/SKILL.md)
-论文降重与学术润色工具，支持深度降重（同义词替换、句式变换、语义重组）和学术润色（语法修正、风格提升、逻辑优化）。
-
-**Features:**
-- Deep paraphrasing with semantic preservation
-- Academic style enhancement
-- Sentence structure transformation
-- Professional vocabulary upgrade
-
-#### [Check AI Write](./skills/scientific/check-ai-write/SKILL.md)
-去除文本中的 AI 生成痕迹，使文字更自然、更有人味。基于维基百科的"AI 写作特征"综合指南。
+#### [PUA](./skills/efficiency/pua/skills/pua/SKILL.md) | [English Version](./skills/efficiency/pua/skills/pua-en/SKILL.md)
+Forces exhaustive problem-solving using corporate PUA rhetoric and structured debugging methodology.
 
 **Features:**
-- Detect and fix AI writing patterns
-- Inject personality and authenticity
-- Quality scoring system
-- Comprehensive pattern library
-
-#### [Correct Wrong Words](./skills/scientific/correct-wrong-words/SKILL.md)
-多格式文本错别字检测与修正工具，支持纯文本、Markdown、LaTeX 等格式。
-
-**Features:**
-- Multi-format support (Markdown, LaTeX, plain text)
-- Bilingual error detection (Chinese & English)
-- Technical term protection
-- Structured output with correction records
+- Auto-triggers on repeated failures or user frustration
+- Prevents passive "I cannot" responses
+- Enforces exhaustive debugging before giving up
+- Applies to all task types: code, config, research, deployment
 
 ## Installation
 
