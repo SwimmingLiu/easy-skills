@@ -1,10 +1,6 @@
 ---
 name: agent-dispatch
-description: Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated
-  worktrees, branches, and tmux sessions. Use when OpenClaw needs to spawn an agent
-  for any code change, documentation writing, bug fixing, code review, or git
-  operation. Handles the full lifecycle: environment creation, agent startup,
-  task registration, monitoring via cron, and failure recovery via Ralph Loop.
+description: Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated worktrees, branches, and tmux sessions. Handles the full lifecycle including monitoring and failure recovery.
 ---
 
 # Agent dispatch
