@@ -177,6 +177,90 @@ When monitoring detects a session ended without a PR:
 
 ---
 
+## Error Handling and Mandatory Reporting
+
+**CRITICAL: OpenClaw MUST report errors IMMEDIATELY at ANY step.**
+
+### Mandatory Error Reporting Points
+
+**1. Spawn Agent Failure**
+```
+❌ ERROR: Failed to spawn agent
+
+- Step: spawn-agent.sh execution
+- Error: [exact error message]
+- Task ID: [task-id]
+- Agent: [agent type]
+
+Action required: Check tmux session, worktree, or agent availability
+```
+
+**2. Worktree Creation Failure**
+```
+❌ ERROR: Failed to create worktree
+
+- Step: git worktree creation
+- Error: [exact error message]
+- Path: ../agent-worktrees/[task-id]
+
+Action required: Check disk space, permissions, or git conflicts
+```
+
+**3. Branch Creation Failure**
+```
+❌ ERROR: Failed to create branch
+
+- Step: git branch creation
+- Error: [exact error message]
+- Branch: agent/[task-id]
+
+Action required: Check if branch already exists or git conflicts
+```
+
+**4. Cron Job Creation Failure**
+```
+❌ ERROR: Failed to create monitoring cron job
+
+- Step: cron.add()
+- Error: [exact error message]
+- Task ID: [task-id]
+
+Action required: Manual monitoring needed. Check cron service status.
+```
+
+**5. Agent Startup Failure**
+```
+❌ ERROR: Agent failed to start
+
+- Step: Agent CLI execution
+- Error: [exact error message]
+- Tmux: agent-[task-id]
+
+Action required: Check agent installation, permissions, or logs
+```
+
+### Error Response Protocol
+
+**When ANY error occurs:**
+
+1. **STOP** immediately
+2. **REPORT** error to user with:
+   - Which step failed
+   - Exact error message
+   - Task ID
+   - Suggested action
+3. **ASK** user how to proceed:
+   - Retry?
+   - Use different agent?
+   - Cancel task?
+
+**DO NOT:**
+- Continue to next step silently
+- Hide or minimize errors
+- Assume errors will resolve themselves
+
+---
+
 ## Reporting to User
 
 After dispatching, **IMMEDIATELY** report to the user in this structured format:
@@ -236,8 +320,12 @@ After dispatching, **IMMEDIATELY** report to the user in this structured format:
 **Important:**
 - Report IMMEDIATELY after dispatch (don't wait for first monitoring cycle)
 - Include ALL details in first report
-- If dispatch fails, report error immediately
-- If monitoring creation fails, report it but continue with task
+- **MANDATORY**: If dispatch fails, report error immediately with full details
+- **MANDATORY**: If monitoring creation fails, report it immediately (don't continue silently)
+- **MANDATORY**: If ANY step fails, STOP and report to user before proceeding
+- Use ❌ emoji for errors to make them visible
+- Always include the exact error message from tools/scripts
+- Suggest concrete actions user can take to resolve the issue
 
 ---
 
