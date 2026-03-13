@@ -1,0 +1,234 @@
+#!/usr/bin/env python3
+"""Probe the status of a dispatched agent task.
+
+Usage:
+    python3 monitor-agent.py <task-id>
+
+Exit codes:
+    0  Task is still running.
+    1  Task is complete and the temporary cron job can be removed.
+    2  Task is failed and should be escalated to the user.
+    3  Monitoring itself failed and should be escalated to the user.
+"""
+
+from __future__ import annotations
+
+import json
+import os
+import subprocess
+import sys
+from pathlib import Path
+
+DEFAULT_REPO_ROOT = Path("/home/admin/openclaw/workspace")
+DEFAULT_WORKTREE_ROOT = Path("/home/admin/openclaw/agent-worktrees")
+
+
+def run(cmd: list[str]) -> tuple[int, str, str]:
+    result = subprocess.run(cmd, capture_output=True, text=True)
+    return result.returncode, result.stdout.strip(), result.stderr.strip()
+
+
+def detect_repo_root() -> Path:
+    repo_root = Path(os.environ.get("REPO_ROOT", DEFAULT_REPO_ROOT))
+    return repo_root.resolve()
+
+
+def detect_base_branch(repo_root: Path) -> str:
+    env_branch = os.environ.get("BASE_BRANCH")
+    if env_branch:
+        return env_branch
+
+    code, stdout, _ = run(
+        ["git", "-C", str(repo_root), "symbolic-ref", "refs/remotes/origin/HEAD"]
+    )
+    if code == 0 and stdout.startswith("refs/remotes/origin/"):
+        return stdout.rsplit("/", 1)[-1]
+
+    for candidate in ("main", "master"):
+        code, _, _ = run(
+            [
+                "git",
+                "-C",
+                str(repo_root),
+                "show-ref",
+                "--verify",
+                f"refs/remotes/origin/{candidate}",
+            ]
+        )
+        if code == 0:
+            return candidate
+
+    return "main"
+
+
+def tmux_session_alive(task_id: str) -> bool:
+    code, _, _ = run(["tmux", "has-session", "-t", f"agent-{task_id}"])
+    return code == 0
+
+
+def capture_recent_output(task_id: str, lines: int = 20) -> list[str]:
+    code, output, _ = run(
+        ["tmux", "capture-pane", "-pt", f"agent-{task_id}", "-S", f"-{lines}"]
+    )
+    if code != 0 or not output:
+        return []
+    return output.splitlines()[-5:]
+
+
+def get_recent_commits(worktree: Path, base_branch: str) -> list[str]:
+    if not worktree.exists():
+        return []
+
+    code, merge_base, stderr = run(
+        [
+            "git",
+            "-C",
+            str(worktree),
+            "merge-base",
+            "HEAD",
+            f"origin/{base_branch}",
+        ]
+    )
+    if code != 0 or not merge_base:
+        raise RuntimeError(
+            f"Unable to find merge-base against origin/{base_branch}: {stderr}"
+        )
+
+    code, log, stderr = run(
+        [
+            "git",
+            "-C",
+            str(worktree),
+            "log",
+            "--oneline",
+            "--decorate=no",
+            f"{merge_base}..HEAD",
+            "-10",
+        ]
+    )
+    if code != 0:
+        raise RuntimeError(f"Unable to read recent commits: {stderr}")
+
+    return log.splitlines() if log else []
+
+
+def get_pr_url(branch: str) -> str:
+    code, stdout, _ = run(
+        [
+            "gh",
+            "pr",
+            "list",
+            "--head",
+            branch,
+            "--state",
+            "all",
+            "--json",
+            "url",
+            "--jq",
+            ".[0].url",
+        ]
+    )
+    if code != 0 or stdout in {"", "null"}:
+        return ""
+    return stdout
+
+
+def load_task_registry(repo_root: Path) -> dict:
+    registry = repo_root / ".clawdbot" / "active-tasks.json"
+    if not registry.exists():
+        return {}
+    try:
+        payload = json.loads(registry.read_text(encoding="utf-8"))
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"Invalid task registry JSON: {exc}") from exc
+
+    if isinstance(payload, dict) and isinstance(payload.get("tasks"), dict):
+        return payload["tasks"]
+    if isinstance(payload, dict):
+        return payload
+    raise RuntimeError("Task registry must be a JSON object")
+
+
+def build_status(task_id: str) -> tuple[int, dict]:
+    repo_root = detect_repo_root()
+    worktree_root = Path(os.environ.get("WORKTREE_ROOT", DEFAULT_WORKTREE_ROOT))
+    worktree = (worktree_root / task_id).resolve()
+    branch = f"agent/{task_id}"
+    base_branch = detect_base_branch(repo_root)
+
+    registry = load_task_registry(repo_root)
+    task = registry.get(task_id, {})
+
+    alive = tmux_session_alive(task_id)
+    recent_output = capture_recent_output(task_id) if alive else []
+    pr_url = get_pr_url(branch)
+    commits = get_recent_commits(worktree, base_branch)
+
+    status = {
+        "task_id": task_id,
+        "branch": branch,
+        "base_branch": base_branch,
+        "worktree": str(worktree),
+        "session_alive": alive,
+        "pr_url": pr_url,
+        "recent_commits": commits,
+        "recent_output_lines": recent_output,
+        "registry_status": task.get("status"),
+    }
+
+    if pr_url:
+        status["state"] = "complete"
+        status["message"] = "PR detected; remove the temporary cron job."
+        return 1, status
+
+    if alive:
+        status["state"] = "running"
+        if commits:
+            status["message"] = "Agent is running and has produced commits."
+        else:
+            status["message"] = "Agent is running; no commits yet."
+        return 0, status
+
+    if commits:
+        status["state"] = "complete"
+        status["message"] = (
+            "Tmux session ended after producing commits; remove the cron job and "
+            "report likely completion."
+        )
+        return 1, status
+
+    status["state"] = "failed"
+    status["message"] = (
+        "Tmux session ended without a PR or commits; escalate to the user."
+    )
+    return 2, status
+
+
+def main() -> int:
+    if len(sys.argv) != 2:
+        print("Usage: monitor-agent.py <task-id>", file=sys.stderr)
+        return 3
+
+    task_id = sys.argv[1]
+
+    try:
+        exit_code, status = build_status(task_id)
+    except Exception as exc:  # pragma: no cover - defensive CLI handling
+        print(
+            json.dumps(
+                {
+                    "task_id": task_id,
+                    "state": "error",
+                    "message": str(exc),
+                },
+                indent=2,
+            )
+        )
+        return 3
+
+    print(json.dumps(status, indent=2))
+    return exit_code
+
+
+if __name__ == "__main__":
+    sys.exit(main())
