@@ -79,20 +79,41 @@ def get_recent_commits(worktree: Path, base_branch: str) -> list[str]:
     if not worktree.exists():
         return []
 
-    code, merge_base, stderr = run(
-        [
-            "git",
-            "-C",
-            str(worktree),
-            "merge-base",
-            "HEAD",
-            f"origin/{base_branch}",
-        ]
-    )
-    if code != 0 or not merge_base:
-        raise RuntimeError(
-            f"Unable to find merge-base against origin/{base_branch}: {stderr}"
+    # 首先检查是否有 origin remote
+    code, _, _ = run(["git", "-C", str(worktree), "remote", "get-url", "origin"])
+    has_origin = code == 0
+
+    if has_origin:
+        # 尝试 fetch（静默失败）
+        run(["git", "-C", str(worktree), "fetch", "origin", base_branch])
+
+        code, merge_base, stderr = run(
+            [
+                "git",
+                "-C",
+                str(worktree),
+                "merge-base",
+                "HEAD",
+                f"origin/{base_branch}",
+            ]
         )
+        if code != 0 or not merge_base:
+            # 如果找不到 origin/base，尝试本地 base
+            code, merge_base, _ = run(
+                ["git", "-C", str(worktree), "merge-base", "HEAD", base_branch]
+            )
+    else:
+        # 没有 origin，使用本地 base 分支
+        code, merge_base, _ = run(
+            ["git", "-C", str(worktree), "merge-base", "HEAD", base_branch]
+        )
+
+    if code != 0 or not merge_base:
+        # 最后回退：直接列出最近 10 个提交
+        code, log, _ = run(
+            ["git", "-C", str(worktree), "log", "--oneline", "--decorate=no", "-10"]
+        )
+        return log.splitlines() if log else []
 
     code, log, stderr = run(
         [
