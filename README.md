@@ -12,7 +12,7 @@ Easy Skills provides a set of powerful, ready-to-use agent skills designed to st
 
 AI-powered subagent integrations with automatic fallback support.
 
-#### [Agent Dispatch](./skills/agent-dispatch/SKILL.md)
+#### [Agent Dispatch](./skills/subagent/agent-dispatch/SKILL.md)
 Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated worktrees, branches, and tmux sessions with automatic monitoring and failure recovery.
 
 **Features:**
