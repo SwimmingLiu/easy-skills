@@ -122,47 +122,53 @@ else
 fi
 
 # 生成 runner 脚本，由 runner 在 session 内读取 prompt 文件并执行 agent
+WORKTREE_PATH_Q=$(printf '%q' "$WORKTREE_PATH")
+PROMPT_FILE_Q=$(printf '%q' "$PROMPT_FILE")
+MODEL_Q=$(printf '%q' "$MODEL")
+AGENT_TYPE_Q=$(printf '%q' "$AGENT_TYPE")
+DEFAULT_SANDBOX_Q=$(printf '%q' "${SANDBOX:-workspace-write}")
+
 cat > "$RUNNER_FILE" <<EOF
 #!/bin/bash
 set -euo pipefail
-cd "$WORKTREE_PATH"
-PROMPT_FILE="$PROMPT_FILE"
-PROMPT_CONTENT="\$(cat \"\$PROMPT_FILE\")"
-
-case "$AGENT_TYPE" in
-    codex)
-        SANDBOX="${SANDBOX:-workspace-write}"
-        exec codex exec --skip-git-repo-check --sandbox "\$SANDBOX" --full-auto "\$PROMPT_CONTENT"
-        ;;
-    opencode)
-        if [[ "$MODEL" == "default" ]]; then
-            exec opencode run "\$PROMPT_CONTENT"
-        else
-            exec opencode run --model "$MODEL" "\$PROMPT_CONTENT"
-        fi
-        ;;
-    gemini|gemini-cli)
-        exec gemini --yolo "\$PROMPT_CONTENT"
-        ;;
-    claude|claude-code)
-        MODEL_VALUE="$MODEL"
-        if [[ "\$MODEL_VALUE" == "default" ]]; then
-            MODEL_VALUE="claude-sonnet-4"
-        fi
-        exec claude --model "\$MODEL_VALUE" --dangerously-skip-permissions -p "\$PROMPT_CONTENT"
-        ;;
-    code-reviewer)
-        exec gemini "使用 code-reviewer skill: \$PROMPT_CONTENT"
-        ;;
-    docs-writer)
-        exec gemini "使用 docs-writer skill: \$PROMPT_CONTENT"
-        ;;
-    *)
-        echo "未知 Agent 类型: $AGENT_TYPE" >&2
-        exit 1
-        ;;
-esac
+cd $WORKTREE_PATH_Q
+PROMPT_FILE=$PROMPT_FILE_Q
+PROMPT_CONTENT="
 EOF
+printf '$(cat -- %q)\n' "$PROMPT_FILE" >> "$RUNNER_FILE"
+printf '"\n\ncase %s in\n' "$AGENT_TYPE_Q" >> "$RUNNER_FILE"
+printf '    codex)\n' >> "$RUNNER_FILE"
+printf '        SANDBOX="${SANDBOX:-%s}"\n' "$DEFAULT_SANDBOX_Q" >> "$RUNNER_FILE"
+printf '        exec codex exec --skip-git-repo-check --sandbox "$SANDBOX" --full-auto "$PROMPT_CONTENT"\n' >> "$RUNNER_FILE"
+printf '        ;;\n' >> "$RUNNER_FILE"
+printf '    opencode)\n' >> "$RUNNER_FILE"
+printf '        if [[ %s == default ]]; then\n' "$MODEL_Q" >> "$RUNNER_FILE"
+printf '            exec opencode run "$PROMPT_CONTENT"\n' >> "$RUNNER_FILE"
+printf '        else\n' >> "$RUNNER_FILE"
+printf '            exec opencode run --model %s "$PROMPT_CONTENT"\n' "$MODEL_Q" >> "$RUNNER_FILE"
+printf '        fi\n' >> "$RUNNER_FILE"
+printf '        ;;\n' >> "$RUNNER_FILE"
+printf '    gemini|gemini-cli)\n' >> "$RUNNER_FILE"
+printf '        exec gemini --yolo "$PROMPT_CONTENT"\n' >> "$RUNNER_FILE"
+printf '        ;;\n' >> "$RUNNER_FILE"
+printf '    claude|claude-code)\n' >> "$RUNNER_FILE"
+printf '        MODEL_VALUE=%s\n' "$MODEL_Q" >> "$RUNNER_FILE"
+printf '        if [[ "$MODEL_VALUE" == default ]]; then\n' >> "$RUNNER_FILE"
+printf '            MODEL_VALUE=claude-sonnet-4\n' >> "$RUNNER_FILE"
+printf '        fi\n' >> "$RUNNER_FILE"
+printf '        exec claude --model "$MODEL_VALUE" --dangerously-skip-permissions -p "$PROMPT_CONTENT"\n' >> "$RUNNER_FILE"
+printf '        ;;\n' >> "$RUNNER_FILE"
+printf '    code-reviewer)\n' >> "$RUNNER_FILE"
+printf '        exec gemini "使用 code-reviewer skill: $PROMPT_CONTENT"\n' >> "$RUNNER_FILE"
+printf '        ;;\n' >> "$RUNNER_FILE"
+printf '    docs-writer)\n' >> "$RUNNER_FILE"
+printf '        exec gemini "使用 docs-writer skill: $PROMPT_CONTENT"\n' >> "$RUNNER_FILE"
+printf '        ;;\n' >> "$RUNNER_FILE"
+printf '    *)\n' >> "$RUNNER_FILE"
+printf '        echo %q >&2\n' "未知 Agent 类型: $AGENT_TYPE" >> "$RUNNER_FILE"
+printf '        exit 1\n' >> "$RUNNER_FILE"
+printf '        ;;\n' >> "$RUNNER_FILE"
+printf 'esac\n' >> "$RUNNER_FILE"
 chmod +x "$RUNNER_FILE"
 
 # 根据 Agent 类型启动
