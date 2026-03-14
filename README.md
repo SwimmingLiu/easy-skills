@@ -12,14 +12,17 @@ Easy Skills provides a set of powerful, ready-to-use agent skills designed to st
 
 AI-powered subagent integrations with automatic fallback support.
 
-#### [Agent Dispatch](./skills/subagent/agent-dispatch/SKILL.md)
+#### [Agent Dispatch](./skills/agent-dispatch/SKILL.md)
 Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated worktrees, branches, and tmux sessions with automatic monitoring and failure recovery.
 
 **Features:**
+- Cross-repo worktree dispatch with explicit `REPO_ROOT` support
+- Automatic target repo detection from the current git repository
+- Prompt handoff via prompt file + runner script to avoid shell parsing bugs
+- Safe handling for multi-line prompts, fenced code blocks, quotes, and backticks
 - Isolated worktree + branch + tmux session creation
 - Automatic monitoring via cron jobs
-- Failure recovery via Ralph Loop
-- Cross-platform compatibility
+- Failure recovery guidance for failed runs
 
 #### [OpenCode](./skills/subagent/opencode/SKILL.md)
 Execute OpenCode CLI for AI-powered code analysis, refactoring, and automated code changes.
@@ -194,6 +197,23 @@ The skill should appear in the list and will be automatically loaded by your age
 ## Usage
 
 Each skill includes a detailed `SKILL.md` file with usage instructions, examples, and configuration options. Navigate to the skill directory to learn more.
+
+For `agent-dispatch`, prefer these usage patterns:
+
+```bash
+# Dispatch against the current git repo
+/home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh \
+  fix-login codex "Fix the login redirect bug in src/auth/login.ts"
+
+# Dispatch against another project explicitly
+REPO_ROOT=/home/admin/projects/ClassPets \
+/home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh \
+  feat-auth opencode "Implement JWT authentication in src/api/auth.ts"
+```
+
+`agent-dispatch` now writes prompts to a prompt file and lets the runner script
+read them inside tmux. This avoids quoting bugs where multi-line prompts or
+TypeScript code blocks could be misread as shell input.
 
 ## Contributing
 
