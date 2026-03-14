@@ -1,8 +1,6 @@
 ---
 name: agent-dispatch
-description: Dispatch tasks to execution agents (OpenCode, Gemini, Codex)
-  via isolated worktrees, branches, and tmux sessions with automatic
-  monitoring and failure recovery.
+description: Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated worktrees, branches, and tmux sessions with automatic monitoring and failure recovery. Use when substantial work should be delegated to an execution agent in a target git repository instead of being done in the current turn.
 ---
 
 # Agent dispatch
@@ -21,26 +19,49 @@ Good candidates:
 - Longer research or code review tasks
 - Work that benefits from an isolated branch and tmux session
 
+## Repository selection rules
+
+Select the target repository before dispatching. Do not assume every task
+belongs to `/home/admin/openclaw/workspace`.
+
+Use this priority order:
+
+1. If the user explicitly names a project path or repository, dispatch from that repo.
+2. Else if the current working directory is inside a git repo, dispatch from that repo.
+3. Else fall back to `/home/admin/openclaw/workspace`.
+
+If the task is about another project such as `/home/admin/projects/ClassPets`,
+set `REPO_ROOT` explicitly when calling `spawn-agent.sh`.
+
 ## Dispatch command
 
 Use `spawn-agent.sh` to create the worktree, branch, tmux session, and agent
 process.
 
 ```bash
+REPO_ROOT=/absolute/path/to/repo \
 /home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh \
   <task-id> <agent> [model] "<prompt>"
 ```
 
-Example:
+Example for a non-workspace repository:
 
 ```bash
+REPO_ROOT=/home/admin/projects/ClassPets \
 /home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh \
   feat-auth opencode "Implement JWT authentication in src/api/auth.ts"
 ```
 
+Example when already inside the target repo:
+
+```bash
+/home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh \
+  fix-login codex "Fix the login redirect bug in src/auth/login.ts"
+```
+
 ## Spawn parameters
 
-These are the only parameters passed to `spawn-agent.sh`.
+These are the only positional parameters passed to `spawn-agent.sh`.
 
 | Parameter | Required | Notes |
 | --- | --- | --- |
@@ -49,7 +70,31 @@ These are the only parameters passed to `spawn-agent.sh`.
 | `model` | No | Optional override inserted before the prompt |
 | `prompt` | Yes | Quoted task description; always the last argument |
 
-`spawn-agent.sh` detects whether the third argument is `model` or `prompt`.
+Environment variables supported by `spawn-agent.sh`:
+
+| Variable | Required | Notes |
+| --- | --- | --- |
+| `REPO_ROOT` | No but recommended for cross-repo tasks | Absolute path to the target git repository |
+| `BASE_BRANCH` | No | Overrides automatic base branch detection |
+| `WORKTREE_ROOT` | No | Overrides `/home/admin/openclaw/agent-worktrees` |
+| `TASK_REGISTRY` | No | Overrides task registry path |
+
+`spawn-agent.sh` detects whether the third positional argument is `model` or `prompt`.
+
+## Prompt handling rules
+
+Treat prompts as arbitrary multi-line text. They may contain:
+
+- fenced code blocks
+- shell metacharacters
+- quotes
+- backticks
+- markdown
+
+Do not inject raw multi-line prompts directly into a shell command string.
+`spawn-agent.sh` writes the prompt to a file and lets the runner script read it
+inside the tmux session. Keep using that pattern. If you update the skill, do
+not regress to `tmux send-keys "... \"$PROMPT\""` style injection.
 
 ## Agent selection
 
@@ -71,14 +116,15 @@ reason to change it.
 
 `spawn-agent.sh` handles the setup end to end:
 
-1. Creates a worktree at
-   `/home/admin/openclaw/agent-worktrees/<task-id>`.
-2. Creates or reuses branch `agent/<task-id>`.
-3. Installs Node dependencies when `package.json` exists.
-4. Creates or reuses tmux session `agent-<task-id>`.
-5. Starts the selected agent inside that session.
-6. Registers the task in
-   `/home/admin/openclaw/workspace/.clawdbot/active-tasks.json`.
+1. Resolves the target git repository.
+2. Detects the base branch from the current branch or falls back to `master` or `main`.
+3. Creates a worktree at `/home/admin/openclaw/agent-worktrees/<task-id>`.
+4. Creates or reuses branch `agent/<task-id>`.
+5. Writes the prompt to `/home/admin/openclaw/agent-worktrees/.prompts/<task-id>.txt`.
+6. Installs Node dependencies when `package.json` exists.
+7. Creates or reuses tmux session `agent-<task-id>`.
+8. Writes a runner script into the worktree and starts the selected agent from that runner.
+9. Registers the task in `/home/admin/openclaw/workspace/.clawdbot/active-tasks.json` by default.
 
 ## Monitoring
 
@@ -168,6 +214,7 @@ Always include:
 Typical hard failures:
 
 - `spawn-agent.sh` exits non-zero
+- Target repo detection fails
 - Worktree or branch creation fails
 - Tmux session creation fails
 - Agent CLI startup fails
@@ -193,8 +240,11 @@ minimum information they need to continue working with the task:
 - Dispatch result: success or failure
 - `task-id`
 - Agent name
+- Repo root
+- Base branch
 - Worktree path
 - Branch name
+- Prompt file path when useful for debugging
 - Tmux session name
 - Monitoring status and cron job ID, if created
 - Monitoring delivery target: `channel` and `chat-id`
