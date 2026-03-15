@@ -21,6 +21,7 @@ from pathlib import Path
 
 DEFAULT_REPO_ROOT = Path("/home/admin/openclaw/workspace")
 DEFAULT_WORKTREE_ROOT = Path("/home/admin/openclaw/agent-worktrees")
+DEFAULT_TASK_REGISTRY = DEFAULT_REPO_ROOT / ".clawdbot" / "active-tasks.json"
 
 
 def run(cmd: list[str]) -> tuple[int, str, str]:
@@ -64,6 +65,15 @@ def detect_base_branch(repo_root: Path) -> str:
 def tmux_session_alive(task_id: str) -> bool:
     code, _, _ = run(["tmux", "has-session", "-t", f"agent-{task_id}"])
     return code == 0
+
+
+def tmux_current_command(task_id: str) -> str:
+    code, output, _ = run(
+        ["tmux", "display-message", "-p", "-t", f"agent-{task_id}", "#{pane_current_command}"]
+    )
+    if code != 0:
+        return ""
+    return output.strip()
 
 
 def capture_recent_output(task_id: str, lines: int = 20) -> list[str]:
@@ -155,7 +165,9 @@ def get_pr_url(branch: str) -> str:
 
 
 def load_task_registry(repo_root: Path) -> dict:
-    registry = repo_root / ".clawdbot" / "active-tasks.json"
+    registry = Path(os.environ.get("TASK_REGISTRY", DEFAULT_TASK_REGISTRY))
+    if not registry.is_absolute():
+        registry = (repo_root / registry).resolve()
     if not registry.exists():
         return {}
     try:
@@ -175,12 +187,13 @@ def build_status(task_id: str) -> tuple[int, dict]:
     worktree_root = Path(os.environ.get("WORKTREE_ROOT", DEFAULT_WORKTREE_ROOT))
     worktree = (worktree_root / task_id).resolve()
     branch = f"agent/{task_id}"
-    base_branch = detect_base_branch(repo_root)
 
     registry = load_task_registry(repo_root)
     task = registry.get(task_id, {})
+    base_branch = task.get("baseBranch") or detect_base_branch(repo_root)
 
     alive = tmux_session_alive(task_id)
+    current_command = tmux_current_command(task_id) if alive else ""
     recent_output = capture_recent_output(task_id) if alive else []
     pr_url = get_pr_url(branch)
     commits = get_recent_commits(worktree, base_branch)
@@ -191,6 +204,7 @@ def build_status(task_id: str) -> tuple[int, dict]:
         "base_branch": base_branch,
         "worktree": str(worktree),
         "session_alive": alive,
+        "pane_current_command": current_command,
         "pr_url": pr_url,
         "recent_commits": commits,
         "recent_output_lines": recent_output,
@@ -201,6 +215,24 @@ def build_status(task_id: str) -> tuple[int, dict]:
         status["state"] = "complete"
         status["message"] = "PR detected; remove the temporary cron job."
         return 1, status
+
+    recent_output_text = "\n".join(recent_output)
+    runner_failed = (
+        alive
+        and current_command in {"bash", "sh", "zsh"}
+        and (
+            "No such file or directory" in recent_output_text
+            or "未知 Agent 类型" in recent_output_text
+            or "command not found" in recent_output_text
+        )
+    )
+
+    if runner_failed:
+        status["state"] = "failed"
+        status["message"] = (
+            "Tmux session is still open, but the runner appears to have failed and returned to the shell; escalate to the user."
+        )
+        return 2, status
 
     if alive:
         status["state"] = "running"

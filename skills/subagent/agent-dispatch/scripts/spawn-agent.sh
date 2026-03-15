@@ -135,7 +135,7 @@ cd $WORKTREE_PATH_Q
 PROMPT_FILE=$PROMPT_FILE_Q
 PROMPT_CONTENT="
 EOF
-printf '$(cat -- %q)\n' "$PROMPT_FILE" >> "$RUNNER_FILE"
+printf '$(cat -- "$PROMPT_FILE")\n' >> "$RUNNER_FILE"
 printf '"\n\ncase %s in\n' "$AGENT_TYPE_Q" >> "$RUNNER_FILE"
 printf '    codex)\n' >> "$RUNNER_FILE"
 printf '        SANDBOX="${SANDBOX:-%s}"\n' "$DEFAULT_SANDBOX_Q" >> "$RUNNER_FILE"
@@ -180,7 +180,7 @@ log_info "注册任务到 $TASK_REGISTRY"
 mkdir -p "$(dirname "$TASK_REGISTRY")"
 
 # 创建或更新任务注册表
-if [[ ! -f "$TASK_REGISTRY" ]]; then
+if [[ ! -s "$TASK_REGISTRY" ]]; then
     echo '{"tasks": {}}' > "$TASK_REGISTRY"
 fi
 
