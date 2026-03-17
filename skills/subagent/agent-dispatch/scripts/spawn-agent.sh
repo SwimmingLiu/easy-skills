@@ -133,10 +133,8 @@ cat > "$RUNNER_FILE" <<EOF
 set -euo pipefail
 cd $WORKTREE_PATH_Q
 PROMPT_FILE=$PROMPT_FILE_Q
-PROMPT_CONTENT="
 EOF
-printf '$(cat -- "$PROMPT_FILE")\n' >> "$RUNNER_FILE"
-printf '"\n\ncase %s in\n' "$AGENT_TYPE_Q" >> "$RUNNER_FILE"
+printf 'PROMPT_CONTENT="$(cat -- "$PROMPT_FILE")"\n\ncase %s in\n' "$AGENT_TYPE_Q" >> "$RUNNER_FILE"
 printf '    codex)\n' >> "$RUNNER_FILE"
 printf '        SANDBOX="${SANDBOX:-%s}"\n' "$DEFAULT_SANDBOX_Q" >> "$RUNNER_FILE"
 printf '        exec codex exec --skip-git-repo-check --sandbox "$SANDBOX" --full-auto "$PROMPT_CONTENT"\n' >> "$RUNNER_FILE"
