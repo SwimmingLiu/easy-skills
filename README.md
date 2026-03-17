@@ -25,13 +25,21 @@ Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated worktr
 - Failure recovery guidance for failed runs
 
 #### [OpenCode](./skills/subagent/opencode/SKILL.md)
-Execute OpenCode CLI for AI-powered code analysis, refactoring, and automated code changes.
+Launch the OpenCode terminal UI inside a dedicated tmux session for interactive project work.
 
 **Features:**
-- Multi-model support (Claude, GPT, Gemini)
-- Session resumption support
-- File reference via `@` syntax
-- Cross-platform compatibility
+- Detached tmux session creation
+- Prompt handoff through tmux buffer staging
+- Machine-readable session metadata
+- Explicit exit codes for setup failures
+
+#### [OpenCode CLI](./skills/subagent/opencode-cli/SKILL.md)
+Preserved one-shot OpenCode wrapper for deterministic non-interactive workflows.
+
+**Features:**
+- Predictable markdown result file output
+- Machine-readable metadata and stable exit codes
+- Wrapper fallback when repository artifacts exist but the result file is missing
 
 #### [Gemini](./skills/subagent/gemini/SKILL.md)
 Launch the Gemini terminal UI inside a dedicated tmux session for interactive project work.

@@ -1,71 +1,72 @@
 ---
 name: opencode
-description: Delegate code exploration, implementation, refactoring, debugging, and architecture analysis to the OpenCode CLI in a deterministic one-shot workflow. Use when Codex needs OpenCode to run against a local project, produce a complete markdown result, save it to a predictable output path, and return machine-readable metadata with explicit exit codes.
+description: Launch the OpenCode TUI inside a dedicated tmux session for project-scoped interactive work. Use when you want a persistent OpenCode terminal UI attached to a target repository, with prompt handoff handled by a wrapper script and explicit machine-readable session metadata.
 ---
 
-# OpenCode deterministic runner
+# OpenCode tmux launcher
 
-Use this skill to execute a one-shot OpenCode task against a project and save the final answer to a deterministic markdown file.
+Use this skill to start the real `opencode` TUI inside a fresh tmux session.
 
 ## Follow this workflow
 
-1. Run `scripts/run_opencode.sh` with the task text.
-2. Capture the printed `RESULT_FILE` path.
-3. Read the file at `RESULT_FILE` after the script exits successfully.
-4. Treat the file contents as the source of truth.
+1. Run `scripts/run_opencode_tmux.sh` with the task text.
+2. Capture the printed metadata, especially `SESSION_NAME`.
+3. Attach with `tmux attach -t <SESSION_NAME>` when interactive work is needed.
+4. Paste the prepared task text from the tmux buffer into OpenCode.
+5. Monitor progress with normal tmux commands such as `tmux capture-pane`.
 
 ## Run the script
 
 ```bash
-bash ./scripts/run_opencode.sh "<task>" [working_dir] [output_dir]
+bash ./scripts/run_opencode_tmux.sh "<task>" [working_dir] [session_name]
 ```
 
 Arguments:
-- `task`: Required. The instruction for OpenCode.
+- `task`: Required. The instruction to give OpenCode.
 - `working_dir`: Optional. Defaults to the current working directory.
-- `output_dir`: Optional. Defaults to `.tmp/opencode-output` inside the skill directory.
-
-Environment:
-- `OPENCODE_TIMEOUT_SECONDS`: Optional. Defaults to `300`.
+- `session_name`: Optional. Defaults to `opencode-<timestamp>`.
 
 ## What the script does
 
-- Create the output directory if needed.
-- Generate a deterministic result file path.
-- Build a prompt that tells OpenCode to write the final answer to that exact path.
-- Run `opencode run` in the target project directory with a bounded timeout.
-- If OpenCode writes the requested repository artifact but skips `RESULT_FILE`, synthesize a wrapper result file from the observed repository outputs.
-- Print machine-readable metadata for downstream automation, including the OpenCode log path and exit code.
+- Verifies that `opencode` and `tmux` are available.
+- Verifies that the target working directory exists.
+- Creates a skill-local `.tmp/tmux` directory for prompt, runner, metadata, and log files.
+- Writes the task text to a prompt file.
+- Creates a runner script that starts the real `opencode` TUI in the target directory.
+- Starts a detached tmux session.
+- Copies the task text into the tmux paste buffer for reliable handoff.
+- Prints machine-readable metadata so callers can attach or inspect later.
 
 ## Expected output
 
 On success, the script prints:
 
+- `SESSION_NAME`
 - `WORKDIR`
-- `RESULT_FILE`
-- `OUTPUT_DIR`
-- `OPENCODE_LOG_FILE`
-- `OPENCODE_EXIT`
+- `PROMPT_FILE`
+- `RUNNER_FILE`
+- `LOG_FILE`
+- `CURRENT_COMMAND`
 - `STATUS`
-
-Read `RESULT_FILE` after success.
 
 ## Exit codes
 
-The script uses explicit exit codes so callers can distinguish different failure modes.
+The script uses explicit exit codes so callers can distinguish setup failures.
 
-- `0`: OpenCode completed successfully and a non-empty result file is available. The result file may be written directly by OpenCode or synthesized by the wrapper as a fallback.
+- `0`: Success. The tmux session is ready and the prompt text is staged in the tmux buffer.
 - `1`: Invalid invocation or missing required arguments.
-- `2`: Failed to create required directories or prompt/result files.
+- `2`: Failed to create or write required local files.
 - `3`: `opencode` is not available in `PATH`.
-- `4`: The target working directory does not exist.
-- `5`: OpenCode execution failed and the wrapper could not recover from existing repository artifacts.
-- `6`: OpenCode finished without producing a usable result file and the wrapper could not synthesize one.
+- `4`: `tmux` is not available in `PATH`.
+- `5`: The target working directory does not exist.
+- `6`: The requested tmux session name already exists.
+- `7`: The tmux session could not be created or validated.
+- `8`: Prompt handoff to the tmux buffer failed.
 
 ## Operational notes
 
-- Keep all instructions and status-code descriptions in English.
-- Prefer this deterministic runner over interactive TUI flows when automation or validation matters.
-- Ask OpenCode to save any additional project artifacts, such as reports under `docs/report`, inside the target repository.
-- Use the wrapper fallback when repository artifacts exist but OpenCode skips the requested `RESULT_FILE` write.
-- Read the generated project artifact separately when the task requests repository changes in addition to the result summary.
+- Keep instructions and session metadata in English.
+- This skill is intentionally interactive. It launches the real OpenCode terminal UI, not a one-shot CLI wrapper.
+- The wrapper prepares the task text in the tmux buffer, but you still need to paste it into the OpenCode UI.
+- Clean up stale tmux sessions and skill-local `.tmp/tmux` files when they are no longer needed.
+- For deterministic non-interactive automation, use `opencode-cli` instead.

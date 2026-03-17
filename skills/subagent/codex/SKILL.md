@@ -69,4 +69,4 @@ The script uses explicit exit codes so callers can distinguish setup failures.
 - This skill is intentionally interactive. It launches the real Codex terminal UI, not a one-shot CLI wrapper.
 - The wrapper prepares the task text in the tmux buffer, but you still need to paste it into the Codex UI.
 - Clean up stale tmux sessions and skill-local `.tmp/tmux` files when they are no longer needed.
-- For deterministic non-interactive automation, use a one-shot CLI-style skill instead of this one.
+- For deterministic non-interactive automation, use `codex-cli` instead.
