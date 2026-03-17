@@ -1,146 +1,72 @@
 ---
 name: codex
-description: Execute Codex CLI for code analysis, refactoring, and automated code changes. Use when you need to delegate complex code tasks to Codex AI with file references (@syntax) and structured output.
+description: Launch the Codex TUI inside a dedicated tmux session for project-scoped interactive work. Use when you want a persistent Codex terminal UI attached to a target repository, with prompt handoff handled by a wrapper script and explicit machine-readable session metadata.
 ---
 
-# Codex CLI Integration
+# Codex tmux launcher
 
-## Overview
+Use this skill to start the real `codex` TUI inside a fresh tmux session.
 
-Execute Codex CLI commands and parse structured JSON responses. Supports file references via `@` syntax, multiple models, and sandbox controls.
+## Follow this workflow
 
-## When to Use
+1. Run `scripts/run_codex_tmux.sh` with the task text.
+2. Capture the printed metadata, especially `SESSION_NAME`.
+3. Attach with `tmux attach -t <SESSION_NAME>` when interactive work is needed.
+4. Paste the prepared task text from the tmux buffer into Codex.
+5. Monitor progress with normal tmux commands such as `tmux capture-pane`.
 
-- Complex code analysis requiring deep understanding
-- Large-scale refactoring across multiple files
-- Automated code generation with safety controls
-- Tasks requiring specialized reasoning models (o3, gpt-5)
+## Run the script
 
-## Usage
-
-**推荐方式**（使用 uv run，自动管理 Python 环境）：
 ```bash
-uv run ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+bash ./scripts/run_codex_tmux.sh "<task>" [working_dir] [session_name]
 ```
 
-**备选方式**（直接执行或使用 Python）：
-```bash
-./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
-# 或
-python3 ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
-```
+Arguments:
+- `task`: Required. The instruction to give Codex.
+- `working_dir`: Optional. Defaults to the current working directory.
+- `session_name`: Optional. Defaults to `codex-<timestamp>`.
 
-恢复会话:
-```bash
-uv run ./.claude/skills/codex/scripts/codex.py resume <session_id> "<task>" [model] [working_dir]
-```
+## What the script does
 
-## Timeout Control
+- Verifies that `codex` and `tmux` are available.
+- Verifies that the target working directory exists.
+- Creates a skill-local `.tmp/tmux` directory for prompt, runner, metadata, and log files.
+- Writes the task text to a prompt file.
+- Creates a runner script that starts the real `codex` TUI in the target directory.
+- Starts a detached tmux session.
+- Copies the task text into the tmux paste buffer for reliable handoff.
+- Prints machine-readable metadata so callers can attach or inspect later.
 
-- **Built-in**: Script enforces 2-hour timeout by default
-- **Override**: Set `CODEX_TIMEOUT` environment variable (in milliseconds, e.g., `CODEX_TIMEOUT=3600000` for 1 hour)
-- **Behavior**: On timeout, sends SIGTERM, then SIGKILL after 5s if process doesn't exit
-- **Exit code**: Returns 124 on timeout (consistent with GNU timeout)
-- **Bash tool**: Always set `timeout: 7200000` parameter for double protection
+## Expected output
 
-### Parameters
+On success, the script prints:
 
-- `task` (required): Task description, supports `@file` references
-- `model` (optional): Model to use (default: gpt-5.2-codex)
-  - `gpt-5.4`: Default, optimized for code
-  - `gpt-5-codex`: Previous version
-  - `gpt-5`: Fast general purpose
-- `working_dir` (optional): Working directory (default: current)
+- `SESSION_NAME`
+- `WORKDIR`
+- `PROMPT_FILE`
+- `RUNNER_FILE`
+- `LOG_FILE`
+- `CURRENT_COMMAND`
+- `STATUS`
 
-### Return Format
+## Exit codes
 
-Extracts `agent_message` from Codex JSON stream and appends session ID:
-```
-Agent response text here...
+The script uses explicit exit codes so callers can distinguish setup failures.
 
----
-SESSION_ID: 019a7247-ac9d-71f3-89e2-a823dbd8fd14
-```
+- `0`: Success. The tmux session is ready and the prompt text is staged in the tmux buffer.
+- `1`: Invalid invocation or missing required arguments.
+- `2`: Failed to create or write required local files.
+- `3`: `codex` is not available in `PATH`.
+- `4`: `tmux` is not available in `PATH`.
+- `5`: The target working directory does not exist.
+- `6`: The requested tmux session name already exists.
+- `7`: The tmux session could not be created or validated.
+- `8`: Prompt handoff to the tmux buffer failed.
 
-Error format (stderr):
-```
-ERROR: Error message
-```
+## Operational notes
 
-### Output Saving
-
-每次执行后，输出结果会自动保存到 `.tmp/docs/output/` 目录：
-- **文件名**: `out_<日期>_<时间>_codex_<任务描述>.md`
-- **内容包含**: 生成时间、任务描述、Session ID（如适用）、完整输出
-
-保存成功后会在 stderr 输出提示：
-```
-INFO: Output saved to .tmp/docs/output/out_20240125_143052_codex_task.md
-```
-
-### Invocation Pattern
-
-When calling via Bash tool, always include the timeout parameter:
-```
-Bash tool parameters:
-- command: uv run ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
-- timeout: 7200000
-- description: <brief description of the task>
-```
-
-Alternatives:
-```
-# Direct execution (simplest)
-- command: ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
-
-# Using python3
-- command: python3 ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
-```
-
-### Examples
-
-**Basic code analysis:**
-```bash
-# Recommended: via uv run (auto-manages Python environment)
-uv run ./.claude/skills/codex/scripts/codex.py "explain @src/main.ts"
-# timeout: 7200000
-
-# Alternative: direct execution
-./.claude/skills/codex/scripts/codex.py "explain @src/main.ts"
-```
-
-**Refactoring with specific model:**
-```bash
-uv run ./.claude/skills/codex/scripts/codex.py "refactor @src/utils for performance" "gpt-5"
-# timeout: 7200000
-```
-
-**Multi-file analysis:**
-```bash
-uv run ./.claude/skills/codex/scripts/codex.py "analyze @. and find security issues" "gpt-5-codex" "/path/to/project"
-# timeout: 7200000
-```
-
-**Resume previous session:**
-```bash
-# First session
-uv run ./.claude/skills/codex/scripts/codex.py "add comments to @utils.js" "gpt-5-codex"
-# Output includes: SESSION_ID: 019a7247-ac9d-71f3-89e2-a823dbd8fd14
-
-# Continue the conversation
-uv run ./.claude/skills/codex/scripts/codex.py resume 019a7247-ac9d-71f3-89e2-a823dbd8fd14 "now add type hints"
-# timeout: 7200000
-```
-
-## Notes
-
-- **Recommended**: Use `uv run` for automatic Python environment management (requires uv installed)
-- **Alternative**: Direct execution `./codex.py` (uses system Python via shebang)
-- Python implementation using standard library (zero dependencies)
-- Cross-platform compatible (Windows/macOS/Linux)
-- PEP 723 compliant (inline script metadata)
-- Runs with `--dangerously-bypass-approvals-and-sandbox` for automation (new sessions only)
-- Uses `--skip-git-repo-check` to work in any directory
-- Streams progress, returns only final agent message
-- Every execution returns a session ID for resuming conversations
-- Requires Codex CLI installed and authenticated
+- Keep instructions and session metadata in English.
+- This skill is intentionally interactive. It launches the real Codex terminal UI, not a one-shot CLI wrapper.
+- The wrapper prepares the task text in the tmux buffer, but you still need to paste it into the Codex UI.
+- Clean up stale tmux sessions and skill-local `.tmp/tmux` files when they are no longer needed.
+- For deterministic non-interactive automation, use a one-shot CLI-style skill instead of this one.

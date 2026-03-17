@@ -34,16 +34,33 @@ Execute OpenCode CLI for AI-powered code analysis, refactoring, and automated co
 - Cross-platform compatibility
 
 #### [Gemini](./skills/subagent/gemini/SKILL.md)
-Execute Gemini CLI for AI-powered code analysis and generation.
+Launch the Gemini terminal UI inside a dedicated tmux session for interactive project work.
 
 **Features:**
-- Support for multiple Gemini models
-- Cross-platform compatibility
-- Output saving and session management
-- No fallback - pure Gemini CLI execution
+- Detached tmux session creation
+- Prompt handoff through tmux buffer staging
+- Machine-readable session metadata
+- Explicit exit codes for setup failures
+
+#### [Gemini CLI](./skills/subagent/gemini-cli/SKILL.md)
+Preserved one-shot Gemini CLI wrapper for non-interactive workflows.
+
+**Features:**
+- Python wrapper around Gemini CLI
+- Output saving and model selection
+- Suitable for deterministic one-shot execution
 
 #### [Codex](./skills/subagent/codex/SKILL.md)
-Execute Codex CLI for code analysis, refactoring, and automated code changes.
+Launch the Codex terminal UI inside a dedicated tmux session for interactive project work.
+
+**Features:**
+- Detached tmux session creation
+- Prompt handoff through tmux buffer staging
+- Machine-readable session metadata
+- Explicit exit codes for setup failures
+
+#### [Codex CLI](./skills/subagent/codex-cli/SKILL.md)
+Preserved one-shot Codex CLI wrapper for non-interactive workflows.
 
 **Features:**
 - Session resumption support

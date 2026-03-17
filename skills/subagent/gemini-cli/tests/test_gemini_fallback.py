@@ -22,7 +22,7 @@ from pathlib import Path
 from typing import Tuple, Optional
 
 # 测试配置
-GEMINI_SCRIPT = "./.claude/skills/gemini/scripts/gemini.py"
+GEMINI_SCRIPT = "./skills/subagent/gemini-cli/scripts/gemini.py"
 GEMINI_FALLBACK_SCRIPT = "./.claude/skills/gemini/scripts/gemini_fallback.py"
 TEST_PROMPT = "解释一下量子计算的基本原理"
 TEST_WORKDIR = "."

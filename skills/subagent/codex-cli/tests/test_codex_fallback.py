@@ -24,7 +24,7 @@ from pathlib import Path
 from typing import Tuple, Optional
 
 # 测试配置
-CODEX_SCRIPT = "./.claude/skills/codex/scripts/codex.py"
+CODEX_SCRIPT = "./skills/subagent/codex-cli/scripts/codex.py"
 CODEX_FALLBACK_SCRIPT = "./.claude/skills/codex/scripts/codex_fallback.py"
 TEST_TASK = "请分析这段代码的性能问题"
 TEST_WORKDIR = "."

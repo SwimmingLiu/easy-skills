@@ -1,132 +1,72 @@
 ---
 name: gemini
-description: Execute Gemini CLI for AI-powered code analysis and generation. Use when you need to leverage Google's Gemini models for complex reasoning tasks.
+description: Launch the Gemini TUI inside a dedicated tmux session for project-scoped interactive work. Use when you want a persistent Gemini terminal UI attached to a target repository, with prompt handoff handled by a wrapper script and explicit machine-readable session metadata.
 ---
 
-# Gemini CLI Integration
+# Gemini tmux launcher
 
-## Overview
+Use this skill to start the real `gemini` TUI inside a fresh tmux session.
 
-Execute Gemini CLI commands with support for multiple models and flexible prompt input. Integrates Google's Gemini AI models into Claude Code workflows.
+## Follow this workflow
 
-## When to Use
+1. Run `scripts/run_gemini_tmux.sh` with the task text.
+2. Capture the printed metadata, especially `SESSION_NAME`.
+3. Attach with `tmux attach -t <SESSION_NAME>` when interactive work is needed.
+4. Paste the prepared task text from the tmux buffer into Gemini.
+5. Monitor progress with normal tmux commands such as `tmux capture-pane`.
 
-- Complex reasoning tasks requiring advanced AI capabilities
-- Code generation and analysis with Gemini models
-- Tasks requiring Google's latest AI technology
-- Alternative perspective on code problems
-
-## Usage
-
-**推荐方式**（使用 uv run，自动管理 Python 环境）：
-```bash
-uv run ./.claude/skills/gemini/scripts/gemini.py "<prompt>" [working_dir]
-```
-
-**备选方式**（直接执行或使用 Python）：
-```bash
-./.claude/skills/gemini/scripts/gemini.py "<prompt>" [working_dir]
-# 或
-python3 ./.claude/skills/gemini/scripts/gemini.py "<prompt>" [working_dir]
-```
-
-## Environment Variables
-
-- **GEMINI_MODEL**: Configure model (default: `gemini-3-pro-preview`)
-  - Example: `export GEMINI_MODEL=gemini-3`
-
-## Timeout Control
-
-- **Fixed**: 7200000 milliseconds (2 hours), immutable
-- **Bash tool**: Always set `timeout: 7200000` for double protection
-
-### Parameters
-
-- `prompt` (required): Task prompt or question
-- `working_dir` (optional): Working directory (default: current directory)
-
-### Return Format
-
-Plain text output from Gemini:
-
-```text
-Model response text here...
-```
-
-Error format (stderr):
-
-```text
-ERROR: Error message
-```
-
-### Output Saving
-
-每次执行后，输出结果会自动保存到 `.tmp/docs/output/` 目录：
-- **文件名**: `out_<日期>_<时间>_gemini_<任务描述>.md`
-- **内容包含**: 生成时间、Model、Prompt、完整输出
-
-保存成功后会在 stderr 输出提示：
-```
-INFO: Output saved to .tmp/docs/output/out_20240125_150321_gemini_task.md
-```
-
-### Invocation Pattern
-
-When calling via Bash tool, always include the timeout parameter:
-
-```yaml
-Bash tool parameters:
-- command: uv run ./.claude/skills/gemini/scripts/gemini.py "<prompt>"
-- timeout: 7200000
-- description: <brief description of the task>
-```
-
-Alternatives:
-
-```yaml
-# Direct execution (simplest)
-- command: ./.claude/skills/gemini/scripts/gemini.py "<prompt>"
-
-# Using python3
-- command: python3 ./.claude/skills/gemini/scripts/gemini.py "<prompt>"
-```
-
-### Examples
-
-**Basic query:**
+## Run the script
 
 ```bash
-uv run ./.claude/skills/gemini/scripts/gemini.py "explain quantum computing"
-# timeout: 7200000
+bash ./scripts/run_gemini_tmux.sh "<task>" [working_dir] [session_name]
 ```
 
-**Code analysis:**
+Arguments:
+- `task`: Required. The instruction to give Gemini.
+- `working_dir`: Optional. Defaults to the current working directory.
+- `session_name`: Optional. Defaults to `gemini-<timestamp>`.
 
-```bash
-uv run ./.claude/skills/gemini/scripts/gemini.py "review this code for security issues: $(cat app.py)"
-# timeout: 7200000
-```
+## What the script does
 
-**With specific working directory:**
+- Verifies that `gemini` and `tmux` are available.
+- Verifies that the target working directory exists.
+- Creates a skill-local `.tmp/tmux` directory for prompt, runner, metadata, and log files.
+- Writes the task text to a prompt file.
+- Creates a runner script that starts the real `gemini` TUI in the target directory.
+- Starts a detached tmux session.
+- Copies the task text into the tmux paste buffer for reliable handoff.
+- Prints machine-readable metadata so callers can attach or inspect later.
 
-```bash
-uv run ./.claude/skills/gemini/scripts/gemini.py "analyze project structure" "/path/to/project"
-# timeout: 7200000
-```
+## Expected output
 
-## Scripts Reference
+On success, the script prints:
 
-| 脚本 | 用途 |
-|------|------|
-| `scripts/gemini.py` | 主脚本，执行 Gemini CLI |
+- `SESSION_NAME`
+- `WORKDIR`
+- `PROMPT_FILE`
+- `RUNNER_FILE`
+- `LOG_FILE`
+- `CURRENT_COMMAND`
+- `STATUS`
 
-## Notes
+## Exit codes
 
-- **Recommended**: Use `uv run` for automatic Python environment management (requires uv installed)
-- **Alternative**: Direct execution `./gemini.py` (uses system Python via shebang)
-- Python implementation using standard library (zero dependencies)
-- Cross-platform compatible (Windows/macOS/Linux)
-- PEP 723 compliant (inline script metadata)
-- Requires Gemini CLI installed and authenticated
-- Supports all Gemini model variants (configure via `GEMINI_MODEL` environment variable)
-- Output is streamed directly from Gemini CLI
+The script uses explicit exit codes so callers can distinguish setup failures.
+
+- `0`: Success. The tmux session is ready and the prompt text is staged in the tmux buffer.
+- `1`: Invalid invocation or missing required arguments.
+- `2`: Failed to create or write required local files.
+- `3`: `gemini` is not available in `PATH`.
+- `4`: `tmux` is not available in `PATH`.
+- `5`: The target working directory does not exist.
+- `6`: The requested tmux session name already exists.
+- `7`: The tmux session could not be created or validated.
+- `8`: Prompt handoff to the tmux buffer failed.
+
+## Operational notes
+
+- Keep instructions and session metadata in English.
+- This skill is intentionally interactive. It launches the real Gemini terminal UI, not a one-shot CLI wrapper.
+- The wrapper prepares the task text in the tmux buffer, but you still need to paste it into the Gemini UI.
+- Clean up stale tmux sessions and skill-local `.tmp/tmux` files when they are no longer needed.
+- For deterministic non-interactive automation, use a one-shot CLI-style skill instead of this one.
