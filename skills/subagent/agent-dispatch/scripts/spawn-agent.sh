@@ -21,14 +21,29 @@ else
 fi
 
 WORKSPACE_ROOT="/home/admin/openclaw/workspace"
+WORKSPACE_FALLBACK_ACK_VAR="ACKNOWLEDGE_WORKSPACE_DISPATCH"
 
-# 允许显式传 REPO_ROOT；否则优先使用当前工作目录所在 git 仓库；再回退到 workspace。
+# 颜色输出（提前定义，guardrail 需要用）
+RED='\033[0;31m'
+GREEN='\033[0;32m'
+YELLOW='\033[1;33m'
+NC='\033[0m'
+
+log_info() { echo -e "${GREEN}[INFO]${NC} $1"; }
+log_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
+log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
+
+# 解析 REPO_ROOT（必须在 BASE_BRANCH 检测之前）
 if [[ -n "${REPO_ROOT:-}" ]]; then
     REPO_ROOT="$(cd "$REPO_ROOT" && pwd)"
 elif git -C "$PWD" rev-parse --show-toplevel >/dev/null 2>&1; then
     REPO_ROOT="$(git -C "$PWD" rev-parse --show-toplevel)"
-else
+elif [[ "${!WORKSPACE_FALLBACK_ACK_VAR:-}" == "1" ]]; then
+    log_warn "未显式设置 REPO_ROOT；已确认回退到 workspace: $WORKSPACE_ROOT"
     REPO_ROOT="$WORKSPACE_ROOT"
+else
+    log_error "拒绝隐式回退到 workspace。请显式传入 REPO_ROOT，或在确认要派发到 $WORKSPACE_ROOT 时设置 ${WORKSPACE_FALLBACK_ACK_VAR}=1"
+    exit 1
 fi
 
 # 自动检测基础分支（优先当前分支，其次 master/main）
@@ -38,7 +53,7 @@ if [[ -z "${BASE_BRANCH:-}" ]]; then
     if [[ -z "$BASE_BRANCH" ]]; then
         if git show-ref --verify --quiet refs/heads/master; then
             BASE_BRANCH="master"
-        elif git show-ref --verify --quiet refs/heads/main; then
+        elif git show-ref--verify --quiet refs/heads/main; then
             BASE_BRANCH="main"
         else
             BASE_BRANCH="$(git symbolic-ref --short refs/remotes/origin/HEAD 2>/dev/null | sed 's#^origin/##' || true)"
@@ -49,16 +64,6 @@ fi
 WORKTREE_ROOT="${WORKTREE_ROOT:-/home/admin/openclaw/agent-worktrees}"
 TASK_REGISTRY="${TASK_REGISTRY:-$WORKSPACE_ROOT/.clawdbot/active-tasks.json}"
 PROMPT_DIR="$WORKTREE_ROOT/.prompts"
-
-# 颜色输出
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m'
-
-log_info() { echo -e "${GREEN}[INFO]${NC} $1"; }
-log_warn() { echo -e "${YELLOW}[WARN]${NC} $1"; }
-log_error() { echo -e "${RED}[ERROR]${NC} $1"; }
 
 # 参数检查
 if [[ -z "$TASK_ID" || -z "$AGENT_TYPE" || -z "$PROMPT" ]]; then
@@ -133,8 +138,10 @@ cat > "$RUNNER_FILE" <<EOF
 set -euo pipefail
 cd $WORKTREE_PATH_Q
 PROMPT_FILE=$PROMPT_FILE_Q
+PROMPT_CONTENT="
 EOF
-printf 'PROMPT_CONTENT="$(cat -- "$PROMPT_FILE")"\n\ncase %s in\n' "$AGENT_TYPE_Q" >> "$RUNNER_FILE"
+printf '$(cat -- %q)\n' "$PROMPT_FILE" >> "$RUNNER_FILE"
+printf '"\n\ncase %s in\n' "$AGENT_TYPE_Q" >> "$RUNNER_FILE"
 printf '    codex)\n' >> "$RUNNER_FILE"
 printf '        SANDBOX="${SANDBOX:-%s}"\n' "$DEFAULT_SANDBOX_Q" >> "$RUNNER_FILE"
 printf '        exec codex exec --skip-git-repo-check --sandbox "$SANDBOX" --full-auto "$PROMPT_CONTENT"\n' >> "$RUNNER_FILE"
@@ -178,7 +185,7 @@ log_info "注册任务到 $TASK_REGISTRY"
 mkdir -p "$(dirname "$TASK_REGISTRY")"
 
 # 创建或更新任务注册表
-if [[ ! -s "$TASK_REGISTRY" ]]; then
+if [[ ! -f "$TASK_REGISTRY" ]]; then
     echo '{"tasks": {}}' > "$TASK_REGISTRY"
 fi
 
