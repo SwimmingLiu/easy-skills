@@ -29,6 +29,10 @@ Examples of agent skills available in the environment:
 - `gemini`
 - `opencode`
 
+These skills may themselves be implemented as deterministic one-shot wrappers
+around their underlying CLIs. Do not assume they provide an interactive TUI
+session unless the target skill explicitly says so.
+
 Task skills such as `docs-writer` and `code-reviewer` are not dispatch targets
 by themselves. They define task methodology, not the execution backend.
 
@@ -85,9 +89,9 @@ the underlying tool is launched.
 
 Pick the lightest suitable agent skill for the task.
 
-- `opencode`: general implementation and broad execution work
-- `gemini`: interactive reasoning, writing, and analysis work
-- `codex`: interactive coding, debugging, and review-heavy work
+- `opencode`: general implementation and broad execution work via deterministic one-shot automation
+- `gemini`: writing, analysis, and reasoning work via deterministic one-shot automation
+- `codex`: code analysis, refactoring, and review-heavy work via deterministic one-shot automation
 
 Add a task skill only when it clearly helps.
 
