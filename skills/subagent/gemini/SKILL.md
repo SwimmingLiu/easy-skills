@@ -1,6 +1,6 @@
 ---
 name: gemini
-description: Execute Gemini CLI in a one-shot wrapper for project-scoped code analysis and generation. Use when you need a non-interactive Gemini command instead of the tmux/TUI launcher.
+description: Execute Gemini CLI in a one-shot wrapper for project-scoped code analysis and generation. Use when you need a non-interactive Gemini command with explicit headless prompt mode instead of the tmux/TUI launcher.
 ---
 
 # Gemini CLI integration
