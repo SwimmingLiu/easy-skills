@@ -32,7 +32,8 @@ Examples of agent skills available in the environment:
 These skills may themselves be implemented as deterministic one-shot wrappers
 around their underlying CLIs. Do not assume they provide an interactive TUI
 session unless the target skill explicitly says so. For Gemini specifically,
-prefer explicit headless prompt mode instead of positional interactive input.
+prefer the skill wrapper script over calling the raw Gemini CLI directly from
+agent-dispatch.
 
 Task skills such as `docs-writer` and `code-reviewer` are not dispatch targets
 by themselves. They define task methodology, not the execution backend.
