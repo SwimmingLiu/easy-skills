@@ -73,8 +73,18 @@ Preserved one-shot Codex CLI wrapper for non-interactive workflows.
 **Features:**
 - Session resumption support
 - File reference via `@` syntax
-- Structured JSON output parsing
+- Structured output JSON parsing
 - Default model: gpt-5.4
+
+#### [GLM Eyes](./skills/subagent/glm-eyes/SKILL.md)
+Vision fallback for text-only main models (e.g. GLM-5.2). Spawns a sub-agent that calls any multimodal Claude-compatible provider to read an image and return a text description.
+
+**Features:**
+- Model-agnostic: auto-discovers any vision-capable provider in your CC-Switch routes (Kimi, Claude, GPT-4o, Qwen-VL, GLM-4V, Gemini, …); add a provider in CC-Switch and it just works
+- Reads credentials live from the CC-Switch database — no hardcoded API keys
+- Automatic failover across available multimodal providers (no dead end on a single 503)
+- Refuses to call non-vision models to avoid wasting a request
+- Zero third-party dependencies (Python standard library only)
 
 ### 🚀 Efficiency Skills
 
