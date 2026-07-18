@@ -28,6 +28,19 @@ from lifecycle_model import (
 )
 
 
+DURABILITY_WARNING = (
+    "warning: lifecycle data was committed, but directory durability could not be "
+    "confirmed; inspect the current state before any retry\n"
+)
+
+
+def persist_document(path, document):
+    durable = atomic_write_json(path, document)
+    if not durable:
+        sys.stderr.write(DURABILITY_WARNING)
+    return durable
+
+
 def load_document(path):
     reject_symlink_path(path)
     try:
@@ -114,7 +127,7 @@ def command_init_locked(arguments):
         "gates": {},
         "artifacts": [],
     }
-    atomic_write_json(path, document)
+    persist_document(path, document)
 
 
 def validate_transition(document, target, evidence_refs, confirmed):
@@ -181,7 +194,7 @@ def command_transition_locked(arguments):
         )
     )
     validate_document(updated)
-    atomic_write_json(arguments.file, updated)
+    persist_document(arguments.file, updated)
 
 
 def snapshot_for_version(document, target_version):
@@ -228,7 +241,7 @@ def command_rollback_locked(arguments):
     rollback_run["restored_version"] = arguments.to_version
     updated["runs"].append(rollback_run)
     validate_document(updated)
-    atomic_write_json(arguments.file, updated)
+    persist_document(arguments.file, updated)
 
 
 def command_show(arguments):

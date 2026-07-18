@@ -34,6 +34,39 @@ class LifecycleCliTest(unittest.TestCase):
             self.fail(f"CLI failed: {result.stderr}")
         return result
 
+    def run_cli_with_directory_fsync_failure(self, *arguments):
+        injection = """
+import sys
+sys.path.insert(0, sys.argv[1])
+import lifecycle_common
+import update_lifecycle
+
+real_fsync = lifecycle_common.os.fsync
+calls = 0
+
+def fail_second_fsync(file_descriptor):
+    global calls
+    calls += 1
+    if calls == 2:
+        raise OSError("injected directory fsync failure")
+    return real_fsync(file_descriptor)
+
+lifecycle_common.os.fsync = fail_second_fsync
+update_lifecycle.main(sys.argv[2:])
+"""
+        return subprocess.run(
+            [
+                sys.executable,
+                "-c",
+                injection,
+                str(PACKAGE_ROOT / "scripts"),
+                *map(str, arguments),
+            ],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
+
     def init(self):
         self.run_cli("init", "--file", self.state_file, "--skill", "sample-skill")
         return self.read_state()
@@ -786,6 +819,49 @@ class LifecycleCliTest(unittest.TestCase):
                 self.assertIn("symlink", result.stderr.lower())
         self.assertEqual(json.loads(target.read_text())["state"], "intake")
 
+    def test_cli_reports_committed_when_directory_fsync_is_uncertain(self):
+        init = self.run_cli_with_directory_fsync_failure(
+            "init", "--file", self.state_file, "--skill", "sample-skill"
+        )
+        self.assertEqual(init.returncode, 0, init.stderr)
+        self.assertIn("committed", init.stderr.lower())
+        self.assertIn("durability", init.stderr.lower())
+        self.assertEqual(self.read_state()["version"], 1)
+
+        transition = self.run_cli_with_directory_fsync_failure(
+            "transition",
+            "--file",
+            self.state_file,
+            "--to",
+            "researched",
+            "--operation",
+            "discover",
+            "--evidence",
+            "evidence/research.json",
+        )
+        self.assertEqual(transition.returncode, 0, transition.stderr)
+        self.assertIn("committed", transition.stderr.lower())
+        transitioned = self.read_state()
+        self.assertEqual(transitioned["version"], 2)
+        self.assertEqual(len(transitioned["runs"]), 1)
+
+        rollback = self.run_cli_with_directory_fsync_failure(
+            "rollback",
+            "--file",
+            self.state_file,
+            "--to-version",
+            "1",
+            "--evidence",
+            "evidence/regression.json",
+            "--confirm",
+        )
+        self.assertEqual(rollback.returncode, 0, rollback.stderr)
+        self.assertIn("committed", rollback.stderr.lower())
+        rolled_back = self.read_state()
+        self.assertEqual(rolled_back["version"], 3)
+        self.assertEqual(len(rolled_back["runs"]), 2)
+        self.assertEqual(rolled_back["runs"][-1]["operation"], "rollback")
+
     def test_atomic_writer_uses_sibling_temporary_file_and_replace(self):
         spec = importlib.util.spec_from_file_location("lifecycle_common", COMMON)
         module = importlib.util.module_from_spec(spec)
@@ -801,8 +877,9 @@ class LifecycleCliTest(unittest.TestCase):
             return real_replace(source, target)
 
         with mock.patch.object(module.os, "replace", side_effect=recording_replace):
-            module.atomic_write_json(destination, {"state": "intake"})
+            durable = module.atomic_write_json(destination, {"state": "intake"})
 
+        self.assertIs(durable, True)
         self.assertEqual(len(calls), 1)
         source, target = calls[0]
         self.assertEqual(source.parent, destination.parent)
@@ -825,6 +902,32 @@ class LifecycleCliTest(unittest.TestCase):
             module.atomic_write_json(destination, {"state": "intake"})
 
         self.assertGreaterEqual(len(calls), 2)
+
+    def test_directory_fsync_failure_returns_committed_but_not_durable(self):
+        spec = importlib.util.spec_from_file_location("lifecycle_common_directory_fault", COMMON)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        destination = self.root / "lifecycle.json"
+        destination.write_text('{"original": true}\n', encoding="utf-8")
+        real_fsync = module.os.fsync
+        calls = 0
+
+        def fail_second_fsync(file_descriptor):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                raise OSError("injected directory fsync failure")
+            return real_fsync(file_descriptor)
+
+        with mock.patch.object(module.os, "fsync", side_effect=fail_second_fsync):
+            try:
+                durable = module.atomic_write_json(destination, {"updated": True})
+            except OSError as error:
+                self.fail(f"post-replace fsync must not report an uncommitted failure: {error}")
+
+        self.assertIs(durable, False)
+        self.assertEqual(json.loads(destination.read_text()), {"updated": True})
+        self.assertEqual(list(self.root.glob(f".{destination.name}.*.tmp")), [])
 
     def test_atomic_writer_faults_preserve_destination_and_clean_temps(self):
         spec = importlib.util.spec_from_file_location("lifecycle_common_faults", COMMON)

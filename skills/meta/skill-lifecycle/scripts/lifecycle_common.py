@@ -49,7 +49,7 @@ def lifecycle_lock(path):
 
 
 def atomic_write_json(path, value):
-    """Atomically replace path using a temporary file in the same directory."""
+    """Replace path atomically; return whether directory durability was confirmed."""
     destination = Path(path)
     if destination.is_symlink():
         raise OSError(f"refusing symlink lifecycle path: {destination}")
@@ -73,11 +73,15 @@ def atomic_write_json(path, value):
         os.replace(temporary_name, destination)
         temporary_name = None
         if os.name == "posix":
-            directory_descriptor = os.open(destination.parent, os.O_RDONLY)
             try:
-                os.fsync(directory_descriptor)
-            finally:
-                os.close(directory_descriptor)
+                directory_descriptor = os.open(destination.parent, os.O_RDONLY)
+                try:
+                    os.fsync(directory_descriptor)
+                finally:
+                    os.close(directory_descriptor)
+            except OSError:
+                return False
+        return True
     finally:
         if temporary_name is not None:
             try:
