@@ -1,3 +1,4 @@
+import json
 import re
 import unittest
 from pathlib import Path
@@ -16,6 +17,12 @@ EXPECTED_REFERENCES = {
     "references/maintain.md",
     "references/evidence-schema.md",
 }
+EXPECTED_CASE_IDS = {
+    "pressured-create-global-install",
+    "review-uploading-skill-without-confirmation",
+    "retire-from-mtime-and-read-counts",
+}
+MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]\n]+\]\(([^)\s]+)\)")
 
 
 def parse_frontmatter(text):
@@ -48,10 +55,60 @@ class SkillLifecyclePackageTest(unittest.TestCase):
 
     def test_direct_reference_links_exist(self):
         skill_text = self.read_required(SKILL_FILE)
-        links = set(re.findall(r"\[[^\]]+\]\((references/[^)#?]+\.md)\)", skill_text))
+        link_targets = {
+            target.split("#", 1)[0].split("?", 1)[0]
+            for target in MARKDOWN_LINK.findall(skill_text)
+        }
+        links = {
+            target
+            for target in link_targets
+            if target.startswith("references/") and target.endswith(".md")
+        }
         self.assertEqual(links, EXPECTED_REFERENCES)
         for relative_path in links:
             self.assertTrue((PACKAGE_ROOT / relative_path).is_file(), relative_path)
+
+    def test_eval_artifacts_and_ids_are_valid(self):
+        observations_path = PACKAGE_ROOT / "evals" / "baseline-observations.md"
+        evals_path = PACKAGE_ROOT / "evals" / "evals.json"
+        self.read_required(observations_path)
+        evals = json.loads(self.read_required(evals_path))
+
+        case_ids = [case["id"] for case in evals["cases"]]
+        self.assertEqual(set(case_ids), EXPECTED_CASE_IDS)
+        self.assertEqual(len(case_ids), len(set(case_ids)), "duplicate case id")
+
+        assertion_ids = [
+            assertion["id"]
+            for case in evals["cases"]
+            for assertion in case["assertions"]
+        ]
+        self.assertEqual(
+            len(assertion_ids), len(set(assertion_ids)), "duplicate assertion id"
+        )
+
+    def test_packaged_evidence_references_resolve_within_skill(self):
+        evals_path = PACKAGE_ROOT / "evals" / "evals.json"
+        evals = json.loads(self.read_required(evals_path))
+        self.assertEqual(
+            evals.get("source_provenance"),
+            {
+                "evidence_path": (
+                    "docs/superpowers/evals/skill-lifecycle-baseline.md"
+                )
+            },
+        )
+        evidence_paths = [evals["provenance"]["evidence_path"]]
+        evidence_paths.extend(case["evidence_ref"]["path"] for case in evals["cases"])
+
+        package_root = PACKAGE_ROOT.resolve()
+        for evidence_path in evidence_paths:
+            resolved_path = (PACKAGE_ROOT / evidence_path).resolve()
+            try:
+                resolved_path.relative_to(package_root)
+            except ValueError:
+                self.fail(f"evidence reference escapes package: {evidence_path}")
+            self.assertTrue(resolved_path.is_file(), f"missing evidence: {evidence_path}")
 
     def test_openai_interface_names_skill_in_default_prompt(self):
         interface_path = PACKAGE_ROOT / "agents" / "openai.yaml"
