@@ -1,5 +1,6 @@
 # local agent workdir
 .agent
+.worktrees/
 
 # dependencies
 node_modules/
