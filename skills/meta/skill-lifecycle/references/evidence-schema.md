@@ -10,8 +10,8 @@ Schema version 1 is a UTF-8 JSON object with these fields:
 | --- | --- | --- |
 | `schema_version` | integer | Must be `1`. |
 | `skill` | string | Stable Skill name supplied at initialization. |
-| `state` | string | Current lifecycle state. |
-| `resume_state` | string or null | State preserved while work is in `needs-input` or `blocked`. |
+| `state` | string | Current persistent lifecycle state. Event vocabulary is never stored here. |
+| `resume_state` | string or null | Persistent state preserved while work is in `needs-input` or `blocked`; null otherwise. |
 | `version` | integer | Monotonically increasing successful mutation number; initialization is version 1. |
 | `runs` | array | Ordered transition and rollback audit records. |
 | `gates` | object | Gate name to status mappings, updated by explicit `NAME=STATUS` arguments. |
@@ -21,6 +21,8 @@ Initialization creates state `intake`, version 1, a null `resume_state`, and emp
 
 Each successful transition appends a run with a unique `run_id`, UTC `timestamp`, `operation`, `previous_state`, `current_state`, `evidence_refs`, `decision`, and resulting `version`. Runs also carry a lifecycle metadata `snapshot` used by guarded rollback. A rollback run has operation `rollback` and event `rolled-back`.
 
+The loader validates the complete parseable document before showing or mutating it. `schema_version` must be integer 1 and `version` must be a positive integer; JSON booleans do not satisfy either integer field. `skill` must be a non-empty string. `runs` and `artifacts` must be arrays, `gates` must be an object with non-empty string names and statuses, and artifact entries must be non-empty strings. Every run must be an object with the fields above using their documented scalar or array types. If a run contains a `snapshot`, it must be an object containing a valid persistent `state`, valid `resume_state`, gates object, and artifacts array. Malformed but parseable documents are rejected with an actionable validation error rather than partially processed.
+
 Evidence references are non-empty path or identifier strings. They point to durable inputs such as inventories, review reports, evaluation results, owner decisions, or retirement analysis. The engine records references; it does not interpret or verify the referenced content.
 
 ## State vocabulary
@@ -28,7 +30,7 @@ Evidence references are non-empty path or identifier strings. They point to dura
 - Normal maturity states: `intake`, `researched`, `draft`, `reviewed`, `evaluated`, `release-ready`, `active`, and `retired`.
 - Revision state: `changes-required`.
 - Exception states: `needs-input` and `blocked`.
-- Rollback event vocabulary: `rolled-back`.
+- Rollback event vocabulary: `rolled-back`. This is an audit event only, never a persistent `state`, `resume_state`, or snapshot state.
 
 The engine uses this explicit transition contract:
 
@@ -56,7 +58,7 @@ Validation completes before mutation. Illegal transitions, malformed gates, miss
 
 Every mutation serializes deterministic JSON to a temporary file next to the destination, flushes it, and installs it with `os.replace`. Keeping the temporary file on the same filesystem provides atomic replacement semantics.
 
-Rollback requires a prior version, one evidence reference, and explicit confirmation. It restores only the prior lifecycle snapshot: `state`, `resume_state`, `gates`, and `artifacts`. It retains the audit history, increments the current version, and appends a `rolled-back` event. It never changes `SKILL.md`, references, scripts, assets, evaluation data, or any other arbitrary file. Restoring artifact contents belongs to a version-control or backup workflow outside this tool.
+Rollback requires a prior version, one evidence reference, and explicit confirmation. It restores only the prior lifecycle snapshot: `state`, `resume_state`, `gates`, and `artifacts`. It retains the audit history, increments the current version, and appends a run whose `event` is `rolled-back`. The run's `previous_state` and `current_state` remain persistent states; `current_state` is the restored snapshot state. It never changes `SKILL.md`, references, scripts, assets, evaluation data, or any other arbitrary file. Restoring artifact contents belongs to a version-control or backup workflow outside this tool.
 
 ## CLI
 

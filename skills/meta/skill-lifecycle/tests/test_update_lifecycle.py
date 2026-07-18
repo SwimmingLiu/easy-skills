@@ -1,3 +1,4 @@
+import copy
 import importlib.util
 import json
 import subprocess
@@ -69,6 +70,9 @@ class LifecycleCliTest(unittest.TestCase):
 
     def read_state(self):
         return json.loads(self.state_file.read_text(encoding="utf-8"))
+
+    def write_state(self, state):
+        self.state_file.write_text(json.dumps(state), encoding="utf-8")
 
     def advance_to_release_ready(self):
         path = (
@@ -286,6 +290,132 @@ class LifecycleCliTest(unittest.TestCase):
         self.assertEqual(state["runs"][-1]["operation"], "rollback")
         self.assertEqual(state["runs"][-1]["event"], "rolled-back")
         self.assertEqual(skill_file.read_text(encoding="utf-8"), "user-authored content\n")
+
+    def test_rolled_back_is_event_vocabulary_not_persistent_state(self):
+        self.init()
+        state = self.read_state()
+        state["state"] = "rolled-back"
+        self.write_state(state)
+
+        result = self.run_cli("show", "--file", self.state_file, check=False)
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("state", result.stderr)
+        self.assertNotIn("Traceback", result.stderr)
+
+        scripts_path = str(PACKAGE_ROOT / "scripts")
+        sys.path.insert(0, scripts_path)
+        self.addCleanup(sys.path.remove, scripts_path)
+        spec = importlib.util.spec_from_file_location("update_lifecycle", SCRIPT)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        self.assertNotIn("rolled-back", module.ALLOWED_TRANSITIONS)
+
+    def test_malformed_top_level_documents_are_rejected_without_traceback(self):
+        self.init()
+        valid = self.read_state()
+        cases = (
+            ("schema_version", True, "schema_version"),
+            ("schema_version", "1", "schema_version"),
+            ("schema_version", 2, "schema_version"),
+            ("skill", "", "skill"),
+            ("skill", 7, "skill"),
+            ("state", "unknown", "state"),
+            ("state", 7, "state"),
+            ("resume_state", "researched", "resume_state"),
+            ("version", True, "version"),
+            ("version", 0, "version"),
+            ("version", "1", "version"),
+            ("runs", {}, "runs"),
+            ("gates", [], "gates"),
+            ("gates", {"review": 1}, "gates"),
+            ("artifacts", {}, "artifacts"),
+            ("artifacts", [1], "artifacts"),
+        )
+        for field, value, expected_message in cases:
+            with self.subTest(field=field, value=value):
+                malformed = copy.deepcopy(valid)
+                malformed[field] = value
+                self.write_state(malformed)
+
+                result = self.run_cli("show", "--file", self.state_file, check=False)
+
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn(expected_message, result.stderr)
+                self.assertNotIn("Traceback", result.stderr)
+
+    def test_exception_resume_state_invariants_are_validated(self):
+        self.init()
+        valid = self.read_state()
+        cases = (
+            ("blocked", None),
+            ("needs-input", "rolled-back"),
+            ("blocked", "needs-input"),
+        )
+        for state, resume_state in cases:
+            with self.subTest(state=state, resume_state=resume_state):
+                malformed = copy.deepcopy(valid)
+                malformed["state"] = state
+                malformed["resume_state"] = resume_state
+                self.write_state(malformed)
+
+                result = self.run_cli("show", "--file", self.state_file, check=False)
+
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("resume_state", result.stderr)
+                self.assertNotIn("Traceback", result.stderr)
+
+    def test_malformed_runs_and_snapshots_are_rejected_without_traceback(self):
+        self.init()
+        self.transition("researched", "discover", ("evidence/research.json",))
+        valid = self.read_state()
+        base_run = valid["runs"][0]
+        run_cases = (
+            ("run object", "not-an-object", "runs[0]"),
+            ("missing run_id", {key: value for key, value in base_run.items() if key != "run_id"}, "run_id"),
+            ("run_id type", {**base_run, "run_id": 1}, "run_id"),
+            ("timestamp type", {**base_run, "timestamp": 1}, "timestamp"),
+            ("operation type", {**base_run, "operation": 1}, "operation"),
+            ("previous state", {**base_run, "previous_state": "rolled-back"}, "previous_state"),
+            ("current state", {**base_run, "current_state": "rolled-back"}, "current_state"),
+            ("evidence list", {**base_run, "evidence_refs": {}}, "evidence_refs"),
+            ("evidence item", {**base_run, "evidence_refs": [1]}, "evidence_refs"),
+            ("decision type", {**base_run, "decision": 1}, "decision"),
+            ("run version bool", {**base_run, "version": True}, "version"),
+            ("event value", {**base_run, "event": "other"}, "event"),
+            ("snapshot type", {**base_run, "snapshot": []}, "snapshot"),
+            (
+                "snapshot state",
+                {**base_run, "snapshot": {**base_run["snapshot"], "state": "rolled-back"}},
+                "snapshot.state",
+            ),
+            (
+                "snapshot resume",
+                {**base_run, "snapshot": {**base_run["snapshot"], "resume_state": "draft"}},
+                "snapshot.resume_state",
+            ),
+            (
+                "snapshot gates",
+                {**base_run, "snapshot": {**base_run["snapshot"], "gates": []}},
+                "snapshot.gates",
+            ),
+            (
+                "snapshot artifacts",
+                {**base_run, "snapshot": {**base_run["snapshot"], "artifacts": {}}},
+                "snapshot.artifacts",
+            ),
+        )
+        for label, run, expected_message in run_cases:
+            with self.subTest(case=label):
+                malformed = copy.deepcopy(valid)
+                malformed["runs"] = [run]
+                self.write_state(malformed)
+
+                result = self.run_cli("show", "--file", self.state_file, check=False)
+
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn(expected_message, result.stderr)
+                self.assertNotIn("Traceback", result.stderr)
 
     def test_atomic_writer_uses_sibling_temporary_file_and_replace(self):
         spec = importlib.util.spec_from_file_location("lifecycle_common", COMMON)

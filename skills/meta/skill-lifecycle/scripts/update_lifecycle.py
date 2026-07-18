@@ -46,8 +46,9 @@ ALLOWED_TRANSITIONS = {
     },
     "needs-input": set(),
     "blocked": set(),
-    "rolled-back": {"needs-input", "blocked"},
 }
+PERSISTENT_STATES = set(ALLOWED_TRANSITIONS)
+RESUMABLE_STATES = PERSISTENT_STATES - EXCEPTION_STATES
 
 
 class LifecycleError(ValueError):
@@ -67,13 +68,105 @@ def snapshot(document):
     }
 
 
-def load_document(path):
-    try:
-        document = read_json(path)
-    except FileNotFoundError as error:
-        raise LifecycleError(f"lifecycle file does not exist: {path}") from error
-    except (OSError, ValueError) as error:
-        raise LifecycleError(f"cannot read lifecycle file {path}: {error}") from error
+def is_positive_integer(value):
+    return type(value) is int and value > 0
+
+
+def require_nonempty_string(value, field):
+    if not isinstance(value, str) or not value.strip():
+        raise LifecycleError(f"{field} must be a non-empty string")
+
+
+def validate_state_pair(state, resume_state, prefix=""):
+    state_field = f"{prefix}state"
+    resume_field = f"{prefix}resume_state"
+    if not isinstance(state, str) or state not in PERSISTENT_STATES:
+        raise LifecycleError(
+            f"{state_field} must be a valid persistent lifecycle state"
+        )
+    if state in EXCEPTION_STATES:
+        if not isinstance(resume_state, str) or resume_state not in RESUMABLE_STATES:
+            raise LifecycleError(
+                f"{resume_field} must be a resumable persistent state while {state_field} is {state}"
+            )
+    elif resume_state is not None:
+        raise LifecycleError(f"{resume_field} must be null unless {state_field} is needs-input or blocked")
+
+
+def validate_gates(value, field):
+    if not isinstance(value, dict):
+        raise LifecycleError(f"{field} must be an object")
+    for name, status in value.items():
+        require_nonempty_string(name, f"{field} gate name")
+        require_nonempty_string(status, f"{field}.{name}")
+
+
+def validate_string_list(value, field, allow_empty=True):
+    if not isinstance(value, list):
+        raise LifecycleError(f"{field} must be a list")
+    if not allow_empty and not value:
+        raise LifecycleError(f"{field} must not be empty")
+    for index, item in enumerate(value):
+        require_nonempty_string(item, f"{field}[{index}]")
+
+
+def validate_snapshot(value, field):
+    if not isinstance(value, dict):
+        raise LifecycleError(f"{field} must be an object")
+    required = {"state", "resume_state", "gates", "artifacts"}
+    missing = sorted(required.difference(value))
+    if missing:
+        raise LifecycleError(f"{field} is missing fields: {', '.join(missing)}")
+    validate_state_pair(value["state"], value["resume_state"], f"{field}.")
+    validate_gates(value["gates"], f"{field}.gates")
+    validate_string_list(value["artifacts"], f"{field}.artifacts")
+
+
+def validate_run(value, index, document_version):
+    field = f"runs[{index}]"
+    if not isinstance(value, dict):
+        raise LifecycleError(f"{field} must be an object")
+    required = {
+        "run_id",
+        "timestamp",
+        "operation",
+        "previous_state",
+        "current_state",
+        "evidence_refs",
+        "decision",
+        "version",
+    }
+    missing = sorted(required.difference(value))
+    if missing:
+        raise LifecycleError(f"{field} is missing fields: {', '.join(missing)}")
+    require_nonempty_string(value["run_id"], f"{field}.run_id")
+    require_nonempty_string(value["timestamp"], f"{field}.timestamp")
+    require_nonempty_string(value["operation"], f"{field}.operation")
+    if value["operation"] not in OPERATIONS | {"rollback"}:
+        raise LifecycleError(f"{field}.operation is not recognized")
+    for state_field in ("previous_state", "current_state"):
+        state = value[state_field]
+        if not isinstance(state, str) or state not in PERSISTENT_STATES:
+            raise LifecycleError(f"{field}.{state_field} must be a persistent state")
+    validate_string_list(value["evidence_refs"], f"{field}.evidence_refs")
+    if not isinstance(value["decision"], str):
+        raise LifecycleError(f"{field}.decision must be a string")
+    if not is_positive_integer(value["version"]):
+        raise LifecycleError(f"{field}.version must be a positive integer")
+    if value["version"] > document_version:
+        raise LifecycleError(f"{field}.version cannot exceed document version")
+    if "event" in value:
+        if value["event"] != "rolled-back" or value["operation"] != "rollback":
+            raise LifecycleError(
+                f"{field}.event must be rolled-back and requires operation rollback"
+            )
+    if value["operation"] == "rollback" and value.get("event") != "rolled-back":
+        raise LifecycleError(f"{field}.event must be rolled-back for operation rollback")
+    if "snapshot" in value:
+        validate_snapshot(value["snapshot"], f"{field}.snapshot")
+
+
+def validate_document(document):
     required = {
         "schema_version",
         "skill",
@@ -87,12 +180,32 @@ def load_document(path):
     missing = sorted(required.difference(document))
     if missing:
         raise LifecycleError(f"lifecycle file is missing fields: {', '.join(missing)}")
+    if type(document["schema_version"]) is not int:
+        raise LifecycleError("schema_version must be integer 1")
     if document["schema_version"] != SCHEMA_VERSION:
         raise LifecycleError(
             f"unsupported schema_version {document['schema_version']}; expected {SCHEMA_VERSION}"
         )
-    if document["state"] not in ALLOWED_TRANSITIONS:
-        raise LifecycleError(f"unknown current state: {document['state']}")
+    require_nonempty_string(document["skill"], "skill")
+    validate_state_pair(document["state"], document["resume_state"])
+    if not is_positive_integer(document["version"]):
+        raise LifecycleError("version must be a positive integer")
+    if not isinstance(document["runs"], list):
+        raise LifecycleError("runs must be a list")
+    validate_gates(document["gates"], "gates")
+    validate_string_list(document["artifacts"], "artifacts")
+    for index, run in enumerate(document["runs"]):
+        validate_run(run, index, document["version"])
+
+
+def load_document(path):
+    try:
+        document = read_json(path)
+    except FileNotFoundError as error:
+        raise LifecycleError(f"lifecycle file does not exist: {path}") from error
+    except (OSError, ValueError) as error:
+        raise LifecycleError(f"cannot read lifecycle file {path}: {error}") from error
+    validate_document(document)
     return document
 
 
