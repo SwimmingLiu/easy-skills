@@ -68,6 +68,10 @@ def snapshot(document):
     }
 
 
+def initialized_snapshot():
+    return {"state": "intake", "resume_state": None, "gates": {}, "artifacts": []}
+
+
 def is_positive_integer(value):
     return type(value) is int and value > 0
 
@@ -165,7 +169,55 @@ def validate_run(value, index, document_version):
             )
     if value["operation"] == "rollback" and value.get("event") != "rolled-back":
         raise LifecycleError(f"{field}.event must be rolled-back for operation rollback")
+    if value["operation"] == "rollback":
+        if "restored_version" not in value:
+            raise LifecycleError(f"{field} is missing fields: restored_version")
+        if not is_positive_integer(value["restored_version"]):
+            raise LifecycleError(f"{field}.restored_version must be a positive integer")
+        if value["restored_version"] >= value["version"]:
+            raise LifecycleError(f"{field}.restored_version must name a prior version")
+    elif "restored_version" in value:
+        raise LifecycleError(f"{field}.restored_version is valid only for rollback")
     validate_snapshot(value["snapshot"], f"{field}.snapshot")
+
+
+def validate_replayed_transition(previous_snapshot, run, field, snapshots_by_version):
+    previous_state = previous_snapshot["state"]
+    current_state = run["current_state"]
+    current_snapshot = run["snapshot"]
+
+    if run["operation"] == "rollback":
+        restored_version = run["restored_version"]
+        restored_snapshot = snapshots_by_version.get(restored_version)
+        if restored_snapshot is None:
+            raise LifecycleError(
+                f"{field}.restored_version does not identify a prior snapshot"
+            )
+        if current_snapshot != restored_snapshot:
+            raise LifecycleError(
+                f"{field}.restored_version snapshot does not match restored metadata"
+            )
+        return
+
+    if previous_state in EXCEPTION_STATES:
+        expected_state = previous_snapshot["resume_state"]
+        if current_state != expected_state:
+            raise LifecycleError(
+                f"{field} may resume only to preserved state {expected_state!r}"
+            )
+        expected_resume_state = None
+    else:
+        if current_state not in ALLOWED_TRANSITIONS[previous_state]:
+            raise LifecycleError(
+                f"{field} transition {previous_state} -> {current_state} is not allowed"
+            )
+        expected_resume_state = (
+            previous_state if current_state in EXCEPTION_STATES else None
+        )
+    if current_snapshot["resume_state"] != expected_resume_state:
+        raise LifecycleError(
+            f"{field}.snapshot.resume_state does not match transition semantics"
+        )
 
 
 def validate_document(document):
@@ -197,8 +249,10 @@ def validate_document(document):
     validate_gates(document["gates"], "gates")
     validate_string_list(document["artifacts"], "artifacts", unique=True)
     seen_run_ids = set()
-    previous_state = "intake"
+    previous_snapshot = initialized_snapshot()
+    snapshots_by_version = {1: initialized_snapshot()}
     for index, run in enumerate(document["runs"]):
+        field = f"runs[{index}]"
         validate_run(run, index, document["version"])
         if run["run_id"] in seen_run_ids:
             raise LifecycleError(f"runs[{index}].run_id must be unique")
@@ -208,21 +262,25 @@ def validate_document(document):
             raise LifecycleError(
                 f"runs[{index}].version must be {expected_version} for contiguous history"
             )
-        if run["previous_state"] != previous_state:
+        if run["previous_state"] != previous_snapshot["state"]:
             raise LifecycleError(
-                f"runs[{index}].previous_state must match the prior snapshot state {previous_state}"
+                f"runs[{index}].previous_state must match the prior snapshot state {previous_snapshot['state']}"
             )
         if run["current_state"] != run["snapshot"]["state"]:
             raise LifecycleError(
                 f"runs[{index}].snapshot.state must match current_state"
             )
-        previous_state = run["snapshot"]["state"]
+        validate_replayed_transition(previous_snapshot, run, field, snapshots_by_version)
+        previous_snapshot = run["snapshot"]
+        snapshots_by_version[run["version"]] = run["snapshot"]
 
     expected_document_version = len(document["runs"]) + 1
     if document["version"] != expected_document_version:
         raise LifecycleError(
             f"document version must be {expected_document_version} for its run history"
         )
+    if not document["runs"] and snapshot(document) != initialized_snapshot():
+        raise LifecycleError("empty run history must contain exact initialized metadata")
     if document["runs"] and document["runs"][-1]["snapshot"] != snapshot(document):
         raise LifecycleError("final snapshot must match current lifecycle metadata")
 
@@ -362,7 +420,7 @@ def command_transition(arguments):
 
 def snapshot_for_version(document, target_version):
     if target_version == 1:
-        return {"state": "intake", "resume_state": None, "gates": {}, "artifacts": []}
+        return initialized_snapshot()
     for run in document["runs"]:
         if run.get("version") == target_version and "snapshot" in run:
             return copy.deepcopy(run["snapshot"])
@@ -384,17 +442,17 @@ def command_rollback(arguments):
     previous_state = updated["state"]
     updated.update(restored)
     updated["version"] = document["version"] + 1
-    updated["runs"].append(
-        make_run(
-            updated,
-            "rollback",
-            previous_state,
-            updated["state"],
-            [evidence_ref],
-            f"restored lifecycle snapshot from version {arguments.to_version}",
-            event="rolled-back",
-        )
+    rollback_run = make_run(
+        updated,
+        "rollback",
+        previous_state,
+        updated["state"],
+        [evidence_ref],
+        f"restored lifecycle snapshot from version {arguments.to_version}",
+        event="rolled-back",
     )
+    rollback_run["restored_version"] = arguments.to_version
+    updated["runs"].append(rollback_run)
     validate_document(updated)
     atomic_write_json(arguments.file, updated)
 

@@ -540,6 +540,82 @@ class LifecycleCliTest(unittest.TestCase):
             with self.subTest(case=label):
                 self.assert_invalid_document(malformed, expected_message)
 
+    def test_empty_history_must_match_exact_initialized_metadata(self):
+        self.init()
+        valid = self.read_state()
+        cases = (
+            ("state", {**valid, "state": "researched"}),
+            ("gates", {**valid, "gates": {"review": "passed"}}),
+            ("artifacts", {**valid, "artifacts": ["report.md"]}),
+        )
+        for label, malformed in cases:
+            with self.subTest(case=label):
+                self.assert_invalid_document(malformed, "initialized metadata")
+
+    def test_structurally_linked_illegal_transitions_are_rejected(self):
+        self.init()
+        self.transition("researched", "discover", ("evidence/research.json",))
+        one_run = self.read_state()
+        forged_intake_active = copy.deepcopy(one_run)
+        forged_intake_active["state"] = "active"
+        forged_intake_active["runs"][0]["current_state"] = "active"
+        forged_intake_active["runs"][0]["snapshot"]["state"] = "active"
+
+        self.transition("draft", "create", ("evidence/draft.md",))
+        two_runs = self.read_state()
+        forged_researched_active = copy.deepcopy(two_runs)
+        forged_researched_active["state"] = "active"
+        forged_researched_active["runs"][1]["current_state"] = "active"
+        forged_researched_active["runs"][1]["snapshot"]["state"] = "active"
+
+        for label, malformed in (
+            ("intake to active", forged_intake_active),
+            ("researched to active", forged_researched_active),
+        ):
+            with self.subTest(case=label):
+                self.assert_invalid_document(malformed, "not allowed")
+
+    def test_legal_exception_resume_history_replays(self):
+        self.init()
+        self.transition("researched", "discover", ("evidence/research.json",))
+        self.transition("needs-input", "review", decision="owner input required")
+        self.transition("researched", "review", decision="owner input received")
+        self.transition("blocked", "review", decision="dependency unavailable")
+        self.transition("researched", "review", decision="dependency restored")
+
+        result = self.run_cli("show", "--file", self.state_file)
+
+        self.assertEqual(json.loads(result.stdout)["state"], "researched")
+
+    def test_rollback_history_names_and_matches_prior_snapshot(self):
+        self.init()
+        self.transition(
+            "researched",
+            "discover",
+            ("evidence/research.json",),
+            gates=("discovery=passed",),
+        )
+        self.transition("draft", "create", ("evidence/draft.md",))
+        self.run_cli(
+            "rollback",
+            "--file",
+            self.state_file,
+            "--to-version",
+            "2",
+            "--evidence",
+            "evidence/regression.json",
+            "--confirm",
+        )
+
+        state = self.read_state()
+        self.assertIn("restored_version", state["runs"][-1])
+        self.assertEqual(state["runs"][-1]["restored_version"], 2)
+        self.run_cli("show", "--file", self.state_file)
+
+        forged = copy.deepcopy(state)
+        forged["runs"][-1]["restored_version"] = 1
+        self.assert_invalid_document(forged, "restored_version")
+
     def test_atomic_writer_uses_sibling_temporary_file_and_replace(self):
         spec = importlib.util.spec_from_file_location("lifecycle_common", COMMON)
         module = importlib.util.module_from_spec(spec)
