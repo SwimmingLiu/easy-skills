@@ -1,9 +1,11 @@
 import copy
 import importlib.util
 import json
+import os
 import subprocess
 import sys
 import tempfile
+import time
 import unittest
 from pathlib import Path
 from unittest import mock
@@ -234,12 +236,64 @@ class LifecycleCliTest(unittest.TestCase):
             "current_state",
             "evidence_refs",
             "decision",
+            "confirmed",
             "version",
         }
         self.assertTrue(required.issubset(run))
         self.assertEqual(run["previous_state"], "intake")
         self.assertEqual(run["current_state"], "researched")
+        self.assertIs(run["confirmed"], False)
         self.assertEqual(run["version"], 2)
+
+    def test_replay_enforces_evidence_and_confirmation_guards(self):
+        self.init()
+        self.advance_to_release_ready()
+        self.transition(
+            "active", "maintain", ("evidence/release.json",), confirm=True
+        )
+        active = self.read_state()
+        self.assertIn("confirmed", active["runs"][-1])
+        self.assertIs(active["runs"][-1]["confirmed"], True)
+
+        missing_active_confirmation = copy.deepcopy(active)
+        missing_active_confirmation["runs"][-1]["confirmed"] = False
+        self.assert_invalid_document(missing_active_confirmation, "confirmed")
+
+        missing_active_evidence = copy.deepcopy(active)
+        missing_active_evidence["runs"][-1]["evidence_refs"] = []
+        self.assert_invalid_document(missing_active_evidence, "evidence")
+
+        self.write_state(active)
+        self.transition(
+            "retired", "maintain", ("evidence/retirement.json",), confirm=True
+        )
+        retired = self.read_state()
+        missing_retired_confirmation = copy.deepcopy(retired)
+        missing_retired_confirmation["runs"][-1]["confirmed"] = False
+        self.assert_invalid_document(missing_retired_confirmation, "confirmed")
+
+        self.write_state(active)
+        self.run_cli(
+            "rollback",
+            "--file",
+            self.state_file,
+            "--to-version",
+            "2",
+            "--evidence",
+            "evidence/regression.json",
+            "--confirm",
+        )
+        rolled_back = self.read_state()
+        self.assertIn("confirmed", rolled_back["runs"][-1])
+        self.assertIs(rolled_back["runs"][-1]["confirmed"], True)
+        for field, value, expected in (
+            ("confirmed", False, "confirmed"),
+            ("evidence_refs", [], "evidence"),
+        ):
+            with self.subTest(rollback_field=field):
+                malformed = copy.deepcopy(rolled_back)
+                malformed["runs"][-1][field] = value
+                self.assert_invalid_document(malformed, expected)
 
     def test_gates_and_artifacts_are_recorded_and_preserved(self):
         self.init()
@@ -616,6 +670,122 @@ class LifecycleCliTest(unittest.TestCase):
         forged["runs"][-1]["restored_version"] = 1
         self.assert_invalid_document(forged, "restored_version")
 
+    @unittest.skipUnless(sys.platform != "win32", "requires POSIX flock")
+    def test_concurrent_transition_writers_are_serialized_without_lost_runs(self):
+        import fcntl
+
+        self.init()
+        self.transition("researched", "discover", ("evidence/research.json",))
+        lock_path = self.state_file.with_name(f".{self.state_file.name}.lock")
+        lock_handle = lock_path.open("a+")
+        self.addCleanup(lock_handle.close)
+        fcntl.flock(lock_handle.fileno(), fcntl.LOCK_EX)
+
+        commands = []
+        for target in ("needs-input", "blocked"):
+            commands.append(
+                subprocess.Popen(
+                    [
+                        sys.executable,
+                        str(SCRIPT),
+                        "transition",
+                        "--file",
+                        str(self.state_file),
+                        "--to",
+                        target,
+                        "--operation",
+                        "review",
+                        "--decision",
+                        f"enter {target}",
+                    ],
+                    stdout=subprocess.PIPE,
+                    stderr=subprocess.PIPE,
+                    text=True,
+                )
+            )
+        self.addCleanup(
+            lambda: [process.kill() for process in commands if process.poll() is None]
+        )
+        time.sleep(0.25)
+        self.assertTrue(all(process.poll() is None for process in commands))
+
+        fcntl.flock(lock_handle.fileno(), fcntl.LOCK_UN)
+        results = [process.communicate(timeout=5) for process in commands]
+        successes = sum(process.returncode == 0 for process in commands)
+        self.assertEqual(successes, 1, results)
+        self.assertEqual(len(self.read_state()["runs"]), 1 + successes)
+
+    @unittest.skipUnless(sys.platform != "win32", "requires POSIX flock")
+    def test_init_waits_for_exclusive_sibling_lock(self):
+        import fcntl
+
+        lock_path = self.state_file.with_name(f".{self.state_file.name}.lock")
+        lock_handle = lock_path.open("a+")
+        self.addCleanup(lock_handle.close)
+        fcntl.flock(lock_handle.fileno(), fcntl.LOCK_EX)
+        process = subprocess.Popen(
+            [
+                sys.executable,
+                str(SCRIPT),
+                "init",
+                "--file",
+                str(self.state_file),
+                "--skill",
+                "sample-skill",
+            ],
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            text=True,
+        )
+        self.addCleanup(lambda: process.kill() if process.poll() is None else None)
+        time.sleep(0.25)
+        self.assertIsNone(process.poll())
+
+        fcntl.flock(lock_handle.fileno(), fcntl.LOCK_UN)
+        stdout, stderr = process.communicate(timeout=5)
+        self.assertEqual(process.returncode, 0, (stdout, stderr))
+        self.assertEqual(self.read_state()["state"], "intake")
+
+    def test_symlink_lifecycle_paths_are_rejected_for_every_command(self):
+        target = self.root / "target.json"
+        self.run_cli("init", "--file", target, "--skill", "sample-skill")
+        link = self.root / "linked.json"
+        link.symlink_to(target)
+        dangling = self.root / "dangling.json"
+        dangling.symlink_to(self.root / "missing.json")
+
+        commands = (
+            ("init", "--file", dangling, "--skill", "sample-skill"),
+            ("show", "--file", link),
+            (
+                "transition",
+                "--file",
+                link,
+                "--to",
+                "researched",
+                "--operation",
+                "discover",
+                "--evidence",
+                "evidence/research.json",
+            ),
+            (
+                "rollback",
+                "--file",
+                link,
+                "--to-version",
+                "1",
+                "--evidence",
+                "evidence/regression.json",
+                "--confirm",
+            ),
+        )
+        for arguments in commands:
+            with self.subTest(command=arguments[0]):
+                result = self.run_cli(*arguments, check=False)
+                self.assertNotEqual(result.returncode, 0)
+                self.assertIn("symlink", result.stderr.lower())
+        self.assertEqual(json.loads(target.read_text())["state"], "intake")
+
     def test_atomic_writer_uses_sibling_temporary_file_and_replace(self):
         spec = importlib.util.spec_from_file_location("lifecycle_common", COMMON)
         module = importlib.util.module_from_spec(spec)
@@ -638,6 +808,90 @@ class LifecycleCliTest(unittest.TestCase):
         self.assertEqual(source.parent, destination.parent)
         self.assertEqual(target, destination)
         self.assertFalse(source.exists())
+
+    def test_atomic_writer_fsyncs_containing_directory(self):
+        spec = importlib.util.spec_from_file_location("lifecycle_common_fsync", COMMON)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        destination = self.root / "lifecycle.json"
+        real_fsync = module.os.fsync
+        calls = []
+
+        def recording_fsync(file_descriptor):
+            calls.append(file_descriptor)
+            return real_fsync(file_descriptor)
+
+        with mock.patch.object(module.os, "fsync", side_effect=recording_fsync):
+            module.atomic_write_json(destination, {"state": "intake"})
+
+        self.assertGreaterEqual(len(calls), 2)
+
+    def test_atomic_writer_faults_preserve_destination_and_clean_temps(self):
+        spec = importlib.util.spec_from_file_location("lifecycle_common_faults", COMMON)
+        module = importlib.util.module_from_spec(spec)
+        spec.loader.exec_module(module)
+        destination = self.root / "lifecycle.json"
+        original = b'{"original": true}\n'
+        real_named_temporary_file = module.tempfile.NamedTemporaryFile
+
+        class FaultyTemporaryFile:
+            def __init__(self, stage, *arguments, **keywords):
+                self.stage = stage
+                self.handle = real_named_temporary_file(*arguments, **keywords)
+                self.name = self.handle.name
+
+            def __enter__(self):
+                return self
+
+            def __exit__(self, *arguments):
+                return self.handle.__exit__(*arguments)
+
+            def write(self, value):
+                if self.stage == "write":
+                    raise OSError("injected write failure")
+                return self.handle.write(value)
+
+            def flush(self):
+                if self.stage == "flush":
+                    raise OSError("injected flush failure")
+                return self.handle.flush()
+
+            def fileno(self):
+                return self.handle.fileno()
+
+        for stage in ("write", "flush", "fsync", "replace"):
+            with self.subTest(stage=stage):
+                destination.write_bytes(original)
+                patches = []
+                if stage in {"write", "flush"}:
+                    patches.append(
+                        mock.patch.object(
+                            module.tempfile,
+                            "NamedTemporaryFile",
+                            side_effect=lambda *args, _stage=stage, **kwargs: FaultyTemporaryFile(
+                                _stage, *args, **kwargs
+                            ),
+                        )
+                    )
+                elif stage == "fsync":
+                    patches.append(
+                        mock.patch.object(
+                            module.os, "fsync", side_effect=OSError("injected fsync failure")
+                        )
+                    )
+                else:
+                    patches.append(
+                        mock.patch.object(
+                            module.os,
+                            "replace",
+                            side_effect=OSError("injected replace failure"),
+                        )
+                    )
+                with patches[0]:
+                    with self.assertRaises(OSError):
+                        module.atomic_write_json(destination, {"updated": True})
+                self.assertEqual(destination.read_bytes(), original)
+                self.assertEqual(list(self.root.glob(f".{destination.name}.*.tmp")), [])
 
     def test_show_prints_deterministic_json(self):
         self.init()
