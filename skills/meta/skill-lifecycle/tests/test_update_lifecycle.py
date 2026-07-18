@@ -74,6 +74,13 @@ class LifecycleCliTest(unittest.TestCase):
     def write_state(self, state):
         self.state_file.write_text(json.dumps(state), encoding="utf-8")
 
+    def assert_invalid_document(self, state, expected_message):
+        self.write_state(state)
+        result = self.run_cli("show", "--file", self.state_file, check=False)
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn(expected_message, result.stderr)
+        self.assertNotIn("Traceback", result.stderr)
+
     def advance_to_release_ready(self):
         path = (
             ("researched", "discover"),
@@ -253,6 +260,33 @@ class LifecycleCliTest(unittest.TestCase):
         )
         self.assertEqual(state["artifacts"], ["reports/research.md", "SKILL.md"])
 
+    def test_duplicate_artifact_arguments_are_normalized(self):
+        self.init()
+        self.transition(
+            "researched",
+            "discover",
+            ("evidence/research.json",),
+            artifacts=("reports/research.md", "reports/research.md"),
+        )
+
+        self.assertEqual(self.read_state()["artifacts"], ["reports/research.md"])
+
+    def test_invalid_artifact_argument_cannot_create_invalid_history(self):
+        self.init()
+        before = self.state_file.read_bytes()
+
+        result = self.transition(
+            "researched",
+            "discover",
+            ("evidence/research.json",),
+            artifacts=("",),
+            check=False,
+        )
+
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("artifacts", result.stderr)
+        self.assertEqual(self.state_file.read_bytes(), before)
+
     def test_rollback_restores_prior_lifecycle_snapshot_only(self):
         self.init()
         skill_file = self.root / "SKILL.md"
@@ -416,6 +450,95 @@ class LifecycleCliTest(unittest.TestCase):
                 self.assertNotEqual(result.returncode, 0)
                 self.assertIn(expected_message, result.stderr)
                 self.assertNotIn("Traceback", result.stderr)
+
+    def test_every_persisted_run_requires_a_snapshot(self):
+        self.init()
+        self.transition("researched", "discover", ("evidence/research.json",))
+        malformed = self.read_state()
+        del malformed["runs"][0]["snapshot"]
+
+        self.assert_invalid_document(malformed, "snapshot")
+
+    def test_run_ids_must_be_unique(self):
+        self.init()
+        self.transition("researched", "discover", ("evidence/research.json",))
+        self.transition("draft", "create", ("evidence/draft.md",))
+        malformed = self.read_state()
+        malformed["runs"][1]["run_id"] = malformed["runs"][0]["run_id"]
+
+        self.assert_invalid_document(malformed, "run_id")
+
+    def test_persisted_artifact_references_must_be_unique(self):
+        self.init()
+        malformed = self.read_state()
+        malformed["artifacts"] = ["report.md", "report.md"]
+
+        self.assert_invalid_document(malformed, "artifacts")
+
+    def test_run_versions_are_contiguous_from_two_and_match_document(self):
+        self.init()
+        self.transition("researched", "discover", ("evidence/research.json",))
+        self.transition("draft", "create", ("evidence/draft.md",))
+        valid = self.read_state()
+        cases = []
+
+        duplicate = copy.deepcopy(valid)
+        duplicate["runs"][1]["version"] = 2
+        cases.append(("duplicate", duplicate, "runs[1].version"))
+
+        gap = copy.deepcopy(valid)
+        gap["runs"][1]["version"] = 4
+        gap["version"] = 4
+        cases.append(("gap", gap, "runs[1].version"))
+
+        wrong_start = copy.deepcopy(valid)
+        wrong_start["runs"][0]["version"] = 3
+        wrong_start["runs"][1]["version"] = 4
+        wrong_start["version"] = 4
+        cases.append(("wrong start", wrong_start, "runs[0].version"))
+
+        top_mismatch = copy.deepcopy(valid)
+        top_mismatch["version"] = 4
+        cases.append(("top mismatch", top_mismatch, "document version"))
+
+        no_runs = copy.deepcopy(valid)
+        no_runs["runs"] = []
+        no_runs["version"] = 2
+        cases.append(("empty history", no_runs, "document version"))
+
+        for label, malformed, expected_message in cases:
+            with self.subTest(case=label):
+                self.assert_invalid_document(malformed, expected_message)
+
+    def test_run_snapshots_match_the_state_history(self):
+        self.init()
+        self.transition(
+            "researched",
+            "discover",
+            ("evidence/research.json",),
+            gates=("discovery=passed",),
+            artifacts=("research.md",),
+        )
+        self.transition("draft", "create", ("evidence/draft.md",))
+        valid = self.read_state()
+
+        wrong_current = copy.deepcopy(valid)
+        wrong_current["runs"][0]["snapshot"]["state"] = "draft"
+
+        broken_chain = copy.deepcopy(valid)
+        broken_chain["runs"][1]["previous_state"] = "intake"
+
+        wrong_final_snapshot = copy.deepcopy(valid)
+        wrong_final_snapshot["runs"][1]["snapshot"]["artifacts"] = []
+
+        cases = (
+            ("current state", wrong_current, "snapshot.state"),
+            ("state chain", broken_chain, "previous_state"),
+            ("final snapshot", wrong_final_snapshot, "final snapshot"),
+        )
+        for label, malformed, expected_message in cases:
+            with self.subTest(case=label):
+                self.assert_invalid_document(malformed, expected_message)
 
     def test_atomic_writer_uses_sibling_temporary_file_and_replace(self):
         spec = importlib.util.spec_from_file_location("lifecycle_common", COMMON)

@@ -101,13 +101,15 @@ def validate_gates(value, field):
         require_nonempty_string(status, f"{field}.{name}")
 
 
-def validate_string_list(value, field, allow_empty=True):
+def validate_string_list(value, field, allow_empty=True, unique=False):
     if not isinstance(value, list):
         raise LifecycleError(f"{field} must be a list")
     if not allow_empty and not value:
         raise LifecycleError(f"{field} must not be empty")
     for index, item in enumerate(value):
         require_nonempty_string(item, f"{field}[{index}]")
+    if unique and len(value) != len(set(value)):
+        raise LifecycleError(f"{field} must contain unique references")
 
 
 def validate_snapshot(value, field):
@@ -119,7 +121,7 @@ def validate_snapshot(value, field):
         raise LifecycleError(f"{field} is missing fields: {', '.join(missing)}")
     validate_state_pair(value["state"], value["resume_state"], f"{field}.")
     validate_gates(value["gates"], f"{field}.gates")
-    validate_string_list(value["artifacts"], f"{field}.artifacts")
+    validate_string_list(value["artifacts"], f"{field}.artifacts", unique=True)
 
 
 def validate_run(value, index, document_version):
@@ -135,6 +137,7 @@ def validate_run(value, index, document_version):
         "evidence_refs",
         "decision",
         "version",
+        "snapshot",
     }
     missing = sorted(required.difference(value))
     if missing:
@@ -162,8 +165,7 @@ def validate_run(value, index, document_version):
             )
     if value["operation"] == "rollback" and value.get("event") != "rolled-back":
         raise LifecycleError(f"{field}.event must be rolled-back for operation rollback")
-    if "snapshot" in value:
-        validate_snapshot(value["snapshot"], f"{field}.snapshot")
+    validate_snapshot(value["snapshot"], f"{field}.snapshot")
 
 
 def validate_document(document):
@@ -193,9 +195,36 @@ def validate_document(document):
     if not isinstance(document["runs"], list):
         raise LifecycleError("runs must be a list")
     validate_gates(document["gates"], "gates")
-    validate_string_list(document["artifacts"], "artifacts")
+    validate_string_list(document["artifacts"], "artifacts", unique=True)
+    seen_run_ids = set()
+    previous_state = "intake"
     for index, run in enumerate(document["runs"]):
         validate_run(run, index, document["version"])
+        if run["run_id"] in seen_run_ids:
+            raise LifecycleError(f"runs[{index}].run_id must be unique")
+        seen_run_ids.add(run["run_id"])
+        expected_version = index + 2
+        if run["version"] != expected_version:
+            raise LifecycleError(
+                f"runs[{index}].version must be {expected_version} for contiguous history"
+            )
+        if run["previous_state"] != previous_state:
+            raise LifecycleError(
+                f"runs[{index}].previous_state must match the prior snapshot state {previous_state}"
+            )
+        if run["current_state"] != run["snapshot"]["state"]:
+            raise LifecycleError(
+                f"runs[{index}].snapshot.state must match current_state"
+            )
+        previous_state = run["snapshot"]["state"]
+
+    expected_document_version = len(document["runs"]) + 1
+    if document["version"] != expected_document_version:
+        raise LifecycleError(
+            f"document version must be {expected_document_version} for its run history"
+        )
+    if document["runs"] and document["runs"][-1]["snapshot"] != snapshot(document):
+        raise LifecycleError("final snapshot must match current lifecycle metadata")
 
 
 def load_document(path):
@@ -327,6 +356,7 @@ def command_transition(arguments):
             arguments.decision,
         )
     )
+    validate_document(updated)
     atomic_write_json(arguments.file, updated)
 
 
@@ -365,6 +395,7 @@ def command_rollback(arguments):
             event="rolled-back",
         )
     )
+    validate_document(updated)
     atomic_write_json(arguments.file, updated)
 
 
