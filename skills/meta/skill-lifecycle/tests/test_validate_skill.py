@@ -8,6 +8,8 @@ from pathlib import Path
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = PACKAGE_ROOT / "scripts" / "validate_skill.py"
+sys.path.insert(0, str(SCRIPT.parent))
+import validate_skill as validator
 
 
 class ValidateSkillCliTest(unittest.TestCase):
@@ -70,6 +72,15 @@ class ValidateSkillCliTest(unittest.TestCase):
             "comment-only description": (
                 "---\nname: malformed\ndescription: # missing\n---\n"
             ),
+            "python adjacent strings": (
+                "---\nname: 'clean-' 'skill'\ndescription: text\n---\n"
+            ),
+            "unclosed quote": (
+                "---\nname: malformed\ndescription: 'missing\n---\n"
+            ),
+            "duplicate name": (
+                "---\nname: malformed\nname: repeated\ndescription: text\n---\n"
+            ),
         }
         for label, content in malformed_documents.items():
             with self.subTest(label=label):
@@ -93,6 +104,37 @@ class ValidateSkillCliTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("INVALID_NAME", self.codes(document))
         self.assertIn("NAME_DIRECTORY_MISMATCH", self.codes(document))
+
+    def test_frontmatter_findings_use_key_source_lines(self):
+        directory = self.root / "expected-name"
+        directory.mkdir()
+        (directory / "SKILL.md").write_text(
+            "---\n"
+            "description: # missing\n"
+            "name: Bad_Name\n"
+            "---\n",
+            encoding="utf-8",
+        )
+
+        _, document = self.validate(directory)
+        lines = {item["code"]: item["line"] for item in document["findings"]}
+
+        self.assertEqual(lines["REQUIRED_FIELD"], 2)
+        self.assertEqual(lines["INVALID_NAME"], 3)
+        self.assertEqual(lines["NAME_DIRECTORY_MISMATCH"], 3)
+
+        duplicate = self.root / "duplicate-skill"
+        duplicate.mkdir()
+        (duplicate / "SKILL.md").write_text(
+            "---\nname: duplicate-skill\nname: repeated\ndescription: text\n---\n",
+            encoding="utf-8",
+        )
+        _, duplicate_document = self.validate(duplicate)
+        invalid = next(
+            item for item in duplicate_document["findings"]
+            if item["code"] == "FRONTMATTER_INVALID"
+        )
+        self.assertEqual(invalid["line"], 3)
 
     def test_accepts_nested_extra_frontmatter_and_block_description(self):
         directory = self.root / "nested-skill"
@@ -213,6 +255,24 @@ class ValidateSkillCliTest(unittest.TestCase):
             [("BROKEN_LOCAL_LINK", 12), ("LINK_PATH_ESCAPE", 13)],
         )
 
+    def test_balanced_and_angle_links_work_and_fenced_examples_are_ignored(self):
+        directory = self.create_skill(
+            body=(
+                "[balanced](references/foo(bar).md)\n"
+                "[angle](<references/foo(bar).md>)\n"
+                "```markdown\n[example](references/missing.md)\n```\n"
+                "~~~text\n[fake][missing]\n[missing]: ../outside.md\n~~~\n"
+            )
+        )
+        references = directory / "references"
+        references.mkdir()
+        (references / "foo(bar).md").write_text("# Valid\n", encoding="utf-8")
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(document["findings"], [])
+
     def test_finds_placeholders_except_in_baseline_observations(self):
         marker = "TO" + "DO"
         directory = self.create_skill(body="[notes](references/notes.md)\n")
@@ -286,6 +346,62 @@ class ValidateSkillCliTest(unittest.TestCase):
         self.assertEqual(risks[0]["path"], "scripts/release.py")
         self.assertEqual(risks[0]["line"], 2)
 
+    def test_multiline_shell_and_statically_resolvable_python_aliases_are_detected(self):
+        cases = {
+            "multiline-shell": (
+                "SKILL.md",
+                "```bash\ngit " + "\\\n" + "push origin main\n```\n",
+                7,
+            ),
+            "module-alias": (
+                "scripts/release.py",
+                "import subprocess as sp\nsp.run(['git', 'push', 'origin', 'main'])\n",
+                2,
+            ),
+            "direct-alias": (
+                "scripts/release.py",
+                "from subprocess import run as execute\nexecute('git push origin main')\n",
+                2,
+            ),
+            "call-alias": (
+                "scripts/release.py",
+                "from subprocess import call as invoke\ninvoke(['git', 'push'])\n",
+                2,
+            ),
+            "popen-alias": (
+                "scripts/release.py",
+                "from subprocess import Popen as launch\nlaunch(('git', 'push'))\n",
+                2,
+            ),
+            "os-alias": (
+                "scripts/release.py",
+                "from os import system as shell\nshell('git push origin main')\n",
+                2,
+            ),
+        }
+        for name, (relative_path, content, expected_line) in cases.items():
+            with self.subTest(name=name):
+                directory = self.create_skill(name=name)
+                target = directory / relative_path
+                if relative_path == "SKILL.md":
+                    target.write_text(
+                        target.read_text(encoding="utf-8") + content,
+                        encoding="utf-8",
+                    )
+                else:
+                    target.parent.mkdir()
+                    target.write_text(content, encoding="utf-8")
+
+                result, document = self.validate(directory)
+
+                self.assertEqual(result.returncode, 1)
+                risks = [
+                    item for item in document["findings"]
+                    if item["code"] == "RISK_GIT_PUSH"
+                ]
+                self.assertEqual(len(risks), 1)
+                self.assertEqual(risks[0]["line"], expected_line)
+
     def test_clear_permission_disclosure_downgrades_but_retains_risk(self):
         directory = self.create_skill(
             name="disclosed-risk",
@@ -336,6 +452,69 @@ class ValidateSkillCliTest(unittest.TestCase):
             risks,
             {"references/safe.md": "Medium", "references/unsafe.md": "High"},
         )
+
+    def test_disclosure_must_be_affirmative_adjacent_and_operation_specific(self):
+        cases = {
+            "negated": (
+                "Do not ask for permission before this git push.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "without": (
+                "Run without confirmation.\n\n```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "unrelated": (
+                "Ask for permission before deleting old backups.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "affirmative": (
+                "Ask for explicit confirmation before this git push command.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "Medium",
+            ),
+        }
+        for name, (body, expected) in cases.items():
+            with self.subTest(name=name):
+                directory = self.create_skill(name=f"consent-{name}", body=body)
+
+                _, document = self.validate(directory)
+                risk = next(
+                    item for item in document["findings"]
+                    if item["code"] == "RISK_GIT_PUSH"
+                )
+
+                self.assertEqual(risk["severity"], expected)
+
+    def test_invalid_utf8_and_resource_limits_are_high_findings(self):
+        directory = self.create_skill(name="bounded-skill")
+        references = directory / "references"
+        references.mkdir()
+        (references / "invalid.md").write_bytes(b"\xff\xfe")
+        (references / "one.txt").write_text("one", encoding="utf-8")
+        (references / "two.txt").write_text("two", encoding="utf-8")
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 1)
+        encoding = next(
+            item for item in document["findings"] if item["code"] == "FILE_ENCODING"
+        )
+        self.assertEqual((encoding["path"], encoding["line"]), ("references/invalid.md", 1))
+
+        _, limited_findings = validator.read_text_files(
+            directory, max_files=1, max_file_bytes=16, max_total_bytes=16
+        )
+        self.assertIn("RESOURCE_FILE_COUNT", [item["code"] for item in limited_findings])
+        _, file_size_findings = validator.read_text_files(
+            directory, max_files=10, max_file_bytes=2, max_total_bytes=1000
+        )
+        self.assertIn("RESOURCE_FILE_SIZE", [item["code"] for item in file_size_findings])
+        _, total_size_findings = validator.read_text_files(
+            directory, max_files=10, max_file_bytes=1000, max_total_bytes=2
+        )
+        self.assertIn("RESOURCE_TOTAL_SIZE", [item["code"] for item in total_size_findings])
 
     def test_prose_source_urls_do_not_count_as_network_commands(self):
         directory = self.create_skill(

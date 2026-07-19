@@ -2,7 +2,6 @@
 """Create a deterministic inventory of Agent Skill packages."""
 
 import argparse
-import ast
 import hashlib
 import json
 import os
@@ -20,6 +19,12 @@ EXCLUDED_DIRECTORIES = {
     "__pycache__",
     ".cache",
 }
+
+
+class FrontmatterError(ValueError):
+    def __init__(self, message, line=1):
+        super().__init__(message)
+        self.line = line
 
 
 def _strip_inline_comment(value):
@@ -51,24 +56,35 @@ def _parse_scalar(value):
     value = _strip_inline_comment(value).strip()
     if not value:
         return None
-    if value[:1] in {"'", '"'} and value[-1:] == value[:1]:
+    if value.startswith("'"):
+        if not value.endswith("'") or len(value) < 2:
+            raise ValueError("single-quoted scalar is not closed")
+        parsed = []
+        index = 1
+        while index < len(value) - 1:
+            character = value[index]
+            if character == "'":
+                if index + 1 < len(value) - 1 and value[index + 1] == "'":
+                    parsed.append("'")
+                    index += 2
+                    continue
+                raise ValueError("single-quoted scalar contains trailing content")
+            parsed.append(character)
+            index += 1
+        return "".join(parsed)
+    if value.startswith('"'):
         try:
-            parsed = ast.literal_eval(value)
-        except (SyntaxError, ValueError):
-            return value[1:-1]
+            parsed = json.loads(value)
+        except json.JSONDecodeError as error:
+            raise ValueError("double-quoted scalar is malformed") from error
+        if not isinstance(parsed, str):
+            raise ValueError("double-quoted scalar must contain text")
         return parsed
-    if value.startswith("[") and value.endswith("]"):
-        try:
-            parsed = ast.literal_eval(value)
-        except (SyntaxError, ValueError):
-            return []
-        return parsed if isinstance(parsed, list) else []
-    if value.startswith("{") and value.endswith("}"):
-        try:
-            parsed = ast.literal_eval(value)
-        except (SyntaxError, ValueError):
-            return {}
-        return parsed if isinstance(parsed, dict) else {}
+    if value.startswith(("[", "{")):
+        expected = "]" if value.startswith("[") else "}"
+        if not value.endswith(expected):
+            raise ValueError("inline collection is malformed")
+        return [] if expected == "]" else {}
     lowered = value.lower()
     if lowered in {"null", "~"}:
         return None
@@ -79,18 +95,21 @@ def _parse_scalar(value):
     return value
 
 
-def parse_frontmatter(text):
-    """Parse top-level Skill metadata while tolerating nested extra fields."""
+def parse_frontmatter(text, with_lines=False):
+    """Parse a strict top-level YAML subset and skip nested extra fields."""
     lines = text.splitlines()
     if not lines or lines[0] != "---":
-        raise ValueError("frontmatter must start with ---")
+        raise FrontmatterError("frontmatter must start with ---")
     try:
         closing = next(
             index for index, line in enumerate(lines[1:], 1) if line == "---"
         )
     except StopIteration as error:
-        raise ValueError("frontmatter is missing its closing --- delimiter") from error
+        raise FrontmatterError(
+            "frontmatter is missing its closing --- delimiter"
+        ) from error
     metadata = {}
+    metadata_lines = {}
     index = 1
     while index < closing:
         line = lines[index]
@@ -99,10 +118,13 @@ def parse_frontmatter(text):
             continue
         match = re.fullmatch(r"([A-Za-z_][A-Za-z0-9_-]*):(?:\s*(.*))?", line)
         if not match:
-            raise ValueError(f"frontmatter line {index + 1} is not a mapping entry")
+            raise FrontmatterError(
+                f"frontmatter line {index + 1} is not a mapping entry", index + 1
+            )
         key, raw_value = match.group(1), (match.group(2) or "")
         if key in metadata:
-            raise ValueError(f"frontmatter key is duplicated: {key}")
+            raise FrontmatterError(f"frontmatter key is duplicated: {key}", index + 1)
+        metadata_lines[key] = index + 1
         if raw_value in {">", "|", ">-", "|-", ">+", "|+"}:
             fragments = []
             index += 1
@@ -130,9 +152,12 @@ def parse_frontmatter(text):
             else:
                 metadata[key] = {}
             continue
-        metadata[key] = _parse_scalar(raw_value)
+        try:
+            metadata[key] = _parse_scalar(raw_value)
+        except ValueError as error:
+            raise FrontmatterError(str(error), index + 1) from error
         index += 1
-    return metadata
+    return (metadata, metadata_lines) if with_lines else metadata
 
 
 def discover_skill_files(root):
@@ -214,6 +239,7 @@ def render_markdown(document):
 
 
 def atomic_write_text(path, content):
+    """Atomically replace path and return whether parent durability was confirmed."""
     destination = Path(path)
     if destination.is_symlink():
         raise OSError(f"refusing symlink output path: {destination}")
@@ -236,6 +262,16 @@ def atomic_write_text(path, content):
             raise OSError(f"refusing symlink output path: {destination}")
         os.replace(temporary_name, destination)
         temporary_name = None
+        directory_descriptor = None
+        try:
+            directory_descriptor = os.open(destination.parent, os.O_RDONLY)
+            os.fsync(directory_descriptor)
+        except OSError:
+            return False
+        finally:
+            if directory_descriptor is not None:
+                os.close(directory_descriptor)
+        return True
     finally:
         if temporary_name is not None:
             try:
@@ -275,7 +311,13 @@ def main(arguments=None):
         )
         content = render_json(document) if options.format == "json" else render_markdown(document)
         if options.output:
-            atomic_write_text(options.output, content)
+            durable = atomic_write_text(options.output, content)
+            if not durable:
+                print(
+                    "warning: inventory output was committed, but directory durability "
+                    "could not be confirmed",
+                    file=sys.stderr,
+                )
         else:
             sys.stdout.write(content)
         return 0

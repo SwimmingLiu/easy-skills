@@ -17,7 +17,6 @@ SCHEMA_VERSION = 1
 SEVERITIES = ("Blocker", "High", "Medium", "Low")
 SEVERITY_ORDER = {severity: index for index, severity in enumerate(SEVERITIES)}
 NAME_PATTERN = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
-MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]\n]*\]\(([^)\n]+)\)")
 REFERENCE_DEFINITION = re.compile(r"^[ ]{0,3}\[([^\]\n]+)\]:\s*(.+?)\s*$")
 REFERENCE_USAGE = re.compile(r"(?<!!)\[([^\]\n]+)\]\[([^\]\n]*)\]")
 PLACEHOLDER_PATTERNS = (
@@ -29,6 +28,10 @@ PLACEHOLDER_PATTERNS = (
 )
 TEXT_SUFFIXES = {".md", ".txt", ".py", ".sh", ".bash", ".zsh", ".json", ".yaml", ".yml"}
 IGNORED_DIRECTORIES = {".git", ".worktrees", "node_modules", "__pycache__", ".cache"}
+MAX_TEXT_FILES = 1000
+MAX_FILE_BYTES = 1_000_000
+MAX_TOTAL_BYTES = 10_000_000
+ANY_FENCE = re.compile(r"^\s*(`{3,}|~{3,})(?:.*)$")
 SHELL_FENCE = re.compile(
     r"^\s*(`{3,}|~{3,})\s*(?:bash|sh|shell|zsh|console)(?:\s+.*)?$",
     re.IGNORECASE,
@@ -38,6 +41,16 @@ DISCLOSURE_PATTERN = re.compile(
     r"|before.{0,80}(?:ask|request|obtain|require).{0,40}(?:permission|confirmation|consent|approval)",
     re.IGNORECASE | re.DOTALL,
 )
+NEGATED_DISCLOSURE = re.compile(
+    r"\b(?:never|do\s+not|don't|without)\b|不要|无需|不必", re.IGNORECASE
+)
+RISK_DISCLOSURE_TERMS = {
+    "RISK_DESTRUCTIVE_RM": re.compile(r"\b(?:rm|remove|delete)\b|this command|the command", re.I),
+    "RISK_NETWORK_UPLOAD": re.compile(r"\b(?:upload|curl|wget|network)\b|this command|the command", re.I),
+    "RISK_GIT_PUSH": re.compile(r"\b(?:git\s+push|push)\b|this command|the command", re.I),
+    "RISK_GLOBAL_INSTALL": re.compile(r"\b(?:install|npm|pip|package)\b|this command|the command", re.I),
+    "RISK_CREDENTIAL_READ": re.compile(r"\b(?:credential|secret|key|read)\b|this command|the command", re.I),
+}
 RISK_RULES = (
     (
         "RISK_DESTRUCTIVE_RM",
@@ -103,33 +116,91 @@ def iter_files(root):
                 yield path
 
 
-def read_text_files(root):
+def read_text_files(
+    root,
+    max_files=MAX_TEXT_FILES,
+    max_file_bytes=MAX_FILE_BYTES,
+    max_total_bytes=MAX_TOTAL_BYTES,
+):
+    """Read eligible text within deterministic package resource limits."""
     values = []
+    findings = []
+    file_count = 0
+    total_bytes = 0
     for path in iter_files(root):
         if path.suffix.lower() not in TEXT_SUFFIXES:
             continue
-        try:
-            values.append((path, path.read_text(encoding="utf-8")))
-        except UnicodeDecodeError:
+        relative_path = path.relative_to(root).as_posix()
+        file_count += 1
+        if file_count > max_files:
+            findings.append(
+                finding("High", "RESOURCE_FILE_COUNT", "text file count exceeds limit", ".", 1)
+            )
+            break
+        file_size = path.stat().st_size
+        if file_size > max_file_bytes:
+            findings.append(
+                finding("High", "RESOURCE_FILE_SIZE", "text file exceeds byte limit", relative_path, 1)
+            )
             continue
-    return values
+        if total_bytes + file_size > max_total_bytes:
+            findings.append(
+                finding("High", "RESOURCE_TOTAL_SIZE", "package text exceeds byte limit", relative_path, 1)
+            )
+            break
+        content_bytes = path.read_bytes()
+        if len(content_bytes) > max_file_bytes:
+            findings.append(
+                finding("High", "RESOURCE_FILE_SIZE", "text file exceeds byte limit", relative_path, 1)
+            )
+            continue
+        if total_bytes + len(content_bytes) > max_total_bytes:
+            findings.append(
+                finding("High", "RESOURCE_TOTAL_SIZE", "package text exceeds byte limit", relative_path, 1)
+            )
+            break
+        total_bytes += len(content_bytes)
+        try:
+            values.append((path, content_bytes.decode("utf-8")))
+        except UnicodeDecodeError:
+            findings.append(
+                finding("High", "FILE_ENCODING", "eligible text file is not valid UTF-8", relative_path, 1)
+            )
+    return values, findings
 
 
 def validate_frontmatter(root, skill_text):
     findings = []
     try:
-        metadata = parse_frontmatter(skill_text)
+        metadata, metadata_lines = parse_frontmatter(skill_text, with_lines=True)
     except ValueError as error:
-        return {}, [finding("Blocker", "FRONTMATTER_INVALID", str(error))]
+        return {}, [
+            finding(
+                "Blocker",
+                "FRONTMATTER_INVALID",
+                str(error),
+                line=getattr(error, "line", 1),
+            )
+        ]
     for key in ("name", "description"):
         value = metadata.get(key)
         if not isinstance(value, str):
             findings.append(
-                finding("Blocker", "REQUIRED_FIELD", f"frontmatter {key} must be a string")
+                finding(
+                    "Blocker",
+                    "REQUIRED_FIELD",
+                    f"frontmatter {key} must be a string",
+                    line=metadata_lines.get(key, 1),
+                )
             )
         elif not value.strip():
             findings.append(
-                finding("Blocker", "REQUIRED_FIELD", f"frontmatter {key} must be nonempty")
+                finding(
+                    "Blocker",
+                    "REQUIRED_FIELD",
+                    f"frontmatter {key} must be nonempty",
+                    line=metadata_lines.get(key, 1),
+                )
             )
     name = metadata.get("name")
     if isinstance(name, str):
@@ -139,7 +210,7 @@ def validate_frontmatter(root, skill_text):
                     "High",
                     "INVALID_NAME",
                     "frontmatter name must use lowercase letters, digits, and single hyphens",
-                    line=2,
+                    line=metadata_lines.get("name", 1),
                 )
             )
         if name != root.name:
@@ -148,7 +219,7 @@ def validate_frontmatter(root, skill_text):
                     "High",
                     "NAME_DIRECTORY_MISMATCH",
                     f"frontmatter name {name!r} does not match directory {root.name!r}",
-                    line=2,
+                    line=metadata_lines.get("name", 1),
                 )
             )
     return metadata, findings
@@ -163,6 +234,58 @@ def _link_target(raw_target):
     return unquote(target)
 
 
+def _nonfenced_markdown_lines(content):
+    fence_marker = None
+    for line_number, line in enumerate(content.splitlines(), 1):
+        if fence_marker:
+            if re.fullmatch(
+                rf"\s*{re.escape(fence_marker[0])}{{{len(fence_marker)},}}\s*", line
+            ):
+                fence_marker = None
+            continue
+        fence = ANY_FENCE.match(line)
+        if fence:
+            fence_marker = fence.group(1)
+            continue
+        yield line_number, line
+
+
+def _inline_link_targets(line):
+    index = 0
+    while index < len(line):
+        opening = line.find("[", index)
+        if opening < 0:
+            return
+        if opening > 0 and line[opening - 1] == "!":
+            index = opening + 1
+            continue
+        label_end = line.find("]", opening + 1)
+        if label_end < 0 or label_end + 1 >= len(line) or line[label_end + 1] != "(":
+            index = opening + 1
+            continue
+        destination_start = label_end + 2
+        if destination_start < len(line) and line[destination_start] == "<":
+            destination_end = line.find(">", destination_start + 1)
+            if destination_end >= 0:
+                yield line[destination_start : destination_end + 1]
+                index = destination_end + 1
+                continue
+        depth = 1
+        cursor = destination_start
+        while cursor < len(line):
+            if line[cursor] == "(":
+                depth += 1
+            elif line[cursor] == ")":
+                depth -= 1
+                if depth == 0:
+                    yield line[destination_start:cursor]
+                    index = cursor + 1
+                    break
+            cursor += 1
+        else:
+            return
+
+
 def validate_links(root, text_files):
     findings = []
     resolved_root = root.resolve()
@@ -172,7 +295,7 @@ def validate_links(root, text_files):
         relative_path = path.relative_to(root).as_posix()
         definitions = {}
         referenced = set()
-        for line_number, line in enumerate(content.splitlines(), 1):
+        for line_number, line in _nonfenced_markdown_lines(content):
             definition = REFERENCE_DEFINITION.match(line)
             if definition:
                 label = " ".join(definition.group(1).lower().split())
@@ -180,8 +303,8 @@ def validate_links(root, text_files):
             for usage in REFERENCE_USAGE.finditer(line):
                 label = usage.group(2) or usage.group(1)
                 referenced.add(" ".join(label.lower().split()))
-            for match in MARKDOWN_LINK.finditer(line):
-                target = _link_target(match.group(1))
+            for raw_target in _inline_link_targets(line):
+                target = _link_target(raw_target)
                 findings.extend(
                     _validate_link_target(
                         target, path, resolved_root, relative_path, line_number
@@ -281,11 +404,27 @@ def _python_command_lines(content):
         "subprocess.check_output",
         "subprocess.run",
     }
+    aliases = {}
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for imported in node.names:
+                if imported.name in {"os", "subprocess"}:
+                    aliases[imported.asname or imported.name] = imported.name
+        elif isinstance(node, ast.ImportFrom) and node.module in {"os", "subprocess"}:
+            for imported in node.names:
+                aliases[imported.asname or imported.name] = f"{node.module}.{imported.name}"
+
+    def resolved_name(node):
+        qualified = _qualified_name(node)
+        first, separator, remainder = qualified.partition(".")
+        resolved = aliases.get(first, first)
+        return f"{resolved}.{remainder}" if separator else resolved
+
     commands = []
     for node in ast.walk(tree):
         if (
             not isinstance(node, ast.Call)
-            or _qualified_name(node.func) not in supported_calls
+            or resolved_name(node.func) not in supported_calls
             or not node.args
         ):
             continue
@@ -303,6 +442,23 @@ def _python_command_lines(content):
     return sorted(commands)
 
 
+def _join_shell_continuations(lines):
+    pending_line = None
+    pending_text = ""
+    for line_number, text in lines:
+        stripped = text.rstrip()
+        if pending_line is None:
+            pending_line = line_number
+        pending_text += stripped[:-1].rstrip() + " " if stripped.endswith("\\") else stripped
+        if stripped.endswith("\\"):
+            continue
+        yield pending_line, pending_text.strip()
+        pending_line = None
+        pending_text = ""
+    if pending_line is not None:
+        yield pending_line, pending_text.strip()
+
+
 def command_lines(root, text_files):
     for path, content in text_files:
         relative_path = path.relative_to(root).as_posix()
@@ -316,6 +472,7 @@ def command_lines(root, text_files):
                 yield relative_path, line_number, command, content
             continue
         fence_marker = None
+        candidates = []
         for line_number, line in enumerate(content.splitlines(), 1):
             if path.suffix.lower() == ".md":
                 fence = SHELL_FENCE.match(line)
@@ -331,22 +488,31 @@ def command_lines(root, text_files):
             else:
                 command_shaped = is_shell_script
             if command_shaped:
-                yield (
-                    relative_path,
-                    line_number,
-                    line.lstrip().removeprefix("$ "),
-                    content,
-                )
+                candidates.append((line_number, line.lstrip().removeprefix("$ ")))
+        for line_number, command in _join_shell_continuations(candidates):
+            yield relative_path, line_number, command, content
+
+
+def _has_associated_disclosure(code, file_content, line_number):
+    lines = file_content.splitlines()
+    start = max(0, line_number - 7)
+    disclosure_lines = lines[start : line_number - 1]
+    return any(
+        DISCLOSURE_PATTERN.search(line)
+        and RISK_DISCLOSURE_TERMS[code].search(line)
+        and not NEGATED_DISCLOSURE.search(line)
+        for line in disclosure_lines
+    )
 
 
 def validate_risks(root, text_files):
     findings = []
     for relative_path, line_number, line, file_content in command_lines(root, text_files):
-        disclosed = DISCLOSURE_PATTERN.search(file_content) is not None
-        severity = "Medium" if disclosed else "High"
-        suffix = "; explicit permission is disclosed, but manual review remains" if disclosed else "; explicit permission is not disclosed"
         for code, label, pattern in RISK_RULES:
             if pattern.search(line):
+                disclosed = _has_associated_disclosure(code, file_content, line_number)
+                severity = "Medium" if disclosed else "High"
+                suffix = "; explicit permission is disclosed, but manual review remains" if disclosed else "; explicit permission is not disclosed"
                 findings.append(
                     finding(severity, code, label + suffix, relative_path, line_number)
                 )
@@ -360,9 +526,13 @@ def validate_skill(root):
             finding("Blocker", "SKILL_FILE_MISSING", "skill directory must contain a regular SKILL.md")
         ]
     else:
-        skill_text = skill_file.read_text(encoding="utf-8")
-        text_files = read_text_files(root)
-        _, findings = validate_frontmatter(root, skill_text)
+        text_files, findings = read_text_files(root)
+        skill_text = next(
+            (content for path, content in text_files if path == skill_file), None
+        )
+        if skill_text is not None:
+            _, frontmatter_findings = validate_frontmatter(root, skill_text)
+            findings.extend(frontmatter_findings)
         findings.extend(validate_links(root, text_files))
         findings.extend(validate_placeholders(root, text_files))
         findings.extend(validate_risks(root, text_files))
@@ -439,7 +609,13 @@ def main(arguments=None):
         document = validate_skill(root)
         content = render_json(document) if options.format == "json" else render_markdown(document)
         if options.output:
-            atomic_write_text(options.output, content)
+            durable = atomic_write_text(options.output, content)
+            if not durable:
+                print(
+                    "warning: validation output was committed, but directory durability "
+                    "could not be confirmed",
+                    file=sys.stderr,
+                )
         else:
             sys.stdout.write(content)
         return 1 if document["status"] == "fail" else 0

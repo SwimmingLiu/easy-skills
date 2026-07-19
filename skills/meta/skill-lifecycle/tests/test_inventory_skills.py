@@ -6,11 +6,13 @@ import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = PACKAGE_ROOT / "scripts" / "inventory_skills.py"
 sys.path.insert(0, str(SCRIPT.parent))
+import inventory_skills
 from inventory_skills import parse_frontmatter
 
 
@@ -185,6 +187,63 @@ class InventorySkillsCliTest(unittest.TestCase):
         )
         self.assertEqual(quoted_hashes["description"], "#single and #inside")
         self.assertEqual(quoted_hashes["metadata"], "#double")
+
+    def test_strict_scalar_parser_rejects_python_and_malformed_quote_forms(self):
+        malformed_values = (
+            "'clean-' 'skill'",
+            "'unclosed",
+            '"bad\\q"',
+            '"unclosed',
+        )
+        for value in malformed_values:
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                parse_frontmatter(
+                    f"---\nname: {value}\ndescription: text\n---\n"
+                )
+        with self.assertRaises(ValueError):
+            parse_frontmatter(
+                "---\nname: first\nname: second\ndescription: text\n---\n"
+            )
+        metadata = parse_frontmatter(
+            "---\nname: clean-skill\ndescription: 'It''s bounded.'\n---\n"
+        )
+        self.assertEqual(metadata["description"], "It's bounded.")
+
+    def test_atomic_output_preserves_old_file_and_reports_directory_durability(self):
+        output = self.root / "inventory.json"
+        output.write_text("old", encoding="utf-8")
+        with mock.patch.object(
+            inventory_skills.os, "replace", side_effect=OSError("injected replace failure")
+        ):
+            with self.assertRaises(OSError):
+                inventory_skills.atomic_write_text(output, "new")
+        self.assertEqual(output.read_text(encoding="utf-8"), "old")
+        self.assertFalse(any(self.root.glob(".inventory.json.*.tmp")))
+
+        real_fsync = inventory_skills.os.fsync
+        calls = 0
+
+        def fail_directory_sync(file_descriptor):
+            nonlocal calls
+            calls += 1
+            if calls == 2:
+                raise OSError("injected directory fsync failure")
+            return real_fsync(file_descriptor)
+
+        with mock.patch.object(
+            inventory_skills.os, "fsync", side_effect=fail_directory_sync
+        ):
+            durable = inventory_skills.atomic_write_text(output, "committed")
+        self.assertIs(durable, False)
+        self.assertEqual(output.read_text(encoding="utf-8"), "committed")
+
+        dangling = self.root / "dangling.json"
+        try:
+            dangling.symlink_to(self.root / "missing-target")
+        except (OSError, NotImplementedError):
+            return
+        with self.assertRaises(OSError):
+            inventory_skills.atomic_write_text(dangling, "blocked")
 
     def test_absent_optional_metadata_is_not_omitted(self):
         self.write_skill("sample", "sample")
