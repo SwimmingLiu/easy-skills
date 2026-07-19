@@ -209,6 +209,34 @@ class InventorySkillsCliTest(unittest.TestCase):
         )
         self.assertEqual(metadata["description"], "It's bounded.")
 
+    def test_plain_scalars_reject_reserved_and_implicit_non_string_forms(self):
+        invalid_values = (
+            "@bounded",
+            ".inf",
+            ".NaN",
+            "0x10",
+            "0o20",
+            "0b10",
+            "42",
+            "1.5",
+            "true",
+            "null",
+            "~",
+        )
+        for value in invalid_values:
+            with self.subTest(value=value), self.assertRaises(ValueError):
+                parse_frontmatter(
+                    f"---\nname: clean-skill\ndescription: {value}\n---\n"
+                )
+
+        metadata = parse_frontmatter(
+            "---\n"
+            "name: clean-skill\n"
+            "description: Performs a bounded task.\n"
+            "---\n"
+        )
+        self.assertEqual(metadata["description"], "Performs a bounded task.")
+
     def test_atomic_output_preserves_old_file_and_reports_directory_durability(self):
         output = self.root / "inventory.json"
         output.write_text("old", encoding="utf-8")

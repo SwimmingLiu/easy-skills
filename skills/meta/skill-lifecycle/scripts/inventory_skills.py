@@ -19,6 +19,13 @@ EXCLUDED_DIRECTORIES = {
     "__pycache__",
     ".cache",
 }
+PLAIN_SCALAR_RESERVED_START = frozenset("-?:,[]{}#&*!|>'\"%@`")
+PLAIN_NON_STRING = re.compile(
+    r"(?:~|null|true|false|yes|no|on|off"
+    r"|[-+]?(?:\.inf|\.nan|0b[01_]+|0o[0-7_]+|0x[0-9a-f_]+"
+    r"|[0-9][0-9_]*(?:\.[0-9_]*)?(?:e[-+]?[0-9]+)?))\Z",
+    re.IGNORECASE,
+)
 
 
 class FrontmatterError(ValueError):
@@ -85,15 +92,12 @@ def _parse_scalar(value):
         if not value.endswith(expected):
             raise ValueError("inline collection is malformed")
         return [] if expected == "]" else {}
+    if value[0] in PLAIN_SCALAR_RESERVED_START:
+        raise ValueError("plain scalar starts with a reserved indicator")
     if ": " in value:
         raise ValueError("plain scalar contains an unquoted mapping separator")
-    lowered = value.lower()
-    if lowered in {"null", "~"}:
-        return None
-    if lowered in {"true", "false"}:
-        return lowered == "true"
-    if re.fullmatch(r"[-+]?\d+(?:\.\d+)?", value):
-        return float(value) if "." in value else int(value)
+    if PLAIN_NON_STRING.fullmatch(value):
+        raise ValueError("plain scalar would resolve to a non-string YAML value")
     return value
 
 

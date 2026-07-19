@@ -32,9 +32,9 @@ IGNORED_DIRECTORIES = {".git", ".worktrees", "node_modules", "__pycache__", ".ca
 MAX_TEXT_FILES = 1000
 MAX_FILE_BYTES = 1_000_000
 MAX_TOTAL_BYTES = 10_000_000
-ANY_FENCE = re.compile(r"^\s*(`{3,}|~{3,})(?:.*)$")
+ANY_FENCE = re.compile(r"^[ ]{0,3}(`{3,}|~{3,})(?:.*)$")
 SHELL_FENCE = re.compile(
-    r"^\s*(`{3,}|~{3,})\s*(?:bash|sh|shell|zsh|console)(?:\s+.*)?$",
+    r"^[ ]{0,3}(`{3,}|~{3,})\s*(?:bash|sh|shell|zsh|console)(?:\s+.*)?$",
     re.IGNORECASE,
 )
 DISCLOSURE_PATTERN = re.compile(
@@ -258,7 +258,10 @@ def _nonfenced_markdown_lines(content):
     for line_number, line in enumerate(content.splitlines(), 1):
         if fence_marker:
             if re.fullmatch(
-                rf"\s*{re.escape(fence_marker[0])}{{{len(fence_marker)},}}\s*", line
+                r"[ ]{0,3}"
+                + re.escape(fence_marker[0])
+                + rf"{{{len(fence_marker)},}}[ \t]*",
+                line,
             ):
                 fence_marker = None
             continue
@@ -501,7 +504,9 @@ def command_lines(root, text_files):
             for line_number, line in enumerate(content.splitlines(), 1):
                 if fence_marker is not None:
                     if re.fullmatch(
-                        rf"\s*{re.escape(fence_marker[0])}{{{len(fence_marker)},}}\s*",
+                        r"[ ]{0,3}"
+                        + re.escape(fence_marker[0])
+                        + rf"{{{len(fence_marker)},}}[ \t]*",
                         line,
                     ):
                         if current_segment:
@@ -542,14 +547,18 @@ def command_lines(root, text_files):
 def _has_associated_disclosure(code, file_content, line_number):
     lines = file_content.splitlines()
     start = max(0, line_number - 7)
-    window = "\n".join(lines[start : line_number - 1])
-    if not RISK_DISCLOSURE_TERMS[code].search(window):
-        return False
-    if SAFE_PREREQUISITE_DISCLOSURE.search(window):
-        return True
-    if NEGATED_DISCLOSURE.search(window):
-        return False
-    return DISCLOSURE_PATTERN.search(window) is not None
+    window = " ".join(line.strip() for line in lines[start : line_number - 1])
+    clauses = re.split(r"[.!?;。！？；]+", window)
+    for clause in clauses:
+        if not RISK_DISCLOSURE_TERMS[code].search(clause):
+            continue
+        if SAFE_PREREQUISITE_DISCLOSURE.search(clause):
+            return True
+        if NEGATED_DISCLOSURE.search(clause):
+            continue
+        if DISCLOSURE_PATTERN.search(clause):
+            return True
+    return False
 
 
 def validate_risks(root, text_files):

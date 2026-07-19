@@ -84,6 +84,15 @@ class ValidateSkillCliTest(unittest.TestCase):
             "unquoted colon space": (
                 "---\nname: malformed\ndescription: bounded: task\n---\n"
             ),
+            "reserved plain scalar": (
+                "---\nname: malformed\ndescription: @bounded\n---\n"
+            ),
+            "special float plain scalar": (
+                "---\nname: malformed\ndescription: .inf\n---\n"
+            ),
+            "hex integer plain scalar": (
+                "---\nname: malformed\ndescription: 0x10\n---\n"
+            ),
         }
         for label, content in malformed_documents.items():
             with self.subTest(label=label):
@@ -458,6 +467,27 @@ class ValidateSkillCliTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0)
         self.assertFalse(any(code.startswith("RISK_") for code in self.codes(document)))
 
+    def test_four_space_indented_fence_does_not_hide_real_shell_fence(self):
+        directory = self.create_skill(
+            name="indented-fence",
+            body=(
+                "    ~~~text\n"
+                "```bash\n"
+                "git push origin main\n"
+                "```\n"
+            ),
+        )
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 1)
+        risks = [
+            item for item in document["findings"]
+            if item["code"] == "RISK_GIT_PUSH"
+        ]
+        self.assertEqual(len(risks), 1)
+        self.assertEqual(risks[0]["severity"], "High")
+
     def test_clear_permission_disclosure_downgrades_but_retains_risk(self):
         directory = self.create_skill(
             name="disclosed-risk",
@@ -537,6 +567,12 @@ class ValidateSkillCliTest(unittest.TestCase):
             ),
             "generic-command-mismatch": (
                 "Ask for permission before this command deletes backups.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "cross-sentence-keyword-leak": (
+                "This section documents git push behavior.\n"
+                "Ask for permission before deleting old backups.\n\n"
                 "```bash\ngit push origin main\n```\n",
                 "High",
             ),
