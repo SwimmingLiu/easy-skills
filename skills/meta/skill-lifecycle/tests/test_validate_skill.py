@@ -58,6 +58,12 @@ class ValidateSkillCliTest(unittest.TestCase):
             "mapping name": (
                 "---\nname: {value: malformed}\ndescription: text\n---\n"
             ),
+            "commented sequence description": (
+                "---\nname: malformed\ndescription: [not, text] # invalid\n---\n"
+            ),
+            "commented mapping name": (
+                "---\nname: {value: malformed} # invalid\ndescription: text\n---\n"
+            ),
         }
         for label, content in malformed_documents.items():
             with self.subTest(label=label):
@@ -101,6 +107,23 @@ class ValidateSkillCliTest(unittest.TestCase):
             "    - two\n"
             "---\n"
             "# Nested\n",
+            encoding="utf-8",
+        )
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(document["findings"], [])
+
+    def test_accepts_quoted_required_scalars_with_inline_comments(self):
+        directory = self.root / "commented-skill"
+        directory.mkdir()
+        (directory / "SKILL.md").write_text(
+            "---\n"
+            'name: "commented-skill" # package name\n'
+            "description: 'Keeps # inside single quotes.' # explanatory note\n"
+            "---\n"
+            "# Commented\n",
             encoding="utf-8",
         )
 

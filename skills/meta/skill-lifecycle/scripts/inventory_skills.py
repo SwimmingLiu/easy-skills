@@ -22,8 +22,33 @@ EXCLUDED_DIRECTORIES = {
 }
 
 
+def _strip_inline_comment(value):
+    quote = None
+    index = 0
+    while index < len(value):
+        character = value[index]
+        if quote == '"':
+            if character == "\\":
+                index += 2
+                continue
+            if character == '"':
+                quote = None
+        elif quote == "'":
+            if character == "'":
+                if index + 1 < len(value) and value[index + 1] == "'":
+                    index += 2
+                    continue
+                quote = None
+        elif character in {"'", '"'}:
+            quote = character
+        elif character == "#" and index > 0 and value[index - 1].isspace():
+            return value[:index].rstrip()
+        index += 1
+    return value
+
+
 def _parse_scalar(value):
-    value = value.strip()
+    value = _strip_inline_comment(value).strip()
     if not value:
         return None
     if value[:1] in {"'", '"'} and value[-1:] == value[:1]:

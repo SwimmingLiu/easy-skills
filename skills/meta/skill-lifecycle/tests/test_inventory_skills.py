@@ -10,6 +10,8 @@ from pathlib import Path
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = PACKAGE_ROOT / "scripts" / "inventory_skills.py"
+sys.path.insert(0, str(SCRIPT.parent))
+from inventory_skills import parse_frontmatter
 
 
 class InventorySkillsCliTest(unittest.TestCase):
@@ -130,6 +132,37 @@ class InventorySkillsCliTest(unittest.TestCase):
         document = self.inventory()
 
         self.assertEqual(document["skills"][0]["name"], "nested-skill")
+
+    def test_inline_comments_preserve_scalar_types_and_quoted_hashes(self):
+        invalid = self.root / "invalid"
+        invalid.mkdir()
+        (invalid / "SKILL.md").write_text(
+            "---\n"
+            "name: [invalid] # still a sequence\n"
+            "description: text\n"
+            "---\n",
+            encoding="utf-8",
+        )
+        valid = self.root / "quoted-skill"
+        valid.mkdir()
+        quoted_content = (
+            "---\n"
+            'name: "quoted-skill" # package name\n'
+            'description: "Keeps # inside and \\"escaped quotes\\"." # note\n'
+            "---\n"
+        )
+        (valid / "SKILL.md").write_text(quoted_content, encoding="utf-8")
+
+        document = self.inventory()
+        metadata = parse_frontmatter(quoted_content)
+
+        self.assertEqual(
+            [(item["path"], item["name"]) for item in document["skills"]],
+            [("invalid/SKILL.md", None), ("quoted-skill/SKILL.md", "quoted-skill")],
+        )
+        self.assertEqual(
+            metadata["description"], 'Keeps # inside and "escaped quotes".'
+        )
 
     def test_absent_optional_metadata_is_not_omitted(self):
         self.write_skill("sample", "sample")
