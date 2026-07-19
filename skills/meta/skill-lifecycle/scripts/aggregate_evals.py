@@ -5,6 +5,7 @@ import argparse
 import json
 import math
 import os
+import re
 import shutil
 import statistics
 import sys
@@ -17,6 +18,10 @@ EXIT_VALIDATION = 2
 EXIT_RUNTIME = 3
 VARIANTS = ("baseline", "candidate")
 ASSERTION_FIELDS = frozenset({"id", "passed", "prohibited_action"})
+RECORD_FIELDS = frozenset(
+    {"case_id", "variant", "assertions", "duration_ms", "total_tokens"}
+)
+SAFE_CASE_ID = re.compile(r"[A-Za-z0-9._:-]+\Z")
 MAX_INPUT_BYTES = 5 * 1024 * 1024
 MAX_CASES = 1_000
 MAX_ASSERTIONS_PER_RECORD = 500
@@ -75,9 +80,17 @@ def _normalize_record(record, index):
     label = f"record {index}"
     if not isinstance(record, dict):
         raise ValidationError(f"{label} must be an object")
+    unknown = set(record) - RECORD_FIELDS
+    missing = RECORD_FIELDS - set(record)
+    if unknown:
+        raise ValidationError(f"{label} has unknown fields: {', '.join(sorted(unknown))}")
+    if missing:
+        raise ValidationError(f"{label} is missing fields: {', '.join(sorted(missing))}")
     case_id = _bounded_string(record.get("case_id"), f"{label}.case_id")
-    if "|" in case_id or "\n" in case_id or "\r" in case_id:
-        raise ValidationError(f"{label}.case_id contains Markdown control characters")
+    if SAFE_CASE_ID.fullmatch(case_id) is None:
+        raise ValidationError(
+            f"{label}.case_id must match [A-Za-z0-9._:-]+"
+        )
     variant = record.get("variant")
     if variant not in VARIANTS:
         raise ValidationError(f"{label}.variant must be candidate or baseline")
@@ -110,6 +123,10 @@ def _normalize_record(record, index):
         "assertions_passed": passed,
         "assertions_total": len(results),
         "assertion_ids": sorted(assertion_ids),
+        "assertion_definitions": {
+            assertion_id: {"prohibited_action": prohibited}
+            for assertion_id, _, prohibited in sorted(results)
+        },
         "prohibited_action_failures": prohibited_failures,
     }
 
@@ -180,6 +197,13 @@ def aggregate(
         if pair["baseline"]["assertion_ids"] != pair["candidate"]["assertion_ids"]:
             raise ValidationError(
                 f"case {case_id} baseline/candidate assertion ids do not match"
+            )
+        if (
+            pair["baseline"]["assertion_definitions"]
+            != pair["candidate"]["assertion_definitions"]
+        ):
+            raise ValidationError(
+                f"case {case_id} baseline/candidate assertion definitions do not match"
             )
     if len(pairs) > MAX_CASES:
         raise ValidationError(f"case limit {MAX_CASES} exceeded")
@@ -383,22 +407,25 @@ def _fsync_directory(directory):
 
 def _cleanup_path(path):
     if path is None:
-        return
+        return True
     try:
         os.unlink(path)
     except FileNotFoundError:
-        pass
+        return True
+    except OSError:
+        return False
+    return True
 
 
 def write_reports(json_path, json_text, markdown_path=None, markdown_text=None):
-    """Transactionally replace requested reports; return directory durability."""
+    """Transactionally replace requested reports and return commit status."""
     requested = []
     if json_path is not None:
         requested.append((_canonical_output_path(json_path), json_text))
     if markdown_path is not None:
         requested.append((_canonical_output_path(markdown_path), markdown_text))
     if not requested:
-        return True
+        return {"committed": True, "cleanup_complete": True, "durable": True}
     if any(not isinstance(text, str) for _, text in requested):
         raise ValidationError("every requested output requires text")
     destinations = [destination for destination, _ in requested]
@@ -408,7 +435,10 @@ def write_reports(json_path, json_text, markdown_path=None, markdown_text=None):
     # Validate every final target before preparing or committing any replacement.
     for destination in destinations:
         _reject_output_target(destination)
-        destination.parent.mkdir(parents=True, exist_ok=True)
+        if not destination.parent.is_dir():
+            raise OSError(
+                f"output parent directory must already exist: {destination.parent}"
+            )
 
     prepared = []
     backups = {}
@@ -445,15 +475,25 @@ def write_reports(json_path, json_text, markdown_path=None, markdown_text=None):
                 ) from commit_error
             raise
 
-        for backup in backups.values():
-            _cleanup_path(backup)
+        # All prepared files have been consumed. Cleanup is best-effort exactly
+        # once after commit so callers never mistake a committed report for a retry.
+        prepared.clear()
+        cleanup_complete = True
+        for destination, backup in list(backups.items()):
+            if not _cleanup_path(backup):
+                cleanup_complete = False
+            backups[destination] = None
         durable = True
         for directory in sorted({path.parent for path in destinations}, key=str):
             try:
                 _fsync_directory(directory)
             except OSError:
                 durable = False
-        return durable
+        return {
+            "committed": True,
+            "cleanup_complete": cleanup_complete,
+            "durable": durable,
+        }
     finally:
         for _, temporary in prepared:
             _cleanup_path(temporary)
@@ -463,6 +503,15 @@ def write_reports(json_path, json_text, markdown_path=None, markdown_text=None):
 
 def _reject_json_constant(value):
     raise ValueError(f"non-finite JSON constant {value}")
+
+
+def _strict_json_object(pairs):
+    result = {}
+    for key, value in pairs:
+        if key in result:
+            raise ValidationError(f"duplicate JSON key: {key}")
+        result[key] = value
+    return result
 
 
 def _load_records(path):
@@ -475,7 +524,9 @@ def _load_records(path):
                 f"input exceeds input limit {MAX_INPUT_BYTES} bytes"
             )
         document = json.loads(
-            raw_document.decode("utf-8"), parse_constant=_reject_json_constant
+            raw_document.decode("utf-8"),
+            parse_constant=_reject_json_constant,
+            object_pairs_hook=_strict_json_object,
         )
     except ValidationError:
         raise
@@ -528,15 +579,20 @@ def main(argv=None):
         json_text = deterministic_json(report)
         markdown_text = render_markdown(report)
         _validate_output_budget(json_text, markdown_text)
-        durable = write_reports(
+        output_status = write_reports(
             arguments.json_output,
             json_text,
             arguments.markdown_output,
             markdown_text,
         )
-        if not durable:
+        warning_reasons = []
+        if not output_status["cleanup_complete"]:
+            warning_reasons.append("cleanup is incomplete")
+        if not output_status["durable"]:
+            warning_reasons.append("directory durability is uncertain")
+        if warning_reasons:
             print(
-                "warning: outputs committed but directory durability is uncertain",
+                "warning: outputs committed but " + " and ".join(warning_reasons),
                 file=sys.stderr,
             )
         sys.stdout.write(json_text)

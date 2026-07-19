@@ -206,9 +206,53 @@ class AggregateEvalsTest(unittest.TestCase):
         with self.assertRaisesRegex(module.ValidationError, "assertion ids"):
             module.aggregate(mismatched, min_pass_rate_delta=0)
 
+    def test_pair_assertion_definitions_must_match_including_safety_label(self):
+        module = load_module()
+        for baseline_prohibited, candidate_prohibited in ((True, False), (False, True)):
+            records = json.loads(json.dumps(self.records))
+            records[3]["assertions"][1]["prohibited_action"] = baseline_prohibited
+            records[0]["assertions"][1]["prohibited_action"] = candidate_prohibited
+            with self.subTest(
+                baseline=baseline_prohibited, candidate=candidate_prohibited
+            ), self.assertRaisesRegex(module.ValidationError, "assertion definitions"):
+                module.aggregate(records, min_pass_rate_delta=0)
+
+    def test_records_use_field_whitelist_and_json_rejects_duplicate_keys_at_any_depth(self):
+        module = load_module()
+        records = json.loads(json.dumps(self.records))
+        records[0]["unexpected"] = "ignored before hardening"
+        with self.assertRaisesRegex(module.ValidationError, "unknown fields"):
+            module.aggregate(records, min_pass_rate_delta=0)
+
+        duplicate_documents = (
+            '[{"case_id":"a","case_id":"b"}]',
+            '[{"case_id":"a","variant":"candidate","assertions":'
+            '[{"id":"x","id":"y","passed":true}],"duration_ms":1,'
+            '"total_tokens":1}]',
+            '{"records":[],"records":[]}',
+        )
+        for index, document in enumerate(duplicate_documents):
+            path = self.root / f"duplicate-{index}.json"
+            path.write_text(document, encoding="utf-8")
+            result = self.run_cli(
+                "--input", path, "--min-pass-rate-delta", "0"
+            )
+            with self.subTest(index=index, stderr=result.stderr):
+                self.assertEqual(result.returncode, 2)
+                self.assertIn("duplicate JSON key", result.stderr)
+                self.assertNotIn("Traceback", result.stderr)
+
     def test_rejects_markdown_injection_and_enforces_resource_limits(self):
         module = load_module()
-        for unsafe in ("line\nbreak", "cell|break", "line\rbreak"):
+        for unsafe in (
+            "line\nbreak",
+            "cell|break",
+            "line\rbreak",
+            "[active](link)",
+            "space break",
+            "`code`",
+            "path/segment",
+        ):
             records = json.loads(json.dumps(self.records))
             records[0]["case_id"] = unsafe
             records[3]["case_id"] = unsafe
@@ -346,10 +390,71 @@ class AggregateEvalsTest(unittest.TestCase):
 
         # Use the module's directory-sync helper as the stable injection point.
         with mock.patch.object(module, "_fsync_directory", side_effect=OSError("injected directory sync failure")):
-            durable = module.write_reports(first, "new-first", second, "new-second")
-        self.assertFalse(durable)
+            status = module.write_reports(first, "new-first", second, "new-second")
+        self.assertFalse(status["durable"])
+        self.assertTrue(status["cleanup_complete"])
         self.assertEqual(first.read_text(encoding="utf-8"), "new-first")
         self.assertEqual(second.read_text(encoding="utf-8"), "new-second")
+
+    def test_output_parent_must_preexist_and_is_not_created_implicitly(self):
+        module = load_module()
+        missing_parent = self.root / "missing" / "report.json"
+        with self.assertRaisesRegex(OSError, "parent directory"):
+            module.write_reports(missing_parent, "new")
+        self.assertFalse(missing_parent.parent.exists())
+
+    def test_post_commit_cleanup_failure_warns_without_changing_decision_exit(self):
+        module = load_module()
+        input_path = self.write_input()
+        first = self.root / "first.json"
+        second = self.root / "second.md"
+        first.write_text("old-first", encoding="utf-8")
+        second.write_text("old-second", encoding="utf-8")
+        real_unlink = os.unlink
+        backup_attempts = 0
+
+        def reject_backup_cleanup(path, *args, **kwargs):
+            nonlocal backup_attempts
+            if str(path).endswith(".backup"):
+                backup_attempts += 1
+                raise OSError("injected backup cleanup failure")
+            return real_unlink(path, *args, **kwargs)
+
+        def run_with_threshold(threshold):
+            stdout = io.StringIO()
+            stderr = io.StringIO()
+            with mock.patch.object(
+                module.os, "unlink", side_effect=reject_backup_cleanup
+            ):
+                with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(
+                    stderr
+                ):
+                    code = module.main(
+                        [
+                            "--input",
+                            str(input_path),
+                            "--min-pass-rate-delta",
+                            threshold,
+                            "--json-output",
+                            str(first),
+                            "--markdown-output",
+                            str(second),
+                        ]
+                    )
+            return code, stdout.getvalue(), stderr.getvalue()
+
+        accepted = run_with_threshold("0")
+        rejected = run_with_threshold("0.9")
+        self.assertEqual(accepted[0], 0)
+        self.assertEqual(rejected[0], 1)
+        self.assertEqual(backup_attempts, 4)
+        self.assertTrue(json.loads(accepted[1])["decision"]["accepted"])
+        self.assertFalse(json.loads(rejected[1])["decision"]["accepted"])
+        for stderr in (accepted[2], rejected[2]):
+            self.assertIn("committed", stderr)
+            self.assertIn("cleanup is incomplete", stderr)
+        self.assertEqual(first.read_text(encoding="utf-8")[:1], "{")
+        self.assertIn("# Evaluation comparison", second.read_text(encoding="utf-8"))
 
     def test_cli_warns_when_reports_are_committed_but_not_directory_durable(self):
         module = load_module()
