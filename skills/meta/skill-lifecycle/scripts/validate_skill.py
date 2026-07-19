@@ -2,6 +2,7 @@
 """Statically validate one Agent Skill package."""
 
 import argparse
+import ast
 import os
 import re
 import sys
@@ -17,6 +18,8 @@ SEVERITIES = ("Blocker", "High", "Medium", "Low")
 SEVERITY_ORDER = {severity: index for index, severity in enumerate(SEVERITIES)}
 NAME_PATTERN = re.compile(r"[a-z0-9]+(?:-[a-z0-9]+)*\Z")
 MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]\n]*\]\(([^)\n]+)\)")
+REFERENCE_DEFINITION = re.compile(r"^[ ]{0,3}\[([^\]\n]+)\]:\s*(.+?)\s*$")
+REFERENCE_USAGE = re.compile(r"(?<!!)\[([^\]\n]+)\]\[([^\]\n]*)\]")
 PLACEHOLDER_PATTERNS = (
     re.compile(r"\b" + "TO" + r"DO\b", re.IGNORECASE),
     re.compile(r"\b" + "TB" + r"D\b", re.IGNORECASE),
@@ -26,10 +29,9 @@ PLACEHOLDER_PATTERNS = (
 )
 TEXT_SUFFIXES = {".md", ".txt", ".py", ".sh", ".bash", ".zsh", ".json", ".yaml", ".yml"}
 IGNORED_DIRECTORIES = {".git", ".worktrees", "node_modules", "__pycache__", ".cache"}
-SHELL_FENCE = re.compile(r"^\s*```(?:bash|sh|shell|zsh|console)\s*$", re.IGNORECASE)
-FENCE_END = re.compile(r"^\s*```\s*$")
-PYTHON_PROCESS_CALL = re.compile(
-    r"\b(?:subprocess\.(?:run|call|Popen|check_call|check_output)|os\.(?:system|popen))\s*\("
+SHELL_FENCE = re.compile(
+    r"^\s*(`{3,}|~{3,})\s*(?:bash|sh|shell|zsh|console)(?:\s+.*)?$",
+    re.IGNORECASE,
 )
 DISCLOSURE_PATTERN = re.compile(
     r"(?:ask|request|obtain|require).{0,80}(?:permission|confirmation|consent|approval).{0,40}before"
@@ -41,7 +43,7 @@ RISK_RULES = (
         "RISK_DESTRUCTIVE_RM",
         "destructive rm command",
         re.compile(
-            r"(?:^|[;&|]\s*)rm\b"
+            r"(?:^|[;&|]\s*)(?:sudo\s+)?rm\b"
             r"(?=[^\n]*(?:--recursive\b|-[A-Za-z]*r))"
             r"(?=[^\n]*(?:--force\b|-[A-Za-z]*f))"
         ),
@@ -168,38 +170,72 @@ def validate_links(root, text_files):
         if path.suffix.lower() != ".md":
             continue
         relative_path = path.relative_to(root).as_posix()
+        definitions = {}
+        referenced = set()
         for line_number, line in enumerate(content.splitlines(), 1):
+            definition = REFERENCE_DEFINITION.match(line)
+            if definition:
+                label = " ".join(definition.group(1).lower().split())
+                definitions.setdefault(label, (definition.group(2), line_number))
+            for usage in REFERENCE_USAGE.finditer(line):
+                label = usage.group(2) or usage.group(1)
+                referenced.add(" ".join(label.lower().split()))
             for match in MARKDOWN_LINK.finditer(line):
                 target = _link_target(match.group(1))
-                lowered = target.lower()
-                if not target or target.startswith("#") or lowered.startswith(("http://", "https://", "mailto:")):
-                    continue
-                path_part = target.split("#", 1)[0].split("?", 1)[0]
-                candidate = (path.parent / path_part).resolve()
-                try:
-                    candidate.relative_to(resolved_root)
-                except ValueError:
-                    findings.append(
-                        finding(
-                            "High",
-                            "LINK_PATH_ESCAPE",
-                            f"local link escapes skill root: {target}",
-                            relative_path,
-                            line_number,
-                        )
+                findings.extend(
+                    _validate_link_target(
+                        target, path, resolved_root, relative_path, line_number
                     )
-                    continue
-                if not candidate.exists():
-                    findings.append(
-                        finding(
-                            "High",
-                            "BROKEN_LOCAL_LINK",
-                            f"local link target does not exist: {target}",
-                            relative_path,
-                            line_number,
-                        )
-                    )
+                )
+        for label in sorted(referenced):
+            if label not in definitions:
+                continue
+            raw_target, line_number = definitions[label]
+            findings.extend(
+                _validate_link_target(
+                    _link_target(raw_target),
+                    path,
+                    resolved_root,
+                    relative_path,
+                    line_number,
+                )
+            )
     return findings
+
+
+def _validate_link_target(target, source_path, resolved_root, relative_path, line_number):
+    lowered = target.lower()
+    if (
+        not target
+        or target.startswith("#")
+        or lowered.startswith(("http://", "https://", "mailto:"))
+    ):
+        return []
+    path_part = target.split("#", 1)[0].split("?", 1)[0]
+    candidate = (source_path.parent / path_part).resolve()
+    try:
+        candidate.relative_to(resolved_root)
+    except ValueError:
+        return [
+            finding(
+                "High",
+                "LINK_PATH_ESCAPE",
+                f"local link escapes skill root: {target}",
+                relative_path,
+                line_number,
+            )
+        ]
+    if not candidate.exists():
+        return [
+            finding(
+                "High",
+                "BROKEN_LOCAL_LINK",
+                f"local link target does not exist: {target}",
+                relative_path,
+                line_number,
+            )
+        ]
+    return []
 
 
 def validate_placeholders(root, text_files):
@@ -222,6 +258,51 @@ def validate_placeholders(root, text_files):
     return findings
 
 
+def _qualified_name(node):
+    if isinstance(node, ast.Name):
+        return node.id
+    if isinstance(node, ast.Attribute):
+        prefix = _qualified_name(node.value)
+        return f"{prefix}.{node.attr}" if prefix else node.attr
+    return ""
+
+
+def _python_command_lines(content):
+    try:
+        tree = ast.parse(content)
+    except SyntaxError:
+        return []
+    supported_calls = {
+        "os.popen",
+        "os.system",
+        "subprocess.Popen",
+        "subprocess.call",
+        "subprocess.check_call",
+        "subprocess.check_output",
+        "subprocess.run",
+    }
+    commands = []
+    for node in ast.walk(tree):
+        if (
+            not isinstance(node, ast.Call)
+            or _qualified_name(node.func) not in supported_calls
+            or not node.args
+        ):
+            continue
+        argument = node.args[0]
+        if isinstance(argument, ast.Constant) and isinstance(argument.value, str):
+            command = argument.value
+        elif isinstance(argument, (ast.List, ast.Tuple)) and all(
+            isinstance(item, ast.Constant) and isinstance(item.value, (str, int, float))
+            for item in argument.elts
+        ):
+            command = " ".join(str(item.value) for item in argument.elts)
+        else:
+            continue
+        commands.append((node.lineno, command))
+    return sorted(commands)
+
+
 def command_lines(root, text_files):
     for path, content in text_files:
         relative_path = path.relative_to(root).as_posix()
@@ -230,30 +311,40 @@ def command_lines(root, text_files):
             ".sh", ".bash", ".zsh"
         }
         is_python_script = is_packaged_script and path.suffix.lower() == ".py"
-        in_shell_fence = False
+        if is_python_script:
+            for line_number, command in _python_command_lines(content):
+                yield relative_path, line_number, command, content
+            continue
+        fence_marker = None
         for line_number, line in enumerate(content.splitlines(), 1):
             if path.suffix.lower() == ".md":
-                if SHELL_FENCE.match(line):
-                    in_shell_fence = True
+                fence = SHELL_FENCE.match(line)
+                if fence and fence_marker is None:
+                    fence_marker = fence.group(1)
                     continue
-                if in_shell_fence and FENCE_END.match(line):
-                    in_shell_fence = False
+                if fence_marker and re.fullmatch(
+                    rf"\s*{re.escape(fence_marker[0])}{{{len(fence_marker)},}}\s*", line
+                ):
+                    fence_marker = None
                     continue
-                command_shaped = in_shell_fence or line.lstrip().startswith("$ ")
+                command_shaped = fence_marker is not None or line.lstrip().startswith("$ ")
             else:
-                command_shaped = is_shell_script or (
-                    is_python_script and PYTHON_PROCESS_CALL.search(line) is not None
-                )
+                command_shaped = is_shell_script
             if command_shaped:
-                yield relative_path, line_number, line.lstrip().removeprefix("$ ")
+                yield (
+                    relative_path,
+                    line_number,
+                    line.lstrip().removeprefix("$ "),
+                    content,
+                )
 
 
-def validate_risks(root, text_files, skill_text):
+def validate_risks(root, text_files):
     findings = []
-    disclosed = DISCLOSURE_PATTERN.search(skill_text) is not None
-    severity = "Medium" if disclosed else "High"
-    suffix = "; explicit permission is disclosed, but manual review remains" if disclosed else "; explicit permission is not disclosed"
-    for relative_path, line_number, line in command_lines(root, text_files):
+    for relative_path, line_number, line, file_content in command_lines(root, text_files):
+        disclosed = DISCLOSURE_PATTERN.search(file_content) is not None
+        severity = "Medium" if disclosed else "High"
+        suffix = "; explicit permission is disclosed, but manual review remains" if disclosed else "; explicit permission is not disclosed"
         for code, label, pattern in RISK_RULES:
             if pattern.search(line):
                 findings.append(
@@ -274,7 +365,7 @@ def validate_skill(root):
         _, findings = validate_frontmatter(root, skill_text)
         findings.extend(validate_links(root, text_files))
         findings.extend(validate_placeholders(root, text_files))
-        findings.extend(validate_risks(root, text_files, skill_text))
+        findings.extend(validate_risks(root, text_files))
     findings.sort(
         key=lambda item: (
             SEVERITY_ORDER[item["severity"]],

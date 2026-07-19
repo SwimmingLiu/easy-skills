@@ -55,13 +55,13 @@ def _parse_scalar(value):
 
 
 def parse_frontmatter(text):
-    """Parse the simple top-level YAML mapping used by Skill frontmatter."""
+    """Parse top-level Skill metadata while tolerating nested extra fields."""
     lines = text.splitlines()
-    if not lines or lines[0].strip() != "---":
+    if not lines or lines[0] != "---":
         raise ValueError("frontmatter must start with ---")
     try:
         closing = next(
-            index for index, line in enumerate(lines[1:], 1) if line.strip() == "---"
+            index for index, line in enumerate(lines[1:], 1) if line == "---"
         )
     except StopIteration as error:
         raise ValueError("frontmatter is missing its closing --- delimiter") from error
@@ -88,6 +88,22 @@ def parse_frontmatter(text):
                 index += 1
             separator = " " if raw_value.startswith(">") else "\n"
             metadata[key] = separator.join(fragments).strip()
+            continue
+        if not raw_value:
+            nested_lines = []
+            index += 1
+            while index < closing and (
+                not lines[index].strip() or lines[index].startswith((" ", "\t"))
+            ):
+                if lines[index].strip():
+                    nested_lines.append(lines[index].lstrip())
+                index += 1
+            if not nested_lines:
+                metadata[key] = None
+            elif nested_lines[0].startswith("- "):
+                metadata[key] = []
+            else:
+                metadata[key] = {}
             continue
         metadata[key] = _parse_scalar(raw_value)
         index += 1

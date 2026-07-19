@@ -49,6 +49,15 @@ class ValidateSkillCliTest(unittest.TestCase):
             "sequence description": (
                 "---\nname: malformed\ndescription: [not, text]\n---\n"
             ),
+            "mapping description": (
+                "---\nname: malformed\ndescription: {text: invalid}\n---\n"
+            ),
+            "sequence name": (
+                "---\nname: [malformed]\ndescription: text\n---\n"
+            ),
+            "mapping name": (
+                "---\nname: {value: malformed}\ndescription: text\n---\n"
+            ),
         }
         for label, content in malformed_documents.items():
             with self.subTest(label=label):
@@ -72,6 +81,33 @@ class ValidateSkillCliTest(unittest.TestCase):
         self.assertEqual(result.returncode, 1)
         self.assertIn("INVALID_NAME", self.codes(document))
         self.assertIn("NAME_DIRECTORY_MISMATCH", self.codes(document))
+
+    def test_accepts_nested_extra_frontmatter_and_block_description(self):
+        directory = self.root / "nested-skill"
+        directory.mkdir()
+        (directory / "SKILL.md").write_text(
+            "---\n"
+            "name: 'nested-skill'\n"
+            "description: >\n"
+            "  Performs a bounded task with\n"
+            "  a folded description.\n"
+            "allowed-tools:\n"
+            "  - Read\n"
+            "  - Write\n"
+            "metadata:\n"
+            "  trigger: nested data\n"
+            "  labels:\n"
+            "    - one\n"
+            "    - two\n"
+            "---\n"
+            "# Nested\n",
+            encoding="utf-8",
+        )
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(document["findings"], [])
 
     def test_finds_broken_and_escaping_links_but_ignores_external_anchor_and_images(self):
         directory = self.create_skill(
@@ -118,6 +154,36 @@ class ValidateSkillCliTest(unittest.TestCase):
         else:
             self.assertEqual(result.returncode, 0)
 
+    def test_validates_reference_style_links_and_ignores_image_references(self):
+        directory = self.create_skill(
+            body=(
+                "[missing guide][missing]\n"
+                "[escape][]\n"
+                "[web][web-source]\n"
+                "[mail][owner]\n"
+                "[section][local-section]\n"
+                "![optional][image-only]\n\n"
+                "[missing]: references/missing.md\n"
+                "[escape]: ../outside.md\n"
+                "[web-source]: https://example.com/source\n"
+                "[owner]: mailto:owner@example.com\n"
+                "[local-section]: #clean\n"
+                "[image-only]: images/missing.png\n"
+            )
+        )
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 1)
+        link_findings = [
+            item for item in document["findings"]
+            if item["code"] in {"BROKEN_LOCAL_LINK", "LINK_PATH_ESCAPE"}
+        ]
+        self.assertEqual(
+            [(item["code"], item["line"]) for item in link_findings],
+            [("BROKEN_LOCAL_LINK", 12), ("LINK_PATH_ESCAPE", 13)],
+        )
+
     def test_finds_placeholders_except_in_baseline_observations(self):
         marker = "TO" + "DO"
         directory = self.create_skill(body="[notes](references/notes.md)\n")
@@ -143,6 +209,7 @@ class ValidateSkillCliTest(unittest.TestCase):
     def test_undisclosed_risky_commands_are_high_severity(self):
         risks = {
             "destructive-rm": "```bash\nrm -rf /tmp/release\n```\n",
+            "destructive-rm-sudo": "```bash\nsudo rm -rf /tmp/release\n```\n",
             "destructive-rm-long-flags": (
                 "```bash\nrm --recursive --force /tmp/release\n```\n"
             ),
@@ -152,6 +219,10 @@ class ValidateSkillCliTest(unittest.TestCase):
             "credential-read": "```bash\ncat ~/.ssh/id_rsa\n```\n",
             "credential-read-home-variable": (
                 "```bash\ncat $HOME/.ssh/id_ed25519\n```\n"
+            ),
+            "tilde-shell-fence": "~~~sh\ngit push origin main\n~~~\n",
+            "attributed-shell-fence": (
+                "```bash {.release}\ngit push origin main\n```\n"
             ),
         }
         for name, body in risks.items():
@@ -167,6 +238,24 @@ class ValidateSkillCliTest(unittest.TestCase):
                 ]
                 self.assertEqual(len(risk_findings), 1)
                 self.assertEqual(risk_findings[0]["severity"], "High")
+
+    def test_python_subprocess_list_command_is_high_severity(self):
+        directory = self.create_skill(name="python-risk")
+        scripts = directory / "scripts"
+        scripts.mkdir()
+        (scripts / "release.py").write_text(
+            "import subprocess\n"
+            "subprocess.run(['git', 'push', 'origin', 'main'], check=True)\n",
+            encoding="utf-8",
+        )
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 1)
+        risks = [item for item in document["findings"] if item["code"] == "RISK_GIT_PUSH"]
+        self.assertEqual(len(risks), 1)
+        self.assertEqual(risks[0]["path"], "scripts/release.py")
+        self.assertEqual(risks[0]["line"], 2)
 
     def test_clear_permission_disclosure_downgrades_but_retains_risk(self):
         directory = self.create_skill(
@@ -184,6 +273,40 @@ class ValidateSkillCliTest(unittest.TestCase):
         self.assertEqual(len(risks), 1)
         self.assertEqual(risks[0]["severity"], "Medium")
         self.assertEqual(document["status"], "pass")
+
+    def test_disclosure_is_scoped_to_the_file_containing_the_command(self):
+        directory = self.create_skill(
+            name="scoped-disclosure",
+            body=(
+                "Ask the user for explicit permission before running commands.\n"
+                "[safe](references/safe.md)\n"
+                "[unsafe](references/unsafe.md)\n"
+            ),
+        )
+        references = directory / "references"
+        references.mkdir()
+        (references / "safe.md").write_text(
+            "Ask the user for explicit confirmation before running this command.\n\n"
+            "```bash\ngit push origin safe\n```\n",
+            encoding="utf-8",
+        )
+        (references / "unsafe.md").write_text(
+            "```bash\ngit push origin unsafe\n```\n",
+            encoding="utf-8",
+        )
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 1)
+        risks = {
+            item["path"]: item["severity"]
+            for item in document["findings"]
+            if item["code"] == "RISK_GIT_PUSH"
+        }
+        self.assertEqual(
+            risks,
+            {"references/safe.md": "Medium", "references/unsafe.md": "High"},
+        )
 
     def test_prose_source_urls_do_not_count_as_network_commands(self):
         directory = self.create_skill(

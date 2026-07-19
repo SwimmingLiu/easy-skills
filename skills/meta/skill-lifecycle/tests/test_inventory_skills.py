@@ -104,6 +104,33 @@ class InventorySkillsCliTest(unittest.TestCase):
             ],
         )
 
+    def test_extracts_name_from_frontmatter_with_nested_extra_fields(self):
+        directory = self.root / "nested-skill"
+        directory.mkdir()
+        skill = directory / "SKILL.md"
+        skill.write_text(
+            "---\n"
+            'name: "nested-skill"\n'
+            "description: |\n"
+            "  First line.\n"
+            "  Second line.\n"
+            "allowed-tools:\n"
+            "  - Read\n"
+            "  - Write\n"
+            "metadata:\n"
+            "  trigger: nested data\n"
+            "  labels:\n"
+            "    - one\n"
+            "    - two\n"
+            "---\n"
+            "# Nested\n",
+            encoding="utf-8",
+        )
+
+        document = self.inventory()
+
+        self.assertEqual(document["skills"][0]["name"], "nested-skill")
+
     def test_absent_optional_metadata_is_not_omitted(self):
         self.write_skill("sample", "sample")
 
