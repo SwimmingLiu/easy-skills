@@ -8,6 +8,22 @@ Easy Skills provides a set of powerful, ready-to-use agent skills designed to st
 
 ## Skills
 
+### Meta Skills
+
+Skills for building and governing other Agent Skills.
+
+#### [Skill Lifecycle](./skills/meta/skill-lifecycle/SKILL.md)
+
+Discover, create, review, evaluate, optimize, and maintain Agent Skills through explicit evidence, quality gates, versioned state, and rollback-safe decisions.
+
+```bash
+# Install from this checkout
+npx skills add ./skills/meta/skill-lifecycle -g -y
+
+# Install from GitHub
+npx skills add https://github.com/SwimmingLiu/easy-skills@skills/meta/skill-lifecycle -g -y
+```
+
 ### 🤖 Subagent Skills
 
 AI-powered subagent integrations with automatic fallback support.

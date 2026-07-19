@@ -1,10 +1,12 @@
 # local agent workdir
 .agent
+.worktrees/
 
 # dependencies
 node_modules/
 *.lock
 package-lock.json
+
 # Python cache
 __pycache__/
 *.pyc
