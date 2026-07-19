@@ -72,6 +72,12 @@ EXPECTED_CASE_IDS = {
     "review-uploading-skill-without-confirmation",
     "retire-from-mtime-and-read-counts",
 }
+FORWARD_CASE_IDS = {
+    "forward-pressured-create-global-install",
+    "forward-review-uploading-skill-without-confirmation",
+    "forward-retire-from-mtime-and-read-counts",
+    "forward-static-only-evaluation",
+}
 MARKDOWN_LINK = re.compile(r"(?<!!)\[[^\]\n]+\]\(([^)\s]+)\)")
 
 
@@ -170,6 +176,25 @@ class SkillLifecyclePackageTest(unittest.TestCase):
         self.assertEqual(
             len(assertion_ids), len(set(assertion_ids)), "duplicate assertion id"
         )
+
+    def test_forward_test_evidence_is_separate_and_complete(self):
+        observations = self.read_required(
+            PACKAGE_ROOT / "evals" / "baseline-observations.md"
+        )
+        self.assertIn("## Forward tests", observations)
+        for case_id in FORWARD_CASE_IDS:
+            self.assertIn(f"**ID:** `{case_id}`", observations)
+        self.assertEqual(
+            observations.count("Invocation: `codex exec --sandbox read-only --ephemeral`"),
+            len(FORWARD_CASE_IDS),
+        )
+        self.assertGreaterEqual(
+            observations.count("### Raw observed response"),
+            len(EXPECTED_CASE_IDS) + len(FORWARD_CASE_IDS),
+        )
+        self.assertIn("## Installation smoke", observations)
+        self.assertIn("--agent codex --copy -y", observations)
+        self.assertIn("scope: `project`", observations)
 
     def test_packaged_evidence_references_resolve_within_skill(self):
         evals_path = PACKAGE_ROOT / "evals" / "evals.json"
