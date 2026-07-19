@@ -64,6 +64,12 @@ class ValidateSkillCliTest(unittest.TestCase):
             "commented mapping name": (
                 "---\nname: {value: malformed} # invalid\ndescription: text\n---\n"
             ),
+            "comment-only name": (
+                "---\nname: # missing\ndescription: text\n---\n"
+            ),
+            "comment-only description": (
+                "---\nname: malformed\ndescription: # missing\n---\n"
+            ),
         }
         for label, content in malformed_documents.items():
             with self.subTest(label=label):
@@ -121,7 +127,7 @@ class ValidateSkillCliTest(unittest.TestCase):
         (directory / "SKILL.md").write_text(
             "---\n"
             'name: "commented-skill" # package name\n'
-            "description: 'Keeps # inside single quotes.' # explanatory note\n"
+            "description: '#tag keeps # inside single quotes.' # explanatory note\n"
             "---\n"
             "# Commented\n",
             encoding="utf-8",

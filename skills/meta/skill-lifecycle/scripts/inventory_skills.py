@@ -41,7 +41,7 @@ def _strip_inline_comment(value):
                 quote = None
         elif character in {"'", '"'}:
             quote = character
-        elif character == "#" and index > 0 and value[index - 1].isspace():
+        elif character == "#" and (index == 0 or value[index - 1].isspace()):
             return value[:index].rstrip()
         index += 1
     return value

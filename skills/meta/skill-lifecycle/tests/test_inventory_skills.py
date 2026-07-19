@@ -143,6 +143,15 @@ class InventorySkillsCliTest(unittest.TestCase):
             "---\n",
             encoding="utf-8",
         )
+        missing = self.root / "missing"
+        missing.mkdir()
+        (missing / "SKILL.md").write_text(
+            "---\n"
+            "name: # missing\n"
+            "description: text\n"
+            "---\n",
+            encoding="utf-8",
+        )
         valid = self.root / "quoted-skill"
         valid.mkdir()
         quoted_content = (
@@ -155,14 +164,27 @@ class InventorySkillsCliTest(unittest.TestCase):
 
         document = self.inventory()
         metadata = parse_frontmatter(quoted_content)
+        quoted_hashes = parse_frontmatter(
+            "---\n"
+            "name: quoted-skill\n"
+            "description: '#single and #inside'\n"
+            "metadata: \"#double\"\n"
+            "---\n"
+        )
 
         self.assertEqual(
             [(item["path"], item["name"]) for item in document["skills"]],
-            [("invalid/SKILL.md", None), ("quoted-skill/SKILL.md", "quoted-skill")],
+            [
+                ("invalid/SKILL.md", None),
+                ("missing/SKILL.md", None),
+                ("quoted-skill/SKILL.md", "quoted-skill"),
+            ],
         )
         self.assertEqual(
             metadata["description"], 'Keeps # inside and "escaped quotes".'
         )
+        self.assertEqual(quoted_hashes["description"], "#single and #inside")
+        self.assertEqual(quoted_hashes["metadata"], "#double")
 
     def test_absent_optional_metadata_is_not_omitted(self):
         self.write_skill("sample", "sample")
