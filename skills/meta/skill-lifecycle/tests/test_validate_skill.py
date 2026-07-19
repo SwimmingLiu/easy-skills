@@ -81,6 +81,9 @@ class ValidateSkillCliTest(unittest.TestCase):
             "duplicate name": (
                 "---\nname: malformed\nname: repeated\ndescription: text\n---\n"
             ),
+            "unquoted colon space": (
+                "---\nname: malformed\ndescription: bounded: task\n---\n"
+            ),
         }
         for label, content in malformed_documents.items():
             with self.subTest(label=label):
@@ -273,6 +276,19 @@ class ValidateSkillCliTest(unittest.TestCase):
         self.assertEqual(result.returncode, 0)
         self.assertEqual(document["findings"], [])
 
+    def test_escaped_parenthesis_in_link_destination_is_unescaped(self):
+        directory = self.create_skill(
+            body="[escaped](references/foo\\).md)\n"
+        )
+        references = directory / "references"
+        references.mkdir()
+        (references / "foo).md").write_text("# Valid\n", encoding="utf-8")
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 0)
+        self.assertEqual(document["findings"], [])
+
     def test_finds_placeholders_except_in_baseline_observations(self):
         marker = "TO" + "DO"
         directory = self.create_skill(body="[notes](references/notes.md)\n")
@@ -402,11 +418,51 @@ class ValidateSkillCliTest(unittest.TestCase):
                 self.assertEqual(len(risks), 1)
                 self.assertEqual(risks[0]["line"], expected_line)
 
+    def test_shell_continuations_do_not_cross_markdown_fence_boundaries(self):
+        directory = self.create_skill(
+            name="separate-fences",
+            body=(
+                "```bash\n"
+                "echo unfinished " + "\\\n"
+                "```\n"
+                "```bash\n"
+                "git push origin main\n"
+                "```\n"
+            ),
+        )
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 1)
+        risks = [
+            item for item in document["findings"]
+            if item["code"] == "RISK_GIT_PUSH"
+        ]
+        self.assertEqual(len(risks), 1)
+        self.assertEqual(risks[0]["line"], 9)
+
+    def test_shell_fences_nested_inside_non_shell_fence_are_literal(self):
+        directory = self.create_skill(
+            name="literal-fence",
+            body=(
+                "````text\n"
+                "```bash\n"
+                "git push origin main\n"
+                "```\n"
+                "````\n"
+            ),
+        )
+
+        result, document = self.validate(directory)
+
+        self.assertEqual(result.returncode, 0)
+        self.assertFalse(any(code.startswith("RISK_") for code in self.codes(document)))
+
     def test_clear_permission_disclosure_downgrades_but_retains_risk(self):
         directory = self.create_skill(
             name="disclosed-risk",
             body=(
-                "Ask the user for explicit permission before running the command.\n\n"
+                "Ask the user for explicit permission before this git push.\n\n"
                 "```bash\ngit push origin main\n```\n"
             ),
         )
@@ -431,7 +487,7 @@ class ValidateSkillCliTest(unittest.TestCase):
         references = directory / "references"
         references.mkdir()
         (references / "safe.md").write_text(
-            "Ask the user for explicit confirmation before running this command.\n\n"
+            "Ask the user for explicit confirmation before this git push.\n\n"
             "```bash\ngit push origin safe\n```\n",
             encoding="utf-8",
         )
@@ -471,6 +527,21 @@ class ValidateSkillCliTest(unittest.TestCase):
             ),
             "affirmative": (
                 "Ask for explicit confirmation before this git push command.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "Medium",
+            ),
+            "cross-line-negated": (
+                "Do not\nask for permission before this git push.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "generic-command-mismatch": (
+                "Ask for permission before this command deletes backups.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "safe-never-before": (
+                "Never execute this git push before asking for permission.\n\n"
                 "```bash\ngit push origin main\n```\n",
                 "Medium",
             ),
@@ -567,6 +638,12 @@ class ValidateSkillCliTest(unittest.TestCase):
 
         result = self.run_cli(directory, "--format", "markdown", "--output", output)
         missing = self.run_cli(self.root / "missing")
+        help_result = subprocess.run(
+            [sys.executable, str(SCRIPT), "--help"],
+            check=False,
+            capture_output=True,
+            text=True,
+        )
 
         self.assertEqual(result.returncode, 0)
         self.assertEqual(result.stdout, "")
@@ -574,6 +651,9 @@ class ValidateSkillCliTest(unittest.TestCase):
         self.assertEqual(missing.returncode, 2)
         self.assertIn("skill directory", missing.stderr.lower())
         self.assertNotIn("Traceback", missing.stderr)
+        normalized_help = " ".join(help_result.stdout.split())
+        self.assertIn("dynamic Python", normalized_help)
+        self.assertIn("TOCTOU", normalized_help)
 
 
 if __name__ == "__main__":

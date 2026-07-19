@@ -5,6 +5,7 @@ import argparse
 import ast
 import os
 import re
+import string
 import sys
 from collections import Counter
 from pathlib import Path
@@ -44,12 +45,17 @@ DISCLOSURE_PATTERN = re.compile(
 NEGATED_DISCLOSURE = re.compile(
     r"\b(?:never|do\s+not|don't|without)\b|不要|无需|不必", re.IGNORECASE
 )
+SAFE_PREREQUISITE_DISCLOSURE = re.compile(
+    r"\b(?:never|do\s+not|don't)\b.{0,120}\bbefore\s+"
+    r"(?:asking|requesting|obtaining).{0,40}(?:permission|confirmation|consent|approval)",
+    re.IGNORECASE | re.DOTALL,
+)
 RISK_DISCLOSURE_TERMS = {
-    "RISK_DESTRUCTIVE_RM": re.compile(r"\b(?:rm|remove|delete)\b|this command|the command", re.I),
-    "RISK_NETWORK_UPLOAD": re.compile(r"\b(?:upload|curl|wget|network)\b|this command|the command", re.I),
-    "RISK_GIT_PUSH": re.compile(r"\b(?:git\s+push|push)\b|this command|the command", re.I),
-    "RISK_GLOBAL_INSTALL": re.compile(r"\b(?:install|npm|pip|package)\b|this command|the command", re.I),
-    "RISK_CREDENTIAL_READ": re.compile(r"\b(?:credential|secret|key|read)\b|this command|the command", re.I),
+    "RISK_DESTRUCTIVE_RM": re.compile(r"\b(?:rm|remove|delete)\b", re.I),
+    "RISK_NETWORK_UPLOAD": re.compile(r"\b(?:upload|curl|wget|network)\b", re.I),
+    "RISK_GIT_PUSH": re.compile(r"\b(?:git\s+push|push)\b", re.I),
+    "RISK_GLOBAL_INSTALL": re.compile(r"\b(?:install|npm|pip|package)\b", re.I),
+    "RISK_CREDENTIAL_READ": re.compile(r"\b(?:credential|secret|key|read)\b", re.I),
 }
 RISK_RULES = (
     (
@@ -231,7 +237,20 @@ def _link_target(raw_target):
         target = target[1 : target.index(">")]
     else:
         target = target.split(None, 1)[0]
-    return unquote(target)
+    unescaped = []
+    index = 0
+    while index < len(target):
+        if (
+            target[index] == "\\"
+            and index + 1 < len(target)
+            and target[index + 1] in string.punctuation
+        ):
+            unescaped.append(target[index + 1])
+            index += 2
+            continue
+        unescaped.append(target[index])
+        index += 1
+    return unquote("".join(unescaped))
 
 
 def _nonfenced_markdown_lines(content):
@@ -273,6 +292,9 @@ def _inline_link_targets(line):
         depth = 1
         cursor = destination_start
         while cursor < len(line):
+            if line[cursor] == "\\" and cursor + 1 < len(line):
+                cursor += 2
+                continue
             if line[cursor] == "(":
                 depth += 1
             elif line[cursor] == ")":
@@ -471,38 +493,63 @@ def command_lines(root, text_files):
             for line_number, command in _python_command_lines(content):
                 yield relative_path, line_number, command, content
             continue
-        fence_marker = None
-        candidates = []
-        for line_number, line in enumerate(content.splitlines(), 1):
-            if path.suffix.lower() == ".md":
-                fence = SHELL_FENCE.match(line)
-                if fence and fence_marker is None:
+        segments = []
+        if path.suffix.lower() == ".md":
+            fence_marker = None
+            shell_fence = False
+            current_segment = []
+            for line_number, line in enumerate(content.splitlines(), 1):
+                if fence_marker is not None:
+                    if re.fullmatch(
+                        rf"\s*{re.escape(fence_marker[0])}{{{len(fence_marker)},}}\s*",
+                        line,
+                    ):
+                        if current_segment:
+                            segments.append(current_segment)
+                        current_segment = []
+                        fence_marker = None
+                        shell_fence = False
+                    elif shell_fence:
+                        current_segment.append((line_number, line))
+                    continue
+                fence = ANY_FENCE.match(line)
+                if fence:
+                    if current_segment:
+                        segments.append(current_segment)
+                    current_segment = []
                     fence_marker = fence.group(1)
+                    shell_fence = SHELL_FENCE.match(line) is not None
                     continue
-                if fence_marker and re.fullmatch(
-                    rf"\s*{re.escape(fence_marker[0])}{{{len(fence_marker)},}}\s*", line
-                ):
-                    fence_marker = None
-                    continue
-                command_shaped = fence_marker is not None or line.lstrip().startswith("$ ")
-            else:
-                command_shaped = is_shell_script
-            if command_shaped:
-                candidates.append((line_number, line.lstrip().removeprefix("$ ")))
-        for line_number, command in _join_shell_continuations(candidates):
-            yield relative_path, line_number, command, content
+                if line.lstrip().startswith("$ "):
+                    if current_segment and current_segment[-1][0] + 1 != line_number:
+                        segments.append(current_segment)
+                        current_segment = []
+                    current_segment.append(
+                        (line_number, line.lstrip().removeprefix("$ "))
+                    )
+                elif current_segment:
+                    segments.append(current_segment)
+                    current_segment = []
+            if current_segment:
+                segments.append(current_segment)
+        elif is_shell_script:
+            segments = [list(enumerate(content.splitlines(), 1))]
+        for segment in segments:
+            for line_number, command in _join_shell_continuations(segment):
+                yield relative_path, line_number, command, content
 
 
 def _has_associated_disclosure(code, file_content, line_number):
     lines = file_content.splitlines()
     start = max(0, line_number - 7)
-    disclosure_lines = lines[start : line_number - 1]
-    return any(
-        DISCLOSURE_PATTERN.search(line)
-        and RISK_DISCLOSURE_TERMS[code].search(line)
-        and not NEGATED_DISCLOSURE.search(line)
-        for line in disclosure_lines
-    )
+    window = "\n".join(lines[start : line_number - 1])
+    if not RISK_DISCLOSURE_TERMS[code].search(window):
+        return False
+    if SAFE_PREREQUISITE_DISCLOSURE.search(window):
+        return True
+    if NEGATED_DISCLOSURE.search(window):
+        return False
+    return DISCLOSURE_PATTERN.search(window) is not None
 
 
 def validate_risks(root, text_files):
@@ -590,7 +637,13 @@ def render_markdown(document):
 
 
 def build_parser():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        epilog=(
+            "Static analysis is intentionally incomplete: dynamic shell wrappers, "
+            "dynamic Python commands, and filesystem TOCTOU races are outside scope."
+        ),
+    )
     parser.add_argument("skill_directory", help="Skill package directory to validate")
     parser.add_argument("--output", help="write output atomically instead of stdout")
     parser.add_argument("--format", choices=("json", "markdown"), default="json")

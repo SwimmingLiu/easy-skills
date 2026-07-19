@@ -85,6 +85,8 @@ def _parse_scalar(value):
         if not value.endswith(expected):
             raise ValueError("inline collection is malformed")
         return [] if expected == "]" else {}
+    if ": " in value:
+        raise ValueError("plain scalar contains an unquoted mapping separator")
     lowered = value.lower()
     if lowered in {"null", "~"}:
         return None
