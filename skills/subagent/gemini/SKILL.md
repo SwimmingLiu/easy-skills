@@ -1,9 +1,9 @@
 ---
 name: gemini
-description: Execute Gemini CLI for AI-powered code analysis and generation. Use when you need to leverage Google's Gemini models for complex reasoning tasks.
+description: Execute Gemini CLI in a one-shot wrapper for project-scoped code analysis and generation. Use when you need a non-interactive Gemini command with explicit headless prompt mode instead of the tmux/TUI launcher.
 ---
 
-# Gemini CLI Integration
+# Gemini CLI integration
 
 ## Overview
 
@@ -18,16 +18,16 @@ Execute Gemini CLI commands with support for multiple models and flexible prompt
 
 ## Usage
 
-**推荐方式**（使用 uv run，自动管理 Python 环境）：
+**Recommended:** use `uv run` to manage the Python environment automatically.
 ```bash
-uv run ./.claude/skills/gemini/scripts/gemini.py "<prompt>" [working_dir]
+uv run ./scripts/gemini.py "<prompt>" [working_dir]
 ```
 
-**备选方式**（直接执行或使用 Python）：
+**Alternatives:** run the script directly or invoke it with Python.
 ```bash
-./.claude/skills/gemini/scripts/gemini.py "<prompt>" [working_dir]
-# 或
-python3 ./.claude/skills/gemini/scripts/gemini.py "<prompt>" [working_dir]
+./scripts/gemini.py "<prompt>" [working_dir]
+# or
+python3 ./scripts/gemini.py "<prompt>" [working_dir]
 ```
 
 ## Environment Variables
@@ -61,11 +61,11 @@ ERROR: Error message
 
 ### Output Saving
 
-每次执行后，输出结果会自动保存到 `.tmp/docs/output/` 目录：
-- **文件名**: `out_<日期>_<时间>_gemini_<任务描述>.md`
-- **内容包含**: 生成时间、Model、Prompt、完整输出
+After each run, the wrapper saves output to `.tmp/docs/output/`:
+- **Filename**: `out_<date>_<time>_gemini_<task>.md`
+- **Content**: timestamp, model, prompt, and the full Gemini output
 
-保存成功后会在 stderr 输出提示：
+On success, stderr includes a message such as:
 ```
 INFO: Output saved to .tmp/docs/output/out_20240125_150321_gemini_task.md
 ```
@@ -76,7 +76,7 @@ When calling via Bash tool, always include the timeout parameter:
 
 ```yaml
 Bash tool parameters:
-- command: uv run ./.claude/skills/gemini/scripts/gemini.py "<prompt>"
+- command: uv run ./scripts/gemini.py "<prompt>"
 - timeout: 7200000
 - description: <brief description of the task>
 ```
@@ -85,10 +85,10 @@ Alternatives:
 
 ```yaml
 # Direct execution (simplest)
-- command: ./.claude/skills/gemini/scripts/gemini.py "<prompt>"
+- command: ./scripts/gemini.py "<prompt>"
 
 # Using python3
-- command: python3 ./.claude/skills/gemini/scripts/gemini.py "<prompt>"
+- command: python3 ./scripts/gemini.py "<prompt>"
 ```
 
 ### Examples
@@ -96,34 +96,34 @@ Alternatives:
 **Basic query:**
 
 ```bash
-uv run ./.claude/skills/gemini/scripts/gemini.py "explain quantum computing"
+uv run ./scripts/gemini.py "explain quantum computing"
 # timeout: 7200000
 ```
 
 **Code analysis:**
 
 ```bash
-uv run ./.claude/skills/gemini/scripts/gemini.py "review this code for security issues: $(cat app.py)"
+uv run ./scripts/gemini.py "review this code for security issues: $(cat app.py)"
 # timeout: 7200000
 ```
 
 **With specific working directory:**
 
 ```bash
-uv run ./.claude/skills/gemini/scripts/gemini.py "analyze project structure" "/path/to/project"
+uv run ./scripts/gemini.py "analyze project structure" "/path/to/project"
 # timeout: 7200000
 ```
 
 ## Scripts Reference
 
-| 脚本 | 用途 |
-|------|------|
-| `scripts/gemini.py` | 主脚本，执行 Gemini CLI |
+| Script | Purpose |
+|------|---------|
+| `scripts/gemini.py` | Main wrapper script that executes Gemini CLI |
 
 ## Notes
 
 - **Recommended**: Use `uv run` for automatic Python environment management (requires uv installed)
-- **Alternative**: Direct execution `./gemini.py` (uses system Python via shebang)
+- **Alternative**: Direct execution `./scripts/gemini.py` (uses system Python via shebang)
 - Python implementation using standard library (zero dependencies)
 - Cross-platform compatible (Windows/macOS/Linux)
 - PEP 723 compliant (inline script metadata)

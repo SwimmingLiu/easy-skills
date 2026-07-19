@@ -1,9 +1,9 @@
 ---
 name: codex
-description: Execute Codex CLI for code analysis, refactoring, and automated code changes. Use when you need to delegate complex code tasks to Codex AI with file references (@syntax) and structured output.
+description: Execute Codex CLI in a one-shot wrapper for project-scoped code analysis, refactoring, and automated code changes. Use when you need a non-interactive Codex command instead of the tmux/TUI launcher.
 ---
 
-# Codex CLI Integration
+# Codex CLI integration
 
 ## Overview
 
@@ -18,21 +18,21 @@ Execute Codex CLI commands and parse structured JSON responses. Supports file re
 
 ## Usage
 
-**推荐方式**（使用 uv run，自动管理 Python 环境）：
+**Recommended:** use `uv run` to manage the Python environment automatically.
 ```bash
-uv run ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+uv run ./scripts/codex.py "<task>" [model] [working_dir]
 ```
 
-**备选方式**（直接执行或使用 Python）：
+**Alternatives:** run the script directly or invoke it with Python.
 ```bash
-./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
-# 或
-python3 ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+./scripts/codex.py "<task>" [model] [working_dir]
+# or
+python3 ./scripts/codex.py "<task>" [model] [working_dir]
 ```
 
-恢复会话:
+Resume a session:
 ```bash
-uv run ./.claude/skills/codex/scripts/codex.py resume <session_id> "<task>" [model] [working_dir]
+uv run ./scripts/codex.py resume <session_id> "<task>" [model] [working_dir]
 ```
 
 ## Timeout Control
@@ -69,11 +69,11 @@ ERROR: Error message
 
 ### Output Saving
 
-每次执行后，输出结果会自动保存到 `.tmp/docs/output/` 目录：
-- **文件名**: `out_<日期>_<时间>_codex_<任务描述>.md`
-- **内容包含**: 生成时间、任务描述、Session ID（如适用）、完整输出
+After each run, the wrapper saves output to `.tmp/docs/output/`:
+- **Filename**: `out_<date>_<time>_codex_<task>.md`
+- **Content**: timestamp, task text, optional session ID, and the full final output
 
-保存成功后会在 stderr 输出提示：
+On success, stderr includes a message such as:
 ```
 INFO: Output saved to .tmp/docs/output/out_20240125_143052_codex_task.md
 ```
@@ -83,7 +83,7 @@ INFO: Output saved to .tmp/docs/output/out_20240125_143052_codex_task.md
 When calling via Bash tool, always include the timeout parameter:
 ```
 Bash tool parameters:
-- command: uv run ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+- command: uv run ./scripts/codex.py "<task>" [model] [working_dir]
 - timeout: 7200000
 - description: <brief description of the task>
 ```
@@ -91,10 +91,10 @@ Bash tool parameters:
 Alternatives:
 ```
 # Direct execution (simplest)
-- command: ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+- command: ./scripts/codex.py "<task>" [model] [working_dir]
 
 # Using python3
-- command: python3 ./.claude/skills/codex/scripts/codex.py "<task>" [model] [working_dir]
+- command: python3 ./scripts/codex.py "<task>" [model] [working_dir]
 ```
 
 ### Examples
@@ -102,40 +102,40 @@ Alternatives:
 **Basic code analysis:**
 ```bash
 # Recommended: via uv run (auto-manages Python environment)
-uv run ./.claude/skills/codex/scripts/codex.py "explain @src/main.ts"
+uv run ./scripts/codex.py "explain @src/main.ts"
 # timeout: 7200000
 
 # Alternative: direct execution
-./.claude/skills/codex/scripts/codex.py "explain @src/main.ts"
+./scripts/codex.py "explain @src/main.ts"
 ```
 
 **Refactoring with specific model:**
 ```bash
-uv run ./.claude/skills/codex/scripts/codex.py "refactor @src/utils for performance" "gpt-5"
+uv run ./scripts/codex.py "refactor @src/utils for performance" "gpt-5"
 # timeout: 7200000
 ```
 
 **Multi-file analysis:**
 ```bash
-uv run ./.claude/skills/codex/scripts/codex.py "analyze @. and find security issues" "gpt-5-codex" "/path/to/project"
+uv run ./scripts/codex.py "analyze @. and find security issues" "gpt-5-codex" "/path/to/project"
 # timeout: 7200000
 ```
 
 **Resume previous session:**
 ```bash
 # First session
-uv run ./.claude/skills/codex/scripts/codex.py "add comments to @utils.js" "gpt-5-codex"
+uv run ./scripts/codex.py "add comments to @utils.js" "gpt-5-codex"
 # Output includes: SESSION_ID: 019a7247-ac9d-71f3-89e2-a823dbd8fd14
 
 # Continue the conversation
-uv run ./.claude/skills/codex/scripts/codex.py resume 019a7247-ac9d-71f3-89e2-a823dbd8fd14 "now add type hints"
+uv run ./scripts/codex.py resume 019a7247-ac9d-71f3-89e2-a823dbd8fd14 "now add type hints"
 # timeout: 7200000
 ```
 
 ## Notes
 
 - **Recommended**: Use `uv run` for automatic Python environment management (requires uv installed)
-- **Alternative**: Direct execution `./codex.py` (uses system Python via shebang)
+- **Alternative**: Direct execution `./scripts/codex.py` (uses system Python via shebang)
 - Python implementation using standard library (zero dependencies)
 - Cross-platform compatible (Windows/macOS/Linux)
 - PEP 723 compliant (inline script metadata)
