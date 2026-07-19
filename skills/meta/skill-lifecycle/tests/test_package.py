@@ -17,6 +17,56 @@ EXPECTED_REFERENCES = {
     "references/maintain.md",
     "references/evidence-schema.md",
 }
+OPERATION_GUIDES = (
+    "discover",
+    "create",
+    "review",
+    "evaluate",
+    "optimize",
+    "maintain",
+)
+REQUIRED_GUIDE_SECTIONS = (
+    "Goal",
+    "Inputs",
+    "Procedure",
+    "Outputs",
+    "State transition",
+    "Human gate",
+    "Design basis",
+)
+REPORT_TEMPLATES = {
+    "assets/report-templates/evidence-card.md",
+    "assets/report-templates/operation-report.md",
+}
+GUIDE_REQUIRED_TERMS = {
+    "discover": ("use", "fork", "compose", "create", "SKILL.md"),
+    "create": ("baseline", "draft", "Agent Skills", "Anthropic", "OpenAI"),
+    "review": ("read-only", "plan", "confirm", "skill-optimizer", "Cisco"),
+    "evaluate": ("trigger", "task effect", "skill-comply", "baseline"),
+    "optimize": ("evidence", "minimal", "rollback", "SkillOpt"),
+    "maintain": (
+        "SKILL.md",
+        "source",
+        "ref",
+        "path",
+        "hash",
+        "Keep",
+        "Improve",
+        "Update",
+        "Merge",
+        "Retire",
+        "Vercel",
+    ),
+}
+REQUIRED_REPORT_FIELDS = (
+    "state",
+    "findings",
+    "gates",
+    "artifacts",
+    "evidence",
+    "decision",
+    "next operation",
+)
 EXPECTED_CASE_IDS = {
     "pressured-create-global-install",
     "review-uploading-skill-without-confirmation",
@@ -67,6 +117,40 @@ class SkillLifecyclePackageTest(unittest.TestCase):
         self.assertEqual(links, EXPECTED_REFERENCES)
         for relative_path in links:
             self.assertTrue((PACKAGE_ROOT / relative_path).is_file(), relative_path)
+
+    def test_operation_guides_define_the_complete_contract(self):
+        for guide_name in OPERATION_GUIDES:
+            guide_path = PACKAGE_ROOT / "references" / f"{guide_name}.md"
+            guide_text = self.read_required(guide_path)
+            headings = set(re.findall(r"^## ([^#\n]+)$", guide_text, re.MULTILINE))
+            for section in REQUIRED_GUIDE_SECTIONS:
+                self.assertIn(section, headings, f"{guide_path}: missing {section}")
+
+    def test_operation_guides_preserve_lifecycle_boundaries_and_sources(self):
+        for guide_name, terms in GUIDE_REQUIRED_TERMS.items():
+            guide_path = PACKAGE_ROOT / "references" / f"{guide_name}.md"
+            guide_text = self.read_required(guide_path)
+            for term in terms:
+                self.assertIn(term, guide_text, f"{guide_path}: missing {term}")
+            self.assertIn("confirm", guide_text.lower(), f"{guide_path}: no confirmation gate")
+
+    def test_report_templates_require_the_shared_output_fields(self):
+        for relative_path in REPORT_TEMPLATES:
+            template_text = self.read_required(PACKAGE_ROOT / relative_path).lower()
+            for field in REQUIRED_REPORT_FIELDS:
+                self.assertIn(field, template_text, f"{relative_path}: missing {field}")
+
+    def test_router_is_compact_and_routes_to_one_operation_guide(self):
+        skill_text = self.read_required(SKILL_FILE)
+        self.assertLess(len(skill_text.splitlines()), 500)
+        self.assertIn("## Quick reference", skill_text)
+        self.assertIn("## Routing flow", skill_text)
+        self.assertIn("## Example", skill_text)
+        self.assertIn("## Common mistakes", skill_text)
+        self.assertRegex(
+            skill_text,
+            r"Read exactly one operation guide before acting",
+        )
 
     def test_eval_artifacts_and_ids_are_valid(self):
         observations_path = PACKAGE_ROOT / "evals" / "baseline-observations.md"
