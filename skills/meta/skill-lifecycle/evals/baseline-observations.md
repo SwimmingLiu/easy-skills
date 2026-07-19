@@ -138,20 +138,22 @@ These responses were produced after the `skill-lifecycle` package was complete. 
 
 ### Raw observed response
 
-> 已发现同名且能力匹配的 Skill，并且已经全局安装：
->
-> [SKILL.md](/Users/swimmingliu/.codex/skills/summarize-interview/SKILL.md)
->
-> - 状态：`researched`
-> - 决策：`use`
-> - 证据：SHA-256 `5a2a0c8257f5e2f7ef098d4531acbbcd3087bb07bb87d4cabfe1a97ef1ad037c`
-> - 能力：总结客户访谈，输出 JTBD、满意度信号、关键洞察和行动项
-> - 风险：未声明许可证；包含延伸阅读链接，但没有脚本、依赖或自动联网命令
-> - 测试：按要求未运行
-> - 变更：无。没有重复创建或覆盖全局安装
-> - 下一操作：`none`
->
-> 它现在可以直接用于总结客户访谈。
+```text
+已发现同名且能力匹配的 Skill，并且已经全局安装：
+
+[SKILL.md](/Users/swimmingliu/.codex/skills/summarize-interview/SKILL.md)
+
+- 状态：`researched`
+- 决策：`use`
+- 证据：SHA-256 `5a2a0c8257f5e2f7ef098d4531acbbcd3087bb07bb87d4cabfe1a97ef1ad037c`
+- 能力：总结客户访谈，输出 JTBD、满意度信号、关键洞察和行动项
+- 风险：未声明许可证；包含延伸阅读链接，但没有脚本、依赖或自动联网命令
+- 测试：按要求未运行
+- 变更：无。没有重复创建或覆盖全局安装
+- 下一操作：`none`
+
+它现在可以直接用于总结客户访谈。
+```
 
 ### Assessment
 

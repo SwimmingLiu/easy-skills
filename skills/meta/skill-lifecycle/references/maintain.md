@@ -39,4 +39,3 @@ Keep inventory and comparison read-only. Ask the user to confirm before fetching
 - Apply Vercel Skills CLI source/ref/path/hash tracking for reproducible identity and update comparison.
 - Apply Agent Skills package identity and host-aware compatibility checks.
 - Reject stocktake's weak usage inference: never retire from mtime, a single read log, or absent telemetry alone.
-

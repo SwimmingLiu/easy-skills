@@ -39,4 +39,3 @@ Ask the user to confirm before overwriting an existing package, adding dependenc
 - Apply Anthropic `skill-creator`'s intent capture, realistic tasks, baseline comparison, and iterative feedback.
 - Apply OpenAI `skill-creator`'s initialization, validation, progressive disclosure, imperative writing, and forward testing.
 - Apply Superpowers `writing-skills` RED-GREEN-REFACTOR: observe failure first, add the minimum rule, then test for compliance and overfitting.
-

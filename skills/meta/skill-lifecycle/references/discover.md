@@ -40,4 +40,3 @@ Keep discovery read-only. Ask the user to confirm before installing, cloning int
 - Apply Vercel Skills CLI's reproducible source/ref/path/hash identity.
 - Apply Agent Skills structure and metadata as the unit of inspection.
 - Add compose, licensing, host compatibility, and supply-chain evidence; use Stars only to prioritize inspection.
-

@@ -39,4 +39,3 @@ Ask the user to confirm evaluations that execute untrusted code, access real cre
 - Apply Anthropic `skill-creator`'s paired with-Skill/baseline runs, objective assertions, qualitative feedback, time, and token aggregation.
 - Apply ECC `skill-comply`'s supportive, neutral, competing, and ordering scenarios without binding the core workflow to one CLI or LLM grader.
 - Prefer deterministic checks and case evidence; do not claim statistical significance from a small sample.
-

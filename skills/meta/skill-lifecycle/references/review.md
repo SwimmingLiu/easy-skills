@@ -39,4 +39,3 @@ Review is read-only. Ask the user to confirm the modification plan before routin
 - Apply Cisco Skill Scanner's static, data-flow, trigger-overlap, SARIF, and CI evidence as the primary external scanning model.
 - Use NVIDIA SkillSpector as an independent strict-path cross-check, while retaining human inspection of privileged paths.
 - Do not treat zero scanner findings or an unbenchmarked optimizer claim as proof of safety or task quality.
-

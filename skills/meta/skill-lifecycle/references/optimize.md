@@ -39,4 +39,3 @@ Ask the user to confirm every file modification and separately confirm dependenc
 - Apply Anthropic `skill-creator`'s evidence-based generalization, concise prompts, explanation of non-obvious rules, and extraction of repeated deterministic work.
 - Apply Superpowers `writing-skills` regression and anti-overfitting discipline.
 - Reserve Microsoft SkillOpt rollout, reflection, candidate selection, and held-out validation for stable benchmarks; do not auto-accept generated changes in the first version.
-
