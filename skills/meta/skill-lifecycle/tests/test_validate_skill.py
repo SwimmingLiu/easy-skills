@@ -570,9 +570,37 @@ class ValidateSkillCliTest(unittest.TestCase):
                 "```bash\ngit push origin main\n```\n",
                 "High",
             ),
+            "generic-push-mismatch": (
+                "Ask for permission before you push this button.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "remote-push-affirmative": (
+                "Ask for confirmation before pushing changes to the remote.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "Medium",
+            ),
             "cross-sentence-keyword-leak": (
                 "This section documents git push behavior.\n"
                 "Ask for permission before deleting old backups.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "heading-keyword-leak": (
+                "## Git push behavior\n"
+                "Ask for permission before deleting old backups.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "cross-line-affirmative": (
+                "Ask for permission before this\n"
+                "git push.\n\n"
+                "```bash\ngit push origin main\n```\n",
+                "High",
+            ),
+            "cross-line-safe-negation": (
+                "Never execute this git push\n"
+                "before asking for permission.\n\n"
                 "```bash\ngit push origin main\n```\n",
                 "High",
             ),
@@ -590,6 +618,32 @@ class ValidateSkillCliTest(unittest.TestCase):
                 risk = next(
                     item for item in document["findings"]
                     if item["code"] == "RISK_GIT_PUSH"
+                )
+
+                self.assertEqual(risk["severity"], expected)
+
+    def test_credential_disclosure_requires_a_specific_risk_object(self):
+        cases = {
+            "generic-read": (
+                "Ask for permission before you read this guide.\n\n",
+                "High",
+            ),
+            "specific-secret": (
+                "Ask for permission before reading this secret.\n\n",
+                "Medium",
+            ),
+        }
+        for name, (disclosure, expected) in cases.items():
+            with self.subTest(name=name):
+                directory = self.create_skill(
+                    name=f"credential-{name}",
+                    body=disclosure + "```bash\ncat ~/.ssh/id_rsa\n```\n",
+                )
+
+                _, document = self.validate(directory)
+                risk = next(
+                    item for item in document["findings"]
+                    if item["code"] == "RISK_CREDENTIAL_READ"
                 )
 
                 self.assertEqual(risk["severity"], expected)

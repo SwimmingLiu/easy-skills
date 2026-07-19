@@ -51,11 +51,24 @@ SAFE_PREREQUISITE_DISCLOSURE = re.compile(
     re.IGNORECASE | re.DOTALL,
 )
 RISK_DISCLOSURE_TERMS = {
-    "RISK_DESTRUCTIVE_RM": re.compile(r"\b(?:rm|remove|delete)\b", re.I),
-    "RISK_NETWORK_UPLOAD": re.compile(r"\b(?:upload|curl|wget|network)\b", re.I),
-    "RISK_GIT_PUSH": re.compile(r"\b(?:git\s+push|push)\b", re.I),
-    "RISK_GLOBAL_INSTALL": re.compile(r"\b(?:install|npm|pip|package)\b", re.I),
-    "RISK_CREDENTIAL_READ": re.compile(r"\b(?:credential|secret|key|read)\b", re.I),
+    "RISK_DESTRUCTIVE_RM": re.compile(
+        r"\brm\b|\b(?:remove|removing|delete|deleting)\b", re.I
+    ),
+    "RISK_NETWORK_UPLOAD": re.compile(r"\b(?:upload|curl|wget)\b", re.I),
+    "RISK_GIT_PUSH": re.compile(
+        r"\bgit\s+push\b|\bpush(?:ing)?\s+(?:changes?\s+)?to\s+(?:the\s+)?remote\b",
+        re.I,
+    ),
+    "RISK_GLOBAL_INSTALL": re.compile(
+        r"\b(?:npm|pnpm|yarn|pip|pipx)\b.{0,40}\b(?:install|add)\b"
+        r"|\bglobal(?:ly)?\b.{0,20}\b(?:install|package)\b"
+        r"|\b(?:install|add)\b.{0,20}\bglobal(?:ly)?\b",
+        re.I,
+    ),
+    "RISK_CREDENTIAL_READ": re.compile(
+        r"\b(?:credential|secret|token|key|id_rsa|id_ed25519)\b|\.ssh(?:/|\b)",
+        re.I,
+    ),
 }
 RISK_RULES = (
     (
@@ -547,17 +560,22 @@ def command_lines(root, text_files):
 def _has_associated_disclosure(code, file_content, line_number):
     lines = file_content.splitlines()
     start = max(0, line_number - 7)
-    window = " ".join(line.strip() for line in lines[start : line_number - 1])
-    clauses = re.split(r"[.!?;。！？；]+", window)
-    for clause in clauses:
-        if not RISK_DISCLOSURE_TERMS[code].search(clause):
-            continue
-        if SAFE_PREREQUISITE_DISCLOSURE.search(clause):
-            return True
-        if NEGATED_DISCLOSURE.search(clause):
-            continue
-        if DISCLOSURE_PATTERN.search(clause):
-            return True
+    for index in range(start, line_number - 1):
+        line = lines[index]
+        preceding_line_is_negated = (
+            index > start and NEGATED_DISCLOSURE.search(lines[index - 1]) is not None
+        )
+        for clause in re.split(r"[.!?;。！？；]+", line):
+            if not RISK_DISCLOSURE_TERMS[code].search(clause):
+                continue
+            if preceding_line_is_negated:
+                continue
+            if SAFE_PREREQUISITE_DISCLOSURE.search(clause):
+                return True
+            if NEGATED_DISCLOSURE.search(clause):
+                continue
+            if DISCLOSURE_PATTERN.search(clause):
+                return True
     return False
 
 
