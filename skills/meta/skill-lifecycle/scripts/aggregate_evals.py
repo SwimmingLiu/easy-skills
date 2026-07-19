@@ -468,16 +468,17 @@ def _reject_json_constant(value):
 def _load_records(path):
     source = Path(path)
     try:
-        size = source.stat().st_size
-    except OSError:
-        raise
-    if size > MAX_INPUT_BYTES:
-        raise ValidationError(
-            f"input exceeds input limit {MAX_INPUT_BYTES} bytes"
+        with source.open("rb") as handle:
+            raw_document = handle.read(MAX_INPUT_BYTES + 1)
+        if len(raw_document) > MAX_INPUT_BYTES:
+            raise ValidationError(
+                f"input exceeds input limit {MAX_INPUT_BYTES} bytes"
+            )
+        document = json.loads(
+            raw_document.decode("utf-8"), parse_constant=_reject_json_constant
         )
-    try:
-        with source.open(encoding="utf-8") as handle:
-            document = json.load(handle, parse_constant=_reject_json_constant)
+    except ValidationError:
+        raise
     except json.JSONDecodeError as error:
         raise ValidationError(f"invalid JSON: {error.msg}") from error
     except UnicodeDecodeError as error:
@@ -541,6 +542,9 @@ def main(argv=None):
         sys.stdout.write(json_text)
         return 0 if report["decision"]["accepted"] else EXIT_REJECTED
     except ValidationError as error:
+        print(f"validation error: {error}", file=sys.stderr)
+        return EXIT_VALIDATION
+    except (ValueError, OverflowError) as error:
         print(f"validation error: {error}", file=sys.stderr)
         return EXIT_VALIDATION
     except OSError as error:

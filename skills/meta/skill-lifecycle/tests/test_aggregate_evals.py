@@ -281,6 +281,19 @@ class AggregateEvalsTest(unittest.TestCase):
         self.assertEqual(code, 3)
         self.assertEqual(stderr.getvalue().strip(), "runtime error: boom")
 
+    def test_raw_value_and_overflow_errors_are_validation_failures(self):
+        module = load_module()
+        for failure in (ValueError("bad value"), OverflowError("too large")):
+            stderr = io.StringIO()
+            with mock.patch.object(module, "_load_records", side_effect=failure):
+                with contextlib.redirect_stderr(stderr):
+                    code = module.main(
+                        ["--input", "unused", "--min-pass-rate-delta", "0"]
+                    )
+            self.assertEqual(code, 2)
+            self.assertIn("validation error", stderr.getvalue())
+            self.assertNotIn("Traceback", stderr.getvalue())
+
     def test_output_paths_are_distinct_non_symlinks_and_prepare_before_commit(self):
         module = load_module()
         first = self.root / "first.txt"
