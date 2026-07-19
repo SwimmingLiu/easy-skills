@@ -1,10 +1,14 @@
 import importlib.util
+import contextlib
+import io
 import json
+import os
 import subprocess
 import sys
 import tempfile
 import unittest
 from pathlib import Path
+from unittest import mock
 
 
 PACKAGE_ROOT = Path(__file__).resolve().parents[1]
@@ -28,8 +32,8 @@ class AggregateEvalsTest(unittest.TestCase):
                 "case_id": "case-b",
                 "variant": "candidate",
                 "assertions": [
-                    {"name": "quality", "passed": True},
-                    {"name": "safe", "passed": True, "prohibited_action": True},
+                    {"id": "quality", "passed": True},
+                    {"id": "safe", "passed": True, "prohibited_action": True},
                 ],
                 "duration_ms": 140,
                 "total_tokens": 120,
@@ -37,21 +41,30 @@ class AggregateEvalsTest(unittest.TestCase):
             {
                 "case_id": "case-a",
                 "variant": "baseline",
-                "assertions": [False, True],
+                "assertions": [
+                    {"id": "quality", "passed": False},
+                    {"id": "safe", "passed": True, "prohibited_action": True},
+                ],
                 "duration_ms": 100,
                 "total_tokens": 100,
             },
             {
                 "case_id": "case-a",
                 "variant": "candidate",
-                "assertions": [True, True],
+                "assertions": [
+                    {"id": "quality", "passed": True},
+                    {"id": "safe", "passed": True, "prohibited_action": True},
+                ],
                 "duration_ms": 120,
                 "total_tokens": 90,
             },
             {
                 "case_id": "case-b",
                 "variant": "baseline",
-                "assertions": [False, False],
+                "assertions": [
+                    {"id": "quality", "passed": False},
+                    {"id": "safe", "passed": False, "prohibited_action": True},
+                ],
                 "duration_ms": 200,
                 "total_tokens": 200,
             },
@@ -101,10 +114,10 @@ class AggregateEvalsTest(unittest.TestCase):
     def test_rejects_invalid_record_and_assertion_shapes(self):
         module = load_module()
         invalid_records = [
-            [{"case_id": "x", "variant": "other", "assertions": [True], "duration_ms": 1, "total_tokens": 1}],
+            [{"case_id": "x", "variant": "other", "assertions": [{"id": "a", "passed": True}], "duration_ms": 1, "total_tokens": 1}],
             [{"case_id": "x", "variant": "candidate", "assertions": [], "duration_ms": 1, "total_tokens": 1}],
-            [{"case_id": "x", "variant": "candidate", "assertions": [{"passed": "yes"}], "duration_ms": 1, "total_tokens": 1}],
-            [{"case_id": "x", "variant": "candidate", "assertions": [True], "duration_ms": -1, "total_tokens": 1}],
+            [{"case_id": "x", "variant": "candidate", "assertions": [{"id": "a", "passed": "yes"}], "duration_ms": 1, "total_tokens": 1}],
+            [{"case_id": "x", "variant": "candidate", "assertions": [{"id": "a", "passed": True}], "duration_ms": -1, "total_tokens": 1}],
         ]
         for records in invalid_records:
             with self.subTest(records=records), self.assertRaises(module.ValidationError):
@@ -172,6 +185,188 @@ class AggregateEvalsTest(unittest.TestCase):
         missing = self.run_cli("--input", self.root / "absent.json", "--min-pass-rate-delta", "0")
         self.assertEqual(missing.returncode, 3)
         self.assertIn("runtime error", missing.stderr.lower())
+
+    def test_assertions_have_strict_unique_ids_and_matching_pair_sets(self):
+        module = load_module()
+        invalid_assertions = (
+            [True],
+            [{"passed": True}],
+            [{"id": "a", "passed": True, "unknown": False}],
+            [{"id": "a", "passed": False, "prohibited_actions": True}],
+            [{"id": "a", "passed": True}, {"id": "a", "passed": False}],
+        )
+        for assertions in invalid_assertions:
+            records = json.loads(json.dumps(self.records))
+            records[0]["assertions"] = assertions
+            with self.subTest(assertions=assertions), self.assertRaises(module.ValidationError):
+                module.aggregate(records, min_pass_rate_delta=0)
+
+        mismatched = json.loads(json.dumps(self.records))
+        mismatched[0]["assertions"][0]["id"] = "different"
+        with self.assertRaisesRegex(module.ValidationError, "assertion ids"):
+            module.aggregate(mismatched, min_pass_rate_delta=0)
+
+    def test_rejects_markdown_injection_and_enforces_resource_limits(self):
+        module = load_module()
+        for unsafe in ("line\nbreak", "cell|break", "line\rbreak"):
+            records = json.loads(json.dumps(self.records))
+            records[0]["case_id"] = unsafe
+            records[3]["case_id"] = unsafe
+            with self.subTest(case_id=unsafe), self.assertRaises(module.ValidationError):
+                module.aggregate(records, min_pass_rate_delta=0)
+
+        too_many_assertions = json.loads(json.dumps(self.records))
+        too_many_assertions[0]["assertions"] = [
+            {"id": f"a-{index}", "passed": True}
+            for index in range(module.MAX_ASSERTIONS_PER_RECORD + 1)
+        ]
+        with self.assertRaisesRegex(module.ValidationError, "assertions limit"):
+            module.aggregate(too_many_assertions, min_pass_rate_delta=0)
+
+        too_many_cases = []
+        for index in range(module.MAX_CASES + 1):
+            for variant in ("baseline", "candidate"):
+                too_many_cases.append(
+                    {
+                        "case_id": f"case-{index}",
+                        "variant": variant,
+                        "assertions": [{"id": "a", "passed": True}],
+                        "duration_ms": 1,
+                        "total_tokens": 1,
+                    }
+                )
+        with self.assertRaisesRegex(module.ValidationError, "case limit"):
+            module.aggregate(too_many_cases, min_pass_rate_delta=0)
+
+        long_string = "x" * (module.MAX_STRING_LENGTH + 1)
+        too_long = json.loads(json.dumps(self.records))
+        too_long[0]["case_id"] = long_string
+        too_long[3]["case_id"] = long_string
+        with self.assertRaisesRegex(module.ValidationError, "string length limit"):
+            module.aggregate(too_long, min_pass_rate_delta=0)
+
+    def test_cli_rejects_oversized_input_output_and_huge_json_numbers(self):
+        module = load_module()
+        oversized = self.root / "oversized.json"
+        oversized.write_bytes(b" " * (module.MAX_INPUT_BYTES + 1))
+        result = self.run_cli("--input", oversized, "--min-pass-rate-delta", "0")
+        self.assertEqual(result.returncode, 2)
+        self.assertNotIn("Traceback", result.stderr)
+
+        huge_integer = self.root / "huge.json"
+        huge_integer.write_text("[" + "9" * 5000 + "]", encoding="utf-8")
+        result = self.run_cli("--input", huge_integer, "--min-pass-rate-delta", "0")
+        self.assertEqual(result.returncode, 2)
+        self.assertNotIn("Traceback", result.stderr)
+
+        input_path = self.write_input()
+        with mock.patch.object(module, "MAX_OUTPUT_BYTES", 10):
+            stderr = io.StringIO()
+            with contextlib.redirect_stderr(stderr):
+                code = module.main(["--input", str(input_path), "--min-pass-rate-delta", "0"])
+        self.assertEqual(code, 2)
+        self.assertIn("output limit", stderr.getvalue())
+
+        help_result = self.run_cli("--help")
+        self.assertEqual(help_result.returncode, 0)
+        self.assertIn(f"input bytes: {module.MAX_INPUT_BYTES}", help_result.stdout)
+        self.assertIn(f"cases: {module.MAX_CASES}", help_result.stdout)
+
+    def test_unexpected_exceptions_are_runtime_failures_without_traceback(self):
+        module = load_module()
+        stderr = io.StringIO()
+        with mock.patch.object(module, "_load_records", side_effect=RuntimeError("boom")):
+            with contextlib.redirect_stderr(stderr):
+                code = module.main(["--input", "unused", "--min-pass-rate-delta", "0"])
+        self.assertEqual(code, 3)
+        self.assertEqual(stderr.getvalue().strip(), "runtime error: boom")
+
+    def test_output_paths_are_distinct_non_symlinks_and_prepare_before_commit(self):
+        module = load_module()
+        first = self.root / "first.txt"
+        first.write_text("old-first", encoding="utf-8")
+        second_target = self.root / "target.txt"
+        second_target.write_text("old-second", encoding="utf-8")
+        second = self.root / "second.txt"
+        try:
+            second.symlink_to(second_target)
+        except (OSError, NotImplementedError):
+            self.skipTest("symlinks unavailable")
+
+        with self.assertRaises(module.ValidationError):
+            module.write_reports(first, "new", first, "new")
+        with self.assertRaises(OSError):
+            module.write_reports(first, "new-first", second, "new-second")
+        self.assertEqual(first.read_text(encoding="utf-8"), "old-first")
+        self.assertEqual(second_target.read_text(encoding="utf-8"), "old-second")
+
+    def test_dual_output_rolls_back_first_when_second_replace_fails(self):
+        module = load_module()
+        first = self.root / "first.json"
+        second = self.root / "second.md"
+        first.write_text("old-first", encoding="utf-8")
+        second.write_text("old-second", encoding="utf-8")
+        real_replace = os.replace
+        commit_calls = 0
+
+        def fail_second_commit(source, destination):
+            nonlocal commit_calls
+            if Path(source).name.endswith(".new"):
+                commit_calls += 1
+                if commit_calls == 2:
+                    raise OSError("injected second replace failure")
+            return real_replace(source, destination)
+
+        with mock.patch.object(module.os, "replace", side_effect=fail_second_commit):
+            with self.assertRaisesRegex(OSError, "second replace"):
+                module.write_reports(first, "new-first", second, "new-second")
+
+        self.assertEqual(first.read_text(encoding="utf-8"), "old-first")
+        self.assertEqual(second.read_text(encoding="utf-8"), "old-second")
+        self.assertFalse(any(self.root.glob(".*.new")))
+        self.assertFalse(any(self.root.glob(".*.backup")))
+
+    def test_committed_outputs_report_uncertain_directory_durability(self):
+        module = load_module()
+        first = self.root / "first.json"
+        second = self.root / "second.md"
+
+        # Use the module's directory-sync helper as the stable injection point.
+        with mock.patch.object(module, "_fsync_directory", side_effect=OSError("injected directory sync failure")):
+            durable = module.write_reports(first, "new-first", second, "new-second")
+        self.assertFalse(durable)
+        self.assertEqual(first.read_text(encoding="utf-8"), "new-first")
+        self.assertEqual(second.read_text(encoding="utf-8"), "new-second")
+
+    def test_cli_warns_when_reports_are_committed_but_not_directory_durable(self):
+        module = load_module()
+        input_path = self.write_input()
+        first = self.root / "first.json"
+        second = self.root / "second.md"
+        stdout = io.StringIO()
+        stderr = io.StringIO()
+        with mock.patch.object(
+            module,
+            "_fsync_directory",
+            side_effect=OSError("injected directory sync failure"),
+        ):
+            with contextlib.redirect_stdout(stdout), contextlib.redirect_stderr(stderr):
+                code = module.main(
+                    [
+                        "--input",
+                        str(input_path),
+                        "--min-pass-rate-delta",
+                        "0",
+                        "--json-output",
+                        str(first),
+                        "--markdown-output",
+                        str(second),
+                    ]
+                )
+        self.assertEqual(code, 0)
+        self.assertTrue(first.exists())
+        self.assertTrue(second.exists())
+        self.assertIn("committed but directory durability is uncertain", stderr.getvalue())
 
 
 if __name__ == "__main__":

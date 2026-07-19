@@ -4,8 +4,11 @@
 import argparse
 import json
 import math
+import os
+import shutil
 import statistics
 import sys
+import tempfile
 from pathlib import Path
 
 
@@ -13,6 +16,12 @@ EXIT_REJECTED = 1
 EXIT_VALIDATION = 2
 EXIT_RUNTIME = 3
 VARIANTS = ("baseline", "candidate")
+ASSERTION_FIELDS = frozenset({"id", "passed", "prohibited_action"})
+MAX_INPUT_BYTES = 5 * 1024 * 1024
+MAX_CASES = 1_000
+MAX_ASSERTIONS_PER_RECORD = 500
+MAX_STRING_LENGTH = 256
+MAX_OUTPUT_BYTES = 8 * 1024 * 1024
 
 
 class ValidationError(ValueError):
@@ -22,7 +31,10 @@ class ValidationError(ValueError):
 def _finite_number(value, label, *, minimum=None):
     if isinstance(value, bool) or not isinstance(value, (int, float)):
         raise ValidationError(f"{label} must be a number")
-    number = float(value)
+    try:
+        number = float(value)
+    except (OverflowError, ValueError) as error:
+        raise ValidationError(f"{label} must be a finite number") from error
     if not math.isfinite(number):
         raise ValidationError(f"{label} must be finite")
     if minimum is not None and number < minimum:
@@ -30,42 +42,64 @@ def _finite_number(value, label, *, minimum=None):
     return number
 
 
+def _bounded_string(value, label):
+    if not isinstance(value, str) or not value.strip():
+        raise ValidationError(f"{label} must be a non-empty string")
+    if len(value) > MAX_STRING_LENGTH:
+        raise ValidationError(
+            f"{label} exceeds string length limit {MAX_STRING_LENGTH}"
+        )
+    return value
+
+
 def _assertion_result(assertion, label):
-    if isinstance(assertion, bool):
-        return assertion, False
     if not isinstance(assertion, dict):
-        raise ValidationError(f"{label} must be a boolean or object")
+        raise ValidationError(f"{label} must be an object")
+    unknown = set(assertion) - ASSERTION_FIELDS
+    missing = {"id", "passed"} - set(assertion)
+    if unknown:
+        raise ValidationError(f"{label} has unknown fields: {', '.join(sorted(unknown))}")
+    if missing:
+        raise ValidationError(f"{label} is missing fields: {', '.join(sorted(missing))}")
+    assertion_id = _bounded_string(assertion["id"], f"{label}.id")
     passed = assertion.get("passed")
     if not isinstance(passed, bool):
         raise ValidationError(f"{label}.passed must be a boolean")
     prohibited = assertion.get("prohibited_action", False)
     if not isinstance(prohibited, bool):
         raise ValidationError(f"{label}.prohibited_action must be a boolean")
-    return passed, prohibited
+    return assertion_id, passed, prohibited
 
 
 def _normalize_record(record, index):
     label = f"record {index}"
     if not isinstance(record, dict):
         raise ValidationError(f"{label} must be an object")
-    case_id = record.get("case_id")
-    if not isinstance(case_id, str) or not case_id.strip():
-        raise ValidationError(f"{label}.case_id must be a non-empty string")
+    case_id = _bounded_string(record.get("case_id"), f"{label}.case_id")
+    if "|" in case_id or "\n" in case_id or "\r" in case_id:
+        raise ValidationError(f"{label}.case_id contains Markdown control characters")
     variant = record.get("variant")
     if variant not in VARIANTS:
         raise ValidationError(f"{label}.variant must be candidate or baseline")
     assertions = record.get("assertions")
     if not isinstance(assertions, list) or not assertions:
         raise ValidationError(f"{label}.assertions must be a non-empty list")
+    if len(assertions) > MAX_ASSERTIONS_PER_RECORD:
+        raise ValidationError(
+            f"{label} exceeds assertions limit {MAX_ASSERTIONS_PER_RECORD}"
+        )
     results = [
         _assertion_result(assertion, f"{label}.assertions[{offset}]")
         for offset, assertion in enumerate(assertions)
     ]
     duration = _finite_number(record.get("duration_ms"), f"{label}.duration_ms", minimum=0)
     tokens = _finite_number(record.get("total_tokens"), f"{label}.total_tokens", minimum=0)
-    passed = sum(result for result, _ in results)
+    assertion_ids = [assertion_id for assertion_id, _, _ in results]
+    if len(set(assertion_ids)) != len(assertion_ids):
+        raise ValidationError(f"{label}.assertions contains duplicate ids")
+    passed = sum(result for _, result, _ in results)
     prohibited_failures = sum(
-        1 for result, prohibited in results if prohibited and not result
+        1 for _, result, prohibited in results if prohibited and not result
     )
     return {
         "case_id": case_id,
@@ -75,6 +109,7 @@ def _normalize_record(record, index):
         "total_tokens": tokens,
         "assertions_passed": passed,
         "assertions_total": len(results),
+        "assertion_ids": sorted(assertion_ids),
         "prohibited_action_failures": prohibited_failures,
     }
 
@@ -116,6 +151,8 @@ def aggregate(
     """Validate paired records, aggregate metrics, and return a decision report."""
     if not isinstance(records, list) or not records:
         raise ValidationError("records must be a non-empty list")
+    if len(records) > MAX_CASES * len(VARIANTS):
+        raise ValidationError(f"records exceed case limit {MAX_CASES}")
     min_delta = _finite_number(min_pass_rate_delta, "min_pass_rate_delta")
     max_duration = None
     if max_duration_regression_ms is not None:
@@ -140,6 +177,12 @@ def aggregate(
         for variant in VARIANTS:
             if variant not in pair:
                 raise ValidationError(f"case {case_id} is missing {variant} record")
+        if pair["baseline"]["assertion_ids"] != pair["candidate"]["assertion_ids"]:
+            raise ValidationError(
+                f"case {case_id} baseline/candidate assertion ids do not match"
+            )
+    if len(pairs) > MAX_CASES:
+        raise ValidationError(f"case limit {MAX_CASES} exceeded")
 
     grouped = {
         variant: [pairs[case_id][variant] for case_id in sorted(pairs)]
@@ -259,14 +302,188 @@ def render_markdown(report):
     return "\n".join(lines) + "\n"
 
 
-def _load_records(path):
+def _validate_output_budget(*texts):
+    estimated_bytes = sum(len(text.encode("utf-8")) for text in texts)
+    if estimated_bytes > MAX_OUTPUT_BYTES:
+        raise ValidationError(
+            f"estimated output exceeds output limit {MAX_OUTPUT_BYTES} bytes"
+        )
+
+
+def _canonical_output_path(path):
+    absolute = Path(os.path.abspath(os.fspath(path)))
+    return absolute.parent.resolve(strict=False) / absolute.name
+
+
+def _reject_output_target(path):
+    if path.is_symlink():
+        raise OSError(f"refusing symlink output path: {path}")
+    if path.exists() and not path.is_file():
+        raise OSError(f"output path is not a regular file: {path}")
+
+
+def _write_sibling_file(destination, text, suffix):
+    temporary_name = None
     try:
-        with Path(path).open(encoding="utf-8") as handle:
-            document = json.load(handle)
+        with tempfile.NamedTemporaryFile(
+            mode="w",
+            encoding="utf-8",
+            dir=destination.parent,
+            prefix=f".{destination.name}.",
+            suffix=suffix,
+            delete=False,
+        ) as handle:
+            temporary_name = handle.name
+            handle.write(text)
+            handle.flush()
+            os.fsync(handle.fileno())
+        return Path(temporary_name)
+    except BaseException:
+        if temporary_name is not None:
+            try:
+                os.unlink(temporary_name)
+            except FileNotFoundError:
+                pass
+        raise
+
+
+def _backup_destination(destination):
+    if not destination.exists():
+        return None
+    backup_name = None
+    try:
+        with destination.open("rb") as source, tempfile.NamedTemporaryFile(
+            mode="wb",
+            dir=destination.parent,
+            prefix=f".{destination.name}.",
+            suffix=".backup",
+            delete=False,
+        ) as backup:
+            backup_name = backup.name
+            shutil.copyfileobj(source, backup)
+            backup.flush()
+            os.fsync(backup.fileno())
+        return Path(backup_name)
+    except BaseException:
+        if backup_name is not None:
+            try:
+                os.unlink(backup_name)
+            except FileNotFoundError:
+                pass
+        raise
+
+
+def _fsync_directory(directory):
+    descriptor = os.open(directory, os.O_RDONLY)
+    try:
+        os.fsync(descriptor)
+    finally:
+        os.close(descriptor)
+
+
+def _cleanup_path(path):
+    if path is None:
+        return
+    try:
+        os.unlink(path)
+    except FileNotFoundError:
+        pass
+
+
+def write_reports(json_path, json_text, markdown_path=None, markdown_text=None):
+    """Transactionally replace requested reports; return directory durability."""
+    requested = []
+    if json_path is not None:
+        requested.append((_canonical_output_path(json_path), json_text))
+    if markdown_path is not None:
+        requested.append((_canonical_output_path(markdown_path), markdown_text))
+    if not requested:
+        return True
+    if any(not isinstance(text, str) for _, text in requested):
+        raise ValidationError("every requested output requires text")
+    destinations = [destination for destination, _ in requested]
+    if len(set(destinations)) != len(destinations):
+        raise ValidationError("JSON and Markdown output paths must be distinct")
+
+    # Validate every final target before preparing or committing any replacement.
+    for destination in destinations:
+        _reject_output_target(destination)
+        destination.parent.mkdir(parents=True, exist_ok=True)
+
+    prepared = []
+    backups = {}
+    committed = []
+    try:
+        for destination, text in requested:
+            prepared.append(
+                (destination, _write_sibling_file(destination, text, ".new"))
+            )
+        for destination in destinations:
+            _reject_output_target(destination)
+            backups[destination] = _backup_destination(destination)
+        try:
+            for destination, temporary in prepared:
+                _reject_output_target(destination)
+                os.replace(temporary, destination)
+                committed.append(destination)
+        except BaseException as commit_error:
+            rollback_errors = []
+            for destination in reversed(committed):
+                backup = backups[destination]
+                try:
+                    if backup is None:
+                        os.unlink(destination)
+                    else:
+                        os.replace(backup, destination)
+                        backups[destination] = None
+                except OSError as rollback_error:
+                    rollback_errors.append(f"{destination}: {rollback_error}")
+            if rollback_errors:
+                raise OSError(
+                    f"output commit failed ({commit_error}); rollback also failed: "
+                    + "; ".join(rollback_errors)
+                ) from commit_error
+            raise
+
+        for backup in backups.values():
+            _cleanup_path(backup)
+        durable = True
+        for directory in sorted({path.parent for path in destinations}, key=str):
+            try:
+                _fsync_directory(directory)
+            except OSError:
+                durable = False
+        return durable
+    finally:
+        for _, temporary in prepared:
+            _cleanup_path(temporary)
+        for backup in backups.values():
+            _cleanup_path(backup)
+
+
+def _reject_json_constant(value):
+    raise ValueError(f"non-finite JSON constant {value}")
+
+
+def _load_records(path):
+    source = Path(path)
+    try:
+        size = source.stat().st_size
+    except OSError:
+        raise
+    if size > MAX_INPUT_BYTES:
+        raise ValidationError(
+            f"input exceeds input limit {MAX_INPUT_BYTES} bytes"
+        )
+    try:
+        with source.open(encoding="utf-8") as handle:
+            document = json.load(handle, parse_constant=_reject_json_constant)
     except json.JSONDecodeError as error:
         raise ValidationError(f"invalid JSON: {error.msg}") from error
     except UnicodeDecodeError as error:
         raise ValidationError("input must be UTF-8 JSON") from error
+    except (ValueError, OverflowError) as error:
+        raise ValidationError(f"invalid JSON value: {error}") from error
     if isinstance(document, dict):
         if set(document) != {"records"}:
             raise ValidationError("input object must contain only records")
@@ -275,7 +492,18 @@ def _load_records(path):
 
 
 def build_parser():
-    parser = argparse.ArgumentParser(description=__doc__)
+    parser = argparse.ArgumentParser(
+        description=__doc__,
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        epilog=(
+            "Resource limits:\n"
+            f"  input bytes: {MAX_INPUT_BYTES}\n"
+            f"  cases: {MAX_CASES}\n"
+            f"  assertions per record: {MAX_ASSERTIONS_PER_RECORD}\n"
+            f"  string characters: {MAX_STRING_LENGTH}\n"
+            f"  estimated output bytes: {MAX_OUTPUT_BYTES}"
+        ),
+    )
     parser.add_argument("--input", required=True, help="JSON records file")
     parser.add_argument("--min-pass-rate-delta", required=True, type=float)
     parser.add_argument("--max-duration-regression-ms", type=float)
@@ -297,11 +525,18 @@ def main(argv=None):
             max_token_regression=arguments.max_token_regression,
         )
         json_text = deterministic_json(report)
-        if arguments.json_output:
-            Path(arguments.json_output).write_text(json_text, encoding="utf-8")
-        if arguments.markdown_output:
-            Path(arguments.markdown_output).write_text(
-                render_markdown(report), encoding="utf-8"
+        markdown_text = render_markdown(report)
+        _validate_output_budget(json_text, markdown_text)
+        durable = write_reports(
+            arguments.json_output,
+            json_text,
+            arguments.markdown_output,
+            markdown_text,
+        )
+        if not durable:
+            print(
+                "warning: outputs committed but directory durability is uncertain",
+                file=sys.stderr,
             )
         sys.stdout.write(json_text)
         return 0 if report["decision"]["accepted"] else EXIT_REJECTED
@@ -309,6 +544,9 @@ def main(argv=None):
         print(f"validation error: {error}", file=sys.stderr)
         return EXIT_VALIDATION
     except OSError as error:
+        print(f"runtime error: {error}", file=sys.stderr)
+        return EXIT_RUNTIME
+    except Exception as error:
         print(f"runtime error: {error}", file=sys.stderr)
         return EXIT_RUNTIME
 
