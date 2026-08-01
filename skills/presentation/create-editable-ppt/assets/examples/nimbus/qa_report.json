@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-18T18:31:33.011Z",
+  "mode": "semantic",
+  "export_ready": true,
+  "summary": {
+    "blocking": 0,
+    "degraded": 0,
+    "warning": 1
+  },
+  "slides": [
+    {
+      "id": "s01",
+      "status": "ready",
+      "findings": []
+    },
+    {
+      "id": "s02",
+      "status": "ready",
+      "findings": []
+    },
+    {
+      "id": "s03",
+      "status": "ready",
+      "findings": [
+        "image.placeholder.approved"
+      ]
+    },
+    {
+      "id": "s04",
+      "status": "ready",
+      "findings": []
+    },
+    {
+      "id": "s05",
+      "status": "ready",
+      "findings": []
+    },
+    {
+      "id": "s06",
+      "status": "ready",
+      "findings": []
+    }
+  ],
+  "findings": [
+    {
+      "code": "image.placeholder.approved",
+      "severity": "warning",
+      "slide_id": "s03",
+      "message": "An approved image placeholder remains in this slide.",
+      "asset_id": "product-shot"
+    }
+  ]
+}

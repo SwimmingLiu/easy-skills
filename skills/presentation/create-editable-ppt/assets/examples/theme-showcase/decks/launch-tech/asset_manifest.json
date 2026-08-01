@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "assets": [
+    {
+      "id": "cover-city",
+      "path": "../../media/city.jpg",
+      "source": "search",
+      "purpose": "封面城市与网络尺度意象",
+      "fact_bearing": false,
+      "license": "Unsplash License",
+      "source_url": "https://unsplash.com/photos/-icmOdYWXuQ",
+      "author": "Kevin Young",
+      "alt": "夕阳下的城市天际线"
+    },
+    {
+      "id": "workbench",
+      "path": "../../media/workbench.jpg",
+      "source": "search",
+      "purpose": "知识工作台场景",
+      "fact_bearing": false,
+      "license": "Unsplash License",
+      "source_url": "https://unsplash.com/photos/ICW6QYOcdlg",
+      "author": "Galymzhan Abdugalimov",
+      "alt": "笔记本电脑与纸质笔记组成的工作台"
+    },
+    {
+      "id": "focus",
+      "path": "../../media/focus.jpg",
+      "source": "search",
+      "purpose": "专注行动场景",
+      "fact_bearing": false,
+      "license": "Unsplash License",
+      "source_url": "https://unsplash.com/photos/6PF6DaiWz48",
+      "author": "Rayi Christian Wicaksono",
+      "alt": "黑白键盘、咖啡杯与手部细节"
+    }
+  ]
+}

@@ -1,0 +1,252 @@
+{
+  "schema_version": 1,
+  "viewport": {
+    "desktop": [
+      1600,
+      1000
+    ],
+    "mobile": [
+      390,
+      844
+    ]
+  },
+  "findings": [
+    {
+      "surface": "gallery-desktop",
+      "cards": 24,
+      "images": [
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        },
+        {
+          "complete": true,
+          "width": 1192
+        }
+      ],
+      "overflow": false
+    },
+    {
+      "surface": "gallery-mobile",
+      "overflow": false,
+      "cards": 24
+    },
+    {
+      "surface": "deck-business-minimal",
+      "slides": 3,
+      "active": 1,
+      "imageWidth": 1192,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "bundle-business-minimal",
+      "slides": 3,
+      "imageWidth": 1192,
+      "embedded": true,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "deck-editorial",
+      "slides": 3,
+      "active": 1,
+      "imageWidth": 1192,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "bundle-editorial",
+      "slides": 3,
+      "imageWidth": 1192,
+      "embedded": true,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "deck-swiss-grid",
+      "slides": 3,
+      "active": 1,
+      "imageWidth": 1192,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "bundle-swiss-grid",
+      "slides": 3,
+      "imageWidth": 1192,
+      "embedded": true,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "deck-launch-tech",
+      "slides": 3,
+      "active": 1,
+      "imageWidth": 1192,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "bundle-launch-tech",
+      "slides": 3,
+      "imageWidth": 1192,
+      "embedded": true,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "deck-data-consulting",
+      "slides": 3,
+      "active": 1,
+      "imageWidth": 1192,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "bundle-data-consulting",
+      "slides": 3,
+      "imageWidth": 1192,
+      "embedded": true,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "deck-academic",
+      "slides": 3,
+      "active": 1,
+      "imageWidth": 1192,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "bundle-academic",
+      "slides": 3,
+      "imageWidth": 1192,
+      "embedded": true,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "deck-brand-bold",
+      "slides": 3,
+      "active": 1,
+      "imageWidth": 1192,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "bundle-brand-bold",
+      "slides": 3,
+      "imageWidth": 1192,
+      "embedded": true,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "deck-premium-dark",
+      "slides": 3,
+      "active": 1,
+      "imageWidth": 1192,
+      "overflow": false,
+      "navigation": "pass"
+    },
+    {
+      "surface": "bundle-premium-dark",
+      "slides": 3,
+      "imageWidth": 1192,
+      "embedded": true,
+      "overflow": false,
+      "navigation": "pass"
+    }
+  ],
+  "blocking": []
+}

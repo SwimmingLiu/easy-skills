@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Image PPT"
+  short_description: "Generate concise image-first presentations with review gates"
+  default_prompt: "Use $create-image-ppt to turn my material into a concise, image-first presentation."

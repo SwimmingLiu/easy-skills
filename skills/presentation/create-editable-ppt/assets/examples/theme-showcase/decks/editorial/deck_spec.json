@@ -1,0 +1,134 @@
+{
+  "schema_version": 1,
+  "revision": 1,
+  "title": "AI 原生知识工作流",
+  "audience": "产品团队、知识工作者与组织管理者",
+  "purpose": "解释 AI 原生知识工作流的核心变化与行动路径",
+  "language": "zh-CN",
+  "canvas": "16:9",
+  "density": "speaker-led",
+  "theme": {
+    "family": "editorial",
+    "variant": "paper"
+  },
+  "slides": [
+    {
+      "id": "s01",
+      "role": "cover",
+      "claim": "AI 原生知识工作流",
+      "layout": "left",
+      "props": {
+        "eyebrow": "Knowledge Work / 2026",
+        "subtitle": "把散落信息变成持续可用的判断",
+        "meta": "产品与方法论分享",
+        "footer": "KNOWLEDGE WORKFLOW",
+        "image": "cover-city"
+      },
+      "evidence": [],
+      "media": [
+        "cover-city"
+      ],
+      "speaker_notes": "建立主题：重点不是保存更多，而是让上下文持续可用。"
+    },
+    {
+      "id": "s02",
+      "role": "statement",
+      "claim": "信息更多，理解却更碎片化",
+      "layout": "points",
+      "props": {
+        "points": [
+          "文件在不同工具间漂移",
+          "结论和来源逐渐分离",
+          "行动依赖短期记忆"
+        ],
+        "footer": "WHY NOW"
+      },
+      "evidence": [],
+      "media": [],
+      "speaker_notes": "只陈述常见工作现象，不使用未经来源支持的量化数据。"
+    },
+    {
+      "id": "s03",
+      "role": "image-hero",
+      "claim": "新的工作台，核心是保留上下文",
+      "layout": "split",
+      "props": {
+        "caption": "任务、资料、判断和行动在同一条线上",
+        "image": "workbench",
+        "footer": "THE WORKSPACE"
+      },
+      "evidence": [],
+      "media": [
+        "workbench"
+      ],
+      "speaker_notes": "图片为工作场景示意，不是产品截图。"
+    },
+    {
+      "id": "s04",
+      "role": "process",
+      "claim": "四个动作，让信息持续产生价值",
+      "layout": "steps",
+      "props": {
+        "steps": [
+          {
+            "title": "收集现场"
+          },
+          {
+            "title": "建立关联"
+          },
+          {
+            "title": "形成判断"
+          },
+          {
+            "title": "推进行动"
+          }
+        ],
+        "footer": "THE FLOW"
+      },
+      "evidence": [],
+      "media": [],
+      "speaker_notes": "用动作而不是功能列表解释方法。"
+    },
+    {
+      "id": "s05",
+      "role": "comparison",
+      "claim": "真正的变化，是让信息持续流动",
+      "layout": "before-after",
+      "props": {
+        "left_title": "传统",
+        "left": [
+          "资料分散",
+          "反复补背景",
+          "结果停在文档"
+        ],
+        "right_title": "AI 原生",
+        "right": [
+          "聚合上下文",
+          "复用判断路径",
+          "行动持续更新"
+        ],
+        "footer": "THE SHIFT"
+      },
+      "evidence": [],
+      "media": [],
+      "speaker_notes": "表达工作方式差异，不虚构效果数据。"
+    },
+    {
+      "id": "s06",
+      "role": "closing",
+      "claim": "先重做一条高频流程",
+      "layout": "action-led",
+      "props": {
+        "action": "把上下文、判断和行动连起来",
+        "contact": "knowledge-work.example",
+        "footer": "NEXT STEP",
+        "image": "focus"
+      },
+      "evidence": [],
+      "media": [
+        "focus"
+      ],
+      "speaker_notes": "以具体行动结束，不使用通用致谢页。"
+    }
+  ]
+}

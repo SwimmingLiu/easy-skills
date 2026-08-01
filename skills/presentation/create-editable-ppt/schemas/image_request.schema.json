@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["slot_id", "purpose", "prompt", "aspect_ratio", "fact_bearing"],
+  "properties": {
+    "slot_id": { "type": "string" },
+    "purpose": { "type": "string" },
+    "prompt": { "type": "string" },
+    "negative_prompt": { "type": "string" },
+    "aspect_ratio": { "enum": ["16:9", "4:3", "3:2", "1:1", "2:3"] },
+    "fact_bearing": { "const": false }
+  },
+  "additionalProperties": true
+}

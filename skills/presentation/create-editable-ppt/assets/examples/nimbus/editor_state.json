@@ -1,0 +1,32 @@
+{
+  "schema_version": 1,
+  "base_revision": 1,
+  "revision": 2,
+  "project_status": "exported",
+  "slide_order": [
+    "s01",
+    "s02",
+    "s03",
+    "s04",
+    "s05",
+    "s06"
+  ],
+  "deleted_slides": [],
+  "skipped_slides": [],
+  "duplicated_slides": [],
+  "text_overrides": {
+    "s02": {
+      "claim": "真正的损耗，发生在会议结束之后"
+    }
+  },
+  "prop_overrides": {},
+  "review_status": {
+    "s01": "pass",
+    "s02": "pass",
+    "s03": "pass",
+    "s04": "pass",
+    "s05": "pass",
+    "s06": "pass"
+  },
+  "theme_override": null
+}

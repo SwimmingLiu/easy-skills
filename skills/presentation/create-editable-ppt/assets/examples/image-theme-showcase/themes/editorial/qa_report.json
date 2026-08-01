@@ -1,0 +1,9 @@
+{
+  "schema_version": 1,
+  "export_ready": true,
+  "summary": {
+    "blocking": 0,
+    "warning": 0
+  },
+  "findings": []
+}

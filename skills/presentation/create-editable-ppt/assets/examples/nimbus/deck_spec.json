@@ -1,0 +1,19 @@
+{
+  "schema_version": 1,
+  "revision": 1,
+  "title": "Nimbus AI",
+  "audience": "Early-stage investors",
+  "purpose": "Explain the product thesis and agree on a diligence follow-up",
+  "language": "zh-CN",
+  "canvas": "16:9",
+  "density": "speaker-led",
+  "theme": { "family": "launch-tech", "variant": "cyan" },
+  "slides": [
+    { "id": "s01", "role": "cover", "claim": "Nimbus AI", "layout": "center", "props": { "subtitle": "把零散会议信息整理成可执行决策", "meta": "产品概念稿" }, "evidence": [], "media": [], "speaker_notes": "概念演示，不代表已上线产品。" },
+    { "id": "s02", "role": "statement", "claim": "真正的损耗发生在会议结束之后", "layout": "focus", "props": { "points": ["结论散落", "责任不清", "跟进依赖人工"] }, "evidence": [], "media": [], "speaker_notes": "这是产品问题假设，需用访谈验证。" },
+    { "id": "s03", "role": "image-hero", "claim": "一个工作区承接从记录到行动", "layout": "split", "props": { "caption": "产品截图尚未提供，当前保留可替换槽位", "image": "product-shot", "image_status": "missing-approved" }, "evidence": [], "media": [], "speaker_notes": "不得把概念界面称为真实截图。" },
+    { "id": "s04", "role": "process", "claim": "三步把讨论转成执行", "layout": "steps", "props": { "steps": [{ "title": "汇入资料" }, { "title": "提炼决定" }, { "title": "分派行动" }] }, "evidence": [], "media": [], "speaker_notes": "能力范围需由产品团队确认。" },
+    { "id": "s05", "role": "comparison", "claim": "价值来自更短的决策闭环", "layout": "split", "props": { "left_title": "传统方式", "left": ["会后手工整理", "状态分散"], "right_title": "Nimbus 设想", "right": ["结构化沉淀", "统一跟进"] }, "evidence": [], "media": [], "speaker_notes": "为方案比较，不是已验证效果数据。" },
+    { "id": "s06", "role": "closing", "claim": "下一步：验证高频团队的真实需求", "layout": "center", "props": { "action": "确认访谈名单与验证指标", "contact": "nimbus.example" }, "evidence": [], "media": [], "speaker_notes": "不在此页虚构融资金额。" }
+  ]
+}

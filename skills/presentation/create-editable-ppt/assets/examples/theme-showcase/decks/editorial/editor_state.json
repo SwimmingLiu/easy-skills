@@ -1,0 +1,28 @@
+{
+  "schema_version": 1,
+  "base_revision": 1,
+  "revision": 0,
+  "slide_order": [
+    "s01",
+    "s02",
+    "s03",
+    "s04",
+    "s05",
+    "s06"
+  ],
+  "deleted_slides": [],
+  "skipped_slides": [],
+  "duplicated_slides": [],
+  "text_overrides": {},
+  "prop_overrides": {},
+  "review_status": {
+    "s01": "pass",
+    "s02": "pass",
+    "s03": "pass",
+    "s04": "pass",
+    "s05": "pass",
+    "s06": "pass"
+  },
+  "theme_override": null,
+  "project_status": "review"
+}

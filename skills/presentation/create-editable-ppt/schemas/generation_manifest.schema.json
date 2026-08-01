@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Image-first PPT generation manifest",
+  "type": "object",
+  "required": ["schema_version", "title", "theme", "provider", "output_mode", "slides"],
+  "properties": {
+    "schema_version": { "const": 1 },
+    "title": { "type": "string", "minLength": 1 },
+    "theme": { "type": "string", "minLength": 1 },
+    "provider": { "type": "string", "minLength": 1 },
+    "output_mode": { "const": "full-slide-image" },
+    "slides": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["id", "role", "theme", "prompt", "model", "size", "quality", "output_path", "status", "attempts"],
+        "properties": {
+          "status": { "enum": ["prepared", "generated", "failed", "review", "pass"] },
+          "attempts": { "type": "integer", "minimum": 0 },
+          "error": { "type": ["string", "null"] }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-07-19T16:34:39.292Z",
+  "desktop": {
+    "cards": 8,
+    "broken_images": [],
+    "horizontal_overflow": false,
+    "empty_titles": 0
+  },
+  "mobile": {
+    "cards": 8,
+    "broken_images": [],
+    "horizontal_overflow": false,
+    "empty_titles": 0
+  },
+  "valid": true
+}
