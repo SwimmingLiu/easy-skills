@@ -1,33 +1,23 @@
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { dirname, join } from 'node:path';
-import { fileURLToPath } from 'node:url';
 import test from 'node:test';
 
-const here = dirname(fileURLToPath(import.meta.url));
-const root = join(here, '..');
+const skillUrl = new URL('../SKILL.md', import.meta.url);
+const metadataUrl = new URL('../agents/openai.yaml', import.meta.url);
 
-test('skill contract exposes mutually exclusive image-first and pure HTML modes', async () => {
-  const skill = await readFile(join(root, 'SKILL.md'), 'utf8');
-  assert.match(skill, /name: create-image-ppt/);
-  assert.match(skill, /description: Use when/);
-  assert.match(skill, /REQUIRED SUB-SKILL.*imagegen/);
-  assert.match(skill, /中心含义/);
-  assert.match(skill, /叙事逻辑/);
-  assert.match(skill, /outline_preview\.html/);
-  assert.match(skill, /草稿未确认.*不得.*生图/s);
-  assert.match(skill, /整页图片/);
-  assert.match(skill, /image-first/);
-  assert.match(skill, /pure-html/);
-  assert.match(skill, /不调用 imagegen/);
-  assert.match(skill, /纯 HTML/);
-  assert.doesNotMatch(skill, /html-image-assisted/);
-  assert.doesNotMatch(skill, /contenteditable|browser-editable|默认保留文字.*可编辑/s);
+test('skill exposes only Bento-native ai-image and html modes', async () => {
+  const skill = await readFile(skillUrl, 'utf8');
+  assert.match(skill, /ai-image/);
+  assert.match(skill, /`html`/);
+  assert.match(skill, /#bento-doc/);
+  assert.match(skill, /bento\/slides/);
+  assert.doesNotMatch(skill, /image-first|pure-html|image-ppt-doc|business-minimal|premium-dark/);
 });
 
-test('agent metadata routes requests to the image-first workflow', async () => {
-  const metadata = await readFile(join(root, 'agents', 'openai.yaml'), 'utf8');
-  assert.match(metadata, /Create Image PPT/);
-  assert.match(metadata, /\$create-image-ppt/);
-  assert.doesNotMatch(metadata, /editable|可编辑/i);
+test('agent metadata routes presentation requests to the Bento master workflow', async () => {
+  const metadata = await readFile(metadataUrl, 'utf8');
+  assert.match(metadata, /Bento/);
+  assert.match(metadata, /ai-image/);
+  assert.match(metadata, /html/);
+  assert.doesNotMatch(metadata, /image-first|pure-html|HTML-assisted/);
 });

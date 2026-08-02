@@ -1,99 +1,72 @@
 ---
-name: create-image-ppt
-description: Use when a user asks for a concise PPT, slide deck, presentation, keynote, report, launch, defense, or wants source material turned into a themed presentation.
+name: create-bento-ppt
+description: Use when a user asks for a PPT, presentation, slide deck, keynote, report, launch, defense, or wants source material turned into a concise themed deck that remains openable in Bento.
 ---
 
-# Create Image PPT
+# Create Bento PPT
 
-**REQUIRED SUB-SKILL:** Use `imagegen` only for the `image-first` mode. Prefer the host's built-in image generation tool. Use the local CLI only when the user explicitly permits it and the local key configuration is present.
+先读取 `references/workflow.md`。本 Skill 只提供两种互斥模式，不能在同一份演示中混用。
 
-This Skill has two mutually exclusive output modes. Both use the same approved page plan, theme recipe, visual anchors, QA, and Bento-inspired offline document. The difference is who owns the page pixels:
-
-| Mode | Page owner | Image generation | Use when |
+| 模式 | 页面由谁生成 | 可修改范围 | 适用场景 |
 |---|---|---|---|
-| `image-first` | One complete raster image per page（整页图片） | `imagegen` creates the full 16:9 slide, including the approved exact text | The deck should be concise, visual, keynote-like, and resistant to layout drift |
-| `pure-html` | HTML owns all text, layout, and visual structure（纯 HTML） | None; decorative motifs are CSS/HTML only | The user needs fast source-level copy changes, structured process/comparison/data pages, and no image dependency |
+| `ai-image` | `imagegen` 生成一张完整的 16:9 页面图片 | 在 Bento 中替换整页图片、排序、删除、改备注；图片内文字不能单独修改 | 发布会、提案、品牌叙事，需要强视觉完成度 |
+| `html` | Bento 原生文本、形状、SVG、图表和表格 | 元素级修改 | 汇报、答辩、培训、数据与流程说明 |
 
-Do not combine the modes within one deck. `pure-html` 不调用 imagegen，不创建图片槽位，也不插入 AI 背景或插图。`image-first` keeps the audience-facing page as a complete image; HTML supplies playback controls only. Updating either mode means editing the approved source and regenerating or rerendering only the affected pages.
+两种模式的主文件都是 `.bento.html`，文档格式为 `bento/slides`。不要另做一套自定义播放器，也不要把 Bento 仅当作设计参考。PNG、PDF 和 PPTX 都是派生文件；PPTX 为截图式导出，不承诺元素可编辑。
 
-## Workflow
+## 必经流程
 
-1. **Check inputs.** Identify audience, purpose, language, delivery setting, approximate page count, required output, factual materials, and available images. Do not invent missing facts.
-2. **Create the content draft.** Write `outline_draft.json` and `outline_preview.html`. The preview must show the **中心含义** and **叙事逻辑** (`opening`, `problem`, `insight`, `method`, `action`), page count, and for every page: role, purpose, single claim, exact visible text, evidence/materials, media brief, and transition. **草稿未确认时不得调用生图。**
-3. **Choose one mode and one theme.** Choose `image-first` or `pure-html`, then choose one of the eight deduplicated theme families in `assets/themes/image-themes.json`. Keep the visual anchor consistent across the deck.
-4. **Compile the source.** After approval, write `deck_spec.json` and `generation_manifest.json`. `image-first` also writes `imagegen-jobs.jsonl`; `pure-html` writes an empty jobs file and marks every page `pass` because no image generation is required.
-5. **Generate or render.** For `image-first`, call `imagegen` once per page and store complete pages under `slides/`. Remind users to configure image-generation keys locally when this path is needed; never print key values. For `pure-html`, render immediately from the approved text and theme; do not create `slides/` or `assets/`.
-6. **Review and retry.** Check every page for text accuracy, claim fidelity, role-specific composition, contrast, theme consistency, and unwanted overflow. Retry only failed image pages; revise the source and rerender pure HTML pages.
-7. **Render and QA.** `render` selects the mode-specific renderer. `qa` performs content, manifest, missing-file, page-count, and role-specific checks. Run browser visual checks when Playwright is available; report degraded checks instead of claiming visual QA.
-8. **Bundle or export.** `bundle` creates a single offline HTML file with the JSON source of truth. `image-first` embeds image data URIs; `pure-html` embeds no image data. `export` can produce HTML, PNG, PDF, or a screenshot-based PPTX.
+1. **检查资料。** 明确受众、场景、语言、预计页数、交付格式和事实材料。资料缺失时列出缺口，不补造事实。
+2. **先写草稿。** 生成 `outline_draft.json`，其中必须包含中心含义、五段叙事逻辑、预计页数，以及每页的角色、单页主张、准确文字、证据、视觉构思和转场。
+3. **让用户确认。** 草稿未确认前，不得调用 `imagegen`，也不得生成最终页面。用户修改页数或某页主张时，只更新草稿。
+4. **选择模式与主题。** 用 `themes --mode ai-image|html` 查看主题。主题目录来自完整来源库存，经版式语法、字体层级、材质和信息密度去重。
+5. **生成。** `ai-image` 为每页生成一张完整图片；`html` 只写 Bento 原生元素，禁止调用生图、禁止使用整页栅格背景。
+6. **差异化检查。** 逐页核对主张和准确文字。数据页检查来源、单位和量级；流程页检查顺序；对比页检查维度；图片页检查主体、裁切和文字；封面与结尾检查中心信息和行动指向。
+7. **输出并复开。** 只替换 `<script type="application/bento+json" id="bento-doc">` 内的 JSON。复开 `.bento.html`，确认页数、主题、备注、资产和稳定 ID 完整。
 
-## Commands
+## 命令
 
-Run these from this Skill directory:
+在本 Skill 目录运行：
 
 ```bash
 node scripts/ppt.mjs draft <project-dir> --title "标题"
-node scripts/ppt.mjs approve <project-dir> --theme business-minimal --mode image-first
-# or: --mode pure-html
-node scripts/ppt.mjs prompts <project-dir> --model gpt-image-2 --size 2048x1152 --quality medium
-# image-first: run imagegen-jobs.jsonl with imagegen, then place outputs under slides/
-# pure-html: the jobs file is intentionally empty; continue directly to render
-node scripts/ppt.mjs render <project-dir>
+node scripts/ppt.mjs themes --mode ai-image
+node scripts/ppt.mjs approve <project-dir> --mode ai-image --theme editorial-ink
+node scripts/ppt.mjs prompts <project-dir>
+# ai-image：按 imagegen-jobs.jsonl 生成图片后继续
+node scripts/ppt.mjs build <project-dir>
 node scripts/ppt.mjs qa <project-dir> --json
-node scripts/ppt.mjs bundle <project-dir>
-node scripts/ppt.mjs export <project-dir> --format pptx
-node scripts/ppt.mjs doctor --json
 ```
 
-## Project contract
+`html` 模式在 `approve` 后可直接 `build`。`ai-image` 模式缺少任何页面图片时必须停止，不得用占位图假装完成。
 
-- `outline_draft.json`: user-reviewable content plan; generation is blocked until it is approved.
-- `outline_preview.html`: compact review surface for the central message, narrative, and page-by-page claims.
-- `deck_spec.json`: approved content, mode, theme, visual anchors, transitions, and speaker notes; JSON source for generation.
-- `generation_manifest.json`: mode, output path, attempt count, status, and error for each page.
-- `slides/`: generated complete slide PNGs for `image-first` only.
-- `assets/`: not used by `pure-html`; no AI background or illustration is inserted.
-- `index.html`: offline deck driven by the same manifest; it selects the mode-specific renderer.
-- `dist/presentation.image-ppt.html` or `dist/presentation.pure-html.html`: optional Bento-inspired single-file bundle.
-- `qa_report.json` and `dist/export-report.json`: review findings and export evidence.
+## Imagegen
 
-## Bento-inspired document contract
+`ai-image` 模式必须使用 `$imagegen`。优先使用宿主内置生图能力；只有用户明确选择 CLI/API 路径时才使用 CLI。若使用 CLI，提醒用户在本地设置 `OPENAI_API_KEY`，不要要求用户在对话中粘贴密钥，也不要把密钥写入提示词、日志或项目文件。
 
-The bundle keeps a plaintext `<script type="application/image-ppt+json" id="image-ppt-doc">` block as the source of truth, escapes `<` before embedding JSON, and includes no remote runtime or asset URL. In `image-first`, each slide references an embedded complete page image. In `pure-html`, `assets` is `{}` and each slide contains `exact_text`; the runtime rebuilds the same concise HTML structure and CSS motif.
+每个提示词必须包含页面角色、单页主张、准确文字、主题配方、视觉构思和禁止项。准确文字是封闭列表，不得增加虚构数字、引用、品牌、标签或水印。生图失败时只重试失败页，并保留失败记录。
 
-Each slide carries a stable `id`, `visual_anchor_id`, `continuity_group`, `transition`, `claim`, and `speaker_notes`. Stable metadata preserves narrative continuity even when a page is regenerated or rerendered.
+## Bento 文档约束
 
-## Content and visual rules
+- `#bento-doc` 是唯一数据源，必须是明文 JSON，`format` 必须为 `bento/slides`。
+- 嵌入 JSON 前把 `<` 转义为 `\u003c`，防止 `</script>` 提前结束脚本。
+- 编辑现有文档时保留 `docId`、未知字段和稳定的 slide/element ID。
+- `ai-image` 每页只有一个全画布 `image` 元素；`html` 不得出现全页图片元素。
+- 每页写 speaker notes，记录页面目的、主张和必要的证据说明。
 
-- Keep one claim per page. Cover and closing pages normally have one title plus one supporting line; process, comparison, and data pages use only the labels needed to explain the claim.
-- Classify material before prompting: `image`, `flow`, `comparison`, `table`, `chart`, or `claim`. Use the matching representation; never turn precise user data into an invented illustration.
-- Exact visible text is a closed list. `image-first` must render it verbatim and must not add labels, fake citations, numbers, logos, watermarks, or UI chrome. `pure-html` renders it through text nodes from the approved JSON.
-- Keep the selected theme's palette, typography, composition, and anchors consistent. Do not mix theme recipes page by page unless the user explicitly asks for a multi-theme comparison.
-- Favor a small number of strong visual elements over dense cards, long paragraphs, or decorative explanations.
+## 异常与兜底
 
-## Themes
+- 上传文件缺失或不可读：列出路径，继续读取可用资料，把受影响页面标记为未解决。
+- 资料不足以支撑预计页数：建议缩短页数，并指出哪些页面需要补证据。
+- `ai-image` 缺少可用视觉构思或必要的事实图片：停在准备状态，不生成虚构截图、图表或产品结果。
+- 生图配置缺失：提示用户在本地配置相关密钥；`html` 模式不受影响。
+- 页面文字错误、构图偏离或主题漂移：只回退该页，修正草稿或提示词后重做。
+- Bento 壳缺失、存在多个 `#bento-doc`、文档格式错误或 `docId` 被改变：拒绝写入。
 
-`business-minimal`, `editorial`, `swiss-grid`, `launch-tech`, `data-consulting`, `academic`, `brand-bold`, and `premium-dark` are intentionally distinct families. Their recipes combine recurring strengths from the referenced PPT Skills and are deduplicated by composition, not by color alone. See [themes.md](references/themes.md).
+## 参考文件
 
-## Failure handling
-
-- Missing or unreadable upload: list the missing path, continue with readable material, and mark unsupported claims as unresolved.
-- Insufficient material for the requested page count: propose a shorter deck and identify which pages need evidence; wait for approval before generation.
-- `image-first` without a usable image brief or required source asset: keep the page `prepared` and report the media gap; do not fabricate a factual screenshot, chart, or product result.
-- Missing imagegen configuration: stop before `image-first` generation and tell the user to configure keys locally. Never include a secret in a prompt, log, JSON, or response. `pure-html` remains available because it has no image dependency.
-- Generation failure: preserve the prompt and slot, record the error, retry only with a bounded attempt count, and leave the page out of export until it passes.
-- Text error, bad crop, theme drift, overflow, or role mismatch: mark that page `revise`, revise the source or prompt, and regenerate or rerender only that page.
-- Optional export dependency missing: keep HTML available and report the unavailable PDF, PNG, or PPTX adapter.
-- Browser QA unavailable: run semantic and manifest checks, label geometry checks as `degraded`, and do not claim a visual pass.
-
-## Review gate
-
-Review differs by page role: data checks source and units; process checks order and responsibility; comparison checks aligned dimensions; image pages check subject and crop; quote pages check attribution; cover and closing pages check message and action. Export is allowed only when the outline is valid, every active page is `generated` or `pass`, all blocking findings are resolved, and the final HTML/bundle reopens with the expected page count.
-
-## References
-
-- [workflow.md](references/workflow.md): intake, draft confirmation, generation, retry, and review flow.
-- [architecture.md](references/architecture.md): JSON source of truth, renderer boundary, and Bento-inspired bundle.
-- [content.md](references/content.md): concise page roles and evidence policy.
-- [assets.md](references/assets.md): imagegen, provenance, and factual-asset rules.
-- [qa-export.md](references/qa-export.md): semantic, visual, and export checks.
+- `references/workflow.md`：输入、草稿确认、生成、检查和回退。
+- `references/image-theme-inventory.json`：图片主题完整来源库存。
+- `references/html-theme-inventory.json`：HTML 主题完整来源库存。
+- `assets/themes/theme-catalog.json`：去重后的 18 个图片主题和 22 个 HTML 主题。
+- `assets/bento/SOURCE.json`：Bento 壳的来源、提交与校验值。

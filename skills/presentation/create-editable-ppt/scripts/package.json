@@ -1,5 +1,5 @@
 {
-  "name": "create-image-ppt-runtime",
+  "name": "create-bento-ppt-runtime",
   "private": true,
   "type": "module",
   "engines": {
@@ -7,7 +7,7 @@
   },
   "scripts": {
     "test": "node --test ../tests/*.test.mjs",
-    "validate": "node ppt.mjs qa ../assets/examples/image-theme-showcase --json",
+    "showcases": "node build-theme-showcases.mjs",
     "doctor": "node ppt.mjs doctor --json"
   },
   "optionalDependencies": {

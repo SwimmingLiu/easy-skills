@@ -1,4 +1,4 @@
 interface:
-  display_name: "Create Image PPT"
-  short_description: "Generate concise AI-image or HTML-assisted presentations with review gates"
-  default_prompt: "Use $create-image-ppt to turn my material into a concise presentation; choose image-first for AI-rendered slide images or pure-html for HTML-owned layout and text."
+  display_name: "Create Bento PPT"
+  short_description: "Create concise Bento presentations in ai-image or html mode"
+  default_prompt: "Use $create-bento-ppt to draft the central message and page claims first, then build a Bento-native deck in either ai-image or html mode."

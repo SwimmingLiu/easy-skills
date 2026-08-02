@@ -1,0 +1,2163 @@
+{
+  "schema_version": 1,
+  "mode": "html",
+  "snapshot_date": "2026-08-03",
+  "repositories": [
+    {
+      "id": "frontend-slides",
+      "url": "https://github.com/zarazhangrui/frontend-slides",
+      "commit": "9906a34d640d2111f724544cbc50f7f130569ae1"
+    },
+    {
+      "id": "visual-explainer",
+      "url": "https://github.com/eren23/visual-explainer",
+      "commit": "main"
+    },
+    {
+      "id": "open-codesign",
+      "url": "https://github.com/anthropics/open-codesign",
+      "commit": "main"
+    },
+    {
+      "id": "html-ppt-skill",
+      "url": "https://github.com/lewislulu/html-ppt-skill",
+      "commit": "f3a8435d3901697d5ac5e64d356c933637e43107"
+    },
+    {
+      "id": "open-slide",
+      "url": "https://github.com/zhangxian/open-slide",
+      "commit": "main"
+    },
+    {
+      "id": "dashi-ppt-skill",
+      "url": "https://github.com/chuspeeism/dashi-ppt-skill",
+      "commit": "7cb23347f91cda1a5519eafc8c040704e389535a"
+    },
+    {
+      "id": "beautiful-html-templates",
+      "url": "https://github.com/zarazhangrui/beautiful-html-templates",
+      "commit": "e5e204fb1f3b06290846e7dcd7aceddabeceec8c"
+    },
+    {
+      "id": "baoyu-design",
+      "url": "https://github.com/JimLiu/baoyu-design",
+      "commit": "026d4ea0"
+    }
+  ],
+  "themes": [
+    {
+      "key": "frontend-slides:tech-product",
+      "repository": "frontend-slides",
+      "source_id": "tech-product",
+      "name": "tech product",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "frontend-slides:business-professional",
+      "repository": "frontend-slides",
+      "source_id": "business-professional",
+      "name": "business professional",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "frontend-slides:light-minimal",
+      "repository": "frontend-slides",
+      "source_id": "light-minimal",
+      "name": "light minimal",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "frontend-slides:dark-elegant",
+      "repository": "frontend-slides",
+      "source_id": "dark-elegant",
+      "name": "dark elegant",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "dark-aurora-html"
+    },
+    {
+      "key": "frontend-slides:creative-vibrant",
+      "repository": "frontend-slides",
+      "source_id": "creative-vibrant",
+      "name": "creative vibrant",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "frontend-slides:warm-human",
+      "repository": "frontend-slides",
+      "source_id": "warm-human",
+      "name": "warm human",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "frontend-slides:nature-organic",
+      "repository": "frontend-slides",
+      "source_id": "nature-organic",
+      "name": "nature organic",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "organic-craft"
+    },
+    {
+      "key": "frontend-slides:luxury-premium",
+      "repository": "frontend-slides",
+      "source_id": "luxury-premium",
+      "name": "luxury premium",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "frontend-slides:data-dashboard",
+      "repository": "frontend-slides",
+      "source_id": "data-dashboard",
+      "name": "data dashboard",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "data-spectrum"
+    },
+    {
+      "key": "frontend-slides:academic-research",
+      "repository": "frontend-slides",
+      "source_id": "academic-research",
+      "name": "academic research",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "research-white"
+    },
+    {
+      "key": "frontend-slides:editorial-magazine",
+      "repository": "frontend-slides",
+      "source_id": "editorial-magazine",
+      "name": "editorial magazine",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "riso-zine-html"
+    },
+    {
+      "key": "frontend-slides:developer-terminal",
+      "repository": "frontend-slides",
+      "source_id": "developer-terminal",
+      "name": "developer terminal",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "visual-explainer:editorial",
+      "repository": "visual-explainer",
+      "source_id": "editorial",
+      "name": "editorial",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/eren23/visual-explainer/tree/main",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "visual-explainer:dashboard",
+      "repository": "visual-explainer",
+      "source_id": "dashboard",
+      "name": "dashboard",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/eren23/visual-explainer/tree/main",
+      "canonical_id": "data-spectrum"
+    },
+    {
+      "key": "visual-explainer:technical",
+      "repository": "visual-explainer",
+      "source_id": "technical",
+      "name": "technical",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/eren23/visual-explainer/tree/main",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "visual-explainer:playful",
+      "repository": "visual-explainer",
+      "source_id": "playful",
+      "name": "playful",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/eren23/visual-explainer/tree/main",
+      "canonical_id": "playful-pastel"
+    },
+    {
+      "key": "open-codesign:editorial-system",
+      "repository": "open-codesign",
+      "source_id": "editorial-system",
+      "name": "editorial system",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "open-codesign:product-narrative",
+      "repository": "open-codesign",
+      "source_id": "product-narrative",
+      "name": "product narrative",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
+      "canonical_id": "code-editorial"
+    },
+    {
+      "key": "open-codesign:data-story",
+      "repository": "open-codesign",
+      "source_id": "data-story",
+      "name": "data story",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
+      "canonical_id": "data-spectrum"
+    },
+    {
+      "key": "open-codesign:institutional-report",
+      "repository": "open-codesign",
+      "source_id": "institutional-report",
+      "name": "institutional report",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
+      "canonical_id": "institutional-signal"
+    },
+    {
+      "key": "open-codesign:custom-token-system",
+      "repository": "open-codesign",
+      "source_id": "custom-token-system",
+      "name": "custom token system",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
+      "canonical_id": "code-editorial"
+    },
+    {
+      "key": "html-ppt-skill:theme/academic-paper",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/academic-paper",
+      "name": "theme/academic paper",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "research-white"
+    },
+    {
+      "key": "html-ppt-skill:theme/arctic-cool",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/arctic-cool",
+      "name": "theme/arctic cool",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:theme/aurora",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/aurora",
+      "name": "theme/aurora",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "dark-aurora-html"
+    },
+    {
+      "key": "html-ppt-skill:theme/bauhaus",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/bauhaus",
+      "name": "theme/bauhaus",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:theme/blueprint",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/blueprint",
+      "name": "theme/blueprint",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "blueprint-engineering"
+    },
+    {
+      "key": "html-ppt-skill:theme/catppuccin-latte",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/catppuccin-latte",
+      "name": "theme/catppuccin latte",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "html-ppt-skill:theme/catppuccin-mocha",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/catppuccin-mocha",
+      "name": "theme/catppuccin mocha",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "html-ppt-skill:theme/corporate-clean",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/corporate-clean",
+      "name": "theme/corporate clean",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "finance-index"
+    },
+    {
+      "key": "html-ppt-skill:theme/cyberpunk-neon",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/cyberpunk-neon",
+      "name": "theme/cyberpunk neon",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "html-ppt-skill:theme/dracula",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/dracula",
+      "name": "theme/dracula",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "html-ppt-skill:theme/editorial-serif",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/editorial-serif",
+      "name": "theme/editorial serif",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "html-ppt-skill:theme/engineering-whiteprint",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/engineering-whiteprint",
+      "name": "theme/engineering whiteprint",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "blueprint-engineering"
+    },
+    {
+      "key": "html-ppt-skill:theme/glassmorphism",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/glassmorphism",
+      "name": "theme/glassmorphism",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "glass-candy"
+    },
+    {
+      "key": "html-ppt-skill:theme/gruvbox-dark",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/gruvbox-dark",
+      "name": "theme/gruvbox dark",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "html-ppt-skill:theme/japanese-minimal",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/japanese-minimal",
+      "name": "theme/japanese minimal",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "organic-craft"
+    },
+    {
+      "key": "html-ppt-skill:theme/magazine-bold",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/magazine-bold",
+      "name": "theme/magazine bold",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "riso-zine-html"
+    },
+    {
+      "key": "html-ppt-skill:theme/memphis-pop",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/memphis-pop",
+      "name": "theme/memphis pop",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "playful-pastel"
+    },
+    {
+      "key": "html-ppt-skill:theme/midcentury",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/midcentury",
+      "name": "theme/midcentury",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "retro-interface"
+    },
+    {
+      "key": "html-ppt-skill:theme/minimal-white",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/minimal-white",
+      "name": "theme/minimal white",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:theme/neo-brutalism",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/neo-brutalism",
+      "name": "theme/neo brutalism",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "html-ppt-skill:theme/news-broadcast",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/news-broadcast",
+      "name": "theme/news broadcast",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "institutional-signal"
+    },
+    {
+      "key": "html-ppt-skill:theme/nord",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/nord",
+      "name": "theme/nord",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "html-ppt-skill:theme/pitch-deck-vc",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/pitch-deck-vc",
+      "name": "theme/pitch deck vc",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "finance-index"
+    },
+    {
+      "key": "html-ppt-skill:theme/rainbow-gradient",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/rainbow-gradient",
+      "name": "theme/rainbow gradient",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "glass-candy"
+    },
+    {
+      "key": "html-ppt-skill:theme/retro-tv",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/retro-tv",
+      "name": "theme/retro tv",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "retro-interface"
+    },
+    {
+      "key": "html-ppt-skill:theme/rose-pine",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/rose-pine",
+      "name": "theme/rose pine",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "html-ppt-skill:theme/sharp-mono",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/sharp-mono",
+      "name": "theme/sharp mono",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "code-editorial"
+    },
+    {
+      "key": "html-ppt-skill:theme/soft-pastel",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/soft-pastel",
+      "name": "theme/soft pastel",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "playful-pastel"
+    },
+    {
+      "key": "html-ppt-skill:theme/solarized-light",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/solarized-light",
+      "name": "theme/solarized light",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:theme/sunset-warm",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/sunset-warm",
+      "name": "theme/sunset warm",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "growth-ember"
+    },
+    {
+      "key": "html-ppt-skill:theme/swiss-grid",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/swiss-grid",
+      "name": "theme/swiss grid",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "strict-swiss-html"
+    },
+    {
+      "key": "html-ppt-skill:theme/terminal-green",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/terminal-green",
+      "name": "theme/terminal green",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "html-ppt-skill:theme/tokyo-night",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/tokyo-night",
+      "name": "theme/tokyo night",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "html-ppt-skill:theme/vaporwave",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/vaporwave",
+      "name": "theme/vaporwave",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "glass-candy"
+    },
+    {
+      "key": "html-ppt-skill:theme/xiaohongshu-white",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/xiaohongshu-white",
+      "name": "theme/xiaohongshu white",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:theme/y2k-chrome",
+      "repository": "html-ppt-skill",
+      "source_id": "theme/y2k-chrome",
+      "name": "theme/y2k chrome",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "glass-candy"
+    },
+    {
+      "key": "html-ppt-skill:deck/business-report",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/business-report",
+      "name": "deck/business report",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/product-launch",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/product-launch",
+      "name": "deck/product launch",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/academic-defense",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/academic-defense",
+      "name": "deck/academic defense",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "research-white"
+    },
+    {
+      "key": "html-ppt-skill:deck/training-course",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/training-course",
+      "name": "deck/training course",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/annual-review",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/annual-review",
+      "name": "deck/annual review",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/marketing-plan",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/marketing-plan",
+      "name": "deck/marketing plan",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/project-proposal",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/project-proposal",
+      "name": "deck/project proposal",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/data-report",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/data-report",
+      "name": "deck/data report",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "data-spectrum"
+    },
+    {
+      "key": "html-ppt-skill:deck/company-profile",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/company-profile",
+      "name": "deck/company profile",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/conference-keynote",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/conference-keynote",
+      "name": "deck/conference keynote",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/portfolio",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/portfolio",
+      "name": "deck/portfolio",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/roadmap",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/roadmap",
+      "name": "deck/roadmap",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/case-study",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/case-study",
+      "name": "deck/case study",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/workshop",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/workshop",
+      "name": "deck/workshop",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "html-ppt-skill:deck/event-intro",
+      "repository": "html-ppt-skill",
+      "source_id": "deck/event-intro",
+      "name": "deck/event intro",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "open-slide:default",
+      "repository": "open-slide",
+      "source_id": "default",
+      "name": "default",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "open-slide:minimal",
+      "repository": "open-slide",
+      "source_id": "minimal",
+      "name": "minimal",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "open-slide:dark",
+      "repository": "open-slide",
+      "source_id": "dark",
+      "name": "dark",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
+      "canonical_id": "dark-aurora-html"
+    },
+    {
+      "key": "open-slide:academic",
+      "repository": "open-slide",
+      "source_id": "academic",
+      "name": "academic",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
+      "canonical_id": "research-white"
+    },
+    {
+      "key": "open-slide:business",
+      "repository": "open-slide",
+      "source_id": "business",
+      "name": "business",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme01",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme01",
+      "name": "轻拟态风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme02",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme02",
+      "name": "炫光紫绿风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme03",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme03",
+      "name": "深浅代码风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme04",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme04",
+      "name": "玻璃糖果风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme05",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme05",
+      "name": "色谱图表风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme06",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme06",
+      "name": "深色图谱风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme07",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme07",
+      "name": "冷白调研风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "magazine-deep-blue"
+    },
+    {
+      "key": "dashi-ppt-skill:theme08",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme08",
+      "name": "黑金实验风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "neon-entertainment"
+    },
+    {
+      "key": "dashi-ppt-skill:theme09",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme09",
+      "name": "深蓝杂志风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme10",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme10",
+      "name": "金色指数风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme11",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme11",
+      "name": "高能增长风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "dashi-ppt-skill:theme12",
+      "repository": "dashi-ppt-skill",
+      "source_id": "theme12",
+      "name": "声波霓虹风",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "beautiful-html-templates:8-bit-orbit",
+      "repository": "beautiful-html-templates",
+      "source_id": "8-bit-orbit",
+      "name": "8-Bit Orbit",
+      "traits": [
+        "retro-tech",
+        "playful",
+        "cyberpunk",
+        "energetic"
+      ],
+      "best_for": [
+        "gaming pitch",
+        "hackathon demo",
+        "web3 / crypto deck",
+        "indie product launch",
+        "developer tools",
+        "synthwave brand"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "pixel-arcade"
+    },
+    {
+      "key": "beautiful-html-templates:biennale-yellow",
+      "repository": "beautiful-html-templates",
+      "source_id": "biennale-yellow",
+      "name": "Biennale Yellow",
+      "traits": [
+        "editorial",
+        "atmospheric",
+        "warm",
+        "cultural-institution",
+        "poster-like"
+      ],
+      "best_for": [
+        "exhibition or biennale",
+        "arts institution programme",
+        "design or typography conference",
+        "literary or curatorial publication",
+        "studio annual report",
+        "museum season announcement"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "culture-poster"
+    },
+    {
+      "key": "beautiful-html-templates:block-frame",
+      "repository": "beautiful-html-templates",
+      "source_id": "block-frame",
+      "name": "BlockFrame",
+      "traits": [
+        "bold",
+        "playful",
+        "graphic",
+        "fresh"
+      ],
+      "best_for": [
+        "creative agency pitch",
+        "indie SaaS launch",
+        "designer portfolio",
+        "brand redesign",
+        "modern startup deck"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "beautiful-html-templates:blue-professional",
+      "repository": "beautiful-html-templates",
+      "source_id": "blue-professional",
+      "name": "Blue Professional",
+      "traits": [
+        "professional",
+        "modern",
+        "calm",
+        "trustworthy"
+      ],
+      "best_for": [
+        "B2B SaaS pitch",
+        "consulting deliverable",
+        "internal review",
+        "advisory pitch",
+        "investor update"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "finance-index"
+    },
+    {
+      "key": "beautiful-html-templates:bold-poster",
+      "repository": "beautiful-html-templates",
+      "source_id": "bold-poster",
+      "name": "Bold Poster",
+      "traits": [
+        "bold",
+        "editorial",
+        "loud",
+        "confident"
+      ],
+      "best_for": [
+        "brand manifesto",
+        "creative-led pitch",
+        "magazine / editorial",
+        "founder vision deck",
+        "art / culture"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "beautiful-html-templates:broadside",
+      "repository": "beautiful-html-templates",
+      "source_id": "broadside",
+      "name": "Broadside",
+      "traits": [
+        "editorial",
+        "dramatic",
+        "loud",
+        "newspaper"
+      ],
+      "best_for": [
+        "brand manifesto",
+        "founder vision deck",
+        "magazine / cultural pitch",
+        "design talk",
+        "bilingual EN/CN deck",
+        "campaign launch"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "beautiful-html-templates:capsule",
+      "repository": "beautiful-html-templates",
+      "source_id": "capsule",
+      "name": "Capsule",
+      "traits": [
+        "playful",
+        "modern",
+        "warm",
+        "fresh",
+        "fun"
+      ],
+      "best_for": [
+        "lifestyle brand",
+        "creator portfolio",
+        "DTC product launch",
+        "wellness or beauty pitch",
+        "Y2K-tinged brand work"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "beautiful-html-templates:cartesian",
+      "repository": "beautiful-html-templates",
+      "source_id": "cartesian",
+      "name": "Cartesian",
+      "traits": [
+        "quiet",
+        "considered",
+        "elegant",
+        "warm-minimal"
+      ],
+      "best_for": [
+        "investment thesis",
+        "white paper",
+        "advisory deliverable",
+        "research report",
+        "book / longform pitch",
+        "gallery / cultural"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "blueprint-engineering"
+    },
+    {
+      "key": "beautiful-html-templates:cobalt-grid",
+      "repository": "beautiful-html-templates",
+      "source_id": "cobalt-grid",
+      "name": "Cobalt Grid",
+      "traits": [
+        "editorial",
+        "design-research",
+        "studious",
+        "modernist",
+        "tech-print",
+        "monochrome"
+      ],
+      "best_for": [
+        "design trend or research report",
+        "studio annual or seasonal bulletin",
+        "creative agency capabilities deck",
+        "art or architecture publication",
+        "academic / curatorial publication",
+        "newsletter or zine pitch"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "strict-swiss-html"
+    },
+    {
+      "key": "beautiful-html-templates:coral",
+      "repository": "beautiful-html-templates",
+      "source_id": "coral",
+      "name": "Coral",
+      "traits": [
+        "bold",
+        "warm",
+        "modern",
+        "confident"
+      ],
+      "best_for": [
+        "fashion / beauty pitch",
+        "fitness brand",
+        "F&B brand deck",
+        "lifestyle launch",
+        "creative agency"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "growth-ember"
+    },
+    {
+      "key": "beautiful-html-templates:creative-mode",
+      "repository": "beautiful-html-templates",
+      "source_id": "creative-mode",
+      "name": "Creative Mode",
+      "traits": [
+        "creative",
+        "confident",
+        "playful",
+        "design-led"
+      ],
+      "best_for": [
+        "creative agency pitch",
+        "design studio deck",
+        "ad shop credentials",
+        "brand creative review",
+        "concept presentation"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "code-editorial"
+    },
+    {
+      "key": "beautiful-html-templates:daisy-days",
+      "repository": "beautiful-html-templates",
+      "source_id": "daisy-days",
+      "name": "Daisy Days",
+      "traits": [
+        "cheerful",
+        "playful",
+        "warm",
+        "sunny",
+        "wholesome"
+      ],
+      "best_for": [
+        "education / classroom",
+        "kids product launch",
+        "wellness program",
+        "community workshop",
+        "creator portfolio (craft / illustration)",
+        "team kickoff",
+        "wedding / baby shower planning"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "playful-pastel"
+    },
+    {
+      "key": "beautiful-html-templates:editorial-forest",
+      "repository": "beautiful-html-templates",
+      "source_id": "editorial-forest",
+      "name": "Editorial Forest",
+      "traits": [
+        "editorial",
+        "quiet",
+        "considered",
+        "warm",
+        "intentional"
+      ],
+      "best_for": [
+        "quarterly review",
+        "internal readout",
+        "studio update",
+        "creative agency deck",
+        "research recap"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "beautiful-html-templates:editorial-tri-tone",
+      "repository": "beautiful-html-templates",
+      "source_id": "editorial-tri-tone",
+      "name": "Editorial Tri-Tone",
+      "traits": [
+        "editorial",
+        "warm",
+        "intentional",
+        "moody"
+      ],
+      "best_for": [
+        "editorial / magazine pitch",
+        "fashion brand deck",
+        "lifestyle media",
+        "literary / cultural",
+        "art direction review"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "beautiful-html-templates:emerald-editorial",
+      "repository": "beautiful-html-templates",
+      "source_id": "emerald-editorial",
+      "name": "Emerald Editorial",
+      "traits": [
+        "editorial",
+        "considered",
+        "confident",
+        "magazine-cover"
+      ],
+      "best_for": [
+        "leadership presentation",
+        "quarterly review",
+        "strategy readout",
+        "planning office deck",
+        "executive briefing"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "beautiful-html-templates:grove",
+      "repository": "beautiful-html-templates",
+      "source_id": "grove",
+      "name": "Grove",
+      "traits": [
+        "organic",
+        "considered",
+        "warm",
+        "literary",
+        "natural"
+      ],
+      "best_for": [
+        "sustainability brand",
+        "wellness brand",
+        "outdoor / nature product",
+        "winery or restaurant",
+        "literary or arts deck",
+        "advisory deliverable",
+        "bilingual EN/CN deck"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "organic-craft"
+    },
+    {
+      "key": "beautiful-html-templates:long-table",
+      "repository": "beautiful-html-templates",
+      "source_id": "long-table",
+      "name": "Long Table",
+      "traits": [
+        "warm",
+        "intimate",
+        "modern",
+        "friendly",
+        "small-batch",
+        "social",
+        "hospitality"
+      ],
+      "best_for": [
+        "supper club or dinner series",
+        "event or community gathering",
+        "small hospitality / restaurant brand",
+        "creative studio open house",
+        "membership or subscription pitch",
+        "wine or food brand catalogue",
+        "modern lifestyle brand"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "beautiful-html-templates:mat",
+      "repository": "beautiful-html-templates",
+      "source_id": "mat",
+      "name": "Mat",
+      "traits": [
+        "warm-modern",
+        "considered",
+        "tactile",
+        "mid-century"
+      ],
+      "best_for": [
+        "design studio credentials",
+        "architecture / interior brand",
+        "ceramics or craft brand",
+        "furniture pitch",
+        "advisory deliverable",
+        "bilingual EN/CN deck"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "beautiful-html-templates:monochrome",
+      "repository": "beautiful-html-templates",
+      "source_id": "monochrome",
+      "name": "Monochrome",
+      "traits": [
+        "restrained",
+        "literary",
+        "archival",
+        "ledger"
+      ],
+      "best_for": [
+        "user research synthesis",
+        "white paper",
+        "longform report",
+        "academic deck",
+        "policy brief",
+        "advisory deliverable",
+        "bilingual EN/CN deck"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "beautiful-html-templates:neo-grid-bold",
+      "repository": "beautiful-html-templates",
+      "source_id": "neo-grid-bold",
+      "name": "Neo-Grid Bold",
+      "traits": [
+        "confident",
+        "punchy",
+        "editorial",
+        "modern"
+      ],
+      "best_for": [
+        "product launch",
+        "design review",
+        "founder pitch",
+        "brand deck",
+        "consulting findings",
+        "conference talk"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "beautiful-html-templates:peoples-platform",
+      "repository": "beautiful-html-templates",
+      "source_id": "peoples-platform",
+      "name": "People's Platform (Block & Bold)",
+      "traits": [
+        "activist",
+        "loud",
+        "graphic",
+        "honest"
+      ],
+      "best_for": [
+        "cultural commentary",
+        "manifesto",
+        "community / civic deck",
+        "design talk",
+        "campaign pitch",
+        "founder vision"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "culture-poster"
+    },
+    {
+      "key": "beautiful-html-templates:pin-and-paper",
+      "repository": "beautiful-html-templates",
+      "source_id": "pin-and-paper",
+      "name": "Pin & Paper",
+      "traits": [
+        "crafted",
+        "handmade",
+        "warm",
+        "thoughtful",
+        "literary"
+      ],
+      "best_for": [
+        "research findings with personality",
+        "qualitative report",
+        "founder reflection",
+        "creator essay deck",
+        "workshop debrief"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "research-white"
+    },
+    {
+      "key": "beautiful-html-templates:pink-script",
+      "repository": "beautiful-html-templates",
+      "source_id": "pink-script",
+      "name": "Pink Script — After Hours",
+      "traits": [
+        "nocturnal",
+        "moody",
+        "intentional",
+        "luxe",
+        "expressive"
+      ],
+      "best_for": [
+        "fashion brand deck",
+        "creator personal brand",
+        "after-hours product (nightlife / dating / spirits)",
+        "luxury launch",
+        "editorial feature"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "playful-pastel"
+    },
+    {
+      "key": "beautiful-html-templates:playful",
+      "repository": "beautiful-html-templates",
+      "source_id": "playful",
+      "name": "Playful",
+      "traits": [
+        "warm",
+        "approachable",
+        "indie",
+        "friendly"
+      ],
+      "best_for": [
+        "creator portfolio",
+        "indie product launch",
+        "lifestyle brand",
+        "small-business pitch",
+        "newsletter / community"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "playful-pastel"
+    },
+    {
+      "key": "beautiful-html-templates:raw-grid",
+      "repository": "beautiful-html-templates",
+      "source_id": "raw-grid",
+      "name": "Raw Grid",
+      "traits": [
+        "raw",
+        "punchy",
+        "energetic",
+        "confident"
+      ],
+      "best_for": [
+        "startup pitch",
+        "accelerator demo day",
+        "founder pitch",
+        "indie product launch",
+        "brand deck",
+        "creator portfolio"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "strict-swiss-html"
+    },
+    {
+      "key": "beautiful-html-templates:retro-windows",
+      "repository": "beautiful-html-templates",
+      "source_id": "retro-windows",
+      "name": "Retro Windows",
+      "traits": [
+        "nostalgic",
+        "retro",
+        "geeky",
+        "playful"
+      ],
+      "best_for": [
+        "retro gaming pitch",
+        "Y2K brand",
+        "creator portfolio (90s aesthetic)",
+        "tech-history talk",
+        "shitpost-but-make-it-fancy deck"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "retro-interface"
+    },
+    {
+      "key": "beautiful-html-templates:retro-zine",
+      "repository": "beautiful-html-templates",
+      "source_id": "retro-zine",
+      "name": "Retro Zine",
+      "traits": [
+        "crafted",
+        "lo-fi",
+        "underground",
+        "warm-retro"
+      ],
+      "best_for": [
+        "indie zine / publication",
+        "music or arts brand",
+        "creator portfolio",
+        "small-batch / craft launch",
+        "cultural / community deck"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "retro-interface"
+    },
+    {
+      "key": "beautiful-html-templates:sakura-chroma",
+      "repository": "beautiful-html-templates",
+      "source_id": "sakura-chroma",
+      "name": "Sakura Chroma",
+      "traits": [
+        "retro",
+        "playful",
+        "kawaii-tech",
+        "warm",
+        "tactile",
+        "product-catalogue"
+      ],
+      "best_for": [
+        "product launch or catalogue",
+        "indie hardware or analog studio brand",
+        "music label or release schedule",
+        "creative studio annual report",
+        "magazine or zine pitch",
+        "vintage-flavored brand campaign"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "glass-candy"
+    },
+    {
+      "key": "beautiful-html-templates:scatterbrain",
+      "repository": "beautiful-html-templates",
+      "source_id": "scatterbrain",
+      "name": "Scatterbrain",
+      "traits": [
+        "playful",
+        "creative",
+        "warm",
+        "messy-on-purpose",
+        "workshop"
+      ],
+      "best_for": [
+        "brainstorm / workshop",
+        "creative agency credentials",
+        "design-thinking session",
+        "ideation pitch",
+        "art-direction review"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "playful-pastel"
+    },
+    {
+      "key": "beautiful-html-templates:signal",
+      "repository": "beautiful-html-templates",
+      "source_id": "signal",
+      "name": "Signal",
+      "traits": [
+        "institutional",
+        "trustworthy",
+        "considered",
+        "weighty"
+      ],
+      "best_for": [
+        "investor deck",
+        "consulting deliverable",
+        "board presentation",
+        "legal / policy brief",
+        "academic deck",
+        "advisory pitch",
+        "bilingual EN/CN deck"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "institutional-signal"
+    },
+    {
+      "key": "beautiful-html-templates:soft-editorial",
+      "repository": "beautiful-html-templates",
+      "source_id": "soft-editorial",
+      "name": "Soft Editorial",
+      "traits": [
+        "literary",
+        "elegant",
+        "quiet",
+        "warm-classical"
+      ],
+      "best_for": [
+        "editorial feature",
+        "longform brand story",
+        "gallery or museum",
+        "literary pitch",
+        "advisory deliverable",
+        "wedding / lifestyle media"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "beautiful-html-templates:stencil-tablet",
+      "repository": "beautiful-html-templates",
+      "source_id": "stencil-tablet",
+      "name": "Stencil & Tablet",
+      "traits": [
+        "archival",
+        "earthy",
+        "tactile",
+        "considered",
+        "graphic"
+      ],
+      "best_for": [
+        "museum / cultural institution",
+        "art / architecture brand",
+        "longform research",
+        "heritage / craft brand",
+        "manifesto"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "riso-zine-html"
+    },
+    {
+      "key": "beautiful-html-templates:studio",
+      "repository": "beautiful-html-templates",
+      "source_id": "studio",
+      "name": "Studio",
+      "traits": [
+        "electric",
+        "bold",
+        "graphic",
+        "design-led",
+        "high-contrast"
+      ],
+      "best_for": [
+        "design studio credentials",
+        "creative agency pitch",
+        "brand showcase",
+        "art-direction review",
+        "fashion / sneaker brand",
+        "bilingual EN/CN deck"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "beautiful-html-templates:vellum",
+      "repository": "beautiful-html-templates",
+      "source_id": "vellum",
+      "name": "Vellum",
+      "traits": [
+        "scholarly",
+        "literary",
+        "considered",
+        "quiet",
+        "intellectual"
+      ],
+      "best_for": [
+        "research findings",
+        "white paper or longform report",
+        "academic or university deck",
+        "advisory deliverable",
+        "literary or editorial pitch",
+        "founder reflection / vision deck",
+        "bilingual EN/CN deck"
+      ],
+      "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "baoyu-design:editorial",
+      "repository": "baoyu-design",
+      "source_id": "editorial",
+      "name": "editorial",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "baoyu-design:swiss",
+      "repository": "baoyu-design",
+      "source_id": "swiss",
+      "name": "swiss",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
+      "canonical_id": "strict-swiss-html"
+    },
+    {
+      "key": "baoyu-design:neo-brutalism",
+      "repository": "baoyu-design",
+      "source_id": "neo-brutalism",
+      "name": "neo brutalism",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "baoyu-design:glassmorphism",
+      "repository": "baoyu-design",
+      "source_id": "glassmorphism",
+      "name": "glassmorphism",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
+      "canonical_id": "glass-candy"
+    },
+    {
+      "key": "baoyu-design:organic",
+      "repository": "baoyu-design",
+      "source_id": "organic",
+      "name": "organic",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
+      "canonical_id": "organic-craft"
+    },
+    {
+      "key": "baoyu-design:retro-futurism",
+      "repository": "baoyu-design",
+      "source_id": "retro-futurism",
+      "name": "retro futurism",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
+      "canonical_id": "retro-interface"
+    },
+    {
+      "key": "baoyu-design:institutional",
+      "repository": "baoyu-design",
+      "source_id": "institutional",
+      "name": "institutional",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
+      "canonical_id": "institutional-signal"
+    },
+    {
+      "key": "baoyu-design:data-dense",
+      "repository": "baoyu-design",
+      "source_id": "data-dense",
+      "name": "data dense",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
+      "canonical_id": "data-spectrum"
+    }
+  ]
+}

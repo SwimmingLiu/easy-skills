@@ -1,0 +1,4169 @@
+{
+  "schema_version": 1,
+  "mode": "ai-image",
+  "snapshot_date": "2026-08-03",
+  "repositories": [
+    {
+      "id": "guizang-ppt-skill",
+      "url": "https://github.com/op7418/guizang-ppt-skill",
+      "commit": "main"
+    },
+    {
+      "id": "codex-ppt-skill",
+      "url": "https://github.com/ningzimu/codex-ppt-skill",
+      "commit": "main"
+    },
+    {
+      "id": "GordenSuperPPTSkills",
+      "url": "https://github.com/GordenSun/GordenSuperPPTSkills",
+      "commit": "main"
+    },
+    {
+      "id": "gpt-image2-ppt-skills",
+      "url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills",
+      "commit": "4576cd5aee5e2f7c2fbd47557045b150906ce98c"
+    },
+    {
+      "id": "wuming-cyan-circuit-launch-ppt",
+      "url": "https://github.com/chujianyun/wuming-cyan-circuit-launch-ppt",
+      "commit": "main"
+    },
+    {
+      "id": "wuming-ai-ppt-cover",
+      "url": "https://github.com/chujianyun/wuming-ai-ppt-cover",
+      "commit": "main"
+    }
+  ],
+  "themes": [
+    {
+      "key": "guizang-ppt-skill:ink-classic",
+      "repository": "guizang-ppt-skill",
+      "source_id": "ink-classic",
+      "name": "ink classic",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "guizang-ppt-skill:indigo-porcelain",
+      "repository": "guizang-ppt-skill",
+      "source_id": "indigo-porcelain",
+      "name": "indigo porcelain",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "guizang-ppt-skill:forest-ink",
+      "repository": "guizang-ppt-skill",
+      "source_id": "forest-ink",
+      "name": "forest ink",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "guizang-ppt-skill:kraft-paper",
+      "repository": "guizang-ppt-skill",
+      "source_id": "kraft-paper",
+      "name": "kraft paper",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "guizang-ppt-skill:dune",
+      "repository": "guizang-ppt-skill",
+      "source_id": "dune",
+      "name": "dune",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "guizang-ppt-skill:swiss-ikb",
+      "repository": "guizang-ppt-skill",
+      "source_id": "swiss-ikb",
+      "name": "swiss ikb",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "canonical_id": "strict-swiss"
+    },
+    {
+      "key": "guizang-ppt-skill:swiss-lemon",
+      "repository": "guizang-ppt-skill",
+      "source_id": "swiss-lemon",
+      "name": "swiss lemon",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "canonical_id": "strict-swiss"
+    },
+    {
+      "key": "guizang-ppt-skill:swiss-lemon-green",
+      "repository": "guizang-ppt-skill",
+      "source_id": "swiss-lemon-green",
+      "name": "swiss lemon green",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "canonical_id": "strict-swiss"
+    },
+    {
+      "key": "guizang-ppt-skill:swiss-safety-orange",
+      "repository": "guizang-ppt-skill",
+      "source_id": "swiss-safety-orange",
+      "name": "swiss safety orange",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "canonical_id": "strict-swiss"
+    },
+    {
+      "key": "codex-ppt-skill:clean-professional",
+      "repository": "codex-ppt-skill",
+      "source_id": "clean-professional",
+      "name": "clean professional",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "clean-tech"
+    },
+    {
+      "key": "codex-ppt-skill:creative-magazine",
+      "repository": "codex-ppt-skill",
+      "source_id": "creative-magazine",
+      "name": "creative magazine",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "codex-ppt-skill:electronic-ink",
+      "repository": "codex-ppt-skill",
+      "source_id": "electronic-ink",
+      "name": "electronic ink",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "codex-ppt-skill:data-dashboard",
+      "repository": "codex-ppt-skill",
+      "source_id": "data-dashboard",
+      "name": "data dashboard",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "analyst-blueprint"
+    },
+    {
+      "key": "codex-ppt-skill:retro-vector",
+      "repository": "codex-ppt-skill",
+      "source_id": "retro-vector",
+      "name": "retro vector",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "retro-vector"
+    },
+    {
+      "key": "codex-ppt-skill:technical-sketch",
+      "repository": "codex-ppt-skill",
+      "source_id": "technical-sketch",
+      "name": "technical sketch",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "technical-sketch"
+    },
+    {
+      "key": "codex-ppt-skill:whiteboard",
+      "repository": "codex-ppt-skill",
+      "source_id": "whiteboard",
+      "name": "whiteboard",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "whiteboard-marker"
+    },
+    {
+      "key": "codex-ppt-skill:warm-handmade",
+      "repository": "codex-ppt-skill",
+      "source_id": "warm-handmade",
+      "name": "warm handmade",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "handmade-paper"
+    },
+    {
+      "key": "codex-ppt-skill:research-defense",
+      "repository": "codex-ppt-skill",
+      "source_id": "research-defense",
+      "name": "research defense",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "research-evidence"
+    },
+    {
+      "key": "codex-ppt-skill:mckinsey",
+      "repository": "codex-ppt-skill",
+      "source_id": "mckinsey",
+      "name": "mckinsey",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "codex-ppt-skill:party-government-red",
+      "repository": "codex-ppt-skill",
+      "source_id": "party-government-red",
+      "name": "party government red",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "formal-red"
+    },
+    {
+      "key": "codex-ppt-skill:teaching",
+      "repository": "codex-ppt-skill",
+      "source_id": "teaching",
+      "name": "teaching",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "canonical_id": "teaching-explainer"
+    },
+    {
+      "key": "GordenSuperPPTSkills:luxury-dark-infographic",
+      "repository": "GordenSuperPPTSkills",
+      "source_id": "luxury-dark-infographic",
+      "name": "luxury dark infographic",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "canonical_id": "enterprise-infographic"
+    },
+    {
+      "key": "GordenSuperPPTSkills:light-enterprise-infographic",
+      "repository": "GordenSuperPPTSkills",
+      "source_id": "light-enterprise-infographic",
+      "name": "light enterprise infographic",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "canonical_id": "enterprise-infographic"
+    },
+    {
+      "key": "GordenSuperPPTSkills:ink",
+      "repository": "GordenSuperPPTSkills",
+      "source_id": "ink",
+      "name": "ink",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "canonical_id": "enterprise-infographic"
+    },
+    {
+      "key": "GordenSuperPPTSkills:handdrawn",
+      "repository": "GordenSuperPPTSkills",
+      "source_id": "handdrawn",
+      "name": "handdrawn",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "canonical_id": "handmade-paper"
+    },
+    {
+      "key": "GordenSuperPPTSkills:blueprint",
+      "repository": "GordenSuperPPTSkills",
+      "source_id": "blueprint",
+      "name": "blueprint",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "canonical_id": "enterprise-infographic"
+    },
+    {
+      "key": "GordenSuperPPTSkills:editorial",
+      "repository": "GordenSuperPPTSkills",
+      "source_id": "editorial",
+      "name": "editorial",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "canonical_id": "enterprise-infographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/clean-tech-blue",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/clean-tech-blue",
+      "name": "initial/clean tech blue",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "clean-tech"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/dark-aurora",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/dark-aurora",
+      "name": "initial/dark aurora",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "dark-aurora"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/editorial-mono",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/editorial-mono",
+      "name": "initial/editorial mono",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/gradient-glass",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/gradient-glass",
+      "name": "initial/gradient glass",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "bright-glass"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/hand-sketch",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/hand-sketch",
+      "name": "initial/hand sketch",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "handmade-paper"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/japanese-wabi",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/japanese-wabi",
+      "name": "initial/japanese wabi",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/risograph",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/risograph",
+      "name": "initial/risograph",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/swiss-grid",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/swiss-grid",
+      "name": "initial/swiss grid",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "strict-swiss"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/vector-illustration",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/vector-illustration",
+      "name": "initial/vector illustration",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "retro-vector"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:initial/y2k-chrome",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "initial/y2k-chrome",
+      "name": "initial/y2k chrome",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/abstract-art-showcase",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/abstract-art-showcase",
+      "name": "featured/abstract art showcase",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/coal-industry-business-company-profile",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/coal-industry-business-company-profile",
+      "name": "featured/coal industry business company profile",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "enterprise-infographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/college-candy-aesthetics-infographics",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/college-candy-aesthetics-infographics",
+      "name": "featured/college candy aesthetics infographics",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "bright-glass"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/creative-agency",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/creative-agency",
+      "name": "featured/creative agency",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "editorial-ink"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/culinary-innovation",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/culinary-innovation",
+      "name": "featured/culinary innovation",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "retro-vector"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/data-science-consulting",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/data-science-consulting",
+      "name": "featured/data science consulting",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "analyst-blueprint"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/eco-green-business-plan",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/eco-green-business-plan",
+      "name": "featured/eco green business plan",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "clean-tech"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/economic-impact-of-coronavirus",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/economic-impact-of-coronavirus",
+      "name": "featured/economic impact of coronavirus",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "analyst-blueprint"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/fashion-business-consulting-toolkit-aesthetic",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/fashion-business-consulting-toolkit-aesthetic",
+      "name": "featured/fashion business consulting toolkit aesthetic",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "analyst-blueprint"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/final-year-project-thesis-defense",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/final-year-project-thesis-defense",
+      "name": "featured/final year project thesis defense",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "research-evidence"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/first-impressions",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/first-impressions",
+      "name": "featured/first impressions",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "clean-tech"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/flowery",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/flowery",
+      "name": "featured/flowery",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "bright-glass"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/formal-lavender-portfolio",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/formal-lavender-portfolio",
+      "name": "featured/formal lavender portfolio",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "bright-glass"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/geometric-business",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/geometric-business",
+      "name": "featured/geometric business",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "clean-tech"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/geometric-clinical-case",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/geometric-clinical-case",
+      "name": "featured/geometric clinical case",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "research-evidence"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/geometric-duotone-thesis",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/geometric-duotone-thesis",
+      "name": "featured/geometric duotone thesis",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "research-evidence"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/health-disparities-and-social-determinants-of-health-doctor-of-philosophy-phd-in-health-behavior-and-health-education",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/health-disparities-and-social-determinants-of-health-doctor-of-philosophy-phd-in-health-behavior-and-health-education",
+      "name": "featured/health disparities and social determinants of health doctor of philosophy phd in health behavior and health education",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "research-evidence"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/indigenous-cultures",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/indigenous-cultures",
+      "name": "featured/indigenous cultures",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "retro-vector"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/investment-company-business-plan",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/investment-company-business-plan",
+      "name": "featured/investment company business plan",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "analyst-blueprint"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/meeting-agenda",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/meeting-agenda",
+      "name": "featured/meeting agenda",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "teaching-explainer"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/mind-maps-workshop-professional",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/mind-maps-workshop-professional",
+      "name": "featured/mind maps workshop professional",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "teaching-explainer"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:featured/mindfulness-in-the-classroom-breathing-techniques",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "featured/mindfulness-in-the-classroom-breathing-techniques",
+      "name": "featured/mindfulness in the classroom breathing techniques",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "teaching-explainer"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-1-4f02fb97",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-1-4f02fb97",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 1 4f02fb97",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-10-f0e2c8d9",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-10-f0e2c8d9",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 10 f0e2c8d9",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-11-19c402f9",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-11-19c402f9",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 11 19c402f9",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-13-820c7100",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-13-820c7100",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 13 820c7100",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-15-26be2d46",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-15-26be2d46",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 15 26be2d46",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-16-47347745",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-16-47347745",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 16 47347745",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-17-fd10f39c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-17-fd10f39c",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 17 fd10f39c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-18-38c7e38f",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-18-38c7e38f",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 18 38c7e38f",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-2-6fda302a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-2-6fda302a",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 2 6fda302a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-21-1d3a03bb",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-21-1d3a03bb",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 21 1d3a03bb",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-22-756e8b62",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-22-756e8b62",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 22 756e8b62",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-25-ad5498f0",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-25-ad5498f0",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 25 ad5498f0",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-26-0ba94a68",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-26-0ba94a68",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 26 0ba94a68",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-27-aac790a5",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-27-aac790a5",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 27 aac790a5",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-28-242aaa71",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-28-242aaa71",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 28 242aaa71",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-29-3e234ad9",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-29-3e234ad9",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 29 3e234ad9",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-31-485ae190",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-31-485ae190",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 31 485ae190",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-32-75711782",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-32-75711782",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 32 75711782",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-33-af429968",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-33-af429968",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 33 af429968",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-34-4baaf592",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-34-4baaf592",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 34 4baaf592",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-35-1dc1d3b3",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-35-1dc1d3b3",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 35 1dc1d3b3",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-4-349295b8",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-4-349295b8",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 4 349295b8",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-5-b077b49a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-5-b077b49a",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 5 b077b49a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-6-a9084536",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-6-a9084536",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 6 a9084536",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-8-a694ca1e",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-8-a694ca1e",
+      "name": "xiamulingzi/linzi morandi 2 21 35 ppt ppt 8 a694ca1e",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-1-8dc42f63",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-1-8dc42f63",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 1 8dc42f63",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-12-c2928b30",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-12-c2928b30",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 12 c2928b30",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-14-1678fc3d",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-14-1678fc3d",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 14 1678fc3d",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-15-b12ea38a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-15-b12ea38a",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 15 b12ea38a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-16-9ad7d5dd",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-16-9ad7d5dd",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 16 9ad7d5dd",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-17-d980ea26",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-17-d980ea26",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 17 d980ea26",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-18-dab5f352",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-18-dab5f352",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 18 dab5f352",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-2-c9574110",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-2-c9574110",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 2 c9574110",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-20-d5a94cd5",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-20-d5a94cd5",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 20 d5a94cd5",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-22-5b38446b",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-22-5b38446b",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 22 5b38446b",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-25-5d8944ef",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-25-5d8944ef",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 25 5d8944ef",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-26-26b85a39",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-26-26b85a39",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 26 26b85a39",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-3-1ccdba09",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-3-1ccdba09",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 3 1ccdba09",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-31-9b25a819",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-31-9b25a819",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 31 9b25a819",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-37-45157cb4",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-37-45157cb4",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 37 45157cb4",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-39-7f77a308",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-39-7f77a308",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 39 7f77a308",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-4-a3030c28",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-4-a3030c28",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 4 a3030c28",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-40-f9fa5119",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-40-f9fa5119",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 40 f9fa5119",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-41-1cca594d",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-41-1cca594d",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 41 1cca594d",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-6-7d620a8e",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-40ppt-ppt-6-7d620a8e",
+      "name": "xiamulingzi/linzi morandi 2 21 40ppt ppt 6 7d620a8e",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-1-f469dfff",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-1-f469dfff",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 1 f469dfff",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-10-5a3beb00",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-10-5a3beb00",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 10 5a3beb00",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-101-7e1b51d2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-101-7e1b51d2",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 101 7e1b51d2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-102-979ca9b0",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-102-979ca9b0",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 102 979ca9b0",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-109-163f94b5",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-109-163f94b5",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 109 163f94b5",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-111-0ce55f4c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-111-0ce55f4c",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 111 0ce55f4c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-112-ef197cf5",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-112-ef197cf5",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 112 ef197cf5",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-116-6bfd8b35",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-116-6bfd8b35",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 116 6bfd8b35",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-117-98c68d4d",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-117-98c68d4d",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 117 98c68d4d",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-13-f8fd776b",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-13-f8fd776b",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 13 f8fd776b",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-130-3a6f5960",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-130-3a6f5960",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 130 3a6f5960",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-14-402997e6",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-14-402997e6",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 14 402997e6",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-15-0d966a46",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-15-0d966a46",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 15 0d966a46",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-16-1074ff16",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-16-1074ff16",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 16 1074ff16",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-2-d2e4a666",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-2-d2e4a666",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 2 d2e4a666",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-20-b03ea643",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-20-b03ea643",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 20 b03ea643",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-25-1e8194ae",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-25-1e8194ae",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 25 1e8194ae",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-26-04a5ee95",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-26-04a5ee95",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 26 04a5ee95",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-29-f60771af",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-29-f60771af",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 29 f60771af",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-3-ae50f86b",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-3-ae50f86b",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 3 ae50f86b",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-31-e138d699",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-31-e138d699",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 31 e138d699",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-33-29053078",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-33-29053078",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 33 29053078",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-34-c316b568",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-34-c316b568",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 34 c316b568",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-35-2fc576e8",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-35-2fc576e8",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 35 2fc576e8",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-37-eb89a2db",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-37-eb89a2db",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 37 eb89a2db",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-38-785a786b",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-38-785a786b",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 38 785a786b",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-4-1ea723c0",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-4-1ea723c0",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 4 1ea723c0",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-41-a8098b46",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-41-a8098b46",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 41 a8098b46",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-43-28d038bb",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-43-28d038bb",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 43 28d038bb",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-44-05852cf2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-44-05852cf2",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 44 05852cf2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-45-94b4e687",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-45-94b4e687",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 45 94b4e687",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-47-e6c2b929",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-47-e6c2b929",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 47 e6c2b929",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-49-6928c478",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-49-6928c478",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 49 6928c478",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-5-1-ca8265d9",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-5-1-ca8265d9",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 5 1 ca8265d9",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-5-2-d6732955",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-5-2-d6732955",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 5 2 d6732955",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-50-98f9eb7d",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-50-98f9eb7d",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 50 98f9eb7d",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-51-662495f3",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-51-662495f3",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 51 662495f3",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-52-304d6816",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-52-304d6816",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 52 304d6816",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-53-142a71f0",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-53-142a71f0",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 53 142a71f0",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-54-78c6a675",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-54-78c6a675",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 54 78c6a675",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-56-05aebaa4",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-56-05aebaa4",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 56 05aebaa4",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-57-8adc9831",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-57-8adc9831",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 57 8adc9831",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-58-9aa43cdb",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-58-9aa43cdb",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 58 9aa43cdb",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-59-1de0a6c8",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-59-1de0a6c8",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 59 1de0a6c8",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-6-be4f877a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-6-be4f877a",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 6 be4f877a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-60-9edd662a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-60-9edd662a",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 60 9edd662a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-62-513e1dc6",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-62-513e1dc6",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 62 513e1dc6",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-63-dea7cee2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-63-dea7cee2",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 63 dea7cee2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-64-5a0b3f3f",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-64-5a0b3f3f",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 64 5a0b3f3f",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-69-2c612509",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-69-2c612509",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 69 2c612509",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-7-b48ed3b5",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-7-b48ed3b5",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 7 b48ed3b5",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-71-4d973efc",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-71-4d973efc",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 71 4d973efc",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-72-df3872cb",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-72-df3872cb",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 72 df3872cb",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-73-3b51a6d2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-73-3b51a6d2",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 73 3b51a6d2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-75-bf4f5a42",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-75-bf4f5a42",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 75 bf4f5a42",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-76-9a794a8a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-76-9a794a8a",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 76 9a794a8a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-77-2f9df692",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-77-2f9df692",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 77 2f9df692",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-78-6874832a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-78-6874832a",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 78 6874832a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-79-aa6e9778",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-79-aa6e9778",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 79 aa6e9778",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-8-0f71568d",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-8-0f71568d",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 8 0f71568d",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-80-dcfbfb5a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-80-dcfbfb5a",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 80 dcfbfb5a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-81-ead052df",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-81-ead052df",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 81 ead052df",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-82-0f71568d",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-82-0f71568d",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 82 0f71568d",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-83-614c5106",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-83-614c5106",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 83 614c5106",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-84-5f435c2e",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-84-5f435c2e",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 84 5f435c2e",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-85-085279dd",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-85-085279dd",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 85 085279dd",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-86-9bea9e12",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-86-9bea9e12",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 86 9bea9e12",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-9-ef4688c5",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-9-ef4688c5",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 9 ef4688c5",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-91-148c03bc",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-91-148c03bc",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 91 148c03bc",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-92-528a050a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-92-528a050a",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 92 528a050a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-93-b3625d4b",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-93-b3625d4b",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 93 b3625d4b",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-94-afd7a070",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-94-afd7a070",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 94 afd7a070",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-98-0b820330",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-98-0b820330",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 98 0b820330",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-99-204c2b6c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-2-21-ppt-ppt-99-204c2b6c",
+      "name": "xiamulingzi/linzi morandi 2 21 ppt ppt 99 204c2b6c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-11-3a03a5ef",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-11-3a03a5ef",
+      "name": "xiamulingzi/linzi morandi 3 0725 11 3a03a5ef",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-12-7671429e",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-12-7671429e",
+      "name": "xiamulingzi/linzi morandi 3 0725 12 7671429e",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-13-6e154530",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-13-6e154530",
+      "name": "xiamulingzi/linzi morandi 3 0725 13 6e154530",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-14-06ac95f5",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-14-06ac95f5",
+      "name": "xiamulingzi/linzi morandi 3 0725 14 06ac95f5",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-15-efd2db47",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-15-efd2db47",
+      "name": "xiamulingzi/linzi morandi 3 0725 15 efd2db47",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-16-972e72ce",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-16-972e72ce",
+      "name": "xiamulingzi/linzi morandi 3 0725 16 972e72ce",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-17-6ae7ad1f",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-17-6ae7ad1f",
+      "name": "xiamulingzi/linzi morandi 3 0725 17 6ae7ad1f",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-18-28b4e9c3",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-18-28b4e9c3",
+      "name": "xiamulingzi/linzi morandi 3 0725 18 28b4e9c3",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-19-821f35fd",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-19-821f35fd",
+      "name": "xiamulingzi/linzi morandi 3 0725 19 821f35fd",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-21-621d42e2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-21-621d42e2",
+      "name": "xiamulingzi/linzi morandi 3 0725 21 621d42e2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-22-2c408050",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-22-2c408050",
+      "name": "xiamulingzi/linzi morandi 3 0725 22 2c408050",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-23-bbc5b1c2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-23-bbc5b1c2",
+      "name": "xiamulingzi/linzi morandi 3 0725 23 bbc5b1c2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-24-93f17def",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-24-93f17def",
+      "name": "xiamulingzi/linzi morandi 3 0725 24 93f17def",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-25-26a8efe1",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-25-26a8efe1",
+      "name": "xiamulingzi/linzi morandi 3 0725 25 26a8efe1",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-3-d8032b6e",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-3-d8032b6e",
+      "name": "xiamulingzi/linzi morandi 3 0725 3 d8032b6e",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-4-e3e628e2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-4-e3e628e2",
+      "name": "xiamulingzi/linzi morandi 3 0725 4 e3e628e2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-5-3fd38521",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-5-3fd38521",
+      "name": "xiamulingzi/linzi morandi 3 0725 5 3fd38521",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-6-06735326",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-6-06735326",
+      "name": "xiamulingzi/linzi morandi 3 0725 6 06735326",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-8-6c19c7cc",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-8-6c19c7cc",
+      "name": "xiamulingzi/linzi morandi 3 0725 8 6c19c7cc",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-84-577766a6",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-84-577766a6",
+      "name": "xiamulingzi/linzi morandi 3 0725 84 577766a6",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-9-1d1b7106",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-3-0725-9-1d1b7106",
+      "name": "xiamulingzi/linzi morandi 3 0725 9 1d1b7106",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-01-59c9ef00",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-01-59c9ef00",
+      "name": "xiamulingzi/linzi morandi ppt 01 59c9ef00",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-03-603dac61",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-03-603dac61",
+      "name": "xiamulingzi/linzi morandi ppt 03 603dac61",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-04-096b145e",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-04-096b145e",
+      "name": "xiamulingzi/linzi morandi ppt 04 096b145e",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-05-4021eacf",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-05-4021eacf",
+      "name": "xiamulingzi/linzi morandi ppt 05 4021eacf",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-06-aa5458fe",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-06-aa5458fe",
+      "name": "xiamulingzi/linzi morandi ppt 06 aa5458fe",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-07-8e5ef95f",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-07-8e5ef95f",
+      "name": "xiamulingzi/linzi morandi ppt 07 8e5ef95f",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-09-22a29785",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-09-22a29785",
+      "name": "xiamulingzi/linzi morandi ppt 09 22a29785",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-11-708f6bfe",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-11-708f6bfe",
+      "name": "xiamulingzi/linzi morandi ppt 11 708f6bfe",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-13-35aaa4d7",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-13-35aaa4d7",
+      "name": "xiamulingzi/linzi morandi ppt 13 35aaa4d7",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-14-0f11263c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-14-0f11263c",
+      "name": "xiamulingzi/linzi morandi ppt 14 0f11263c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-15-22acaf56",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-15-22acaf56",
+      "name": "xiamulingzi/linzi morandi ppt 15 22acaf56",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-16-c26a4a39",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-16-c26a4a39",
+      "name": "xiamulingzi/linzi morandi ppt 16 c26a4a39",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-17-cbe897b4",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-17-cbe897b4",
+      "name": "xiamulingzi/linzi morandi ppt 17 cbe897b4",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-18-c5049223",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-18-c5049223",
+      "name": "xiamulingzi/linzi morandi ppt 18 c5049223",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-19-dba00d7a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-19-dba00d7a",
+      "name": "xiamulingzi/linzi morandi ppt 19 dba00d7a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-20-ceb0976c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-20-ceb0976c",
+      "name": "xiamulingzi/linzi morandi ppt 20 ceb0976c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-22-e3f0e8a1",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-22-e3f0e8a1",
+      "name": "xiamulingzi/linzi morandi ppt 22 e3f0e8a1",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-23-5485c9b0",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-23-5485c9b0",
+      "name": "xiamulingzi/linzi morandi ppt 23 5485c9b0",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-24-ba384ad0",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-24-ba384ad0",
+      "name": "xiamulingzi/linzi morandi ppt 24 ba384ad0",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-25-b8904aa2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-25-b8904aa2",
+      "name": "xiamulingzi/linzi morandi ppt 25 b8904aa2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-28-47a591b8",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-28-47a591b8",
+      "name": "xiamulingzi/linzi morandi ppt 28 47a591b8",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-29-9388544d",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-29-9388544d",
+      "name": "xiamulingzi/linzi morandi ppt 29 9388544d",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-31-fbd21f8f",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-31-fbd21f8f",
+      "name": "xiamulingzi/linzi morandi ppt 31 fbd21f8f",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-32-a093e13c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-32-a093e13c",
+      "name": "xiamulingzi/linzi morandi ppt 32 a093e13c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-33-477814b8",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-33-477814b8",
+      "name": "xiamulingzi/linzi morandi ppt 33 477814b8",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-34-e854ee77",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-34-e854ee77",
+      "name": "xiamulingzi/linzi morandi ppt 34 e854ee77",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-36-64ba41bf",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-36-64ba41bf",
+      "name": "xiamulingzi/linzi morandi ppt 36 64ba41bf",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-37-b4ef9b0c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-37-b4ef9b0c",
+      "name": "xiamulingzi/linzi morandi ppt 37 b4ef9b0c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-38-0a636842",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-38-0a636842",
+      "name": "xiamulingzi/linzi morandi ppt 38 0a636842",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-40-bd80fb56",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-40-bd80fb56",
+      "name": "xiamulingzi/linzi morandi ppt 40 bd80fb56",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-41-1f81a055",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-41-1f81a055",
+      "name": "xiamulingzi/linzi morandi ppt 41 1f81a055",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-42-94c4760f",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-42-94c4760f",
+      "name": "xiamulingzi/linzi morandi ppt 42 94c4760f",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-43-141653e7",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-43-141653e7",
+      "name": "xiamulingzi/linzi morandi ppt 43 141653e7",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-44-edf32747",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-44-edf32747",
+      "name": "xiamulingzi/linzi morandi ppt 44 edf32747",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-46-7afcfee4",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-46-7afcfee4",
+      "name": "xiamulingzi/linzi morandi ppt 46 7afcfee4",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-47-bdc454b7",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-47-bdc454b7",
+      "name": "xiamulingzi/linzi morandi ppt 47 bdc454b7",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-48-61145c4a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-48-61145c4a",
+      "name": "xiamulingzi/linzi morandi ppt 48 61145c4a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-49-c1187294",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-49-c1187294",
+      "name": "xiamulingzi/linzi morandi ppt 49 c1187294",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-50-0cfbe592",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-50-0cfbe592",
+      "name": "xiamulingzi/linzi morandi ppt 50 0cfbe592",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-51-2035b340",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-51-2035b340",
+      "name": "xiamulingzi/linzi morandi ppt 51 2035b340",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-52-c6908a49",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-52-c6908a49",
+      "name": "xiamulingzi/linzi morandi ppt 52 c6908a49",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-53-df43f6ed",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-53-df43f6ed",
+      "name": "xiamulingzi/linzi morandi ppt 53 df43f6ed",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-54-0f55375d",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-54-0f55375d",
+      "name": "xiamulingzi/linzi morandi ppt 54 0f55375d",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-55-adc03a9c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-55-adc03a9c",
+      "name": "xiamulingzi/linzi morandi ppt 55 adc03a9c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-56-e229304d",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-56-e229304d",
+      "name": "xiamulingzi/linzi morandi ppt 56 e229304d",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-58-a1eb66a9",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-58-a1eb66a9",
+      "name": "xiamulingzi/linzi morandi ppt 58 a1eb66a9",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-59-c060fb14",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-59-c060fb14",
+      "name": "xiamulingzi/linzi morandi ppt 59 c060fb14",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-60-17f1ff7a",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-60-17f1ff7a",
+      "name": "xiamulingzi/linzi morandi ppt 60 17f1ff7a",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-61-7b8851ea",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-61-7b8851ea",
+      "name": "xiamulingzi/linzi morandi ppt 61 7b8851ea",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-62-201cccdd",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-62-201cccdd",
+      "name": "xiamulingzi/linzi morandi ppt 62 201cccdd",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-63-5d71e51e",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-63-5d71e51e",
+      "name": "xiamulingzi/linzi morandi ppt 63 5d71e51e",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-65-16b8a6a7",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-65-16b8a6a7",
+      "name": "xiamulingzi/linzi morandi ppt 65 16b8a6a7",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-69-d4bdb8ba",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-69-d4bdb8ba",
+      "name": "xiamulingzi/linzi morandi ppt 69 d4bdb8ba",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-ppt-6cf38a8c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-ppt-6cf38a8c",
+      "name": "xiamulingzi/linzi morandi ppt ppt 6cf38a8c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-ppt-6f07cceb",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-ppt-6f07cceb",
+      "name": "xiamulingzi/linzi morandi ppt ppt 6f07cceb",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-ppt-ebd67968",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-ppt-ebd67968",
+      "name": "xiamulingzi/linzi morandi ppt ppt ebd67968",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-ppt-f631ce31",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-morandi-ppt-ppt-f631ce31",
+      "name": "xiamulingzi/linzi morandi ppt ppt f631ce31",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "japanese-wabi"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-0212-05b1a5c4",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-0212-05b1a5c4",
+      "name": "xiamulingzi/linzi punk fg11 0212 05b1a5c4",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-0324-e488f418",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-0324-e488f418",
+      "name": "xiamulingzi/linzi punk fg11 0324 e488f418",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-2004-be327c8b",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-2004-be327c8b",
+      "name": "xiamulingzi/linzi punk fg11 2004 be327c8b",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-2707-1dee59f0",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-2707-1dee59f0",
+      "name": "xiamulingzi/linzi punk fg11 2707 1dee59f0",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-2712-c6bb5c71",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-2712-c6bb5c71",
+      "name": "xiamulingzi/linzi punk fg11 2712 c6bb5c71",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-3621-343c19fa",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-3621-343c19fa",
+      "name": "xiamulingzi/linzi punk fg11 3621 343c19fa",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4104-f46db665",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-4104-f46db665",
+      "name": "xiamulingzi/linzi punk fg11 4104 f46db665",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4120-8bb09d0b",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-4120-8bb09d0b",
+      "name": "xiamulingzi/linzi punk fg11 4120 8bb09d0b",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4131-8afefaed",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-4131-8afefaed",
+      "name": "xiamulingzi/linzi punk fg11 4131 8afefaed",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4914ppt-0d6f6af4",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-4914ppt-0d6f6af4",
+      "name": "xiamulingzi/linzi punk fg11 4914ppt 0d6f6af4",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4935ppt-24a8113c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-4935ppt-24a8113c",
+      "name": "xiamulingzi/linzi punk fg11 4935ppt 24a8113c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-5204-artist-c3b5a90c",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-5204-artist-c3b5a90c",
+      "name": "xiamulingzi/linzi punk fg11 5204 artist c3b5a90c",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-5801-urbanic-aad33e25",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-5801-urbanic-aad33e25",
+      "name": "xiamulingzi/linzi punk fg11 5801 urbanic aad33e25",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-6002ppt-b07248cf",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-6002ppt-b07248cf",
+      "name": "xiamulingzi/linzi punk fg11 6002ppt b07248cf",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-6108-ppt-9c460a91",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-6108-ppt-9c460a91",
+      "name": "xiamulingzi/linzi punk fg11 6108 ppt 9c460a91",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-7001ppt-2d4f3d66",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-7001ppt-2d4f3d66",
+      "name": "xiamulingzi/linzi punk fg11 7001ppt 2d4f3d66",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-7009-ppt-97358806",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-7009-ppt-97358806",
+      "name": "xiamulingzi/linzi punk fg11 7009 ppt 97358806",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-co13-ppt-19449160",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-co13-ppt-19449160",
+      "name": "xiamulingzi/linzi punk fg11 co13 ppt 19449160",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-co16ppt-a9951c03",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-fg11-co16ppt-a9951c03",
+      "name": "xiamulingzi/linzi punk fg11 co16ppt a9951c03",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-02-55bfaee3",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-ppt-02-55bfaee3",
+      "name": "xiamulingzi/linzi punk ppt 02 55bfaee3",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-05-d2c90fc1",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-ppt-05-d2c90fc1",
+      "name": "xiamulingzi/linzi punk ppt 05 d2c90fc1",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-09-65b8c621",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-ppt-09-65b8c621",
+      "name": "xiamulingzi/linzi punk ppt 09 65b8c621",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-10-24ad06c2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-ppt-10-24ad06c2",
+      "name": "xiamulingzi/linzi punk ppt 10 24ad06c2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-11-c01a353e",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-ppt-11-c01a353e",
+      "name": "xiamulingzi/linzi punk ppt 11 c01a353e",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-13-dcb3133f",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-ppt-13-dcb3133f",
+      "name": "xiamulingzi/linzi punk ppt 13 dcb3133f",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-25-48c3f8d2",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-punk-ppt-25-48c3f8d2",
+      "name": "xiamulingzi/linzi punk ppt 25 48c3f8d2",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "risograph-zine"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-10-ab71ea82",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-10-ab71ea82",
+      "name": "xiamulingzi/linzi tech 10 ab71ea82",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-12-225a84ec",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-12-225a84ec",
+      "name": "xiamulingzi/linzi tech 12 225a84ec",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-14-503ac808",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-14-503ac808",
+      "name": "xiamulingzi/linzi tech 14 503ac808",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-16-48e9caad",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-16-48e9caad",
+      "name": "xiamulingzi/linzi tech 16 48e9caad",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-17-e27e6adb",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-17-e27e6adb",
+      "name": "xiamulingzi/linzi tech 17 e27e6adb",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-2-a910e7f1",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-2-a910e7f1",
+      "name": "xiamulingzi/linzi tech 2 a910e7f1",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-4-a92d53b4",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-4-a92d53b4",
+      "name": "xiamulingzi/linzi tech 4 a92d53b4",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-7-0cf19a16",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-7-0cf19a16",
+      "name": "xiamulingzi/linzi tech 7 0cf19a16",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-8-be5440d6",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-8-be5440d6",
+      "name": "xiamulingzi/linzi tech 8 be5440d6",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-9-429050a1",
+      "repository": "gpt-image2-ppt-skills",
+      "source_id": "xiamulingzi/linzi-tech-9-429050a1",
+      "name": "xiamulingzi/linzi tech 9 429050a1",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "canonical_id": "y2k-holographic"
+    },
+    {
+      "key": "wuming-cyan-circuit-launch-ppt:cyan-circuit-launch",
+      "repository": "wuming-cyan-circuit-launch-ppt",
+      "source_id": "cyan-circuit-launch",
+      "name": "cyan circuit launch",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chujianyun/wuming-cyan-circuit-launch-ppt/tree/main",
+      "canonical_id": "cyan-circuit"
+    },
+    {
+      "key": "wuming-ai-ppt-cover:bright-glass-cover",
+      "repository": "wuming-ai-ppt-cover",
+      "source_id": "bright-glass-cover",
+      "name": "bright glass cover",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chujianyun/wuming-ai-ppt-cover/tree/main",
+      "canonical_id": "bright-glass"
+    },
+    {
+      "key": "wuming-ai-ppt-cover:blue-purple-ai-cover",
+      "repository": "wuming-ai-ppt-cover",
+      "source_id": "blue-purple-ai-cover",
+      "name": "blue purple ai cover",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/chujianyun/wuming-ai-ppt-cover/tree/main",
+      "canonical_id": "bright-glass"
+    }
+  ]
+}
