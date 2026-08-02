@@ -7,30 +7,36 @@ flowchart LR
   C --> D[逐页内容草稿]
   D --> E{用户确认}
   E -- 返修 --> D
-  E -- 通过 --> F[主题与视觉锚点]
+  E -- 通过 --> F[模式与主题 / 视觉锚点]
   F --> G[imagegen 提示词与任务清单]
-  G --> H[整页图片生成]
-  H --> I[逐页内容/视觉 Review]
-  I -- 返修页 --> G
-  I -- 通过 --> J[统一图片渲染器]
-  J --> K[QA]
-  K --> L[单文件离线包 / HTML / PNG / PDF / PPTX]
+  G --> H{输出模式}
+  H -- image-first --> I[生成整页图片]
+  H -- html-image-assisted --> J[生成无文字背景板/插图]
+  I --> K[逐页内容/视觉 Review]
+  J --> K
+  K -- 返修页 --> G
+  K -- 通过 --> L{模式渲染器}
+  L -- image-first --> M[图片播放渲染器]
+  L -- html-image-assisted --> N[HTML 文字/版式渲染器]
+  M --> O[QA]
+  N --> O
+  O --> P[单文件离线包 / HTML / PNG / PDF / PPTX]
 ```
 
 ## 数据流
 
-`outline_draft.json` 是用户确认前的计划，`deck_spec.json` 是确认后的内容与主题源，`generation_manifest.json` 是生成任务与状态源，`slides/` 保存整页图片。渲染器只消费 JSON 和图片，不从已生成的 HTML 反推内容。
+`outline_draft.json` 是用户确认前的计划，`deck_spec.json` 是确认后的内容、模式与主题源，`generation_manifest.json` 是生成任务与状态源。`image-first` 将完整页面保存到 `slides/`；`html-image-assisted` 将无文字视觉素材保存到 `assets/`。渲染器只消费 JSON 和图片，不从已生成的 HTML 反推内容。
 
 最终 `bundle` 生成 Bento-inspired 单文件：
 
 ```html
 <script type="application/image-ppt+json" id="image-ppt-doc">
-{"format":"image-ppt","version":1,"assets":{"slides/s01.png":"data:image/png;base64,..."},"slides":[{"id":"s01","image":"asset:slides/s01.png"}]}
+{"format":"image-ppt","version":1,"mode":"html-image-assisted","assets":{"assets/s01-visual.png":"data:image/png;base64,..."},"slides":[{"id":"s01","visual":"asset:assets/s01-visual.png","exact_text":["标题","支持句"]}]}
 </script>
 <script>/* offline runtime: read JSON, render thumbnails and presentation */</script>
 ```
 
-JSON 是唯一事实源，图片以 data URI 内嵌，`<` 在嵌入前转义为 `\\u003c`，因此文件可离线打开且不会因 `</script>` 破坏。`id`、`visual_anchor_id`、`continuity_group` 和 `transition` 保留跨页连续性；整页像素仍然通过重新生成修改。
+JSON 是唯一事实源，图片以 data URI 内嵌，`<` 在嵌入前转义为 `\\u003c`，因此文件可离线打开且不会因 `</script>` 破坏。`image-first` 的 `image` 是完整页面；HTML 模式的 `visual` 只负责背景板或插图，`exact_text` 由运行时创建 HTML 文字。`id`、`visual_anchor_id`、`continuity_group` 和 `transition` 保留跨页连续性；修改时只重生成受影响的页面或视觉素材。
 
 ## 集成边界
 

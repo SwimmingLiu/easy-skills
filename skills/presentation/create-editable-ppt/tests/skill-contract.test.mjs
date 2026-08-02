@@ -7,7 +7,7 @@ import test from 'node:test';
 const here = dirname(fileURLToPath(import.meta.url));
 const root = join(here, '..');
 
-test('skill contract is image-first and gates generation behind a complete content draft', async () => {
+test('skill contract exposes both image-first and HTML plus AI image modes', async () => {
   const skill = await readFile(join(root, 'SKILL.md'), 'utf8');
   assert.match(skill, /name: create-image-ppt/);
   assert.match(skill, /description: Use when/);
@@ -17,6 +17,10 @@ test('skill contract is image-first and gates generation behind a complete conte
   assert.match(skill, /outline_preview\.html/);
   assert.match(skill, /草稿未确认.*不得.*生图/s);
   assert.match(skill, /整页图片/);
+  assert.match(skill, /image-first/);
+  assert.match(skill, /html-image-assisted/);
+  assert.match(skill, /无文字/);
+  assert.match(skill, /assets\//);
   assert.doesNotMatch(skill, /contenteditable|browser-editable|默认保留文字.*可编辑/s);
 });
 

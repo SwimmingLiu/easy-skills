@@ -1,7 +1,7 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://easy-skills.local/create-image-ppt/deck_spec.schema.json",
-  "title": "Image-first presentation deck specification",
+  "title": "Dual-mode AI presentation deck specification",
   "type": "object",
   "required": ["schema_version", "status", "title", "audience", "purpose", "central_message", "narrative", "language", "canvas", "output_mode", "theme", "slides"],
   "properties": {
@@ -13,7 +13,8 @@
     "central_message": { "type": "string", "minLength": 1 },
     "language": { "type": "string", "minLength": 2 },
     "canvas": { "const": "16:9" },
-    "output_mode": { "const": "full-slide-image" },
+    "presentation_mode": { "enum": ["image-first", "html-image-assisted"] },
+    "output_mode": { "enum": ["full-slide-image", "html-image-assisted"] },
     "narrative": {
       "type": "object",
       "required": ["opening", "problem", "insight", "method", "action"],

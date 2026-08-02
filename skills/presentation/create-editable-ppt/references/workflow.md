@@ -16,7 +16,7 @@
 ## Gate
 
 1. **Page-plan Gate**：用户确认中心含义、叙事逻辑、页数和逐页主张。
-2. **Theme Gate**：确定一个主题 family 和跨页视觉锚点；需要时先生成 1–3 页样张。
+2. **Mode/Theme Gate**：确定 `image-first` 或 `html-image-assisted`，再确定一个主题 family 和跨页视觉锚点；需要时先生成 1–3 页样张。
 3. **Generation Gate**：仅对已确认的 `deck_spec.json` 编译 prompt 并调用 imagegen。
 4. **Machine QA Gate**：manifest、图片尺寸、缺图、文本清单和状态检查无阻断。
 5. **Browser Review Gate**：逐页检查后才 bundle 或导出。
@@ -30,6 +30,7 @@
 | 文件未上传或路径失效 | 列出缺失项，继续读取其余材料，不猜测文件内容 | 核心资料全缺时阻塞生成 |
 | 资料不足 | 缩减页数并标出证据缺口 | 等待用户确认 |
 | 无图片且无法形成安全概念图 | 保留 media gap，页面保持 prepared | 阻塞该页生成 |
+| HTML 模式视觉图含有文字 | 标记 revise，重新收紧“无文字视觉素材”提示词 | 阻塞该页渲染 |
 | imagegen 密钥未配置 | `doctor` 报告缺失；提醒用户本机设置密钥 | 阻塞生图，不阻塞草稿 |
 | 生图失败 | 记录错误和 prompt，有限次重试 | 该页不能进入导出 |
 | 文字错误、乱码、模型添加文字 | 标记 revise，收紧 exact text 约束并重生该页 | 该页阻塞 |

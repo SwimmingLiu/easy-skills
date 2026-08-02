@@ -1,13 +1,13 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://easy-skills.local/create-image-ppt/image_ppt_doc.schema.json",
-  "title": "Offline image PPT document",
+  "title": "Offline AI image PPT document",
   "type": "object",
   "required": ["format", "version", "mode", "readonly", "title", "assets", "slides"],
   "properties": {
     "format": { "const": "image-ppt" },
     "version": { "const": 1 },
-    "mode": { "const": "present" },
+    "mode": { "enum": ["present", "html-image-assisted"] },
     "readonly": { "const": true },
     "title": { "type": "string" },
     "purpose": { "type": "string" },
@@ -22,11 +22,12 @@
       "minItems": 1,
       "items": {
         "type": "object",
-        "required": ["id", "role", "image", "claim", "visual_anchor_id", "continuity_group", "transition"],
+        "required": ["id", "role", "claim", "visual_anchor_id", "continuity_group", "transition"],
         "properties": {
           "id": { "type": "string" },
           "role": { "type": "string" },
           "image": { "type": "string", "pattern": "^asset:" },
+          "visual": { "type": "string", "pattern": "^asset:" },
           "claim": { "type": "string" },
           "exact_text": { "type": "array", "items": { "type": "string" } },
           "speaker_notes": { "type": "string" },
