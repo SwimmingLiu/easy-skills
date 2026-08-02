@@ -1,7 +1,7 @@
 import { readFile } from 'node:fs/promises';
 import { extname, isAbsolute, join, relative, resolve } from 'node:path';
 
-import { renderBundledHtmlImageDeck } from './html-assisted.mjs';
+import { renderBundledPureHtmlDeck } from './pure-html.mjs';
 
 const MIME_TYPES = {
   '.png': 'image/png',
@@ -80,24 +80,16 @@ export async function buildBundledImageDeck(root, deck, manifest) {
   return renderBundledImageDeck(document);
 }
 
-export async function buildBundledHtmlImageDeck(root, deck, manifest) {
+export async function buildBundledPureHtmlDeck(root, deck, manifest) {
   if (!deck || !Array.isArray(deck.slides)) throw new Error('Deck slides are required for bundling.');
   if (!manifest || !Array.isArray(manifest.slides)) throw new Error('Generation manifest slides are required for bundling.');
   const slides = [];
-  const assets = {};
   for (const [index, item] of manifest.slides.entries()) {
     if (!['generated', 'pass'].includes(item.status)) throw new Error(`Slide ${item.id ?? index + 1} is not generated.`);
-    const absolutePath = safeAssetPath(root, item.output_path);
-    let bytes;
-    try { bytes = await readFile(absolutePath); } catch { throw new Error(`Missing generated visual asset: ${item.output_path}`); }
-    const assetKey = item.output_path.replaceAll('\\', '/');
-    assets[assetKey] = `data:${assetMime(assetKey)};base64,${bytes.toString('base64')}`;
     const source = deck.slides.find((slide) => slide.id === item.id) ?? deck.slides[index] ?? {};
     slides.push({
       id: item.id,
       role: item.role ?? source.role,
-      visual: `asset:${assetKey}`,
-      asset_role: item.asset_role ?? 'background-or-illustration',
       claim: source.claim ?? item.role ?? item.id,
       exact_text: source.exact_text ?? [],
       speaker_notes: source.speaker_notes ?? source.claim ?? '',
@@ -109,17 +101,17 @@ export async function buildBundledHtmlImageDeck(root, deck, manifest) {
   const document = {
     format: 'image-ppt',
     version: 1,
-    mode: 'html-image-assisted',
+    mode: 'pure-html',
     readonly: true,
-    title: deck.title ?? 'HTML image presentation',
+    title: deck.title ?? 'Pure HTML presentation',
     purpose: deck.purpose ?? '',
     central_message: deck.central_message ?? '',
     theme: deck.theme ?? {},
-    assets,
+    assets: {},
     slides,
     source: { deck_schema_version: deck.schema_version ?? null, manifest_schema_version: manifest.schema_version ?? null },
   };
-  return renderBundledHtmlImageDeck(document);
+  return renderBundledPureHtmlDeck(document);
 }
 
 export function renderBundledImageDeck(document) {

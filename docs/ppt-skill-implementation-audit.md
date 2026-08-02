@@ -12,7 +12,7 @@
 | 一个渲染器服务多个视图 | `renderImageDeck` 服务本地播放，bundle runtime 服务离线播放；同一 manifest 驱动画廊、PPTX 与 QA |
 | 稳定 ID 与连续性 | 每页保留 `id`、`visual_anchor_id`、`continuity_group`、`transition`，保证整页重生时叙事锚点不漂移 |
 | AI round-trip | AI/宿主修改草稿、JSON 或 manifest 后只重生受影响页面，不编辑生成 HTML |
-| 双模式输出 | `image-first` 生成 `slides/` 整页图片；`html-image-assisted` 生成 `assets/` 无文字视觉素材，HTML 承载 exact text 与版式 |
+| 双模式输出 | `image-first` 生成 `slides/` 整页图片；`pure-html` 不生成图片，HTML/CSS 承载 exact text、版式与抽象装饰 |
 
 参考：[Bento README](https://github.com/SwimmingLiu/bento)。本项目借鉴其文档模型与离线封装方式，没有复制代码或运行时。
 
@@ -22,12 +22,12 @@
 |---|---|---|
 | 中心含义、叙事逻辑和逐页主张确认 | `outline_draft.json`、`outline_preview.html`、`approveOutlineDraft()` | 完成 |
 | 整页图片模式 | `compileSlidePrompt()`、`renderImageDeck()`、`output_mode: full-slide-image` | 完成 |
-| HTML + AI 图片模式 | `compileSlidePrompt()` 无文字视觉提示、`renderHtmlImageDeck()`、`output_mode: html-image-assisted` | 完成 |
+| 纯 HTML 模式 | `compileDeckPrompts()` 返回空任务、`renderPureHtmlDeck()`、`output_mode: pure-html` | 完成 |
 | 八个去重主题 | `assets/themes/image-themes.json` | 完成 |
 | imagegen 接口与本地密钥提醒 | `imagegen-jobs.jsonl`、`doctor`、`references/assets.md` | 完成 |
 | 缺资料、缺图、失败和主题漂移兜底 | `SKILL.md`、`references/workflow.md`、manifest 状态 | 完成 |
 | 差异化 Review | `SKILL.md`、`references/qa-export.md`、`qa` | 完成 |
-| 可替换但不伪造的样例回退 | `imagegen-fallback-notice.md`、`source_kind` | 完成 |
+| 可替换但不伪造的样例 | `pure-html-demo` 与 `image-theme-showcase` | 完成 |
 | 桌面/移动画廊与翻页检查 | `verify-image-showcase.mjs`、`gallery-qa.json` | 完成 |
 
 ## 样例验证
@@ -36,4 +36,4 @@
 - 主题：8 个；每个主题 3 页（cover / process / closing）；合计 24 页。
 - 内容 QA：8/8 主题 `export_ready: true`，0 blocking。
 - 浏览器 QA：24 张图片全部加载，8 个主题均可翻页，桌面和移动画廊无横向溢出，0 blocking。
-- imagegen 状态：本次 CLI 请求因外部账户无 active plan 而失败；样例 PNG 使用已有本地主题截图作为明确标注的 fallback，不冒充新生成结果。
+- imagegen 状态：`image-first` 样例沿用已验证的本地主题展示；`pure-html` 样例不依赖图片生成，因此可在没有 imagegen 密钥时直接打开和修改。

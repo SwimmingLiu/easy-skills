@@ -4,7 +4,7 @@ import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import test from 'node:test';
 
-import { buildBundledHtmlImageDeck, buildBundledImageDeck } from '../scripts/lib/bundle.mjs';
+import { buildBundledPureHtmlDeck, buildBundledImageDeck } from '../scripts/lib/bundle.mjs';
 
 test('Bento-inspired bundle embeds the JSON document and every slide image offline', async () => {
   const root = await mkdtemp(join(tmpdir(), 'image-ppt-bundle-'));
@@ -46,11 +46,8 @@ test('bundle rejects a prepared or missing slide', async () => {
   await assert.rejects(buildBundledImageDeck(root, deck, manifest), /generated|missing/i);
 });
 
-test('HTML plus AI image bundle separates visual asset references from exact copy', async () => {
-  const root = await mkdtemp(join(tmpdir(), 'html-image-ppt-bundle-'));
-  await mkdir(join(root, 'assets'));
-  const pixels = Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]);
-  await writeFile(join(root, 'assets', 's01-visual.png'), pixels);
+test('pure HTML bundle contains structured copy without visual assets', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'pure-html-ppt-bundle-'));
   const deck = {
     schema_version: 2,
     status: 'approved',
@@ -58,20 +55,19 @@ test('HTML plus AI image bundle separates visual asset references from exact cop
     purpose: 'verify HTML copy',
     central_message: 'Copy remains structured',
     theme: { family: 'editorial' },
-    output_mode: 'html-image-assisted',
+    output_mode: 'pure-html',
     slides: [{ id: 's01', role: 'cover', claim: 'A claim', exact_text: ['A claim', 'A support line'], speaker_notes: 'note' }],
   };
   const manifest = {
     schema_version: 1,
     title: deck.title,
     theme: deck.theme.family,
-    output_mode: 'html-image-assisted',
-    slides: [{ id: 's01', role: 'cover', output_path: 'assets/s01-visual.png', status: 'generated', prompt: 'visual only', asset_role: 'background-or-illustration' }],
+    output_mode: 'pure-html',
+    slides: [{ id: 's01', role: 'cover', output_path: null, status: 'pass', prompt: 'HTML-only', asset_role: 'html-only' }],
   };
-  const html = await buildBundledHtmlImageDeck(root, deck, manifest);
-  assert.match(html, /"mode":"html-image-assisted"/);
-  assert.match(html, /data:image\/png;base64,/);
+  const html = await buildBundledPureHtmlDeck(root, deck, manifest);
+  assert.match(html, /"mode":"pure-html"/);
   assert.match(html, /A claim/);
-  assert.match(html, /visual/);
-  assert.doesNotMatch(html, /src="assets\//);
+  assert.match(html, /"assets":\{\}/);
+  assert.doesNotMatch(html, /data:image|<img\b|background-or-illustration/i);
 });

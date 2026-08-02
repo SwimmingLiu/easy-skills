@@ -13,8 +13,8 @@ import {
   renderOutlinePreview,
   validateOutlineDraft,
 } from './lib/image-first.mjs';
-import { renderHtmlImageDeck } from './lib/html-assisted.mjs';
-import { buildBundledHtmlImageDeck, buildBundledImageDeck } from './lib/bundle.mjs';
+import { renderPureHtmlDeck } from './lib/pure-html.mjs';
+import { buildBundledPureHtmlDeck, buildBundledImageDeck } from './lib/bundle.mjs';
 import { writeJsonAtomic, writeTextAtomic } from './lib/storage.mjs';
 
 const require = createRequire(import.meta.url);
@@ -25,7 +25,7 @@ const HELP = `create-image-ppt
 
 Commands:
   draft <dir> [--title text]
-  approve <dir> --theme theme-id [--mode image-first|html-image-assisted]
+  approve <dir> --theme theme-id [--mode image-first|pure-html]
   prompts <dir> [--model name] [--size WxH] [--quality low|medium|high|auto]
   render <dir>
   qa <dir> [--json]
@@ -84,6 +84,7 @@ async function writePromptJobs(root, jobs) {
 
 async function refreshManifestFromFiles(root, manifest) {
   for (const slide of manifest.slides) {
+    if (!slide.output_path) continue;
     if (await exists(join(root, slide.output_path))) {
       slide.status = slide.status === 'pass' ? 'pass' : 'generated';
       slide.attempts = Math.max(1, slide.attempts ?? 0);
@@ -101,7 +102,7 @@ async function optional(name) {
 
 async function materializeRenderedSlides(root, manifest, dist) {
   const loaded = await optional('playwright');
-  if (!loaded) throw new Error('Playwright is required to rasterize HTML plus AI image slides. Run npm install in scripts/.');
+  if (!loaded) throw new Error('Playwright is required to rasterize the pure HTML deck. Run npm install in scripts/.');
   const chromium = loaded.chromium ?? loaded.default?.chromium;
   const browser = await chromium.launch({ headless: true });
   const page = await browser.newPage({ viewport: { width: 1600, height: 900 } });
@@ -123,7 +124,7 @@ async function materializeRenderedSlides(root, manifest, dist) {
 async function exportImageDeck(root, format) {
   const deck = await readJson(join(root, 'deck_spec.json'));
   const manifest = await refreshManifestFromFiles(root, await readJson(join(root, 'generation_manifest.json')));
-  const htmlMode = deck.output_mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED;
+  const pureHtmlMode = deck.output_mode === PRESENTATION_MODES.PURE_HTML;
   const missing = manifest.slides.filter((slide) => !['generated', 'pass'].includes(slide.status));
   if (missing.length) throw new Error(`Missing generated slide images: ${missing.map((slide) => slide.id).join(', ')}`);
   const dist = join(root, 'dist');
@@ -133,7 +134,7 @@ async function exportImageDeck(root, format) {
     return [join(dist, 'presentation.html')];
   }
   if (format === 'png') {
-    if (htmlMode) return materializeRenderedSlides(root, manifest, dist);
+    if (pureHtmlMode) return materializeRenderedSlides(root, manifest, dist);
     const files = [];
     for (const [index, slide] of manifest.slides.entries()) {
       const target = join(dist, `${String(index + 1).padStart(2, '0')}-${slide.id}.png`);
@@ -151,7 +152,7 @@ async function exportImageDeck(root, format) {
     pptx.author = 'create-image-ppt';
     pptx.title = deck.title;
     pptx.subject = deck.purpose;
-    const imagePaths = htmlMode ? await materializeRenderedSlides(root, manifest, dist) : manifest.slides.map((slide) => join(root, slide.output_path));
+    const imagePaths = pureHtmlMode ? await materializeRenderedSlides(root, manifest, dist) : manifest.slides.map((slide) => join(root, slide.output_path));
     for (const [index, slide] of manifest.slides.entries()) {
       const page = pptx.addSlide();
       page.addImage({ path: imagePaths[index], x: 0, y: 0, w: 13.333, h: 7.5 });
@@ -229,7 +230,7 @@ async function main(args) {
       quality: flag(args, '--quality', 'medium'),
     });
     const manifest = createGenerationManifest(deck, jobs, { provider: 'imagegen-cli' });
-    await mkdir(join(root, deck.output_mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED ? 'assets' : 'slides'), { recursive: true });
+    if (deck.output_mode !== PRESENTATION_MODES.PURE_HTML) await mkdir(join(root, 'slides'), { recursive: true });
     await writeJsonAtomic(join(root, 'generation_manifest.json'), manifest);
     await writePromptJobs(root, jobs);
     console.log(`${jobs.length} image jobs prepared`);
@@ -241,8 +242,8 @@ async function main(args) {
     const missing = manifest.slides.filter((slide) => !['generated', 'pass'].includes(slide.status));
     if (missing.length) throw new Error(`Missing generated slide images: ${missing.map((slide) => slide.id).join(', ')}`);
     await writeJsonAtomic(join(root, 'generation_manifest.json'), manifest);
-    const html = deck.output_mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED
-      ? renderHtmlImageDeck(deck, manifest)
+    const html = deck.output_mode === PRESENTATION_MODES.PURE_HTML
+      ? renderPureHtmlDeck(deck, manifest)
       : renderImageDeck(deck, manifest);
     await writeTextAtomic(join(root, 'index.html'), html);
     console.log(join(root, 'index.html'));
@@ -270,13 +271,13 @@ async function main(args) {
     if (missing.length) throw new Error(`Missing generated slide images: ${missing.map((slide) => slide.id).join(', ')}`);
     const dist = join(root, 'dist');
     await mkdir(dist, { recursive: true });
-    const defaultTarget = deck.output_mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED
-      ? join(dist, 'presentation.html-image-assisted.html')
+    const defaultTarget = deck.output_mode === PRESENTATION_MODES.PURE_HTML
+      ? join(dist, 'presentation.pure-html.html')
       : join(dist, 'presentation.image-ppt.html');
     const target = resolve(flag(args, '--out', defaultTarget));
     await mkdir(join(target, '..'), { recursive: true });
-    const bundled = deck.output_mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED
-      ? await buildBundledHtmlImageDeck(root, deck, manifest)
+    const bundled = deck.output_mode === PRESENTATION_MODES.PURE_HTML
+      ? await buildBundledPureHtmlDeck(root, deck, manifest)
       : await buildBundledImageDeck(root, deck, manifest);
     await writeTextAtomic(target, bundled);
     console.log(target);
@@ -285,7 +286,7 @@ async function main(args) {
   if (command === 'export') {
     const format = flag(args, '--format', 'html');
     if (!['html', 'png', 'pdf', 'pptx'].includes(format)) throw new Error(`Unsupported export format: ${format}`);
-    if (!(await exists(join(root, 'index.html')))) throw new Error('Render the image deck before export.');
+    if (!(await exists(join(root, 'index.html')))) throw new Error('Render the deck before export.');
     const deck = await readJson(join(root, 'deck_spec.json'));
     const files = await exportImageDeck(root, format);
     const report = { schema_version: 1, format, output_mode: deck.output_mode ?? 'full-slide-image', editable_object_count: 0, files };

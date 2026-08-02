@@ -1,4 +1,4 @@
 interface:
   display_name: "Create Image PPT"
   short_description: "Generate concise AI-image or HTML-assisted presentations with review gates"
-  default_prompt: "Use $create-image-ppt to turn my material into a concise presentation; choose image-first or html-image-assisted based on my editing needs."
+  default_prompt: "Use $create-image-ppt to turn my material into a concise presentation; choose image-first for AI-rendered slide images or pure-html for HTML-owned layout and text."

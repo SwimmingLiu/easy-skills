@@ -3,12 +3,12 @@ const SLIDE_ROLES = new Set(['cover', 'section', 'statement', 'image-hero', 'two
 const CONTENT_KINDS = new Set(['claim', 'image', 'flow', 'comparison', 'table', 'chart']);
 export const PRESENTATION_MODES = Object.freeze({
   IMAGE_FIRST: 'image-first',
-  HTML_IMAGE_ASSISTED: 'html-image-assisted',
+  PURE_HTML: 'pure-html',
 });
 
 function normalizeMode(value) {
   if (value === PRESENTATION_MODES.IMAGE_FIRST || value === 'full-slide-image' || value == null) return PRESENTATION_MODES.IMAGE_FIRST;
-  if (value === PRESENTATION_MODES.HTML_IMAGE_ASSISTED) return PRESENTATION_MODES.HTML_IMAGE_ASSISTED;
+  if (value === PRESENTATION_MODES.PURE_HTML) return PRESENTATION_MODES.PURE_HTML;
   throw new Error(`Unsupported presentation mode: ${value}`);
 }
 
@@ -80,7 +80,7 @@ export function approveOutlineDraft(draft, themeId, options = {}) {
     language: draft.language ?? 'zh-CN',
     canvas: '16:9',
     presentation_mode: mode,
-    output_mode: mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED ? PRESENTATION_MODES.HTML_IMAGE_ASSISTED : 'full-slide-image',
+    output_mode: mode === PRESENTATION_MODES.PURE_HTML ? PRESENTATION_MODES.PURE_HTML : 'full-slide-image',
     theme: { family: themeId },
     slides: structuredClone(draft.slides).map((slide) => ({
       ...slide,
@@ -102,6 +102,7 @@ export function compileSlidePrompt(slide, theme, options = {}) {
   const size = options.size ?? '2048x1152';
   const quality = options.quality ?? 'medium';
   const mode = normalizeMode(options.mode ?? options.output_mode);
+  if (mode === PRESENTATION_MODES.PURE_HTML) throw new Error('Pure HTML mode does not use image-generation prompts.');
   const shared = [
     'Use case: productivity-visual',
     `Primary request: create one polished 16:9 visual for the slide role "${slide.role}".`,
@@ -117,32 +118,6 @@ export function compileSlidePrompt(slide, theme, options = {}) {
     `Materials/textures: ${theme.materials}`,
     `Theme consistency anchors: ${theme.anchors.join('; ')}`,
   ];
-  if (mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED) {
-    const out = `${theme.id}-${slide.id}-${slide.role}-visual.png`;
-    const prompt = [
-      ...shared,
-      'Asset type: background panel or illustration for an HTML presentation slide.',
-      'Text: none. Do not render any text, letters, numbers, labels, captions, UI, logo, watermark, or pseudo-typography.',
-      'Leave intentional negative space for HTML copy; keep the focal subject away from the copy area and preserve a clear 16:9 crop.',
-      'Create a visual asset only. The HTML renderer owns all visible words, facts, labels, and hierarchy.',
-      `Avoid: ${[...theme.avoid, 'any text or glyphs', 'fake data', 'dense card grid', 'tiny labels'].join('; ')}.`,
-    ].join('\n');
-    return {
-      id: slide.id,
-      role: slide.role,
-      theme: theme.id,
-      content_kind: slide.content_kind ?? inferContentKind(slide.role),
-      output_mode: PRESENTATION_MODES.HTML_IMAGE_ASSISTED,
-      asset_role: 'background-or-illustration',
-      text_policy: 'none',
-      out,
-      model,
-      size,
-      quality,
-      use_case: 'productivity-visual',
-      prompt,
-    };
-  }
   const out = `${theme.id}-${slide.id}-${slide.role}.png`;
   const prompt = [
     ...shared,
@@ -158,14 +133,41 @@ export function compileDeckPrompts(deck, themes, options = {}) {
   if (deck?.status !== 'approved') throw new Error('Content draft must be approved before prompt compilation.');
   const theme = themes?.[deck.theme?.family];
   if (!theme) throw new Error(`Unknown image theme: ${deck.theme?.family ?? 'missing'}`);
-  const mode = options.mode ?? (deck.output_mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED ? PRESENTATION_MODES.HTML_IMAGE_ASSISTED : PRESENTATION_MODES.IMAGE_FIRST);
+  const mode = normalizeMode(options.mode ?? deck.output_mode);
+  if (mode === PRESENTATION_MODES.PURE_HTML) return [];
   return deck.slides.map((slide) => compileSlidePrompt(slide, theme, { ...options, mode, audience: deck.audience }));
 }
 
 export function createGenerationManifest(deck, jobs, options = {}) {
-  const mode = options.mode ?? (deck.output_mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED ? PRESENTATION_MODES.HTML_IMAGE_ASSISTED : PRESENTATION_MODES.IMAGE_FIRST);
-  const outputMode = mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED ? PRESENTATION_MODES.HTML_IMAGE_ASSISTED : 'full-slide-image';
-  const outputDir = mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED ? 'assets' : 'slides';
+  const mode = normalizeMode(options.mode ?? deck.output_mode);
+  if (mode === PRESENTATION_MODES.PURE_HTML) {
+    return {
+      schema_version: 1,
+      title: deck.title,
+      theme: deck.theme.family,
+      provider: options.provider ?? 'html',
+      output_mode: PRESENTATION_MODES.PURE_HTML,
+      slides: deck.slides.map((source) => ({
+        id: source.id,
+        role: source.role,
+        theme: deck.theme.family,
+        prompt: 'HTML-only; no image generation',
+        model: 'none',
+        size: '16:9',
+        quality: 'n/a',
+        output_path: null,
+        status: 'pass',
+        attempts: 0,
+        error: null,
+        content_kind: source.content_kind ?? inferContentKind(source.role),
+        output_mode: PRESENTATION_MODES.PURE_HTML,
+        asset_role: 'html-only',
+        text_policy: 'exact-text',
+      })),
+    };
+  }
+  const outputMode = 'full-slide-image';
+  const outputDir = 'slides';
   return {
     schema_version: 1,
     title: deck.title,
@@ -186,8 +188,8 @@ export function createGenerationManifest(deck, jobs, options = {}) {
       error: null,
       content_kind: job.content_kind ?? null,
       output_mode: job.output_mode ?? mode,
-      asset_role: job.asset_role ?? (mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED ? 'background-or-illustration' : 'complete-slide'),
-      text_policy: job.text_policy ?? (mode === PRESENTATION_MODES.HTML_IMAGE_ASSISTED ? 'none' : 'exact-text'),
+      asset_role: job.asset_role ?? 'complete-slide',
+      text_policy: job.text_policy ?? 'exact-text',
     })),
   };
 }

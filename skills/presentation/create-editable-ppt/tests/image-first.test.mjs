@@ -12,7 +12,7 @@ import {
   renderOutlinePreview,
   validateOutlineDraft,
 } from '../scripts/lib/image-first.mjs';
-import { renderHtmlImageDeck } from '../scripts/lib/html-assisted.mjs';
+import { renderPureHtmlDeck } from '../scripts/lib/pure-html.mjs';
 
 const here = dirname(fileURLToPath(import.meta.url));
 const themes = JSON.parse(await readFile(join(here, '..', 'assets', 'themes', 'image-themes.json'), 'utf8'));
@@ -88,10 +88,10 @@ test('approved drafts become the only image-first deck content source', () => {
   assert.deepEqual(deck.slides[0].exact_text, draft().slides[0].exact_text);
 });
 
-test('approval can select the HTML plus AI image mode without changing the content source', () => {
-  const deck = approveOutlineDraft(draft(), 'editorial', { mode: 'html-image-assisted' });
-  assert.equal(deck.output_mode, 'html-image-assisted');
-  assert.equal(deck.presentation_mode, 'html-image-assisted');
+test('approval can select the pure HTML mode without changing the content source', () => {
+  const deck = approveOutlineDraft(draft(), 'editorial', { mode: 'pure-html' });
+  assert.equal(deck.output_mode, 'pure-html');
+  assert.equal(deck.presentation_mode, 'pure-html');
   assert.deepEqual(deck.slides[1].exact_text, draft().slides[1].exact_text);
 });
 
@@ -113,16 +113,10 @@ test('prompt compiler emits one deterministic full-slide image job per slide', (
   }
 });
 
-test('HTML plus AI image mode emits visual-only jobs with deliberate negative space', () => {
-  const deck = approveOutlineDraft(draft(), 'editorial', { mode: 'html-image-assisted' });
+test('pure HTML mode emits no image-generation jobs', () => {
+  const deck = approveOutlineDraft(draft(), 'editorial', { mode: 'pure-html' });
   const jobs = compileDeckPrompts(deck, themes);
-  assert.equal(jobs.length, 3);
-  assert.ok(jobs.every((job) => job.output_mode === 'html-image-assisted'));
-  assert.ok(jobs.every((job) => job.asset_role === 'background-or-illustration'));
-  assert.ok(jobs.every((job) => job.out.startsWith('editorial-') && job.out.endsWith('-visual.png')));
-  assert.ok(jobs.every((job) => /Text:\s*none/i.test(job.prompt)));
-  assert.ok(jobs.every((job) => /no letters|不得添加任何文字|do not render any text/i.test(job.prompt)));
-  assert.doesNotMatch(jobs[0].prompt, /文字必须逐字准确/);
+  assert.deepEqual(jobs, []);
 });
 
 test('generation manifest is reproducible and never stores secret configuration', () => {
@@ -135,12 +129,13 @@ test('generation manifest is reproducible and never stores secret configuration'
   assert.ok(manifest.slides.every((slide) => slide.status === 'prepared'));
 });
 
-test('HTML plus AI image manifests place generated visuals under assets', () => {
-  const deck = approveOutlineDraft(draft(), 'business-minimal', { mode: 'html-image-assisted' });
-  const manifest = createGenerationManifest(deck, compileDeckPrompts(deck, themes));
-  assert.equal(manifest.output_mode, 'html-image-assisted');
-  assert.ok(manifest.slides.every((slide) => slide.output_path.startsWith('assets/')));
-  assert.ok(manifest.slides.every((slide) => slide.asset_role === 'background-or-illustration'));
+test('pure HTML manifests are ready without generated image files', () => {
+  const deck = approveOutlineDraft(draft(), 'business-minimal', { mode: 'pure-html' });
+  const manifest = createGenerationManifest(deck, compileDeckPrompts(deck, themes), { provider: 'html' });
+  assert.equal(manifest.output_mode, 'pure-html');
+  assert.ok(manifest.slides.every((slide) => slide.output_path === null));
+  assert.ok(manifest.slides.every((slide) => slide.status === 'pass'));
+  assert.ok(manifest.slides.every((slide) => slide.asset_role === 'html-only'));
 });
 
 test('outline preview shows narrative before page-level content', () => {
@@ -161,17 +156,16 @@ test('image deck renderer uses only full-slide images for audience-facing pages'
   assert.match(html, /premium-dark-s01-cover\.png/);
 });
 
-test('HTML plus AI image renderer keeps exact copy in HTML and visual assets separate', () => {
-  const deck = approveOutlineDraft(draft(), 'business-minimal', { mode: 'html-image-assisted' });
+test('pure HTML renderer keeps exact copy in HTML without image assets', () => {
+  const deck = approveOutlineDraft(draft(), 'business-minimal', { mode: 'pure-html' });
   const manifest = createGenerationManifest(deck, compileDeckPrompts(deck, themes));
-  for (const slide of manifest.slides) slide.status = 'generated';
-  const html = renderHtmlImageDeck(deck, manifest, themes['business-minimal']);
+  const html = renderPureHtmlDeck(deck, manifest, themes['business-minimal']);
   assert.equal((html.match(/class="slide/g) ?? []).length, 3);
   assert.equal((html.match(/class="slide[^"]* active/g) ?? []).length, 1);
   assert.match(html, /\.slide\.full-bleed\{display:none/);
   assert.match(html, /\.slide\.active\.full-bleed\{display:block/);
   assert.match(html, /AI 原生知识工作流/);
-  assert.match(html, /background-or-illustration/);
-  assert.match(html, /business-minimal-s01-cover-visual\.png/);
+  assert.match(html, /data-mode="pure-html"/);
+  assert.doesNotMatch(html, /<img\b|data:image|background-or-illustration|asset:/i);
   assert.doesNotMatch(html, /contenteditable|data-field=/i);
 });

@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "title": "AI 原生知识工作流 · 纯 HTML 示例",
+  "theme": "editorial",
+  "provider": "imagegen-cli",
+  "output_mode": "pure-html",
+  "slides": [
+    {
+      "id": "s01",
+      "role": "cover",
+      "theme": "editorial",
+      "prompt": "HTML-only; no image generation",
+      "model": "none",
+      "size": "16:9",
+      "quality": "n/a",
+      "output_path": null,
+      "status": "pass",
+      "attempts": 0,
+      "error": null,
+      "content_kind": "image",
+      "output_mode": "pure-html",
+      "asset_role": "html-only",
+      "text_policy": "exact-text"
+    },
+    {
+      "id": "s02",
+      "role": "process",
+      "theme": "editorial",
+      "prompt": "HTML-only; no image generation",
+      "model": "none",
+      "size": "16:9",
+      "quality": "n/a",
+      "output_path": null,
+      "status": "pass",
+      "attempts": 0,
+      "error": null,
+      "content_kind": "flow",
+      "output_mode": "pure-html",
+      "asset_role": "html-only",
+      "text_policy": "exact-text"
+    },
+    {
+      "id": "s03",
+      "role": "closing",
+      "theme": "editorial",
+      "prompt": "HTML-only; no image generation",
+      "model": "none",
+      "size": "16:9",
+      "quality": "n/a",
+      "output_path": null,
+      "status": "pass",
+      "attempts": 0,
+      "error": null,
+      "content_kind": "image",
+      "output_mode": "pure-html",
+      "asset_role": "html-only",
+      "text_policy": "exact-text"
+    }
+  ]
+}

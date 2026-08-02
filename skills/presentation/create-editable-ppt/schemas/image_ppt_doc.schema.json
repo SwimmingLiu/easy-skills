@@ -7,7 +7,7 @@
   "properties": {
     "format": { "const": "image-ppt" },
     "version": { "const": 1 },
-    "mode": { "enum": ["present", "html-image-assisted"] },
+    "mode": { "enum": ["present", "pure-html"] },
     "readonly": { "const": true },
     "title": { "type": "string" },
     "purpose": { "type": "string" },

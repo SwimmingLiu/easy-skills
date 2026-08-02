@@ -1,7 +1,7 @@
 {
-  "schema_version": 1,
-  "status": "draft",
-  "title": "AI 原生知识工作流 · HTML + AI 图片模式",
+  "schema_version": 2,
+  "status": "approved",
+  "title": "AI 原生知识工作流 · 纯 HTML 示例",
   "audience": "产品团队、知识工作者与组织管理者",
   "purpose": "说明 AI 原生知识工作流的核心变化与行动路径",
   "central_message": "让散落的信息和判断沿着工作流持续产生价值",
@@ -11,6 +11,13 @@
     "insight": "真正需要保存的不是文件数量，而是可复用的上下文",
     "method": "通过收集现场、建立关联、形成判断、推进行动形成闭环",
     "action": "先选择一条高频流程，把上下文、判断和行动连起来"
+  },
+  "language": "zh-CN",
+  "canvas": "16:9",
+  "presentation_mode": "pure-html",
+  "output_mode": "pure-html",
+  "theme": {
+    "family": "editorial"
   },
   "slides": [
     {
@@ -25,7 +32,10 @@
       ],
       "evidence": [],
       "media_brief": "城市、网络与知识流动形成的克制视觉意象",
-      "transition": "从愿景进入现实中的信息碎片化问题"
+      "transition": "从愿景进入现实中的信息碎片化问题",
+      "visual_anchor_id": "editorial-anchor",
+      "continuity_group": "editorial-deck",
+      "speaker_notes": "AI 原生知识工作流"
     },
     {
       "id": "s02",
@@ -42,7 +52,10 @@
       ],
       "evidence": [],
       "media_brief": "四个连续动作形成清晰的单向流程，不使用数据图表",
-      "transition": "从方法转向一条可以立即开始的流程"
+      "transition": "从方法转向一条可以立即开始的流程",
+      "visual_anchor_id": "editorial-anchor",
+      "continuity_group": "editorial-deck",
+      "speaker_notes": "四个动作，让信息持续产生价值"
     },
     {
       "id": "s03",
@@ -56,7 +69,10 @@
       ],
       "evidence": [],
       "media_brief": "专注工作、开始行动和持续推进的真实场景",
-      "transition": "结束"
+      "transition": "结束",
+      "visual_anchor_id": "editorial-anchor",
+      "continuity_group": "editorial-deck",
+      "speaker_notes": "先重做一条高频流程"
     }
   ]
 }
