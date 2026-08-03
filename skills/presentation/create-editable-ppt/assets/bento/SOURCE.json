@@ -1,0 +1,9 @@
+{
+  "repository": "git@github.com:SwimmingLiu/bento.git",
+  "upstream": "https://github.com/hugohe3/bento",
+  "commit": "3ad1bdf18e88cf04c79698b11a7cfc0d8570db63",
+  "license": "MIT",
+  "retrieved_at": "2026-08-03",
+  "build_command": "cd slides && npm install && npm run build:single",
+  "sha256": "a19e4253115d89c1a15124417343b79ddc0d3b2f22aec171ed57da616546617b"
+}

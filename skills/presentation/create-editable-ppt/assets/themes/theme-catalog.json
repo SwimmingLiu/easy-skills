@@ -1,0 +1,1591 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-03",
+  "ai-image": [
+    {
+      "id": "editorial-ink",
+      "mode": "ai-image",
+      "name": "Editorial Ink",
+      "aliases": [
+        "guizang-ppt-skill:ink-classic",
+        "guizang-ppt-skill:indigo-porcelain",
+        "guizang-ppt-skill:forest-ink",
+        "guizang-ppt-skill:kraft-paper",
+        "guizang-ppt-skill:dune",
+        "codex-ppt-skill:creative-magazine",
+        "codex-ppt-skill:electronic-ink",
+        "codex-ppt-skill:mckinsey",
+        "gpt-image2-ppt-skills:initial/editorial-mono",
+        "gpt-image2-ppt-skills:featured/abstract-art-showcase",
+        "gpt-image2-ppt-skills:featured/creative-agency"
+      ],
+      "provenance": [
+        "guizang-ppt-skill",
+        "codex-ppt-skill",
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "paper, ink, restrained accent",
+      "composition": "asymmetric magazine spread",
+      "typography": "serif display / sans body / mono metadata",
+      "density": "low",
+      "image_prompt_recipe": {
+        "require": [
+          "paper, ink, restrained accent",
+          "asymmetric magazine spread",
+          "serif display / sans body / mono metadata"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "strict-swiss",
+      "mode": "ai-image",
+      "name": "Strict Swiss",
+      "aliases": [
+        "guizang-ppt-skill:swiss-ikb",
+        "guizang-ppt-skill:swiss-lemon",
+        "guizang-ppt-skill:swiss-lemon-green",
+        "guizang-ppt-skill:swiss-safety-orange",
+        "gpt-image2-ppt-skills:initial/swiss-grid"
+      ],
+      "provenance": [
+        "guizang-ppt-skill",
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "white, black, one primary accent",
+      "composition": "hard grid, hairlines, square blocks",
+      "typography": "grotesk sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "white, black, one primary accent",
+          "hard grid, hairlines, square blocks",
+          "grotesk sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "clean-tech",
+      "mode": "ai-image",
+      "name": "Clean Tech",
+      "aliases": [
+        "codex-ppt-skill:clean-professional",
+        "gpt-image2-ppt-skills:initial/clean-tech-blue",
+        "gpt-image2-ppt-skills:featured/eco-green-business-plan",
+        "gpt-image2-ppt-skills:featured/first-impressions",
+        "gpt-image2-ppt-skills:featured/geometric-business"
+      ],
+      "provenance": [
+        "codex-ppt-skill",
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "white, cool gray, blue and cyan",
+      "composition": "sparse product narrative",
+      "typography": "neutral sans",
+      "density": "low",
+      "image_prompt_recipe": {
+        "require": [
+          "white, cool gray, blue and cyan",
+          "sparse product narrative",
+          "neutral sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "research-evidence",
+      "mode": "ai-image",
+      "name": "Research Evidence",
+      "aliases": [
+        "codex-ppt-skill:research-defense",
+        "gpt-image2-ppt-skills:featured/final-year-project-thesis-defense",
+        "gpt-image2-ppt-skills:featured/geometric-clinical-case",
+        "gpt-image2-ppt-skills:featured/geometric-duotone-thesis",
+        "gpt-image2-ppt-skills:featured/health-disparities-and-social-determinants-of-health-doctor-of-philosophy-phd-in-health-behavior-and-health-education"
+      ],
+      "provenance": [
+        "codex-ppt-skill",
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "white, navy, formal red",
+      "composition": "evidence-first diagrams and tables",
+      "typography": "formal sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "white, navy, formal red",
+          "evidence-first diagrams and tables",
+          "formal sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "analyst-blueprint",
+      "mode": "ai-image",
+      "name": "Analyst Blueprint",
+      "aliases": [
+        "codex-ppt-skill:data-dashboard",
+        "gpt-image2-ppt-skills:featured/data-science-consulting",
+        "gpt-image2-ppt-skills:featured/economic-impact-of-coronavirus",
+        "gpt-image2-ppt-skills:featured/fashion-business-consulting-toolkit-aesthetic",
+        "gpt-image2-ppt-skills:featured/investment-company-business-plan"
+      ],
+      "provenance": [
+        "codex-ppt-skill",
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "white, blue gray, selective signal colors",
+      "composition": "KPI, matrix, funnel and comparison",
+      "typography": "compact sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "white, blue gray, selective signal colors",
+          "KPI, matrix, funnel and comparison",
+          "compact sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "enterprise-infographic",
+      "mode": "ai-image",
+      "name": "Enterprise Infographic",
+      "aliases": [
+        "GordenSuperPPTSkills:luxury-dark-infographic",
+        "GordenSuperPPTSkills:light-enterprise-infographic",
+        "GordenSuperPPTSkills:ink",
+        "GordenSuperPPTSkills:blueprint",
+        "GordenSuperPPTSkills:editorial",
+        "gpt-image2-ppt-skills:featured/coal-industry-business-company-profile"
+      ],
+      "provenance": [
+        "GordenSuperPPTSkills",
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "navy or white, metallic accent",
+      "composition": "high-density framework with one focal model",
+      "typography": "geometric sans",
+      "density": "high",
+      "image_prompt_recipe": {
+        "require": [
+          "navy or white, metallic accent",
+          "high-density framework with one focal model",
+          "geometric sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "teaching-explainer",
+      "mode": "ai-image",
+      "name": "Teaching Explainer",
+      "aliases": [
+        "codex-ppt-skill:teaching",
+        "gpt-image2-ppt-skills:featured/meeting-agenda",
+        "gpt-image2-ppt-skills:featured/mind-maps-workshop-professional",
+        "gpt-image2-ppt-skills:featured/mindfulness-in-the-classroom-breathing-techniques"
+      ],
+      "provenance": [
+        "codex-ppt-skill",
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "white, pale blue, multicolor cues",
+      "composition": "stepwise concept map",
+      "typography": "friendly sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "white, pale blue, multicolor cues",
+          "stepwise concept map",
+          "friendly sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "technical-sketch",
+      "mode": "ai-image",
+      "name": "Technical Sketch",
+      "aliases": [
+        "codex-ppt-skill:technical-sketch"
+      ],
+      "provenance": [
+        "codex-ppt-skill"
+      ],
+      "palette": "paper, graphite, restrained pastel",
+      "composition": "precise annotated diagram",
+      "typography": "handwritten labels / sans body",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "paper, graphite, restrained pastel",
+          "precise annotated diagram",
+          "handwritten labels / sans body"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "whiteboard-marker",
+      "mode": "ai-image",
+      "name": "Whiteboard Marker",
+      "aliases": [
+        "codex-ppt-skill:whiteboard"
+      ],
+      "provenance": [
+        "codex-ppt-skill"
+      ],
+      "palette": "off-white, marker colors",
+      "composition": "boxes, arrows and workshop flow",
+      "typography": "marker hand",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "off-white, marker colors",
+          "boxes, arrows and workshop flow",
+          "marker hand"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "retro-vector",
+      "mode": "ai-image",
+      "name": "Retro Vector",
+      "aliases": [
+        "codex-ppt-skill:retro-vector",
+        "gpt-image2-ppt-skills:initial/vector-illustration",
+        "gpt-image2-ppt-skills:featured/culinary-innovation",
+        "gpt-image2-ppt-skills:featured/indigenous-cultures"
+      ],
+      "provenance": [
+        "codex-ppt-skill",
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "cream, coral, mint, mustard",
+      "composition": "flat monoline illustration",
+      "typography": "rounded display sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "cream, coral, mint, mustard",
+          "flat monoline illustration",
+          "rounded display sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "handmade-paper",
+      "mode": "ai-image",
+      "name": "Handmade Paper",
+      "aliases": [
+        "codex-ppt-skill:warm-handmade",
+        "GordenSuperPPTSkills:handdrawn",
+        "gpt-image2-ppt-skills:initial/hand-sketch"
+      ],
+      "provenance": [
+        "codex-ppt-skill",
+        "GordenSuperPPTSkills",
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "cream, kraft, dusty pastel",
+      "composition": "torn paper, tape and scrapbook collage",
+      "typography": "humanist sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "cream, kraft, dusty pastel",
+          "torn paper, tape and scrapbook collage",
+          "humanist sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "dark-aurora",
+      "mode": "ai-image",
+      "name": "Dark Aurora",
+      "aliases": [
+        "gpt-image2-ppt-skills:initial/dark-aurora"
+      ],
+      "provenance": [
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "near black, violet, cyan, pink",
+      "composition": "luminous arcs and depth",
+      "typography": "modern sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "near black, violet, cyan, pink",
+          "luminous arcs and depth",
+          "modern sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "bright-glass",
+      "mode": "ai-image",
+      "name": "Bright Glass",
+      "aliases": [
+        "gpt-image2-ppt-skills:initial/gradient-glass",
+        "gpt-image2-ppt-skills:featured/college-candy-aesthetics-infographics",
+        "gpt-image2-ppt-skills:featured/flowery",
+        "gpt-image2-ppt-skills:featured/formal-lavender-portfolio",
+        "wuming-ai-ppt-cover:bright-glass-cover",
+        "wuming-ai-ppt-cover:blue-purple-ai-cover"
+      ],
+      "provenance": [
+        "gpt-image2-ppt-skills",
+        "wuming-ai-ppt-cover"
+      ],
+      "palette": "white, pale blue, lavender",
+      "composition": "translucent layers and soft light",
+      "typography": "light geometric sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "white, pale blue, lavender",
+          "translucent layers and soft light",
+          "light geometric sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "y2k-holographic",
+      "mode": "ai-image",
+      "name": "Y2K Holographic",
+      "aliases": [
+        "gpt-image2-ppt-skills:initial/y2k-chrome",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-10-ab71ea82",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-12-225a84ec",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-14-503ac808",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-16-48e9caad",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-17-e27e6adb",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-2-a910e7f1",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-4-a92d53b4",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-7-0cf19a16",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-8-be5440d6",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-tech-9-429050a1"
+      ],
+      "provenance": [
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "lavender, sky, pink, chrome",
+      "composition": "holographic 3D focal object",
+      "typography": "wide grotesk",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "lavender, sky, pink, chrome",
+          "holographic 3D focal object",
+          "wide grotesk"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "risograph-zine",
+      "mode": "ai-image",
+      "name": "Risograph Zine",
+      "aliases": [
+        "gpt-image2-ppt-skills:initial/risograph",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-0212-05b1a5c4",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-0324-e488f418",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-2004-be327c8b",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-2707-1dee59f0",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-2712-c6bb5c71",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-3621-343c19fa",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4104-f46db665",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4120-8bb09d0b",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4131-8afefaed",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4914ppt-0d6f6af4",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-4935ppt-24a8113c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-5204-artist-c3b5a90c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-5801-urbanic-aad33e25",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-6002ppt-b07248cf",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-6108-ppt-9c460a91",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-7001ppt-2d4f3d66",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-7009-ppt-97358806",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-co13-ppt-19449160",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-fg11-co16ppt-a9951c03",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-02-55bfaee3",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-05-d2c90fc1",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-09-65b8c621",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-10-24ad06c2",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-11-c01a353e",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-13-dcb3133f",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-punk-ppt-25-48c3f8d2"
+      ],
+      "provenance": [
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "two or three spot colors",
+      "composition": "halftone, grain and rough registration",
+      "typography": "bold condensed sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "two or three spot colors",
+          "halftone, grain and rough registration",
+          "bold condensed sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "japanese-wabi",
+      "mode": "ai-image",
+      "name": "Japanese Wabi",
+      "aliases": [
+        "gpt-image2-ppt-skills:initial/japanese-wabi",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-1-4f02fb97",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-10-f0e2c8d9",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-11-19c402f9",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-13-820c7100",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-15-26be2d46",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-16-47347745",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-17-fd10f39c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-18-38c7e38f",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-2-6fda302a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-21-1d3a03bb",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-22-756e8b62",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-25-ad5498f0",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-26-0ba94a68",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-27-aac790a5",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-28-242aaa71",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-29-3e234ad9",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-31-485ae190",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-32-75711782",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-33-af429968",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-34-4baaf592",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-35-1dc1d3b3",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-4-349295b8",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-5-b077b49a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-6-a9084536",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-35-ppt-ppt-8-a694ca1e",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-1-8dc42f63",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-12-c2928b30",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-14-1678fc3d",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-15-b12ea38a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-16-9ad7d5dd",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-17-d980ea26",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-18-dab5f352",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-2-c9574110",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-20-d5a94cd5",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-22-5b38446b",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-25-5d8944ef",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-26-26b85a39",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-3-1ccdba09",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-31-9b25a819",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-37-45157cb4",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-39-7f77a308",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-4-a3030c28",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-40-f9fa5119",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-41-1cca594d",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-40ppt-ppt-6-7d620a8e",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-1-f469dfff",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-10-5a3beb00",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-101-7e1b51d2",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-102-979ca9b0",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-109-163f94b5",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-111-0ce55f4c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-112-ef197cf5",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-116-6bfd8b35",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-117-98c68d4d",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-13-f8fd776b",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-130-3a6f5960",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-14-402997e6",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-15-0d966a46",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-16-1074ff16",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-2-d2e4a666",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-20-b03ea643",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-25-1e8194ae",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-26-04a5ee95",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-29-f60771af",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-3-ae50f86b",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-31-e138d699",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-33-29053078",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-34-c316b568",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-35-2fc576e8",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-37-eb89a2db",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-38-785a786b",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-4-1ea723c0",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-41-a8098b46",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-43-28d038bb",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-44-05852cf2",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-45-94b4e687",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-47-e6c2b929",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-49-6928c478",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-5-1-ca8265d9",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-5-2-d6732955",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-50-98f9eb7d",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-51-662495f3",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-52-304d6816",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-53-142a71f0",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-54-78c6a675",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-56-05aebaa4",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-57-8adc9831",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-58-9aa43cdb",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-59-1de0a6c8",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-6-be4f877a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-60-9edd662a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-62-513e1dc6",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-63-dea7cee2",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-64-5a0b3f3f",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-69-2c612509",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-7-b48ed3b5",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-71-4d973efc",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-72-df3872cb",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-73-3b51a6d2",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-75-bf4f5a42",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-76-9a794a8a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-77-2f9df692",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-78-6874832a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-79-aa6e9778",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-8-0f71568d",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-80-dcfbfb5a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-81-ead052df",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-82-0f71568d",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-83-614c5106",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-84-5f435c2e",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-85-085279dd",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-86-9bea9e12",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-9-ef4688c5",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-91-148c03bc",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-92-528a050a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-93-b3625d4b",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-94-afd7a070",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-98-0b820330",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-2-21-ppt-ppt-99-204c2b6c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-11-3a03a5ef",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-12-7671429e",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-13-6e154530",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-14-06ac95f5",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-15-efd2db47",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-16-972e72ce",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-17-6ae7ad1f",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-18-28b4e9c3",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-19-821f35fd",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-21-621d42e2",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-22-2c408050",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-23-bbc5b1c2",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-24-93f17def",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-25-26a8efe1",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-3-d8032b6e",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-4-e3e628e2",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-5-3fd38521",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-6-06735326",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-8-6c19c7cc",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-84-577766a6",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-3-0725-9-1d1b7106",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-01-59c9ef00",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-03-603dac61",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-04-096b145e",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-05-4021eacf",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-06-aa5458fe",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-07-8e5ef95f",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-09-22a29785",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-11-708f6bfe",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-13-35aaa4d7",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-14-0f11263c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-15-22acaf56",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-16-c26a4a39",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-17-cbe897b4",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-18-c5049223",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-19-dba00d7a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-20-ceb0976c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-22-e3f0e8a1",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-23-5485c9b0",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-24-ba384ad0",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-25-b8904aa2",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-28-47a591b8",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-29-9388544d",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-31-fbd21f8f",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-32-a093e13c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-33-477814b8",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-34-e854ee77",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-36-64ba41bf",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-37-b4ef9b0c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-38-0a636842",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-40-bd80fb56",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-41-1f81a055",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-42-94c4760f",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-43-141653e7",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-44-edf32747",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-46-7afcfee4",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-47-bdc454b7",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-48-61145c4a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-49-c1187294",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-50-0cfbe592",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-51-2035b340",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-52-c6908a49",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-53-df43f6ed",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-54-0f55375d",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-55-adc03a9c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-56-e229304d",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-58-a1eb66a9",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-59-c060fb14",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-60-17f1ff7a",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-61-7b8851ea",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-62-201cccdd",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-63-5d71e51e",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-65-16b8a6a7",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-69-d4bdb8ba",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-ppt-6cf38a8c",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-ppt-6f07cceb",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-ppt-ebd67968",
+        "gpt-image2-ppt-skills:xiamulingzi/linzi-morandi-ppt-ppt-f631ce31"
+      ],
+      "provenance": [
+        "gpt-image2-ppt-skills"
+      ],
+      "palette": "off-white, ink, one natural accent",
+      "composition": "large quiet whitespace and matte geometry",
+      "typography": "serif / minimal sans",
+      "density": "low",
+      "image_prompt_recipe": {
+        "require": [
+          "off-white, ink, one natural accent",
+          "large quiet whitespace and matte geometry",
+          "serif / minimal sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "cyan-circuit",
+      "mode": "ai-image",
+      "name": "Cyan Circuit",
+      "aliases": [
+        "wuming-cyan-circuit-launch-ppt:cyan-circuit-launch"
+      ],
+      "provenance": [
+        "wuming-cyan-circuit-launch-ppt"
+      ],
+      "palette": "white, cyan, blue-green, navy gray",
+      "composition": "circuit traces, HUD rings and numbered nodes",
+      "typography": "technical sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "white, cyan, blue-green, navy gray",
+          "circuit traces, HUD rings and numbered nodes",
+          "technical sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    },
+    {
+      "id": "formal-red",
+      "mode": "ai-image",
+      "name": "Formal Red",
+      "aliases": [
+        "codex-ppt-skill:party-government-red"
+      ],
+      "provenance": [
+        "codex-ppt-skill"
+      ],
+      "palette": "Chinese red, ivory, restrained gold",
+      "composition": "formal hierarchy and ceremonial geometry",
+      "typography": "formal Chinese sans",
+      "density": "medium",
+      "image_prompt_recipe": {
+        "require": [
+          "Chinese red, ivory, restrained gold",
+          "formal hierarchy and ceremonial geometry",
+          "formal Chinese sans"
+        ],
+        "forbid": [
+          "generic UI card wall",
+          "unapproved visible text",
+          "watermark"
+        ]
+      }
+    }
+  ],
+  "html": [
+    {
+      "id": "clean-professional",
+      "mode": "html",
+      "name": "Clean Professional",
+      "aliases": [
+        "frontend-slides:tech-product",
+        "open-codesign:brand/apple",
+        "open-codesign:brand/cal-com",
+        "open-codesign:direction/slide-deck",
+        "open-codesign:direction/bento-grid",
+        "html-ppt-skill:theme/arctic-cool",
+        "html-ppt-skill:theme/bauhaus",
+        "html-ppt-skill:theme/minimal-white",
+        "html-ppt-skill:theme/solarized-light",
+        "html-ppt-skill:theme/xiaohongshu-white",
+        "html-ppt-skill:deck/business-report",
+        "html-ppt-skill:deck/product-launch",
+        "html-ppt-skill:deck/training-course",
+        "html-ppt-skill:deck/annual-review",
+        "html-ppt-skill:deck/marketing-plan",
+        "html-ppt-skill:deck/project-proposal",
+        "html-ppt-skill:deck/company-profile",
+        "html-ppt-skill:deck/conference-keynote",
+        "html-ppt-skill:deck/portfolio",
+        "html-ppt-skill:deck/roadmap",
+        "html-ppt-skill:deck/case-study",
+        "html-ppt-skill:deck/workshop",
+        "html-ppt-skill:deck/event-intro",
+        "open-slide:bright-sans",
+        "dashi-ppt-skill:theme01",
+        "beautiful-html-templates:capsule",
+        "beautiful-html-templates:long-table",
+        "beautiful-html-templates:mat",
+        "beautiful-html-templates:studio"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "open-codesign",
+        "html-ppt-skill",
+        "open-slide",
+        "dashi-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "white, gray, blue",
+      "composition": "calm modular grid",
+      "typography": "neutral sans",
+      "density": "low",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "calm modular grid",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "strict-swiss-html",
+      "mode": "html",
+      "name": "Strict Swiss HTML",
+      "aliases": [
+        "frontend-slides:light-minimal",
+        "visual-explainer:swiss-clean",
+        "open-codesign:brand/vercel",
+        "html-ppt-skill:theme/swiss-grid",
+        "beautiful-html-templates:cobalt-grid",
+        "beautiful-html-templates:raw-grid"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "visual-explainer",
+        "open-codesign",
+        "html-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "white, black, one accent",
+      "composition": "12-column hard grid",
+      "typography": "grotesk sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "12-column hard grid",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "editorial-paper",
+      "mode": "html",
+      "name": "Editorial Paper",
+      "aliases": [
+        "frontend-slides:editorial-magazine",
+        "visual-explainer:midnight-editorial",
+        "open-codesign:brand/notion",
+        "open-codesign:direction/editorial-typography",
+        "html-ppt-skill:theme/editorial-serif",
+        "beautiful-html-templates:editorial-forest",
+        "beautiful-html-templates:editorial-tri-tone",
+        "beautiful-html-templates:emerald-editorial",
+        "beautiful-html-templates:monochrome",
+        "beautiful-html-templates:soft-editorial",
+        "beautiful-html-templates:vellum"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "visual-explainer",
+        "open-codesign",
+        "html-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "paper, ink, muted accent",
+      "composition": "asymmetric editorial composition",
+      "typography": "serif / sans",
+      "density": "low",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "asymmetric editorial composition",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "institutional-signal",
+      "mode": "html",
+      "name": "Institutional Signal",
+      "aliases": [
+        "visual-explainer:warm-signal",
+        "open-codesign:brand/ibm",
+        "html-ppt-skill:theme/news-broadcast",
+        "beautiful-html-templates:signal"
+      ],
+      "provenance": [
+        "visual-explainer",
+        "open-codesign",
+        "html-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "white, navy, signal red",
+      "composition": "broadcast labels and authoritative bands",
+      "typography": "condensed sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "broadcast labels and authoritative bands",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "neo-brutalist-grid",
+      "mode": "html",
+      "name": "Neo Brutalist Grid",
+      "aliases": [
+        "open-codesign:brand/posthog",
+        "open-codesign:brand/nike",
+        "open-codesign:direction/neubrutalism",
+        "html-ppt-skill:theme/cyberpunk-neon",
+        "html-ppt-skill:theme/neo-brutalism",
+        "dashi-ppt-skill:theme08",
+        "beautiful-html-templates:block-frame",
+        "beautiful-html-templates:bold-poster",
+        "beautiful-html-templates:broadside",
+        "beautiful-html-templates:neo-grid-bold"
+      ],
+      "provenance": [
+        "open-codesign",
+        "html-ppt-skill",
+        "dashi-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "white, black, saturated primary",
+      "composition": "thick rules and displaced blocks",
+      "typography": "heavy grotesk",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "thick rules and displaced blocks",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "terminal-mono",
+      "mode": "html",
+      "name": "Terminal Mono",
+      "aliases": [
+        "frontend-slides:developer-terminal",
+        "visual-explainer:terminal-mono",
+        "open-codesign:brand/cursor",
+        "html-ppt-skill:theme/catppuccin-latte",
+        "html-ppt-skill:theme/catppuccin-mocha",
+        "html-ppt-skill:theme/dracula",
+        "html-ppt-skill:theme/gruvbox-dark",
+        "html-ppt-skill:theme/nord",
+        "html-ppt-skill:theme/rose-pine",
+        "html-ppt-skill:theme/terminal-green",
+        "html-ppt-skill:theme/tokyo-night",
+        "open-slide:replit",
+        "dashi-ppt-skill:theme03"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "visual-explainer",
+        "open-codesign",
+        "html-ppt-skill",
+        "open-slide",
+        "dashi-ppt-skill"
+      ],
+      "palette": "charcoal, phosphor or muted syntax colors",
+      "composition": "console panels and code rhythm",
+      "typography": "monospace",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "console panels and code rhythm",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "blueprint-engineering",
+      "mode": "html",
+      "name": "Blueprint Engineering",
+      "aliases": [
+        "open-codesign:brand/spacex",
+        "open-codesign:direction/dot-grid",
+        "html-ppt-skill:theme/blueprint",
+        "html-ppt-skill:theme/engineering-whiteprint",
+        "beautiful-html-templates:cartesian"
+      ],
+      "provenance": [
+        "open-codesign",
+        "html-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "blue or white, cyan linework",
+      "composition": "measured technical grid",
+      "typography": "technical mono / sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "measured technical grid",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "dark-aurora-html",
+      "mode": "html",
+      "name": "Dark Aurora HTML",
+      "aliases": [
+        "frontend-slides:dark-elegant",
+        "open-codesign:brand/linear",
+        "open-codesign:brand/supabase",
+        "open-codesign:brand/runwayml",
+        "open-codesign:brand/raycast",
+        "open-codesign:direction/aurora-mesh",
+        "html-ppt-skill:theme/aurora",
+        "open-slide:aurora",
+        "dashi-ppt-skill:theme02"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "open-codesign",
+        "html-ppt-skill",
+        "open-slide",
+        "dashi-ppt-skill"
+      ],
+      "palette": "near black, violet and cyan",
+      "composition": "layered light with restrained glass",
+      "typography": "modern sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "layered light with restrained glass",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "glass-candy",
+      "mode": "html",
+      "name": "Glass Candy",
+      "aliases": [
+        "open-codesign:brand/stripe",
+        "open-codesign:direction/glassmorphism",
+        "open-codesign:direction/animated-gradient",
+        "html-ppt-skill:theme/glassmorphism",
+        "html-ppt-skill:theme/rainbow-gradient",
+        "html-ppt-skill:theme/vaporwave",
+        "html-ppt-skill:theme/y2k-chrome",
+        "dashi-ppt-skill:theme04",
+        "beautiful-html-templates:sakura-chroma"
+      ],
+      "provenance": [
+        "open-codesign",
+        "html-ppt-skill",
+        "dashi-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "bright pastel spectrum",
+      "composition": "translucent panels and chromatic depth",
+      "typography": "rounded geometric sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "translucent panels and chromatic depth",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "data-spectrum",
+      "mode": "html",
+      "name": "Data Spectrum",
+      "aliases": [
+        "frontend-slides:data-dashboard",
+        "open-codesign:direction/dashboard",
+        "html-ppt-skill:deck/data-report",
+        "dashi-ppt-skill:theme05",
+        "dashi-ppt-skill:theme06"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "open-codesign",
+        "html-ppt-skill",
+        "dashi-ppt-skill"
+      ],
+      "palette": "white or dark neutral, semantic chart colors",
+      "composition": "dense but ordered analytical layout",
+      "typography": "compact sans",
+      "density": "high",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "dense but ordered analytical layout",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "research-white",
+      "mode": "html",
+      "name": "Research White",
+      "aliases": [
+        "frontend-slides:academic-research",
+        "html-ppt-skill:theme/academic-paper",
+        "html-ppt-skill:deck/academic-defense",
+        "dashi-ppt-skill:theme07",
+        "beautiful-html-templates:pin-and-paper"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "html-ppt-skill",
+        "dashi-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "white, navy, gray",
+      "composition": "citation-aware evidence layout",
+      "typography": "formal sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "citation-aware evidence layout",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "magazine-deep-blue",
+      "mode": "html",
+      "name": "Magazine Deep Blue",
+      "aliases": [
+        "frontend-slides:luxury-premium",
+        "dashi-ppt-skill:theme09"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "dashi-ppt-skill"
+      ],
+      "palette": "deep blue, ivory, emerald accent",
+      "composition": "full-bleed image and editorial caption",
+      "typography": "serif / sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "full-bleed image and editorial caption",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "finance-index",
+      "mode": "html",
+      "name": "Finance Index",
+      "aliases": [
+        "frontend-slides:business-professional",
+        "open-codesign:brand/coinbase",
+        "open-codesign:brand/revolut",
+        "html-ppt-skill:theme/corporate-clean",
+        "html-ppt-skill:theme/pitch-deck-vc",
+        "dashi-ppt-skill:theme10",
+        "beautiful-html-templates:blue-professional"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "open-codesign",
+        "html-ppt-skill",
+        "dashi-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "white, navy, restrained red or green",
+      "composition": "KPI bands, tables and waterfall rhythm",
+      "typography": "tabular sans",
+      "density": "high",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "KPI bands, tables and waterfall rhythm",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "growth-ember",
+      "mode": "html",
+      "name": "Growth Ember",
+      "aliases": [
+        "open-codesign:brand/airbnb",
+        "open-codesign:brand/ferrari",
+        "open-codesign:brand/shopify",
+        "html-ppt-skill:theme/sunset-warm",
+        "dashi-ppt-skill:theme11",
+        "beautiful-html-templates:coral"
+      ],
+      "provenance": [
+        "open-codesign",
+        "html-ppt-skill",
+        "dashi-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "white, coral, warm red",
+      "composition": "momentum curves and decisive callouts",
+      "typography": "bold sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "momentum curves and decisive callouts",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "retro-interface",
+      "mode": "html",
+      "name": "Retro Interface",
+      "aliases": [
+        "html-ppt-skill:theme/midcentury",
+        "html-ppt-skill:theme/retro-tv",
+        "beautiful-html-templates:retro-windows",
+        "beautiful-html-templates:retro-zine"
+      ],
+      "provenance": [
+        "html-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "system gray, teal, nostalgic accents",
+      "composition": "window chrome and modular panes",
+      "typography": "pixel / system sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "window chrome and modular panes",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "pixel-arcade",
+      "mode": "html",
+      "name": "Pixel Arcade",
+      "aliases": [
+        "open-slide:minecraft",
+        "beautiful-html-templates:8-bit-orbit"
+      ],
+      "provenance": [
+        "open-slide",
+        "beautiful-html-templates"
+      ],
+      "palette": "deep navy, neon cyan and magenta",
+      "composition": "pixel grid and console framing",
+      "typography": "pixel mono",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "pixel grid and console framing",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "riso-zine-html",
+      "mode": "html",
+      "name": "Riso Zine HTML",
+      "aliases": [
+        "open-codesign:brand/mistral",
+        "open-codesign:direction/noise-grain",
+        "html-ppt-skill:theme/magazine-bold",
+        "beautiful-html-templates:stencil-tablet"
+      ],
+      "provenance": [
+        "open-codesign",
+        "html-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "spot red, blue, yellow",
+      "composition": "rough print blocks and halftone",
+      "typography": "condensed sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "rough print blocks and halftone",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "organic-craft",
+      "mode": "html",
+      "name": "Organic Craft",
+      "aliases": [
+        "frontend-slides:warm-human",
+        "frontend-slides:nature-organic",
+        "open-codesign:brand/starbucks",
+        "html-ppt-skill:theme/japanese-minimal",
+        "beautiful-html-templates:grove"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "open-codesign",
+        "html-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "forest, paper, botanical accent",
+      "composition": "soft irregular geometry and generous whitespace",
+      "typography": "humanist serif",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "soft irregular geometry and generous whitespace",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "playful-pastel",
+      "mode": "html",
+      "name": "Playful Pastel",
+      "aliases": [
+        "frontend-slides:creative-vibrant",
+        "open-codesign:brand/figma",
+        "html-ppt-skill:theme/memphis-pop",
+        "html-ppt-skill:theme/soft-pastel",
+        "open-slide:sticker-pop",
+        "beautiful-html-templates:daisy-days",
+        "beautiful-html-templates:pink-script",
+        "beautiful-html-templates:playful",
+        "beautiful-html-templates:scatterbrain"
+      ],
+      "provenance": [
+        "frontend-slides",
+        "open-codesign",
+        "html-ppt-skill",
+        "open-slide",
+        "beautiful-html-templates"
+      ],
+      "palette": "light pastel mix with dark text",
+      "composition": "friendly loose grid and simple icons",
+      "typography": "rounded sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "friendly loose grid and simple icons",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "culture-poster",
+      "mode": "html",
+      "name": "Culture Poster",
+      "aliases": [
+        "beautiful-html-templates:biennale-yellow",
+        "beautiful-html-templates:peoples-platform"
+      ],
+      "provenance": [
+        "beautiful-html-templates"
+      ],
+      "palette": "parchment, solar yellow or civic blue",
+      "composition": "poster hierarchy and public-program rhythm",
+      "typography": "display serif",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "poster hierarchy and public-program rhythm",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "code-editorial",
+      "mode": "html",
+      "name": "Code Editorial",
+      "aliases": [
+        "open-codesign:brand/framer",
+        "open-codesign:brand/elevenlabs",
+        "html-ppt-skill:theme/sharp-mono",
+        "beautiful-html-templates:creative-mode"
+      ],
+      "provenance": [
+        "open-codesign",
+        "html-ppt-skill",
+        "beautiful-html-templates"
+      ],
+      "palette": "white or charcoal, syntax accents",
+      "composition": "editorial code fragments and sharp rules",
+      "typography": "mono / grotesk",
+      "density": "low",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "editorial code fragments and sharp rules",
+          "no rasterized full-slide background"
+        ]
+      }
+    },
+    {
+      "id": "neon-entertainment",
+      "mode": "html",
+      "name": "Neon Entertainment",
+      "aliases": [
+        "open-codesign:brand/spotify",
+        "dashi-ppt-skill:theme12"
+      ],
+      "provenance": [
+        "open-codesign",
+        "dashi-ppt-skill"
+      ],
+      "palette": "black, electric cyan, hot pink",
+      "composition": "stage lighting and kinetic bands",
+      "typography": "display sans",
+      "density": "medium",
+      "bento_recipe": {
+        "primitives": [
+          "text",
+          "shape",
+          "svg",
+          "chart",
+          "table"
+        ],
+        "constraints": [
+          "stage lighting and kinetic bands",
+          "no rasterized full-slide background"
+        ]
+      }
+    }
+  ]
+}
