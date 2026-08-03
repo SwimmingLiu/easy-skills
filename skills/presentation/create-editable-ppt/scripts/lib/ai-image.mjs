@@ -18,7 +18,41 @@ export function compileImageJobs(outline, recipe, outputDir = 'slides') {
   }));
 }
 
-const mime = path => extname(path).toLowerCase() === '.jpg' || extname(path).toLowerCase() === '.jpeg' ? 'image/jpeg' : 'image/png';
+function jpegSize(buffer) {
+  if (buffer.length < 4 || buffer[0] !== 0xff || buffer[1] !== 0xd8) return null;
+  let offset = 2;
+  while (offset + 8 < buffer.length) {
+    while (buffer[offset] === 0xff) offset += 1;
+    const marker = buffer[offset];
+    offset += 1;
+    if (marker === 0xd9 || marker === 0xda) break;
+    if (offset + 2 > buffer.length) break;
+    const length = buffer.readUInt16BE(offset);
+    if (length < 2 || offset + length > buffer.length) break;
+    if ([0xc0, 0xc1, 0xc2, 0xc3, 0xc5, 0xc6, 0xc7, 0xc9, 0xca, 0xcb, 0xcd, 0xce, 0xcf].includes(marker)) {
+      return { width: buffer.readUInt16BE(offset + 5), height: buffer.readUInt16BE(offset + 3) };
+    }
+    offset += length;
+  }
+  return null;
+}
+
+export function inspectRaster(buffer, path = 'image') {
+  const extension = extname(path).toLowerCase();
+  let type;
+  let size;
+  if (extension === '.png' && buffer.length >= 24 && buffer.subarray(0, 8).equals(Buffer.from([137, 80, 78, 71, 13, 10, 26, 10]))) {
+    type = 'image/png';
+    size = { width: buffer.readUInt32BE(16), height: buffer.readUInt32BE(20) };
+  } else if (['.jpg', '.jpeg'].includes(extension)) {
+    type = 'image/jpeg';
+    size = jpegSize(buffer);
+  }
+  if (!type || !size || !size.width || !size.height) throw new Error(`${path} 不是可识别的 PNG 或 JPEG 图片`);
+  const ratio = size.width / size.height;
+  if (Math.abs(ratio - 16 / 9) > 0.01) throw new Error(`${path} 必须是 16:9，实际为 ${size.width}x${size.height}`);
+  return { type, ...size };
+}
 
 export async function composeAiImageDeck(outline, recipe, assets) {
   if (outline.mode && outline.mode !== 'ai-image') throw new Error('ai-image mode required');
@@ -28,7 +62,9 @@ export async function composeAiImageDeck(outline, recipe, assets) {
   for (const [index, source] of outline.slides.entries()) {
     const path = assets[index];
     const key = `slide-${source.id}`;
-    embedded[key] = `data:${mime(path)};base64,${(await readFile(path)).toString('base64')}`;
+    const buffer = await readFile(path);
+    const raster = inspectRaster(buffer, path);
+    embedded[key] = `data:${raster.type};base64,${buffer.toString('base64')}`;
     slides.push({
       id: source.id,
       background: '#000000',

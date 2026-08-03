@@ -54,6 +54,7 @@ node scripts/ppt.mjs qa <project-dir> --json
 - 嵌入 JSON 前把 `<` 转义为 `\u003c`，防止 `</script>` 提前结束脚本。
 - 编辑现有文档时保留 `docId`、未知字段和稳定的 slide/element ID。
 - `ai-image` 每页只有一个全画布 `image` 元素；`html` 不得出现全页图片元素。
+- `ai-image` 只接受可识别的 PNG/JPEG，且宽高比必须为 16:9；比例错误或文件损坏时拒绝组装。
 - 每页写 speaker notes，记录页面目的、主张和必要的证据说明。
 
 ## 异常与兜底
