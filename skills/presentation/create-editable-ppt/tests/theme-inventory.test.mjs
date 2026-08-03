@@ -28,6 +28,38 @@ test('every source repository is pinned to a full commit', async () => {
   }
 });
 
+test('inventory counts prove complete extraction at each pinned source', async () => {
+  const expected = {
+    'ai-image': {
+      'guizang-ppt-skill': 9,
+      'codex-ppt-skill': 12,
+      GordenSuperPPTSkills: 6,
+      'gpt-image2-ppt-skills': 265,
+      'wuming-cyan-circuit-launch-ppt': 1,
+      'wuming-ai-ppt-cover': 2,
+    },
+    html: {
+      'frontend-slides': 12,
+      'visual-explainer': 4,
+      'open-codesign': 35,
+      'html-ppt-skill': 51,
+      'open-slide': 5,
+      'dashi-ppt-skill': 12,
+      'beautiful-html-templates': 34,
+      bento: 0,
+      'baoyu-design': 0,
+    },
+  };
+  for (const mode of ['ai-image', 'html']) {
+    const inventory = await loadThemeInventory(mode);
+    const repositories = new Map(inventory.repositories.map(repository => [repository.id, repository]));
+    for (const [id, count] of Object.entries(expected[mode])) assert.equal(repositories.get(id).theme_count, count, `${mode}:${id}`);
+    assert.equal(inventory.themes.filter(theme => theme.kind === 'theme').length, Object.values(expected[mode]).reduce((sum, count) => sum + count, 0));
+  }
+  const html = await loadThemeInventory('html');
+  assert.equal(html.repositories.find(repository => repository.id === 'baoyu-design').methodology_count, 1);
+});
+
 test('HTML inventory points at the requested repositories and real named systems', async () => {
   const html = await loadThemeInventory('html');
   const repositories = new Map(html.repositories.map(item => [item.id, item]));

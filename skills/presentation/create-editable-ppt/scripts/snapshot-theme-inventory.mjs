@@ -280,7 +280,18 @@ for (const mode of ['image','html']) {
     schema_version: 1,
     mode: mode === 'image' ? 'ai-image' : 'html',
     snapshot_date: today,
-    repositories: repos[mode].map(([id, url, commit, role]) => ({ id, url, commit, ...(role ? { role } : {}) })),
+    repositories: repos[mode].map(([id, url, commit, role]) => {
+      const entries = inventories[mode].filter(item => item.repository === id);
+      const methodologyCount = entries.filter(item => item.kind === 'methodology').length;
+      return {
+        id,
+        url,
+        commit,
+        theme_count: entries.filter(item => item.kind === 'theme').length,
+        ...(methodologyCount ? { methodology_count: methodologyCount } : {}),
+        ...(role ? { role } : {}),
+      };
+    }),
     themes: inventories[mode],
   };
   await writeFile(join(outDir, `${mode === 'image' ? 'image' : 'html'}-theme-inventory.json`), `${JSON.stringify(payload, null, 2)}\n`);

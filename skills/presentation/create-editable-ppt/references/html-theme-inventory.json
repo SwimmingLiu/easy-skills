@@ -6,48 +6,58 @@
     {
       "id": "frontend-slides",
       "url": "https://github.com/zarazhangrui/frontend-slides",
-      "commit": "9906a34d640d2111f724544cbc50f7f130569ae1"
+      "commit": "9906a34d640d2111f724544cbc50f7f130569ae1",
+      "theme_count": 12
     },
     {
       "id": "visual-explainer",
       "url": "https://github.com/nicobailon/visual-explainer",
-      "commit": "528b71feb85dab5d92b82c3554880826f50a75da"
+      "commit": "528b71feb85dab5d92b82c3554880826f50a75da",
+      "theme_count": 4
     },
     {
       "id": "open-codesign",
       "url": "https://github.com/OpenCoworkAI/open-codesign",
-      "commit": "b94d7156bf4aeb2c79892c91dc9934911a4e3741"
+      "commit": "b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "theme_count": 35
     },
     {
       "id": "html-ppt-skill",
       "url": "https://github.com/lewislulu/html-ppt-skill",
-      "commit": "f3a8435d3901697d5ac5e64d356c933637e43107"
+      "commit": "f3a8435d3901697d5ac5e64d356c933637e43107",
+      "theme_count": 51
     },
     {
       "id": "open-slide",
       "url": "https://github.com/1weiho/open-slide",
-      "commit": "35dc46ca27716ea86f8a76710bbd3640e9590628"
+      "commit": "35dc46ca27716ea86f8a76710bbd3640e9590628",
+      "theme_count": 5
     },
     {
       "id": "dashi-ppt-skill",
       "url": "https://github.com/chuspeeism/dashi-ppt-skill",
-      "commit": "7cb23347f91cda1a5519eafc8c040704e389535a"
+      "commit": "7cb23347f91cda1a5519eafc8c040704e389535a",
+      "theme_count": 12
     },
     {
       "id": "beautiful-html-templates",
       "url": "https://github.com/zarazhangrui/beautiful-html-templates",
-      "commit": "e5e204fb1f3b06290846e7dcd7aceddabeceec8c"
+      "commit": "e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "theme_count": 34
     },
     {
       "id": "bento",
       "url": "git@github.com:SwimmingLiu/bento.git",
       "commit": "3ad1bdf18e88cf04c79698b11a7cfc0d8570db63",
+      "theme_count": 0,
       "role": "output-editor"
     },
     {
       "id": "baoyu-design",
       "url": "https://github.com/JimLiu/baoyu-design",
-      "commit": "026d4ea012bdd5cada72ac8cc13f21ba4edf2245"
+      "commit": "026d4ea012bdd5cada72ac8cc13f21ba4edf2245",
+      "theme_count": 0,
+      "methodology_count": 1
     }
   ],
   "themes": [

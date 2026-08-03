@@ -6,32 +6,38 @@
     {
       "id": "guizang-ppt-skill",
       "url": "https://github.com/op7418/guizang-ppt-skill",
-      "commit": "929c2ecb63a22b54d400c4911ed70bf96c2b355d"
+      "commit": "929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "theme_count": 9
     },
     {
       "id": "codex-ppt-skill",
       "url": "https://github.com/ningzimu/codex-ppt-skill",
-      "commit": "f2ed80372f65bb05fe62dd07979b239a17ac065d"
+      "commit": "f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "theme_count": 12
     },
     {
       "id": "GordenSuperPPTSkills",
       "url": "https://github.com/GordenSun/GordenSuperPPTSkills",
-      "commit": "8c05583dab8334182b71738e8dfbbec5c56a1951"
+      "commit": "8c05583dab8334182b71738e8dfbbec5c56a1951",
+      "theme_count": 6
     },
     {
       "id": "gpt-image2-ppt-skills",
       "url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills",
-      "commit": "4576cd5aee5e2f7c2fbd47557045b150906ce98c"
+      "commit": "4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "theme_count": 265
     },
     {
       "id": "wuming-cyan-circuit-launch-ppt",
       "url": "https://github.com/chujianyun/wuming-cyan-circuit-launch-ppt",
-      "commit": "20915a2dcf775f937b53258007d09a5412c8d2ff"
+      "commit": "20915a2dcf775f937b53258007d09a5412c8d2ff",
+      "theme_count": 1
     },
     {
       "id": "wuming-ai-ppt-cover",
       "url": "https://github.com/chujianyun/wuming-ai-ppt-cover",
-      "commit": "05e027cc55ac48b5664f628b69d0b750dbf9ce31"
+      "commit": "05e027cc55ac48b5664f628b69d0b750dbf9ce31",
+      "theme_count": 2
     }
   ],
   "themes": [
