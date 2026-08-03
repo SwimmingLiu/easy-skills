@@ -203,6 +203,17 @@ Create distinctive, production-grade frontend interfaces with high design qualit
 - **polish** - Refine and perfect details
 - **quieter** - Reduce visual noise
 
+### 🧠 Knowledge Skills
+
+#### [Knowledge Base](./skills/knowledge/knowledge-base/SKILL.md)
+Operate a Codex-native Markdown and Obsidian personal knowledge base with durable sources and traceable synthesis.
+
+**Features:**
+- Deterministic, idempotent source ingestion
+- Connected Wiki notes with explicit source links
+- Local retrieval with provenance and health checks
+- Codex Agent Skill metadata and standard-library Python tooling
+
 ## Installation
 
 ### For Agents (Automatic Installation)
