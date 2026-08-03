@@ -6,7 +6,7 @@ import { composeAiImageDeck, compileImageJobs } from './lib/ai-image.mjs';
 import { parseBentoDocument, spliceBentoDocument } from './lib/bento-document.mjs';
 import { composeHtmlDeck } from './lib/html-composer.mjs';
 import { approveOutline, createOutline, validateOutline } from './lib/outline.mjs';
-import { loadThemeCatalog } from './lib/theme-catalog.mjs';
+import { loadThemeCatalog, resolveThemeRecipe } from './lib/theme-catalog.mjs';
 
 const skillRoot = resolve(new URL('..', import.meta.url).pathname);
 const shellPath = join(skillRoot, 'assets', 'bento', 'Bento_Slides.bento.html');
@@ -32,7 +32,7 @@ const exists = path => access(path).then(() => true, () => false);
 
 async function recipeFor(mode, id) {
   const catalog = await loadThemeCatalog();
-  const recipe = catalog[mode]?.find(item => item.id === id);
+  const recipe = resolveThemeRecipe(catalog, mode, id);
   if (!recipe) throw new Error(`未知 ${mode} 主题：${id || '未提供'}`);
   return recipe;
 }
@@ -68,8 +68,11 @@ async function main(args) {
     const outline = await readJson(join(root, 'outline_draft.json'));
     const mode = flag(args, '--mode');
     const theme = flag(args, '--theme');
-    await recipeFor(mode, theme);
-    const approved = approveOutline(outline, { mode, theme });
+    const recipe = await recipeFor(mode, theme);
+    const approved = {
+      ...approveOutline(outline, { mode, theme: recipe.id }),
+      ...(theme !== recipe.id ? { theme_alias: theme } : {}),
+    };
     await writeJson(join(root, 'deck_spec.json'), approved);
     console.log(join(root, 'deck_spec.json'));
     return;

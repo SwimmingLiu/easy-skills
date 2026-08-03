@@ -9,22 +9,23 @@ const today = '2026-08-03';
 
 const repos = {
   image: [
-    ['guizang-ppt-skill', 'https://github.com/op7418/guizang-ppt-skill', 'main'],
-    ['codex-ppt-skill', 'https://github.com/ningzimu/codex-ppt-skill', 'main'],
-    ['GordenSuperPPTSkills', 'https://github.com/GordenSun/GordenSuperPPTSkills', 'main'],
+    ['guizang-ppt-skill', 'https://github.com/op7418/guizang-ppt-skill', '929c2ecb63a22b54d400c4911ed70bf96c2b355d'],
+    ['codex-ppt-skill', 'https://github.com/ningzimu/codex-ppt-skill', 'f2ed80372f65bb05fe62dd07979b239a17ac065d'],
+    ['GordenSuperPPTSkills', 'https://github.com/GordenSun/GordenSuperPPTSkills', '8c05583dab8334182b71738e8dfbbec5c56a1951'],
     ['gpt-image2-ppt-skills', 'https://github.com/JuneYaooo/gpt-image2-ppt-skills', '4576cd5aee5e2f7c2fbd47557045b150906ce98c'],
-    ['wuming-cyan-circuit-launch-ppt', 'https://github.com/chujianyun/wuming-cyan-circuit-launch-ppt', 'main'],
-    ['wuming-ai-ppt-cover', 'https://github.com/chujianyun/wuming-ai-ppt-cover', 'main'],
+    ['wuming-cyan-circuit-launch-ppt', 'https://github.com/chujianyun/wuming-cyan-circuit-launch-ppt', '20915a2dcf775f937b53258007d09a5412c8d2ff'],
+    ['wuming-ai-ppt-cover', 'https://github.com/chujianyun/wuming-ai-ppt-cover', '05e027cc55ac48b5664f628b69d0b750dbf9ce31'],
   ],
   html: [
     ['frontend-slides', 'https://github.com/zarazhangrui/frontend-slides', '9906a34d640d2111f724544cbc50f7f130569ae1'],
-    ['visual-explainer', 'https://github.com/eren23/visual-explainer', 'main'],
-    ['open-codesign', 'https://github.com/anthropics/open-codesign', 'main'],
+    ['visual-explainer', 'https://github.com/nicobailon/visual-explainer', '528b71feb85dab5d92b82c3554880826f50a75da'],
+    ['open-codesign', 'https://github.com/OpenCoworkAI/open-codesign', 'b94d7156bf4aeb2c79892c91dc9934911a4e3741'],
     ['html-ppt-skill', 'https://github.com/lewislulu/html-ppt-skill', 'f3a8435d3901697d5ac5e64d356c933637e43107'],
-    ['open-slide', 'https://github.com/zhangxian/open-slide', 'main'],
+    ['open-slide', 'https://github.com/1weiho/open-slide', '35dc46ca27716ea86f8a76710bbd3640e9590628'],
     ['dashi-ppt-skill', 'https://github.com/chuspeeism/dashi-ppt-skill', '7cb23347f91cda1a5519eafc8c040704e389535a'],
     ['beautiful-html-templates', 'https://github.com/zarazhangrui/beautiful-html-templates', 'e5e204fb1f3b06290846e7dcd7aceddabeceec8c'],
-    ['baoyu-design', 'https://github.com/JimLiu/baoyu-design', '026d4ea0'],
+    ['bento', 'git@github.com:SwimmingLiu/bento.git', '3ad1bdf18e88cf04c79698b11a7cfc0d8570db63', 'output-editor'],
+    ['baoyu-design', 'https://github.com/JimLiu/baoyu-design', '026d4ea012bdd5cada72ac8cc13f21ba4edf2245'],
   ],
 };
 
@@ -57,7 +58,75 @@ const classifyImage = id => {
   return 'editorial-ink';
 };
 
+const htmlOverrides = {
+  'frontend-slides:tech-product': 'clean-professional',
+  'frontend-slides:business-professional': 'finance-index',
+  'frontend-slides:light-minimal': 'strict-swiss-html',
+  'frontend-slides:dark-elegant': 'dark-aurora-html',
+  'frontend-slides:creative-vibrant': 'playful-pastel',
+  'frontend-slides:warm-human': 'organic-craft',
+  'frontend-slides:nature-organic': 'organic-craft',
+  'frontend-slides:luxury-premium': 'magazine-deep-blue',
+  'frontend-slides:data-dashboard': 'data-spectrum',
+  'frontend-slides:academic-research': 'research-white',
+  'frontend-slides:editorial-magazine': 'editorial-paper',
+  'frontend-slides:developer-terminal': 'terminal-mono',
+  'open-slide:bright-sans': 'clean-professional',
+  'open-slide:minecraft': 'pixel-arcade',
+  'open-slide:aurora': 'dark-aurora-html',
+  'open-slide:replit': 'terminal-mono',
+  'open-slide:sticker-pop': 'playful-pastel',
+  'dashi-ppt-skill:theme01': 'clean-professional',
+  'dashi-ppt-skill:theme02': 'dark-aurora-html',
+  'dashi-ppt-skill:theme03': 'terminal-mono',
+  'dashi-ppt-skill:theme04': 'glass-candy',
+  'dashi-ppt-skill:theme05': 'data-spectrum',
+  'dashi-ppt-skill:theme06': 'data-spectrum',
+  'dashi-ppt-skill:theme07': 'research-white',
+  'dashi-ppt-skill:theme08': 'neo-brutalist-grid',
+  'dashi-ppt-skill:theme09': 'magazine-deep-blue',
+  'dashi-ppt-skill:theme10': 'finance-index',
+  'dashi-ppt-skill:theme11': 'growth-ember',
+  'dashi-ppt-skill:theme12': 'neon-entertainment',
+  'open-codesign:brand/vercel': 'strict-swiss-html',
+  'open-codesign:brand/linear': 'dark-aurora-html',
+  'open-codesign:brand/stripe': 'glass-candy',
+  'open-codesign:brand/figma': 'playful-pastel',
+  'open-codesign:brand/notion': 'editorial-paper',
+  'open-codesign:brand/apple': 'clean-professional',
+  'open-codesign:brand/airbnb': 'growth-ember',
+  'open-codesign:brand/spotify': 'neon-entertainment',
+  'open-codesign:brand/cursor': 'terminal-mono',
+  'open-codesign:brand/supabase': 'dark-aurora-html',
+  'open-codesign:brand/posthog': 'neo-brutalist-grid',
+  'open-codesign:brand/framer': 'code-editorial',
+  'open-codesign:brand/runwayml': 'dark-aurora-html',
+  'open-codesign:brand/mistral': 'riso-zine-html',
+  'open-codesign:brand/elevenlabs': 'code-editorial',
+  'open-codesign:brand/coinbase': 'finance-index',
+  'open-codesign:brand/revolut': 'finance-index',
+  'open-codesign:brand/nike': 'neo-brutalist-grid',
+  'open-codesign:brand/ferrari': 'growth-ember',
+  'open-codesign:brand/spacex': 'blueprint-engineering',
+  'open-codesign:brand/starbucks': 'organic-craft',
+  'open-codesign:brand/shopify': 'growth-ember',
+  'open-codesign:brand/ibm': 'institutional-signal',
+  'open-codesign:brand/raycast': 'dark-aurora-html',
+  'open-codesign:brand/cal-com': 'clean-professional',
+  'open-codesign:direction/editorial-typography': 'editorial-paper',
+  'open-codesign:direction/glassmorphism': 'glass-candy',
+  'open-codesign:direction/dashboard': 'data-spectrum',
+  'open-codesign:direction/slide-deck': 'clean-professional',
+  'open-codesign:direction/neubrutalism': 'neo-brutalist-grid',
+  'open-codesign:direction/aurora-mesh': 'dark-aurora-html',
+  'open-codesign:direction/animated-gradient': 'glass-candy',
+  'open-codesign:direction/bento-grid': 'clean-professional',
+  'open-codesign:direction/dot-grid': 'blueprint-engineering',
+  'open-codesign:direction/noise-grain': 'riso-zine-html',
+};
+
 const classifyHtml = id => {
+  if (htmlOverrides[id]) return htmlOverrides[id];
   const s = id.toLowerCase();
   if (/pixel|8-bit|arcade/.test(s)) return 'pixel-arcade';
   if (/terminal|gruvbox|dracula|catppuccin|tokyo|nord|rose-pine/.test(s)) return 'terminal-mono';
@@ -93,7 +162,8 @@ function theme(repository, sourceId, mode, extra = {}) {
     traits: extra.traits || ['source-defined visual system'],
     best_for: extra.best_for || ['general presentation'],
     evidence_url: extra.evidence_url || `${repos[mode].find(r => r[0] === repository)?.[1] || ''}/tree/${repos[mode].find(r => r[0] === repository)?.[2] || 'main'}`,
-    canonical_id: mode === 'image' ? classifyImage(key) : classifyHtml(key),
+    kind: extra.kind || 'theme',
+    canonical_id: extra.kind === 'methodology' ? null : mode === 'image' ? classifyImage(key) : classifyHtml(key),
   };
 }
 
@@ -115,12 +185,13 @@ async function imageThemes() {
 async function htmlThemes() {
   const result = [];
   for (const id of ['tech-product','business-professional','light-minimal','dark-elegant','creative-vibrant','warm-human','nature-organic','luxury-premium','data-dashboard','academic-research','editorial-magazine','developer-terminal']) result.push(theme('frontend-slides', id, 'html'));
-  for (const id of ['editorial','dashboard','technical','playful']) result.push(theme('visual-explainer', id, 'html'));
-  for (const id of ['editorial-system','product-narrative','data-story','institutional-report','custom-token-system']) result.push(theme('open-codesign', id, 'html'));
+  for (const id of ['midnight-editorial','warm-signal','terminal-mono','swiss-clean']) result.push(theme('visual-explainer', id, 'html'));
+  for (const id of ['vercel','linear','stripe','figma','notion','apple','airbnb','spotify','cursor','supabase','posthog','framer','runwayml','mistral','elevenlabs','coinbase','revolut','nike','ferrari','spacex','starbucks','shopify','ibm','raycast','cal-com']) result.push(theme('open-codesign', `brand/${id}`, 'html'));
+  for (const id of ['editorial-typography','glassmorphism','dashboard','slide-deck','neubrutalism','aurora-mesh','animated-gradient','bento-grid','dot-grid','noise-grain']) result.push(theme('open-codesign', `direction/${id}`, 'html'));
   const cssBase = process.env.HTML_PPT_SOURCE || '/private/tmp/easy-html-ppt/assets/themes';
   for (const file of (await readdir(cssBase)).filter(file => file.endsWith('.css')).sort()) result.push(theme('html-ppt-skill', `theme/${basename(file, '.css')}`, 'html'));
   for (const id of ['business-report','product-launch','academic-defense','training-course','annual-review','marketing-plan','project-proposal','data-report','company-profile','conference-keynote','portfolio','roadmap','case-study','workshop','event-intro']) result.push(theme('html-ppt-skill', `deck/${id}`, 'html'));
-  for (const id of ['default','minimal','dark','academic','business']) result.push(theme('open-slide', id, 'html'));
+  for (const id of ['bright-sans','minecraft','aurora','replit','sticker-pop']) result.push(theme('open-slide', id, 'html'));
   const dashiBase = process.env.DASHI_SOURCE || '/private/tmp/easy-dashi/skills/dashi-ppt/project/src/components/themes';
   for (let i = 1; i <= 12; i++) {
     const sourceId = `theme${String(i).padStart(2, '0')}`;
@@ -131,7 +202,12 @@ async function htmlThemes() {
   const beautifulBase = process.env.BEAUTIFUL_SOURCE || '/private/tmp/easy-beautiful';
   const index = JSON.parse(await readFile(join(beautifulBase, 'index.json'), 'utf8'));
   for (const item of index.templates) result.push(theme('beautiful-html-templates', item.slug, 'html', { name: item.name, traits: item.mood, best_for: item.occasion }));
-  for (const id of ['editorial','swiss','neo-brutalism','glassmorphism','organic','retro-futurism','institutional','data-dense']) result.push(theme('baoyu-design', id, 'html'));
+  result.push(theme('baoyu-design', 'methodology/design-system-bound', 'html', {
+    name: 'Design-system-bound deck',
+    kind: 'methodology',
+    traits: ['no fixed theme library', 'load a user-selected design-system prompt as a binding constraint'],
+    best_for: ['brand-governed decks', 'custom design systems'],
+  }));
   return result;
 }
 
@@ -204,7 +280,7 @@ for (const mode of ['image','html']) {
     schema_version: 1,
     mode: mode === 'image' ? 'ai-image' : 'html',
     snapshot_date: today,
-    repositories: repos[mode].map(([id, url, commit]) => ({ id, url, commit })),
+    repositories: repos[mode].map(([id, url, commit, role]) => ({ id, url, commit, ...(role ? { role } : {}) })),
     themes: inventories[mode],
   };
   await writeFile(join(outDir, `${mode === 'image' ? 'image' : 'html'}-theme-inventory.json`), `${JSON.stringify(payload, null, 2)}\n`);

@@ -10,13 +10,13 @@
     },
     {
       "id": "visual-explainer",
-      "url": "https://github.com/eren23/visual-explainer",
-      "commit": "main"
+      "url": "https://github.com/nicobailon/visual-explainer",
+      "commit": "528b71feb85dab5d92b82c3554880826f50a75da"
     },
     {
       "id": "open-codesign",
-      "url": "https://github.com/anthropics/open-codesign",
-      "commit": "main"
+      "url": "https://github.com/OpenCoworkAI/open-codesign",
+      "commit": "b94d7156bf4aeb2c79892c91dc9934911a4e3741"
     },
     {
       "id": "html-ppt-skill",
@@ -25,8 +25,8 @@
     },
     {
       "id": "open-slide",
-      "url": "https://github.com/zhangxian/open-slide",
-      "commit": "main"
+      "url": "https://github.com/1weiho/open-slide",
+      "commit": "35dc46ca27716ea86f8a76710bbd3640e9590628"
     },
     {
       "id": "dashi-ppt-skill",
@@ -39,9 +39,15 @@
       "commit": "e5e204fb1f3b06290846e7dcd7aceddabeceec8c"
     },
     {
+      "id": "bento",
+      "url": "git@github.com:SwimmingLiu/bento.git",
+      "commit": "3ad1bdf18e88cf04c79698b11a7cfc0d8570db63",
+      "role": "output-editor"
+    },
+    {
       "id": "baoyu-design",
       "url": "https://github.com/JimLiu/baoyu-design",
-      "commit": "026d4ea0"
+      "commit": "026d4ea012bdd5cada72ac8cc13f21ba4edf2245"
     }
   ],
   "themes": [
@@ -57,6 +63,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -71,7 +78,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "finance-index"
     },
     {
       "key": "frontend-slides:light-minimal",
@@ -85,7 +93,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "strict-swiss-html"
     },
     {
       "key": "frontend-slides:dark-elegant",
@@ -99,6 +108,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "kind": "theme",
       "canonical_id": "dark-aurora-html"
     },
     {
@@ -113,7 +123,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "playful-pastel"
     },
     {
       "key": "frontend-slides:warm-human",
@@ -127,7 +138,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "organic-craft"
     },
     {
       "key": "frontend-slides:nature-organic",
@@ -141,6 +153,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "kind": "theme",
       "canonical_id": "organic-craft"
     },
     {
@@ -155,7 +168,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "magazine-deep-blue"
     },
     {
       "key": "frontend-slides:data-dashboard",
@@ -169,6 +183,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "kind": "theme",
       "canonical_id": "data-spectrum"
     },
     {
@@ -183,6 +198,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "kind": "theme",
       "canonical_id": "research-white"
     },
     {
@@ -197,7 +213,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
-      "canonical_id": "riso-zine-html"
+      "kind": "theme",
+      "canonical_id": "editorial-paper"
     },
     {
       "key": "frontend-slides:developer-terminal",
@@ -211,133 +228,593 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/frontend-slides/tree/9906a34d640d2111f724544cbc50f7f130569ae1",
+      "kind": "theme",
       "canonical_id": "terminal-mono"
     },
     {
-      "key": "visual-explainer:editorial",
+      "key": "visual-explainer:midnight-editorial",
       "repository": "visual-explainer",
-      "source_id": "editorial",
-      "name": "editorial",
+      "source_id": "midnight-editorial",
+      "name": "midnight editorial",
       "traits": [
         "source-defined visual system"
       ],
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/eren23/visual-explainer/tree/main",
+      "evidence_url": "https://github.com/nicobailon/visual-explainer/tree/528b71feb85dab5d92b82c3554880826f50a75da",
+      "kind": "theme",
       "canonical_id": "editorial-paper"
     },
     {
-      "key": "visual-explainer:dashboard",
+      "key": "visual-explainer:warm-signal",
       "repository": "visual-explainer",
-      "source_id": "dashboard",
-      "name": "dashboard",
+      "source_id": "warm-signal",
+      "name": "warm signal",
       "traits": [
         "source-defined visual system"
       ],
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/eren23/visual-explainer/tree/main",
-      "canonical_id": "data-spectrum"
-    },
-    {
-      "key": "visual-explainer:technical",
-      "repository": "visual-explainer",
-      "source_id": "technical",
-      "name": "technical",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/eren23/visual-explainer/tree/main",
-      "canonical_id": "clean-professional"
-    },
-    {
-      "key": "visual-explainer:playful",
-      "repository": "visual-explainer",
-      "source_id": "playful",
-      "name": "playful",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/eren23/visual-explainer/tree/main",
-      "canonical_id": "playful-pastel"
-    },
-    {
-      "key": "open-codesign:editorial-system",
-      "repository": "open-codesign",
-      "source_id": "editorial-system",
-      "name": "editorial system",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
-      "canonical_id": "editorial-paper"
-    },
-    {
-      "key": "open-codesign:product-narrative",
-      "repository": "open-codesign",
-      "source_id": "product-narrative",
-      "name": "product narrative",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
-      "canonical_id": "code-editorial"
-    },
-    {
-      "key": "open-codesign:data-story",
-      "repository": "open-codesign",
-      "source_id": "data-story",
-      "name": "data story",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
-      "canonical_id": "data-spectrum"
-    },
-    {
-      "key": "open-codesign:institutional-report",
-      "repository": "open-codesign",
-      "source_id": "institutional-report",
-      "name": "institutional report",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
+      "evidence_url": "https://github.com/nicobailon/visual-explainer/tree/528b71feb85dab5d92b82c3554880826f50a75da",
+      "kind": "theme",
       "canonical_id": "institutional-signal"
     },
     {
-      "key": "open-codesign:custom-token-system",
-      "repository": "open-codesign",
-      "source_id": "custom-token-system",
-      "name": "custom token system",
+      "key": "visual-explainer:terminal-mono",
+      "repository": "visual-explainer",
+      "source_id": "terminal-mono",
+      "name": "terminal mono",
       "traits": [
         "source-defined visual system"
       ],
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/anthropics/open-codesign/tree/main",
+      "evidence_url": "https://github.com/nicobailon/visual-explainer/tree/528b71feb85dab5d92b82c3554880826f50a75da",
+      "kind": "theme",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "visual-explainer:swiss-clean",
+      "repository": "visual-explainer",
+      "source_id": "swiss-clean",
+      "name": "swiss clean",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/nicobailon/visual-explainer/tree/528b71feb85dab5d92b82c3554880826f50a75da",
+      "kind": "theme",
+      "canonical_id": "strict-swiss-html"
+    },
+    {
+      "key": "open-codesign:brand/vercel",
+      "repository": "open-codesign",
+      "source_id": "brand/vercel",
+      "name": "brand/vercel",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "strict-swiss-html"
+    },
+    {
+      "key": "open-codesign:brand/linear",
+      "repository": "open-codesign",
+      "source_id": "brand/linear",
+      "name": "brand/linear",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "dark-aurora-html"
+    },
+    {
+      "key": "open-codesign:brand/stripe",
+      "repository": "open-codesign",
+      "source_id": "brand/stripe",
+      "name": "brand/stripe",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "glass-candy"
+    },
+    {
+      "key": "open-codesign:brand/figma",
+      "repository": "open-codesign",
+      "source_id": "brand/figma",
+      "name": "brand/figma",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "playful-pastel"
+    },
+    {
+      "key": "open-codesign:brand/notion",
+      "repository": "open-codesign",
+      "source_id": "brand/notion",
+      "name": "brand/notion",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "open-codesign:brand/apple",
+      "repository": "open-codesign",
+      "source_id": "brand/apple",
+      "name": "brand/apple",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "open-codesign:brand/airbnb",
+      "repository": "open-codesign",
+      "source_id": "brand/airbnb",
+      "name": "brand/airbnb",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "growth-ember"
+    },
+    {
+      "key": "open-codesign:brand/spotify",
+      "repository": "open-codesign",
+      "source_id": "brand/spotify",
+      "name": "brand/spotify",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "neon-entertainment"
+    },
+    {
+      "key": "open-codesign:brand/cursor",
+      "repository": "open-codesign",
+      "source_id": "brand/cursor",
+      "name": "brand/cursor",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "terminal-mono"
+    },
+    {
+      "key": "open-codesign:brand/supabase",
+      "repository": "open-codesign",
+      "source_id": "brand/supabase",
+      "name": "brand/supabase",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "dark-aurora-html"
+    },
+    {
+      "key": "open-codesign:brand/posthog",
+      "repository": "open-codesign",
+      "source_id": "brand/posthog",
+      "name": "brand/posthog",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "open-codesign:brand/framer",
+      "repository": "open-codesign",
+      "source_id": "brand/framer",
+      "name": "brand/framer",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
       "canonical_id": "code-editorial"
+    },
+    {
+      "key": "open-codesign:brand/runwayml",
+      "repository": "open-codesign",
+      "source_id": "brand/runwayml",
+      "name": "brand/runwayml",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "dark-aurora-html"
+    },
+    {
+      "key": "open-codesign:brand/mistral",
+      "repository": "open-codesign",
+      "source_id": "brand/mistral",
+      "name": "brand/mistral",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "riso-zine-html"
+    },
+    {
+      "key": "open-codesign:brand/elevenlabs",
+      "repository": "open-codesign",
+      "source_id": "brand/elevenlabs",
+      "name": "brand/elevenlabs",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "code-editorial"
+    },
+    {
+      "key": "open-codesign:brand/coinbase",
+      "repository": "open-codesign",
+      "source_id": "brand/coinbase",
+      "name": "brand/coinbase",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "finance-index"
+    },
+    {
+      "key": "open-codesign:brand/revolut",
+      "repository": "open-codesign",
+      "source_id": "brand/revolut",
+      "name": "brand/revolut",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "finance-index"
+    },
+    {
+      "key": "open-codesign:brand/nike",
+      "repository": "open-codesign",
+      "source_id": "brand/nike",
+      "name": "brand/nike",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "open-codesign:brand/ferrari",
+      "repository": "open-codesign",
+      "source_id": "brand/ferrari",
+      "name": "brand/ferrari",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "growth-ember"
+    },
+    {
+      "key": "open-codesign:brand/spacex",
+      "repository": "open-codesign",
+      "source_id": "brand/spacex",
+      "name": "brand/spacex",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "blueprint-engineering"
+    },
+    {
+      "key": "open-codesign:brand/starbucks",
+      "repository": "open-codesign",
+      "source_id": "brand/starbucks",
+      "name": "brand/starbucks",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "organic-craft"
+    },
+    {
+      "key": "open-codesign:brand/shopify",
+      "repository": "open-codesign",
+      "source_id": "brand/shopify",
+      "name": "brand/shopify",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "growth-ember"
+    },
+    {
+      "key": "open-codesign:brand/ibm",
+      "repository": "open-codesign",
+      "source_id": "brand/ibm",
+      "name": "brand/ibm",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "institutional-signal"
+    },
+    {
+      "key": "open-codesign:brand/raycast",
+      "repository": "open-codesign",
+      "source_id": "brand/raycast",
+      "name": "brand/raycast",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "dark-aurora-html"
+    },
+    {
+      "key": "open-codesign:brand/cal-com",
+      "repository": "open-codesign",
+      "source_id": "brand/cal-com",
+      "name": "brand/cal com",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "open-codesign:direction/editorial-typography",
+      "repository": "open-codesign",
+      "source_id": "direction/editorial-typography",
+      "name": "direction/editorial typography",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "editorial-paper"
+    },
+    {
+      "key": "open-codesign:direction/glassmorphism",
+      "repository": "open-codesign",
+      "source_id": "direction/glassmorphism",
+      "name": "direction/glassmorphism",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "glass-candy"
+    },
+    {
+      "key": "open-codesign:direction/dashboard",
+      "repository": "open-codesign",
+      "source_id": "direction/dashboard",
+      "name": "direction/dashboard",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "data-spectrum"
+    },
+    {
+      "key": "open-codesign:direction/slide-deck",
+      "repository": "open-codesign",
+      "source_id": "direction/slide-deck",
+      "name": "direction/slide deck",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "open-codesign:direction/neubrutalism",
+      "repository": "open-codesign",
+      "source_id": "direction/neubrutalism",
+      "name": "direction/neubrutalism",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "neo-brutalist-grid"
+    },
+    {
+      "key": "open-codesign:direction/aurora-mesh",
+      "repository": "open-codesign",
+      "source_id": "direction/aurora-mesh",
+      "name": "direction/aurora mesh",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "dark-aurora-html"
+    },
+    {
+      "key": "open-codesign:direction/animated-gradient",
+      "repository": "open-codesign",
+      "source_id": "direction/animated-gradient",
+      "name": "direction/animated gradient",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "glass-candy"
+    },
+    {
+      "key": "open-codesign:direction/bento-grid",
+      "repository": "open-codesign",
+      "source_id": "direction/bento-grid",
+      "name": "direction/bento grid",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "clean-professional"
+    },
+    {
+      "key": "open-codesign:direction/dot-grid",
+      "repository": "open-codesign",
+      "source_id": "direction/dot-grid",
+      "name": "direction/dot grid",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "blueprint-engineering"
+    },
+    {
+      "key": "open-codesign:direction/noise-grain",
+      "repository": "open-codesign",
+      "source_id": "direction/noise-grain",
+      "name": "direction/noise grain",
+      "traits": [
+        "source-defined visual system"
+      ],
+      "best_for": [
+        "general presentation"
+      ],
+      "evidence_url": "https://github.com/OpenCoworkAI/open-codesign/tree/b94d7156bf4aeb2c79892c91dc9934911a4e3741",
+      "kind": "theme",
+      "canonical_id": "riso-zine-html"
     },
     {
       "key": "html-ppt-skill:theme/academic-paper",
@@ -351,6 +828,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "research-white"
     },
     {
@@ -365,6 +843,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -379,6 +858,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "dark-aurora-html"
     },
     {
@@ -393,6 +873,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -407,6 +888,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "blueprint-engineering"
     },
     {
@@ -421,6 +903,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "terminal-mono"
     },
     {
@@ -435,6 +918,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "terminal-mono"
     },
     {
@@ -449,6 +933,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "finance-index"
     },
     {
@@ -463,6 +948,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "neo-brutalist-grid"
     },
     {
@@ -477,6 +963,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "terminal-mono"
     },
     {
@@ -491,6 +978,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "editorial-paper"
     },
     {
@@ -505,6 +993,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "blueprint-engineering"
     },
     {
@@ -519,6 +1008,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "glass-candy"
     },
     {
@@ -533,6 +1023,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "terminal-mono"
     },
     {
@@ -547,6 +1038,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "organic-craft"
     },
     {
@@ -561,6 +1053,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "riso-zine-html"
     },
     {
@@ -575,6 +1068,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "playful-pastel"
     },
     {
@@ -589,6 +1083,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "retro-interface"
     },
     {
@@ -603,6 +1098,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -617,6 +1113,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "neo-brutalist-grid"
     },
     {
@@ -631,6 +1128,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "institutional-signal"
     },
     {
@@ -645,6 +1143,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "terminal-mono"
     },
     {
@@ -659,6 +1158,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "finance-index"
     },
     {
@@ -673,6 +1173,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "glass-candy"
     },
     {
@@ -687,6 +1188,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "retro-interface"
     },
     {
@@ -701,6 +1203,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "terminal-mono"
     },
     {
@@ -715,6 +1218,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "code-editorial"
     },
     {
@@ -729,6 +1233,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "playful-pastel"
     },
     {
@@ -743,6 +1248,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -757,6 +1263,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "growth-ember"
     },
     {
@@ -771,6 +1278,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "strict-swiss-html"
     },
     {
@@ -785,6 +1293,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "terminal-mono"
     },
     {
@@ -799,6 +1308,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "terminal-mono"
     },
     {
@@ -813,6 +1323,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "glass-candy"
     },
     {
@@ -827,6 +1338,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -841,6 +1353,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "glass-candy"
     },
     {
@@ -855,6 +1368,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -869,6 +1383,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -883,6 +1398,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "research-white"
     },
     {
@@ -897,6 +1413,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -911,6 +1428,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -925,6 +1443,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -939,6 +1458,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -953,6 +1473,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "data-spectrum"
     },
     {
@@ -967,6 +1488,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -981,6 +1503,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -995,6 +1518,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -1009,6 +1533,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -1023,6 +1548,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -1037,6 +1563,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -1051,77 +1578,83 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/lewislulu/html-ppt-skill/tree/f3a8435d3901697d5ac5e64d356c933637e43107",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
-      "key": "open-slide:default",
+      "key": "open-slide:bright-sans",
       "repository": "open-slide",
-      "source_id": "default",
-      "name": "default",
+      "source_id": "bright-sans",
+      "name": "bright sans",
       "traits": [
         "source-defined visual system"
       ],
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
+      "evidence_url": "https://github.com/1weiho/open-slide/tree/35dc46ca27716ea86f8a76710bbd3640e9590628",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
-      "key": "open-slide:minimal",
+      "key": "open-slide:minecraft",
       "repository": "open-slide",
-      "source_id": "minimal",
-      "name": "minimal",
+      "source_id": "minecraft",
+      "name": "minecraft",
       "traits": [
         "source-defined visual system"
       ],
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
-      "canonical_id": "clean-professional"
+      "evidence_url": "https://github.com/1weiho/open-slide/tree/35dc46ca27716ea86f8a76710bbd3640e9590628",
+      "kind": "theme",
+      "canonical_id": "pixel-arcade"
     },
     {
-      "key": "open-slide:dark",
+      "key": "open-slide:aurora",
       "repository": "open-slide",
-      "source_id": "dark",
-      "name": "dark",
+      "source_id": "aurora",
+      "name": "aurora",
       "traits": [
         "source-defined visual system"
       ],
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
+      "evidence_url": "https://github.com/1weiho/open-slide/tree/35dc46ca27716ea86f8a76710bbd3640e9590628",
+      "kind": "theme",
       "canonical_id": "dark-aurora-html"
     },
     {
-      "key": "open-slide:academic",
+      "key": "open-slide:replit",
       "repository": "open-slide",
-      "source_id": "academic",
-      "name": "academic",
+      "source_id": "replit",
+      "name": "replit",
       "traits": [
         "source-defined visual system"
       ],
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
-      "canonical_id": "research-white"
+      "evidence_url": "https://github.com/1weiho/open-slide/tree/35dc46ca27716ea86f8a76710bbd3640e9590628",
+      "kind": "theme",
+      "canonical_id": "terminal-mono"
     },
     {
-      "key": "open-slide:business",
+      "key": "open-slide:sticker-pop",
       "repository": "open-slide",
-      "source_id": "business",
-      "name": "business",
+      "source_id": "sticker-pop",
+      "name": "sticker pop",
       "traits": [
         "source-defined visual system"
       ],
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/zhangxian/open-slide/tree/main",
-      "canonical_id": "clean-professional"
+      "evidence_url": "https://github.com/1weiho/open-slide/tree/35dc46ca27716ea86f8a76710bbd3640e9590628",
+      "kind": "theme",
+      "canonical_id": "playful-pastel"
     },
     {
       "key": "dashi-ppt-skill:theme01",
@@ -1135,6 +1668,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -1149,7 +1683,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "dark-aurora-html"
     },
     {
       "key": "dashi-ppt-skill:theme03",
@@ -1163,7 +1698,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "terminal-mono"
     },
     {
       "key": "dashi-ppt-skill:theme04",
@@ -1177,7 +1713,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "glass-candy"
     },
     {
       "key": "dashi-ppt-skill:theme05",
@@ -1191,7 +1728,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "data-spectrum"
     },
     {
       "key": "dashi-ppt-skill:theme06",
@@ -1205,7 +1743,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "data-spectrum"
     },
     {
       "key": "dashi-ppt-skill:theme07",
@@ -1219,7 +1758,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "magazine-deep-blue"
+      "kind": "theme",
+      "canonical_id": "research-white"
     },
     {
       "key": "dashi-ppt-skill:theme08",
@@ -1233,7 +1773,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "neon-entertainment"
+      "kind": "theme",
+      "canonical_id": "neo-brutalist-grid"
     },
     {
       "key": "dashi-ppt-skill:theme09",
@@ -1247,7 +1788,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "magazine-deep-blue"
     },
     {
       "key": "dashi-ppt-skill:theme10",
@@ -1261,7 +1803,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "finance-index"
     },
     {
       "key": "dashi-ppt-skill:theme11",
@@ -1275,7 +1818,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "growth-ember"
     },
     {
       "key": "dashi-ppt-skill:theme12",
@@ -1289,7 +1833,8 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/chuspeeism/dashi-ppt-skill/tree/7cb23347f91cda1a5519eafc8c040704e389535a",
-      "canonical_id": "clean-professional"
+      "kind": "theme",
+      "canonical_id": "neon-entertainment"
     },
     {
       "key": "beautiful-html-templates:8-bit-orbit",
@@ -1311,6 +1856,7 @@
         "synthwave brand"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "pixel-arcade"
     },
     {
@@ -1334,6 +1880,7 @@
         "museum season announcement"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "culture-poster"
     },
     {
@@ -1355,6 +1902,7 @@
         "modern startup deck"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "neo-brutalist-grid"
     },
     {
@@ -1376,6 +1924,7 @@
         "investor update"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "finance-index"
     },
     {
@@ -1397,6 +1946,7 @@
         "art / culture"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "neo-brutalist-grid"
     },
     {
@@ -1419,6 +1969,7 @@
         "campaign launch"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "neo-brutalist-grid"
     },
     {
@@ -1441,6 +1992,7 @@
         "Y2K-tinged brand work"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -1463,6 +2015,7 @@
         "gallery / cultural"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "blueprint-engineering"
     },
     {
@@ -1487,6 +2040,7 @@
         "newsletter or zine pitch"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "strict-swiss-html"
     },
     {
@@ -1508,6 +2062,7 @@
         "creative agency"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "growth-ember"
     },
     {
@@ -1529,6 +2084,7 @@
         "concept presentation"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "code-editorial"
     },
     {
@@ -1553,6 +2109,7 @@
         "wedding / baby shower planning"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "playful-pastel"
     },
     {
@@ -1575,6 +2132,7 @@
         "research recap"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "editorial-paper"
     },
     {
@@ -1596,6 +2154,7 @@
         "art direction review"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "editorial-paper"
     },
     {
@@ -1617,6 +2176,7 @@
         "executive briefing"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "editorial-paper"
     },
     {
@@ -1641,6 +2201,7 @@
         "bilingual EN/CN deck"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "organic-craft"
     },
     {
@@ -1667,6 +2228,7 @@
         "modern lifestyle brand"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -1689,6 +2251,7 @@
         "bilingual EN/CN deck"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -1712,6 +2275,7 @@
         "bilingual EN/CN deck"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "editorial-paper"
     },
     {
@@ -1734,6 +2298,7 @@
         "conference talk"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "neo-brutalist-grid"
     },
     {
@@ -1756,6 +2321,7 @@
         "founder vision"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "culture-poster"
     },
     {
@@ -1778,6 +2344,7 @@
         "workshop debrief"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "research-white"
     },
     {
@@ -1800,6 +2367,7 @@
         "editorial feature"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "playful-pastel"
     },
     {
@@ -1821,6 +2389,7 @@
         "newsletter / community"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "playful-pastel"
     },
     {
@@ -1843,6 +2412,7 @@
         "creator portfolio"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "strict-swiss-html"
     },
     {
@@ -1864,6 +2434,7 @@
         "shitpost-but-make-it-fancy deck"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "retro-interface"
     },
     {
@@ -1885,6 +2456,7 @@
         "cultural / community deck"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "retro-interface"
     },
     {
@@ -1909,6 +2481,7 @@
         "vintage-flavored brand campaign"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "glass-candy"
     },
     {
@@ -1931,6 +2504,7 @@
         "art-direction review"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "playful-pastel"
     },
     {
@@ -1954,6 +2528,7 @@
         "bilingual EN/CN deck"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "institutional-signal"
     },
     {
@@ -1976,6 +2551,7 @@
         "wedding / lifestyle media"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "editorial-paper"
     },
     {
@@ -1998,6 +2574,7 @@
         "manifesto"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "riso-zine-html"
     },
     {
@@ -2021,6 +2598,7 @@
         "bilingual EN/CN deck"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "clean-professional"
     },
     {
@@ -2045,119 +2623,25 @@
         "bilingual EN/CN deck"
       ],
       "evidence_url": "https://github.com/zarazhangrui/beautiful-html-templates/tree/e5e204fb1f3b06290846e7dcd7aceddabeceec8c",
+      "kind": "theme",
       "canonical_id": "editorial-paper"
     },
     {
-      "key": "baoyu-design:editorial",
+      "key": "baoyu-design:methodology/design-system-bound",
       "repository": "baoyu-design",
-      "source_id": "editorial",
-      "name": "editorial",
+      "source_id": "methodology/design-system-bound",
+      "name": "Design-system-bound deck",
       "traits": [
-        "source-defined visual system"
+        "no fixed theme library",
+        "load a user-selected design-system prompt as a binding constraint"
       ],
       "best_for": [
-        "general presentation"
+        "brand-governed decks",
+        "custom design systems"
       ],
-      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
-      "canonical_id": "editorial-paper"
-    },
-    {
-      "key": "baoyu-design:swiss",
-      "repository": "baoyu-design",
-      "source_id": "swiss",
-      "name": "swiss",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
-      "canonical_id": "strict-swiss-html"
-    },
-    {
-      "key": "baoyu-design:neo-brutalism",
-      "repository": "baoyu-design",
-      "source_id": "neo-brutalism",
-      "name": "neo brutalism",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
-      "canonical_id": "neo-brutalist-grid"
-    },
-    {
-      "key": "baoyu-design:glassmorphism",
-      "repository": "baoyu-design",
-      "source_id": "glassmorphism",
-      "name": "glassmorphism",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
-      "canonical_id": "glass-candy"
-    },
-    {
-      "key": "baoyu-design:organic",
-      "repository": "baoyu-design",
-      "source_id": "organic",
-      "name": "organic",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
-      "canonical_id": "organic-craft"
-    },
-    {
-      "key": "baoyu-design:retro-futurism",
-      "repository": "baoyu-design",
-      "source_id": "retro-futurism",
-      "name": "retro futurism",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
-      "canonical_id": "retro-interface"
-    },
-    {
-      "key": "baoyu-design:institutional",
-      "repository": "baoyu-design",
-      "source_id": "institutional",
-      "name": "institutional",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
-      "canonical_id": "institutional-signal"
-    },
-    {
-      "key": "baoyu-design:data-dense",
-      "repository": "baoyu-design",
-      "source_id": "data-dense",
-      "name": "data dense",
-      "traits": [
-        "source-defined visual system"
-      ],
-      "best_for": [
-        "general presentation"
-      ],
-      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea0",
-      "canonical_id": "data-spectrum"
+      "evidence_url": "https://github.com/JimLiu/baoyu-design/tree/026d4ea012bdd5cada72ac8cc13f21ba4edf2245",
+      "kind": "methodology",
+      "canonical_id": null
     }
   ]
 }

@@ -40,6 +40,8 @@ node scripts/ppt.mjs qa <project-dir> --json
 
 `html` 模式在 `approve` 后可直接 `build`。`ai-image` 模式缺少任何页面图片时必须停止，不得用占位图假装完成。
 
+`--theme` 既接受规范主题 ID，也接受库存中的来源别名。例如 `open-slide:minecraft` 会解析为 `pixel-arcade`；审批文件同时保留规范 ID 和原始别名。
+
 ## Imagegen
 
 `ai-image` 模式必须使用 `$imagegen`。优先使用宿主内置生图能力；只有用户明确选择 CLI/API 路径时才使用 CLI。若使用 CLI，提醒用户在本地设置 `OPENAI_API_KEY`，不要要求用户在对话中粘贴密钥，也不要把密钥写入提示词、日志或项目文件。
@@ -70,3 +72,6 @@ node scripts/ppt.mjs qa <project-dir> --json
 - `references/html-theme-inventory.json`：HTML 主题完整来源库存。
 - `assets/themes/theme-catalog.json`：去重后的 18 个图片主题和 22 个 HTML 主题。
 - `assets/bento/SOURCE.json`：Bento 壳的来源、提交与校验值。
+- `assets/examples/bento-theme-showcase/html/theme-showcase.bento.html`：22 个 HTML 主题的可编辑样例。
+- `assets/examples/bento-theme-showcase/html/qa/contact-sheet.png`：22 个 HTML 主题总览。
+- `assets/examples/bento-theme-showcase/ai-image/GENERATION_STATUS.md`：18 个 AI 图片主题样例的生成状态与执行方法。

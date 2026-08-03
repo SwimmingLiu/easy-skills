@@ -6,17 +6,17 @@
     {
       "id": "guizang-ppt-skill",
       "url": "https://github.com/op7418/guizang-ppt-skill",
-      "commit": "main"
+      "commit": "929c2ecb63a22b54d400c4911ed70bf96c2b355d"
     },
     {
       "id": "codex-ppt-skill",
       "url": "https://github.com/ningzimu/codex-ppt-skill",
-      "commit": "main"
+      "commit": "f2ed80372f65bb05fe62dd07979b239a17ac065d"
     },
     {
       "id": "GordenSuperPPTSkills",
       "url": "https://github.com/GordenSun/GordenSuperPPTSkills",
-      "commit": "main"
+      "commit": "8c05583dab8334182b71738e8dfbbec5c56a1951"
     },
     {
       "id": "gpt-image2-ppt-skills",
@@ -26,12 +26,12 @@
     {
       "id": "wuming-cyan-circuit-launch-ppt",
       "url": "https://github.com/chujianyun/wuming-cyan-circuit-launch-ppt",
-      "commit": "main"
+      "commit": "20915a2dcf775f937b53258007d09a5412c8d2ff"
     },
     {
       "id": "wuming-ai-ppt-cover",
       "url": "https://github.com/chujianyun/wuming-ai-ppt-cover",
-      "commit": "main"
+      "commit": "05e027cc55ac48b5664f628b69d0b750dbf9ce31"
     }
   ],
   "themes": [
@@ -46,7 +46,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -60,7 +61,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -74,7 +76,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -88,7 +91,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -102,7 +106,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -116,7 +121,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "kind": "theme",
       "canonical_id": "strict-swiss"
     },
     {
@@ -130,7 +136,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "kind": "theme",
       "canonical_id": "strict-swiss"
     },
     {
@@ -144,7 +151,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "kind": "theme",
       "canonical_id": "strict-swiss"
     },
     {
@@ -158,7 +166,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/op7418/guizang-ppt-skill/tree/929c2ecb63a22b54d400c4911ed70bf96c2b355d",
+      "kind": "theme",
       "canonical_id": "strict-swiss"
     },
     {
@@ -172,7 +181,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "clean-tech"
     },
     {
@@ -186,7 +196,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -200,7 +211,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -214,7 +226,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "analyst-blueprint"
     },
     {
@@ -228,7 +241,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "retro-vector"
     },
     {
@@ -242,7 +256,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "technical-sketch"
     },
     {
@@ -256,7 +271,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "whiteboard-marker"
     },
     {
@@ -270,7 +286,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "handmade-paper"
     },
     {
@@ -284,7 +301,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "research-evidence"
     },
     {
@@ -298,7 +316,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -312,7 +331,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "formal-red"
     },
     {
@@ -326,7 +346,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/main",
+      "evidence_url": "https://github.com/ningzimu/codex-ppt-skill/tree/f2ed80372f65bb05fe62dd07979b239a17ac065d",
+      "kind": "theme",
       "canonical_id": "teaching-explainer"
     },
     {
@@ -340,7 +361,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/8c05583dab8334182b71738e8dfbbec5c56a1951",
+      "kind": "theme",
       "canonical_id": "enterprise-infographic"
     },
     {
@@ -354,7 +376,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/8c05583dab8334182b71738e8dfbbec5c56a1951",
+      "kind": "theme",
       "canonical_id": "enterprise-infographic"
     },
     {
@@ -368,7 +391,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/8c05583dab8334182b71738e8dfbbec5c56a1951",
+      "kind": "theme",
       "canonical_id": "enterprise-infographic"
     },
     {
@@ -382,7 +406,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/8c05583dab8334182b71738e8dfbbec5c56a1951",
+      "kind": "theme",
       "canonical_id": "handmade-paper"
     },
     {
@@ -396,7 +421,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/8c05583dab8334182b71738e8dfbbec5c56a1951",
+      "kind": "theme",
       "canonical_id": "enterprise-infographic"
     },
     {
@@ -410,7 +436,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/main",
+      "evidence_url": "https://github.com/GordenSun/GordenSuperPPTSkills/tree/8c05583dab8334182b71738e8dfbbec5c56a1951",
+      "kind": "theme",
       "canonical_id": "enterprise-infographic"
     },
     {
@@ -425,6 +452,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "clean-tech"
     },
     {
@@ -439,6 +467,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "dark-aurora"
     },
     {
@@ -453,6 +482,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -467,6 +497,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "bright-glass"
     },
     {
@@ -481,6 +512,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "handmade-paper"
     },
     {
@@ -495,6 +527,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -509,6 +542,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -523,6 +557,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "strict-swiss"
     },
     {
@@ -537,6 +572,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "retro-vector"
     },
     {
@@ -551,6 +587,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -565,6 +602,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -579,6 +617,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "enterprise-infographic"
     },
     {
@@ -593,6 +632,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "bright-glass"
     },
     {
@@ -607,6 +647,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "editorial-ink"
     },
     {
@@ -621,6 +662,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "retro-vector"
     },
     {
@@ -635,6 +677,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "analyst-blueprint"
     },
     {
@@ -649,6 +692,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "clean-tech"
     },
     {
@@ -663,6 +707,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "analyst-blueprint"
     },
     {
@@ -677,6 +722,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "analyst-blueprint"
     },
     {
@@ -691,6 +737,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "research-evidence"
     },
     {
@@ -705,6 +752,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "clean-tech"
     },
     {
@@ -719,6 +767,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "bright-glass"
     },
     {
@@ -733,6 +782,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "bright-glass"
     },
     {
@@ -747,6 +797,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "clean-tech"
     },
     {
@@ -761,6 +812,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "research-evidence"
     },
     {
@@ -775,6 +827,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "research-evidence"
     },
     {
@@ -789,6 +842,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "research-evidence"
     },
     {
@@ -803,6 +857,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "retro-vector"
     },
     {
@@ -817,6 +872,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "analyst-blueprint"
     },
     {
@@ -831,6 +887,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "teaching-explainer"
     },
     {
@@ -845,6 +902,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "teaching-explainer"
     },
     {
@@ -859,6 +917,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "teaching-explainer"
     },
     {
@@ -873,6 +932,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -887,6 +947,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -901,6 +962,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -915,6 +977,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -929,6 +992,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -943,6 +1007,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -957,6 +1022,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -971,6 +1037,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -985,6 +1052,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -999,6 +1067,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1013,6 +1082,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1027,6 +1097,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1041,6 +1112,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1055,6 +1127,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1069,6 +1142,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1083,6 +1157,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1097,6 +1172,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1111,6 +1187,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1125,6 +1202,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1139,6 +1217,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1153,6 +1232,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1167,6 +1247,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1181,6 +1262,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1195,6 +1277,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1209,6 +1292,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1223,6 +1307,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1237,6 +1322,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1251,6 +1337,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1265,6 +1352,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1279,6 +1367,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1293,6 +1382,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1307,6 +1397,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1321,6 +1412,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1335,6 +1427,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1349,6 +1442,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1363,6 +1457,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1377,6 +1472,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1391,6 +1487,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1405,6 +1502,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1419,6 +1517,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1433,6 +1532,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1447,6 +1547,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1461,6 +1562,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1475,6 +1577,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1489,6 +1592,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1503,6 +1607,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1517,6 +1622,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1531,6 +1637,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1545,6 +1652,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1559,6 +1667,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1573,6 +1682,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1587,6 +1697,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1601,6 +1712,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1615,6 +1727,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1629,6 +1742,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1643,6 +1757,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1657,6 +1772,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1671,6 +1787,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1685,6 +1802,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1699,6 +1817,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1713,6 +1832,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1727,6 +1847,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1741,6 +1862,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1755,6 +1877,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1769,6 +1892,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1783,6 +1907,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1797,6 +1922,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1811,6 +1937,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1825,6 +1952,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1839,6 +1967,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1853,6 +1982,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1867,6 +1997,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1881,6 +2012,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1895,6 +2027,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1909,6 +2042,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1923,6 +2057,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1937,6 +2072,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1951,6 +2087,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1965,6 +2102,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1979,6 +2117,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -1993,6 +2132,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2007,6 +2147,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2021,6 +2162,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2035,6 +2177,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2049,6 +2192,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2063,6 +2207,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2077,6 +2222,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2091,6 +2237,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2105,6 +2252,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2119,6 +2267,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2133,6 +2282,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2147,6 +2297,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2161,6 +2312,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2175,6 +2327,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2189,6 +2342,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2203,6 +2357,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2217,6 +2372,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2231,6 +2387,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2245,6 +2402,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2259,6 +2417,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2273,6 +2432,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2287,6 +2447,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2301,6 +2462,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2315,6 +2477,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2329,6 +2492,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2343,6 +2507,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2357,6 +2522,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2371,6 +2537,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2385,6 +2552,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2399,6 +2567,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2413,6 +2582,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2427,6 +2597,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2441,6 +2612,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2455,6 +2627,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2469,6 +2642,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2483,6 +2657,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2497,6 +2672,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2511,6 +2687,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2525,6 +2702,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2539,6 +2717,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2553,6 +2732,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2567,6 +2747,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2581,6 +2762,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2595,6 +2777,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2609,6 +2792,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2623,6 +2807,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2637,6 +2822,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2651,6 +2837,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2665,6 +2852,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2679,6 +2867,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2693,6 +2882,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2707,6 +2897,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2721,6 +2912,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2735,6 +2927,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2749,6 +2942,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2763,6 +2957,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2777,6 +2972,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2791,6 +2987,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2805,6 +3002,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2819,6 +3017,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2833,6 +3032,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2847,6 +3047,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2861,6 +3062,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2875,6 +3077,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2889,6 +3092,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2903,6 +3107,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2917,6 +3122,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2931,6 +3137,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2945,6 +3152,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2959,6 +3167,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2973,6 +3182,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -2987,6 +3197,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3001,6 +3212,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3015,6 +3227,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3029,6 +3242,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3043,6 +3257,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3057,6 +3272,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3071,6 +3287,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3085,6 +3302,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3099,6 +3317,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3113,6 +3332,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3127,6 +3347,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3141,6 +3362,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3155,6 +3377,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3169,6 +3392,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3183,6 +3407,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3197,6 +3422,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3211,6 +3437,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3225,6 +3452,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3239,6 +3467,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3253,6 +3482,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3267,6 +3497,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3281,6 +3512,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3295,6 +3527,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3309,6 +3542,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3323,6 +3557,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3337,6 +3572,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3351,6 +3587,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3365,6 +3602,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3379,6 +3617,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3393,6 +3632,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3407,6 +3647,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3421,6 +3662,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3435,6 +3677,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3449,6 +3692,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3463,6 +3707,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3477,6 +3722,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3491,6 +3737,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3505,6 +3752,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3519,6 +3767,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3533,6 +3782,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3547,6 +3797,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3561,6 +3812,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3575,6 +3827,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3589,6 +3842,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3603,6 +3857,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3617,6 +3872,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "japanese-wabi"
     },
     {
@@ -3631,6 +3887,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3645,6 +3902,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3659,6 +3917,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3673,6 +3932,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3687,6 +3947,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3701,6 +3962,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3715,6 +3977,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3729,6 +3992,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3743,6 +4007,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3757,6 +4022,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3771,6 +4037,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3785,6 +4052,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3799,6 +4067,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3813,6 +4082,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3827,6 +4097,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3841,6 +4112,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3855,6 +4127,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3869,6 +4142,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3883,6 +4157,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3897,6 +4172,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3911,6 +4187,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3925,6 +4202,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3939,6 +4217,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3953,6 +4232,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3967,6 +4247,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3981,6 +4262,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "risograph-zine"
     },
     {
@@ -3995,6 +4277,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4009,6 +4292,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4023,6 +4307,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4037,6 +4322,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4051,6 +4337,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4065,6 +4352,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4079,6 +4367,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4093,6 +4382,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4107,6 +4397,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4121,6 +4412,7 @@
         "general presentation"
       ],
       "evidence_url": "https://github.com/JuneYaooo/gpt-image2-ppt-skills/tree/4576cd5aee5e2f7c2fbd47557045b150906ce98c",
+      "kind": "theme",
       "canonical_id": "y2k-holographic"
     },
     {
@@ -4134,7 +4426,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/chujianyun/wuming-cyan-circuit-launch-ppt/tree/main",
+      "evidence_url": "https://github.com/chujianyun/wuming-cyan-circuit-launch-ppt/tree/20915a2dcf775f937b53258007d09a5412c8d2ff",
+      "kind": "theme",
       "canonical_id": "cyan-circuit"
     },
     {
@@ -4148,7 +4441,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/chujianyun/wuming-ai-ppt-cover/tree/main",
+      "evidence_url": "https://github.com/chujianyun/wuming-ai-ppt-cover/tree/05e027cc55ac48b5664f628b69d0b750dbf9ce31",
+      "kind": "theme",
       "canonical_id": "bright-glass"
     },
     {
@@ -4162,7 +4456,8 @@
       "best_for": [
         "general presentation"
       ],
-      "evidence_url": "https://github.com/chujianyun/wuming-ai-ppt-cover/tree/main",
+      "evidence_url": "https://github.com/chujianyun/wuming-ai-ppt-cover/tree/05e027cc55ac48b5664f628b69d0b750dbf9ce31",
+      "kind": "theme",
       "canonical_id": "bright-glass"
     }
   ]

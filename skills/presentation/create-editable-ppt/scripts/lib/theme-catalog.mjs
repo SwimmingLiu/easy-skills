@@ -18,6 +18,10 @@ export async function loadThemeCatalog(root = skillRoot) {
   return JSON.parse(await readFile(join(root, 'assets', 'themes', 'theme-catalog.json'), 'utf8'));
 }
 
+export function resolveThemeRecipe(catalog, mode, id) {
+  return catalog?.[mode]?.find(recipe => recipe.id === id || recipe.aliases?.includes(id));
+}
+
 export function validateThemeCatalog(catalog) {
   const errors = [];
   const retired = new Set(['business-minimal','editorial','swiss-grid','launch-tech','data-consulting','academic','brand-bold','premium-dark']);

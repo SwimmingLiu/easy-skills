@@ -785,12 +785,10 @@
       "name": "Clean Professional",
       "aliases": [
         "frontend-slides:tech-product",
-        "frontend-slides:business-professional",
-        "frontend-slides:light-minimal",
-        "frontend-slides:creative-vibrant",
-        "frontend-slides:warm-human",
-        "frontend-slides:luxury-premium",
-        "visual-explainer:technical",
+        "open-codesign:brand/apple",
+        "open-codesign:brand/cal-com",
+        "open-codesign:direction/slide-deck",
+        "open-codesign:direction/bento-grid",
         "html-ppt-skill:theme/arctic-cool",
         "html-ppt-skill:theme/bauhaus",
         "html-ppt-skill:theme/minimal-white",
@@ -809,19 +807,8 @@
         "html-ppt-skill:deck/case-study",
         "html-ppt-skill:deck/workshop",
         "html-ppt-skill:deck/event-intro",
-        "open-slide:default",
-        "open-slide:minimal",
-        "open-slide:business",
+        "open-slide:bright-sans",
         "dashi-ppt-skill:theme01",
-        "dashi-ppt-skill:theme02",
-        "dashi-ppt-skill:theme03",
-        "dashi-ppt-skill:theme04",
-        "dashi-ppt-skill:theme05",
-        "dashi-ppt-skill:theme06",
-        "dashi-ppt-skill:theme09",
-        "dashi-ppt-skill:theme10",
-        "dashi-ppt-skill:theme11",
-        "dashi-ppt-skill:theme12",
         "beautiful-html-templates:capsule",
         "beautiful-html-templates:long-table",
         "beautiful-html-templates:mat",
@@ -829,7 +816,7 @@
       ],
       "provenance": [
         "frontend-slides",
-        "visual-explainer",
+        "open-codesign",
         "html-ppt-skill",
         "open-slide",
         "dashi-ppt-skill",
@@ -858,15 +845,19 @@
       "mode": "html",
       "name": "Strict Swiss HTML",
       "aliases": [
+        "frontend-slides:light-minimal",
+        "visual-explainer:swiss-clean",
+        "open-codesign:brand/vercel",
         "html-ppt-skill:theme/swiss-grid",
         "beautiful-html-templates:cobalt-grid",
-        "beautiful-html-templates:raw-grid",
-        "baoyu-design:swiss"
+        "beautiful-html-templates:raw-grid"
       ],
       "provenance": [
+        "frontend-slides",
+        "visual-explainer",
+        "open-codesign",
         "html-ppt-skill",
-        "beautiful-html-templates",
-        "baoyu-design"
+        "beautiful-html-templates"
       ],
       "palette": "white, black, one accent",
       "composition": "12-column hard grid",
@@ -891,23 +882,24 @@
       "mode": "html",
       "name": "Editorial Paper",
       "aliases": [
-        "visual-explainer:editorial",
-        "open-codesign:editorial-system",
+        "frontend-slides:editorial-magazine",
+        "visual-explainer:midnight-editorial",
+        "open-codesign:brand/notion",
+        "open-codesign:direction/editorial-typography",
         "html-ppt-skill:theme/editorial-serif",
         "beautiful-html-templates:editorial-forest",
         "beautiful-html-templates:editorial-tri-tone",
         "beautiful-html-templates:emerald-editorial",
         "beautiful-html-templates:monochrome",
         "beautiful-html-templates:soft-editorial",
-        "beautiful-html-templates:vellum",
-        "baoyu-design:editorial"
+        "beautiful-html-templates:vellum"
       ],
       "provenance": [
+        "frontend-slides",
         "visual-explainer",
         "open-codesign",
         "html-ppt-skill",
-        "beautiful-html-templates",
-        "baoyu-design"
+        "beautiful-html-templates"
       ],
       "palette": "paper, ink, muted accent",
       "composition": "asymmetric editorial composition",
@@ -932,16 +924,16 @@
       "mode": "html",
       "name": "Institutional Signal",
       "aliases": [
-        "open-codesign:institutional-report",
+        "visual-explainer:warm-signal",
+        "open-codesign:brand/ibm",
         "html-ppt-skill:theme/news-broadcast",
-        "beautiful-html-templates:signal",
-        "baoyu-design:institutional"
+        "beautiful-html-templates:signal"
       ],
       "provenance": [
+        "visual-explainer",
         "open-codesign",
         "html-ppt-skill",
-        "beautiful-html-templates",
-        "baoyu-design"
+        "beautiful-html-templates"
       ],
       "palette": "white, navy, signal red",
       "composition": "broadcast labels and authoritative bands",
@@ -966,18 +958,22 @@
       "mode": "html",
       "name": "Neo Brutalist Grid",
       "aliases": [
+        "open-codesign:brand/posthog",
+        "open-codesign:brand/nike",
+        "open-codesign:direction/neubrutalism",
         "html-ppt-skill:theme/cyberpunk-neon",
         "html-ppt-skill:theme/neo-brutalism",
+        "dashi-ppt-skill:theme08",
         "beautiful-html-templates:block-frame",
         "beautiful-html-templates:bold-poster",
         "beautiful-html-templates:broadside",
-        "beautiful-html-templates:neo-grid-bold",
-        "baoyu-design:neo-brutalism"
+        "beautiful-html-templates:neo-grid-bold"
       ],
       "provenance": [
+        "open-codesign",
         "html-ppt-skill",
-        "beautiful-html-templates",
-        "baoyu-design"
+        "dashi-ppt-skill",
+        "beautiful-html-templates"
       ],
       "palette": "white, black, saturated primary",
       "composition": "thick rules and displaced blocks",
@@ -1003,6 +999,8 @@
       "name": "Terminal Mono",
       "aliases": [
         "frontend-slides:developer-terminal",
+        "visual-explainer:terminal-mono",
+        "open-codesign:brand/cursor",
         "html-ppt-skill:theme/catppuccin-latte",
         "html-ppt-skill:theme/catppuccin-mocha",
         "html-ppt-skill:theme/dracula",
@@ -1010,11 +1008,17 @@
         "html-ppt-skill:theme/nord",
         "html-ppt-skill:theme/rose-pine",
         "html-ppt-skill:theme/terminal-green",
-        "html-ppt-skill:theme/tokyo-night"
+        "html-ppt-skill:theme/tokyo-night",
+        "open-slide:replit",
+        "dashi-ppt-skill:theme03"
       ],
       "provenance": [
         "frontend-slides",
-        "html-ppt-skill"
+        "visual-explainer",
+        "open-codesign",
+        "html-ppt-skill",
+        "open-slide",
+        "dashi-ppt-skill"
       ],
       "palette": "charcoal, phosphor or muted syntax colors",
       "composition": "console panels and code rhythm",
@@ -1039,11 +1043,14 @@
       "mode": "html",
       "name": "Blueprint Engineering",
       "aliases": [
+        "open-codesign:brand/spacex",
+        "open-codesign:direction/dot-grid",
         "html-ppt-skill:theme/blueprint",
         "html-ppt-skill:theme/engineering-whiteprint",
         "beautiful-html-templates:cartesian"
       ],
       "provenance": [
+        "open-codesign",
         "html-ppt-skill",
         "beautiful-html-templates"
       ],
@@ -1071,13 +1078,21 @@
       "name": "Dark Aurora HTML",
       "aliases": [
         "frontend-slides:dark-elegant",
+        "open-codesign:brand/linear",
+        "open-codesign:brand/supabase",
+        "open-codesign:brand/runwayml",
+        "open-codesign:brand/raycast",
+        "open-codesign:direction/aurora-mesh",
         "html-ppt-skill:theme/aurora",
-        "open-slide:dark"
+        "open-slide:aurora",
+        "dashi-ppt-skill:theme02"
       ],
       "provenance": [
         "frontend-slides",
+        "open-codesign",
         "html-ppt-skill",
-        "open-slide"
+        "open-slide",
+        "dashi-ppt-skill"
       ],
       "palette": "near black, violet and cyan",
       "composition": "layered light with restrained glass",
@@ -1102,17 +1117,21 @@
       "mode": "html",
       "name": "Glass Candy",
       "aliases": [
+        "open-codesign:brand/stripe",
+        "open-codesign:direction/glassmorphism",
+        "open-codesign:direction/animated-gradient",
         "html-ppt-skill:theme/glassmorphism",
         "html-ppt-skill:theme/rainbow-gradient",
         "html-ppt-skill:theme/vaporwave",
         "html-ppt-skill:theme/y2k-chrome",
-        "beautiful-html-templates:sakura-chroma",
-        "baoyu-design:glassmorphism"
+        "dashi-ppt-skill:theme04",
+        "beautiful-html-templates:sakura-chroma"
       ],
       "provenance": [
+        "open-codesign",
         "html-ppt-skill",
-        "beautiful-html-templates",
-        "baoyu-design"
+        "dashi-ppt-skill",
+        "beautiful-html-templates"
       ],
       "palette": "bright pastel spectrum",
       "composition": "translucent panels and chromatic depth",
@@ -1138,17 +1157,16 @@
       "name": "Data Spectrum",
       "aliases": [
         "frontend-slides:data-dashboard",
-        "visual-explainer:dashboard",
-        "open-codesign:data-story",
+        "open-codesign:direction/dashboard",
         "html-ppt-skill:deck/data-report",
-        "baoyu-design:data-dense"
+        "dashi-ppt-skill:theme05",
+        "dashi-ppt-skill:theme06"
       ],
       "provenance": [
         "frontend-slides",
-        "visual-explainer",
         "open-codesign",
         "html-ppt-skill",
-        "baoyu-design"
+        "dashi-ppt-skill"
       ],
       "palette": "white or dark neutral, semantic chart colors",
       "composition": "dense but ordered analytical layout",
@@ -1176,13 +1194,13 @@
         "frontend-slides:academic-research",
         "html-ppt-skill:theme/academic-paper",
         "html-ppt-skill:deck/academic-defense",
-        "open-slide:academic",
+        "dashi-ppt-skill:theme07",
         "beautiful-html-templates:pin-and-paper"
       ],
       "provenance": [
         "frontend-slides",
         "html-ppt-skill",
-        "open-slide",
+        "dashi-ppt-skill",
         "beautiful-html-templates"
       ],
       "palette": "white, navy, gray",
@@ -1208,9 +1226,11 @@
       "mode": "html",
       "name": "Magazine Deep Blue",
       "aliases": [
-        "dashi-ppt-skill:theme07"
+        "frontend-slides:luxury-premium",
+        "dashi-ppt-skill:theme09"
       ],
       "provenance": [
+        "frontend-slides",
         "dashi-ppt-skill"
       ],
       "palette": "deep blue, ivory, emerald accent",
@@ -1236,12 +1256,19 @@
       "mode": "html",
       "name": "Finance Index",
       "aliases": [
+        "frontend-slides:business-professional",
+        "open-codesign:brand/coinbase",
+        "open-codesign:brand/revolut",
         "html-ppt-skill:theme/corporate-clean",
         "html-ppt-skill:theme/pitch-deck-vc",
+        "dashi-ppt-skill:theme10",
         "beautiful-html-templates:blue-professional"
       ],
       "provenance": [
+        "frontend-slides",
+        "open-codesign",
         "html-ppt-skill",
+        "dashi-ppt-skill",
         "beautiful-html-templates"
       ],
       "palette": "white, navy, restrained red or green",
@@ -1267,11 +1294,17 @@
       "mode": "html",
       "name": "Growth Ember",
       "aliases": [
+        "open-codesign:brand/airbnb",
+        "open-codesign:brand/ferrari",
+        "open-codesign:brand/shopify",
         "html-ppt-skill:theme/sunset-warm",
+        "dashi-ppt-skill:theme11",
         "beautiful-html-templates:coral"
       ],
       "provenance": [
+        "open-codesign",
         "html-ppt-skill",
+        "dashi-ppt-skill",
         "beautiful-html-templates"
       ],
       "palette": "white, coral, warm red",
@@ -1300,13 +1333,11 @@
         "html-ppt-skill:theme/midcentury",
         "html-ppt-skill:theme/retro-tv",
         "beautiful-html-templates:retro-windows",
-        "beautiful-html-templates:retro-zine",
-        "baoyu-design:retro-futurism"
+        "beautiful-html-templates:retro-zine"
       ],
       "provenance": [
         "html-ppt-skill",
-        "beautiful-html-templates",
-        "baoyu-design"
+        "beautiful-html-templates"
       ],
       "palette": "system gray, teal, nostalgic accents",
       "composition": "window chrome and modular panes",
@@ -1331,9 +1362,11 @@
       "mode": "html",
       "name": "Pixel Arcade",
       "aliases": [
+        "open-slide:minecraft",
         "beautiful-html-templates:8-bit-orbit"
       ],
       "provenance": [
+        "open-slide",
         "beautiful-html-templates"
       ],
       "palette": "deep navy, neon cyan and magenta",
@@ -1359,12 +1392,13 @@
       "mode": "html",
       "name": "Riso Zine HTML",
       "aliases": [
-        "frontend-slides:editorial-magazine",
+        "open-codesign:brand/mistral",
+        "open-codesign:direction/noise-grain",
         "html-ppt-skill:theme/magazine-bold",
         "beautiful-html-templates:stencil-tablet"
       ],
       "provenance": [
-        "frontend-slides",
+        "open-codesign",
         "html-ppt-skill",
         "beautiful-html-templates"
       ],
@@ -1391,16 +1425,17 @@
       "mode": "html",
       "name": "Organic Craft",
       "aliases": [
+        "frontend-slides:warm-human",
         "frontend-slides:nature-organic",
+        "open-codesign:brand/starbucks",
         "html-ppt-skill:theme/japanese-minimal",
-        "beautiful-html-templates:grove",
-        "baoyu-design:organic"
+        "beautiful-html-templates:grove"
       ],
       "provenance": [
         "frontend-slides",
+        "open-codesign",
         "html-ppt-skill",
-        "beautiful-html-templates",
-        "baoyu-design"
+        "beautiful-html-templates"
       ],
       "palette": "forest, paper, botanical accent",
       "composition": "soft irregular geometry and generous whitespace",
@@ -1425,17 +1460,21 @@
       "mode": "html",
       "name": "Playful Pastel",
       "aliases": [
-        "visual-explainer:playful",
+        "frontend-slides:creative-vibrant",
+        "open-codesign:brand/figma",
         "html-ppt-skill:theme/memphis-pop",
         "html-ppt-skill:theme/soft-pastel",
+        "open-slide:sticker-pop",
         "beautiful-html-templates:daisy-days",
         "beautiful-html-templates:pink-script",
         "beautiful-html-templates:playful",
         "beautiful-html-templates:scatterbrain"
       ],
       "provenance": [
-        "visual-explainer",
+        "frontend-slides",
+        "open-codesign",
         "html-ppt-skill",
+        "open-slide",
         "beautiful-html-templates"
       ],
       "palette": "light pastel mix with dark text",
@@ -1490,8 +1529,8 @@
       "mode": "html",
       "name": "Code Editorial",
       "aliases": [
-        "open-codesign:product-narrative",
-        "open-codesign:custom-token-system",
+        "open-codesign:brand/framer",
+        "open-codesign:brand/elevenlabs",
         "html-ppt-skill:theme/sharp-mono",
         "beautiful-html-templates:creative-mode"
       ],
@@ -1523,9 +1562,11 @@
       "mode": "html",
       "name": "Neon Entertainment",
       "aliases": [
-        "dashi-ppt-skill:theme08"
+        "open-codesign:brand/spotify",
+        "dashi-ppt-skill:theme12"
       ],
       "provenance": [
+        "open-codesign",
         "dashi-ppt-skill"
       ],
       "palette": "black, electric cyan, hot pink",

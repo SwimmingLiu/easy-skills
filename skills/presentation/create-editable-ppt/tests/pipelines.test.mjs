@@ -32,4 +32,18 @@ test('HTML showcase is a real 22-page Bento deck', async () => {
   assert.equal(doc.slides.length, 22);
   assert.ok(doc.slides.every(slide => slide.elements.some(element => element.type === 'text')));
   assert.ok(doc.slides.every(slide => slide.elements.every(element => element.type !== 'image')));
+  const signatures = doc.slides.map(slide => `${slide.background}:${slide.elements.map(element => element.id).sort().join(',')}`);
+  assert.equal(new Set(signatures).size, doc.slides.length, 'each canonical HTML theme needs a distinct visual structure');
+});
+
+test('html composer escapes user-visible text before placing it in Bento', async () => {
+  const catalog = await loadThemeCatalog();
+  const outline = createOutline();
+  outline.slides[0].claim = '<context> & evidence';
+  outline.slides[0].exact_text = [outline.slides[0].claim, 'A > B'];
+  const deck = approveOutline(outline, { mode: 'html', theme: catalog.html[0].id });
+  const doc = composeHtmlDeck(deck, catalog.html[0]);
+  const values = doc.slides[0].elements.filter(element => element.type === 'text').map(element => element.html);
+  assert.ok(values.includes('&lt;context&gt; &amp; evidence'));
+  assert.ok(values.includes('A &gt; B'));
 });
