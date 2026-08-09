@@ -1,9 +1,9 @@
 ---
-name: create-bento-ppt
+name: storyweave
 description: Use when a user asks for a PPT, presentation, slide deck, keynote, report, launch, defense, or wants source material turned into a concise themed deck that remains openable in Bento.
 ---
 
-# Create Bento PPT
+# Storyweave
 
 先读取 `references/workflow.md`。本 Skill 只提供两种互斥模式，不能在同一份演示中混用。
 

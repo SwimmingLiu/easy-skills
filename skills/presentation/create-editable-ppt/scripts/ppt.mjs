@@ -10,7 +10,7 @@ import { loadThemeCatalog, resolveThemeRecipe } from './lib/theme-catalog.mjs';
 
 const skillRoot = resolve(new URL('..', import.meta.url).pathname);
 const shellPath = join(skillRoot, 'assets', 'bento', 'Bento_Slides.bento.html');
-const HELP = `create-bento-ppt
+const HELP = `storyweave
 
 Commands:
   draft <dir> [--title text]

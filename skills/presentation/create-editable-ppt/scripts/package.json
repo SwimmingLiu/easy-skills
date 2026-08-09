@@ -1,5 +1,5 @@
 {
-  "name": "create-bento-ppt-runtime",
+  "name": "storyweave-runtime",
   "private": true,
   "type": "module",
   "engines": {

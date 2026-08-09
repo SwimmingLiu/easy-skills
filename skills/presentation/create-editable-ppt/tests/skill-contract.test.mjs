@@ -7,6 +7,8 @@ const metadataUrl = new URL('../agents/openai.yaml', import.meta.url);
 
 test('skill exposes only Bento-native ai-image and html modes', async () => {
   const skill = await readFile(skillUrl, 'utf8');
+  assert.match(skill, /name:\s*storyweave/);
+  assert.match(skill, /# Storyweave/);
   assert.match(skill, /ai-image/);
   assert.match(skill, /`html`/);
   assert.match(skill, /#bento-doc/);
@@ -16,6 +18,8 @@ test('skill exposes only Bento-native ai-image and html modes', async () => {
 
 test('agent metadata routes presentation requests to the Bento master workflow', async () => {
   const metadata = await readFile(metadataUrl, 'utf8');
+  assert.match(metadata, /Storyweave/);
+  assert.match(metadata, /\$storyweave/);
   assert.match(metadata, /Bento/);
   assert.match(metadata, /ai-image/);
   assert.match(metadata, /html/);

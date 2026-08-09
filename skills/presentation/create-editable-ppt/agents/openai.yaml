@@ -1,4 +1,4 @@
 interface:
-  display_name: "Create Bento PPT"
-  short_description: "Create concise Bento presentations in ai-image or html mode"
-  default_prompt: "Use $create-bento-ppt to draft the central message and page claims first, then build a Bento-native deck in either ai-image or html mode."
+  display_name: "Storyweave"
+  short_description: "Create concise, story-led presentations in ai-image or html mode"
+  default_prompt: "Use $storyweave to draft the central message and page claims first, then build a Bento-native deck in either ai-image or html mode."
