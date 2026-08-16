@@ -23,9 +23,9 @@ Attempt to gather these from the current thread or codebase.
 
 Do NOT proceed until you have answers. Guessing leads to generic design.
 
-### Use frontend-design skill
+### Apply Impeccable design principles
 
-Use the frontend-design skill for design principles and anti-patterns. Do NOT proceed until it has executed and you know all DO's and DON'Ts.
+Apply Impeccable's design principles and anti-pattern checks before proceeding.
 
 ---
 

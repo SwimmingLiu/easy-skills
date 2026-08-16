@@ -1,212 +1,106 @@
 # Easy Skills
 
-🚀 A curated collection of high-quality AI agent skills for enhanced productivity and automation.
-
-## Overview
-
-Easy Skills provides a set of powerful, ready-to-use agent skills designed to streamline your workflow. Each skill is carefully crafted to handle specific tasks efficiently, from code analysis to academic writing assistance.
+A curated collection of reusable AI agent skills for productivity, documentation, diagrams, frontend design, image generation, and scientific writing.
 
 ## Skills
 
-### 🤖 Subagent Skills
+### Image
 
-AI-powered subagent integrations with automatic fallback support.
+- [Image Gen Rightcodes](./skills/image/image-gen-rightcodes/SKILL.md) - RightAPI asynchronous image-generation and editing fallback.
 
-#### [Agent Dispatch](./skills/subagent/agent-dispatch/SKILL.md)
-Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated worktrees, branches, and tmux sessions with automatic monitoring and failure recovery.
+### Diagrams
 
-**Features:**
-- Isolated worktree + branch + tmux session creation
-- Automatic monitoring via cron jobs
-- Failure recovery via Ralph Loop
-- Cross-platform compatibility
+- [Draw.io](./skills/diagram/drawio/SKILL.md) - Generate editable draw.io diagrams and export them to PNG, SVG, or PDF.
+- [Mermaid Diagrams](./skills/diagram/mermaid-diagrams/SKILL.md) - Create software architecture and process diagrams with Mermaid.
+- [Mermaid Correction](./skills/diagram/mermaid-correction/SKILL.md) - Validate, diagnose, and repair Mermaid syntax.
 
-#### [OpenCode](./skills/subagent/opencode/SKILL.md)
-Execute OpenCode CLI for AI-powered code analysis, refactoring, and automated code changes.
+### Knowledge
 
-**Features:**
-- Multi-model support (Claude, GPT, Gemini)
-- Session resumption support
-- File reference via `@` syntax
-- Cross-platform compatibility
+- [Knowledge Base](./skills/knowledge/knowledge-base/SKILL.md) - Maintain a Codex-native Markdown and Obsidian knowledge base.
 
-#### [Gemini](./skills/subagent/gemini/SKILL.md)
-Execute Gemini CLI for AI-powered code analysis and generation.
+### Language
 
-**Features:**
-- Support for multiple Gemini models
-- Cross-platform compatibility
-- Output saving and session management
-- No fallback - pure Gemini CLI execution
+- [Baoyu Translate](./skills/language/baoyu-translate/SKILL.md) - Translate articles and documents with quick, normal, and refined workflows.
 
-#### [Codex](./skills/subagent/codex/SKILL.md)
-Execute Codex CLI for code analysis, refactoring, and automated code changes.
+### Markdown
 
-**Features:**
-- Session resumption support
-- File reference via `@` syntax
-- Structured JSON output parsing
-- Default model: gpt-5.4
+- [Baoyu Format Markdown](./skills/markdown/baoyu-format-markdown/SKILL.md) - Format plain text and Markdown documents.
+- [Baoyu Markdown to HTML](./skills/markdown/baoyu-markdown-to-html/SKILL.md) - Convert Markdown to styled, WeChat-compatible HTML.
 
-### 🚀 Efficiency Skills
+### Scientific Writing
 
-Productivity-enhancing agent behaviors.
+- [Check AI Write](./skills/scientific/check-ai-write/SKILL.md) - Detect and reduce common AI-writing patterns.
+- [Correct Wrong Words](./skills/scientific/correct-wrong-words/SKILL.md) - Check and correct Chinese and English typos while protecting technical terms.
+- [Paper Rewrite](./skills/scientific/paper-rewrite/SKILL.md) - Rewrite and polish academic papers.
 
-#### [PUA](./skills/efficiency/pua/SKILL.md) | [English Version](./skills/efficiency/pua-en/SKILL.md)
-Forces exhaustive problem-solving using corporate PUA rhetoric and structured debugging methodology.
+### Frontend
 
-**Features:**
-- Auto-triggers on repeated failures or user frustration
-- Prevents passive "I cannot" responses
-- Enforces exhaustive debugging before giving up
-- Applies to all task types: code, config, research, deployment
+Selected frontend skills adapted from the [Impeccable](https://github.com/pbakaus/impeccable) design language and command set.
 
-### 📊 Diagram Skills
-
-Diagram creation and validation tools.
-
-#### [Draw.io](./skills/diagram/drawio/SKILL.md)
-Generate draw.io diagrams as native `.drawio` files with optional export to PNG/SVG/PDF.
-
-**Features:**
-- Native .drawio file generation
-- Export to PNG, SVG, or PDF with embedded XML
-- Diagrams remain editable after export
-
-#### [Mermaid Diagrams](./skills/diagram/mermaid-diagrams/SKILL.md)
-Comprehensive guide for creating software diagrams using Mermaid syntax.
-
-**Features:**
-- Class diagrams, sequence diagrams, flowcharts, ERDs
-- C4 architecture diagrams, state diagrams, git graphs
-- Text-based, version-controllable diagrams
-
-#### [Mermaid Correction](./skills/diagram/mermaid-correction/SKILL.md)
-Validate, diagnose, and repair Mermaid code blocks with iterative check → correct → re-check workflow.
-
-**Features:**
-- Automatic syntax validation via Mermaid CLI
-- Detailed parse error reporting with line/column info
-- Up to 3 correction attempts with re-validation
-
-### 🌐 Language Skills
-
-Translation and localization tools.
-
-#### [Baoyu Translate](./skills/language/baoyu-translate/SKILL.md)
-Multi-mode translation skill with quick, normal, and refined workflows.
-
-**Features:**
-- Three modes: quick (direct), normal (analyze then translate), refined (full review)
-- Custom glossaries and terminology consistency
-- Supports document and article translation
-
-### 📝 Markdown Skills
-
-Markdown processing and conversion tools.
-
-#### [Baoyu Format Markdown](./skills/markdown/baoyu-format-markdown/SKILL.md)
-Format plain text or markdown with frontmatter, titles, summaries, and proper structure.
-
-**Features:**
-- Adds frontmatter, headings, bold, lists, code blocks
-- Preserves original content, only adjusts formatting
-- Outputs to {filename}-formatted.md
-
-#### [Baoyu Markdown to HTML](./skills/markdown/baoyu-markdown-to-html/SKILL.md)
-Convert Markdown to styled HTML with WeChat-compatible themes.
-
-**Features:**
-- Code highlighting, math, PlantUML support
-- Footnotes, alerts, infographics
-- Optional bottom citations for external links
-
-### 🎨 Frontend Skills
-
-Frontend design and development skills from the [impeccable](https://github.com/pbakaus/impeccable) collection.
-
-#### [Frontend Design](./skills/frontend/frontend-design/SKILL.md)
-Create distinctive, production-grade frontend interfaces with high design quality.
-
-**Features:**
-- Generates creative, polished code
-- Avoids generic AI aesthetics
-- Includes reference docs for color, typography, motion, and UX design
-- Perfect for building web components, pages, and applications
-
-**Additional Frontend Skills:**
-- **animate** - Add smooth, purposeful animations
-- **audit** - Review and improve code quality
-- **clarify** - Improve code clarity and readability
-- **colorize** - Add color and visual appeal
-- **critique** - Provide constructive feedback
-- **delight** - Add delightful micro-interactions
-- **distill** - Simplify complex code
-- **extract** - Extract reusable components
-- **harden** - Improve code robustness
-- **normalize** - Standardize code patterns
-- **optimize** - Improve performance
-- **polish** - Refine and perfect details
-- **quieter** - Reduce visual noise
+| Skill | Purpose |
+| --- | --- |
+| [Adapt](./skills/frontend/adapt/SKILL.md) | Adapt interfaces across devices and screen sizes. |
+| [Animate](./skills/frontend/animate/SKILL.md) | Add purposeful animation and motion. |
+| [Audit](./skills/frontend/audit/SKILL.md) | Audit accessibility, performance, theming, and responsive behavior. |
+| [Bolder](./skills/frontend/bolder/SKILL.md) | Make safe or bland designs more expressive. |
+| [Clarify](./skills/frontend/clarify/SKILL.md) | Improve UX copy, labels, and error messages. |
+| [Colorize](./skills/frontend/colorize/SKILL.md) | Add strategic color to monochromatic interfaces. |
+| [Critique](./skills/frontend/critique/SKILL.md) | Review UX hierarchy, information architecture, and visual quality. |
+| [Delight](./skills/frontend/delight/SKILL.md) | Add personality and memorable interaction details. |
+| [Distill](./skills/frontend/distill/SKILL.md) | Remove unnecessary complexity from a design. |
+| [Extract](./skills/frontend/extract/SKILL.md) | Extract reusable components, tokens, and patterns. |
+| [Harden](./skills/frontend/harden/SKILL.md) | Improve error handling, i18n, overflow, and edge-case behavior. |
+| [Onboard](./skills/frontend/onboard/SKILL.md) | Design onboarding flows, empty states, and first-run experiences. |
+| [Optimize](./skills/frontend/optimize/SKILL.md) | Improve frontend loading, rendering, and bundle performance. |
+| [Polish](./skills/frontend/polish/SKILL.md) | Perform a final pass on alignment, spacing, and visual details. |
+| [Quieter](./skills/frontend/quieter/SKILL.md) | Reduce visual intensity while preserving design quality. |
 
 ## Installation
 
-### For Agents (Automatic Installation)
+### For Agents
 
-Agents can install skills directly from this repository using the `skills` CLI:
+Install a skill globally with the `skills` CLI:
 
 ```bash
-# Install a specific skill globally
 npx skills add https://github.com/SwimmingLiu/easy-skills@<skill-path> -g -y
-
-# Examples:
-npx skills add https://github.com/SwimmingLiu/easy-skills@skills/subagent/opencode -g -y
-npx skills add https://github.com/SwimmingLiu/easy-skills@skills/efficiency/pua -g -y
-npx skills add https://github.com/SwimmingLiu/easy-skills@skills/efficiency/pua-en -g -y
 ```
 
-### For Humans (Manual Installation)
+Examples:
 
-1. Clone this repository:
+```bash
+npx skills add https://github.com/SwimmingLiu/easy-skills@skills/frontend/polish -g -y
+npx skills add https://github.com/SwimmingLiu/easy-skills@skills/knowledge/knowledge-base -g -y
+npx skills add https://github.com/SwimmingLiu/easy-skills@skills/image/image-gen-rightcodes -g -y
+```
+
+### For Humans
+
+Clone the repository and install from a local path:
+
 ```bash
 git clone https://github.com/SwimmingLiu/easy-skills.git
 cd easy-skills
+npx skills add ./skills/frontend/polish -g -y
 ```
 
-2. Install a skill to your agent:
-```bash
-# From local path
-npx skills add ./skills/subagent/opencode -g -y
+Or copy a skill directory to your agent's skills folder:
 
-# Or copy the skill directory to your agent's skills folder
-cp -r skills/subagent/opencode ~/.agents/skills/
+```bash
+cp -r skills/frontend/polish ~/.agents/skills/
 ```
 
 ### Verify Installation
 
-After installation, verify the skill is available:
 ```bash
 npx skills list
 ```
 
-The skill should appear in the list and will be automatically loaded by your agent.
-
-## Usage
-
-Each skill includes a detailed `SKILL.md` file with usage instructions, examples, and configuration options. Navigate to the skill directory to learn more.
+Each skill contains a detailed `SKILL.md` with usage instructions, examples, and configuration details.
 
 ## Contributing
 
-We welcome contributions! Please feel free to submit a Pull Request.
+Contributions are welcome. Please open an issue or pull request with a clear description of the proposed change.
 
 ## License
 
-This project is licensed under the terms specified in the [LICENSE](LICENSE) file.
-
-## Support
-
-If you encounter any issues or have questions, please open an issue on GitHub.
-
----
-
-Made with ❤️ by the Easy Skills team
+This project is licensed under the terms specified in [LICENSE](LICENSE).

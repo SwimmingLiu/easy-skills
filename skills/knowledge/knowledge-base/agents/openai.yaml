@@ -1,0 +1,4 @@
+interface:
+  display_name: "Knowledge Base"
+  short_description: "Absorb and retrieve durable personal knowledge"
+  default_prompt: "Use $knowledge-base to preserve, synthesize, retrieve, or audit this vault."

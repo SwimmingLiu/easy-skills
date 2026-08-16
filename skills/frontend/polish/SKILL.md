@@ -8,7 +8,7 @@ args:
 user-invokable: true
 ---
 
-**First**: Use the frontend-design skill for design principles and anti-patterns.
+**First**: Apply Impeccable's design principles and anti-pattern checks.
 
 Perform a meticulous final pass to catch all the small details that separate good work from great work. The difference between shipped and polished.
 
@@ -199,4 +199,3 @@ Before marking as done:
 - **Check all states**: Don't just test happy path
 
 Remember: You have impeccable attention to detail and exquisite taste. Polish until it feels effortless, looks intentional, and works flawlessly. Sweat the details - they matter.
-

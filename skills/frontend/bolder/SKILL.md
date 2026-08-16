@@ -23,9 +23,9 @@ Attempt to gather these from the current thread or codebase.
 
 Do NOT proceed until you have answers. Guessing leads to generic AI slop.
 
-### Use frontend-design skill
+### Apply Impeccable design principles
 
-Use the frontend-design skill for design principles and anti-patterns. Do NOT proceed until it has executed and you know all DO's and DON'Ts.
+Apply Impeccable's design principles and anti-pattern checks before proceeding.
 
 ---
 
@@ -51,7 +51,7 @@ If any of these are unclear from the codebase, {{ask_instruction}}
 
 **CRITICAL**: "Bolder" doesn't mean chaotic or garish. It means distinctive, memorable, and confident. Think intentional drama, not random chaos.
 
-**WARNING - AI SLOP TRAP**: When making things "bolder," AI defaults to the same tired tricks: cyan/purple gradients, glassmorphism, neon accents on dark backgrounds, gradient text on metrics. These are the OPPOSITE of bold—they're generic. Review ALL the DON'T guidelines in the frontend-design skill before proceeding. Bold means distinctive, not "more effects."
+**WARNING - AI SLOP TRAP**: When making things "bolder," AI defaults to the same tired tricks: cyan/purple gradients, glassmorphism, neon accents on dark backgrounds, gradient text on metrics. These are the OPPOSITE of bold—they're generic. Review Impeccable's anti-pattern checklist before proceeding. Bold means distinctive, not "more effects."
 
 ## Plan Amplification
 
@@ -69,7 +69,7 @@ Create a strategy to increase impact while maintaining coherence:
 Systematically increase impact across these dimensions:
 
 ### Typography Amplification
-- **Replace generic fonts**: Swap system fonts for distinctive choices (see frontend-design skill for inspiration)
+- **Replace generic fonts**: Swap system fonts for distinctive choices (see Impeccable's typography guidance for inspiration)
 - **Extreme scale**: Create dramatic size jumps (3x-5x differences, not 1.5x)
 - **Weight contrast**: Pair 900 weights with 200 weights, not 600 with 400
 - **Unexpected choices**: Variable fonts, display fonts for headlines, condensed/extended widths, monospace as intentional accent (not as lazy "dev tool" default)

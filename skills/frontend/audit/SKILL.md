@@ -10,7 +10,7 @@ user-invokable: true
 
 Run systematic quality checks and generate a comprehensive audit report with prioritized issues and actionable recommendations. Don't fix issues - document them for other commands to address.
 
-**First**: Use the frontend-design skill for design principles and anti-patterns.
+**First**: Apply Impeccable's design principles and anti-pattern checks.
 
 ## Diagnostic Scan
 
@@ -44,9 +44,9 @@ Run comprehensive checks across multiple dimensions:
    - **Text scaling**: Layouts that break when text size increases
    - **Missing breakpoints**: No mobile/tablet variants
 
-5. **Anti-Patterns (CRITICAL)** - Check against ALL the **DON'T** guidelines in the frontend-design skill. Look for AI slop tells (AI color palette, gradient text, glassmorphism, hero metrics, card grids, generic fonts) and general design anti-patterns (gray on color, nested cards, bounce easing, redundant copy).
+5. **Anti-Patterns (CRITICAL)** - Check against Impeccable's anti-pattern checklist. Look for AI slop tells (AI color palette, gradient text, glassmorphism, hero metrics, card grids, generic fonts) and general design anti-patterns (gray on color, nested cards, bounce easing, redundant copy).
 
-**CRITICAL**: This is an audit, not a fix. Document issues thoroughly with clear explanations of impact. Use other commands (normalize, optimize, harden, etc.) to fix issues after audit.
+**CRITICAL**: This is an audit, not a fix. Document issues thoroughly with clear explanations of impact. Use other commands (polish, optimize, harden, etc.) to fix issues after audit.
 
 ## Generate Comprehensive Report
 
@@ -111,7 +111,7 @@ Create actionable plan:
 Map issues to available commands. Prefer these: {{available_commands}}. You may also suggest other installed skills you're sure exist, but never invent commands.
 
 Examples:
-- "Use `/normalize` to align with design system (addresses N theming issues)"
+- "Use `/polish` to align with the design system (addresses N theming issues)"
 - "Use `/optimize` to improve performance (addresses N performance issues)"
 - "Use `/harden` to improve resilience (addresses N edge cases)"
 
@@ -126,4 +126,3 @@ Examples:
 - Report false positives without verification
 
 Remember: You're a quality auditor with exceptional attention to detail. Document systematically, prioritize ruthlessly, and provide clear paths to improvement. A good audit makes fixing easy.
-
