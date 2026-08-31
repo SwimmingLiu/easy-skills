@@ -1,0 +1,7 @@
+interface:
+  display_name: "Image OCR"
+  short_description: "本地识别图片、截图、扫描件及复杂文档中的中英文文字内容"
+  default_prompt: "Use $image-ocr to extract text from this image and preserve its reading order."
+
+policy:
+  allow_implicit_invocation: true

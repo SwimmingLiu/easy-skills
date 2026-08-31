@@ -1,0 +1,4 @@
+interface:
+  display_name: "LLM Wiki 初始化"
+  short_description: "初始化可自动回流维护的本地 LLM Wiki 知识库"
+  default_prompt: "Use $llm-wiki-init to initialize this folder as a source-backed LLM Wiki."

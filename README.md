@@ -133,6 +133,14 @@ Operate a Codex-native Markdown and Obsidian personal knowledge base with durabl
 - Local retrieval with provenance and health checks
 - Codex Agent Skill metadata and standard-library Python tooling
 
+#### Additional Knowledge Skills
+
+- [Image OCR](./skills/knowledge/image-ocr/SKILL.md) - Extract text from images, screenshots, scans, and image-based PDFs.
+- [LLM Wiki Init](./skills/knowledge/llm-wiki-init/SKILL.md) - Initialize a maintainable local LLM Wiki structure.
+- [Local Audio Transcriber](./skills/knowledge/local-audio-transcriber/SKILL.md) - Transcribe local audio or video into text, subtitles, or Markdown notes.
+- [Subtitle Proofreader](./skills/knowledge/subtitle-proofreader/SKILL.md) - Proofread subtitles and transcripts, including speech-recognition errors and terminology.
+- [Video Downloader](./skills/knowledge/video-downloader/SKILL.md) - Download videos and optional subtitles from supported platforms.
+
 ### External Skill Repositories
 
 These skills are tracked as Git submodules. Their source remains in the original repositories, so the project stores only submodule pointers and configuration.
