@@ -1,249 +1,129 @@
 ---
 name: agent-dispatch
-description: Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated worktrees, branches, and tmux sessions with automatic monitoring and failure recovery.
+description: Dispatch substantial work to agent skills through isolated worktrees, branches, tmux sessions, and monitoring. Use when a task should be handed off instead of being completed inline.
 ---
 
-# Agent Dispatch
+# Agent dispatch
 
-Dispatch tasks to execution agents with isolated environments, automatic monitoring, and failure recovery.
+Use this skill to dispatch substantial work into an isolated execution flow.
 
----
+## What this skill does
 
-## Quick Start
+This skill is responsible for:
 
-**Dispatch a task:**
+- deciding whether a task should be dispatched,
+- selecting the right agent skill,
+- selecting the target repository,
+- creating worktrees and branches,
+- starting tmux-managed sessions,
+- creating and cleaning up monitoring jobs,
+- reporting dispatch status to the user.
+
+## What this skill dispatches to
+
+Dispatch should target an **agent skill**, not a raw agent CLI command.
+
+Examples of agent skills available in the environment:
+
+- `codex`
+- `gemini`
+- `opencode`
+
+These skills may themselves be implemented as deterministic one-shot wrappers
+around their underlying CLIs. Do not assume they provide an interactive TUI
+session unless the target skill explicitly says so. For Gemini specifically,
+prefer the skill wrapper script over calling the raw Gemini CLI directly from
+agent-dispatch.
+
+Task skills such as `docs-writer` and `code-reviewer` are not dispatch targets
+by themselves. They define task methodology, not the execution backend.
+
+## Task skills are optional
+
+A dispatched task does **not** need to use a task skill.
+
+Use a task skill only when the task benefits from specialized workflow or
+standards.
+
+Examples:
+
+- `gemini` + `docs-writer` for documentation work
+- `codex` + `code-reviewer` for code review work
+- `codex` alone for generic implementation work
+- `opencode` alone for general execution work
+- `gemini` alone for open-ended reasoning work
+
+Do not force every dispatched task into a composition model.
+
+## Repository selection
+
+Select the target repository before dispatching.
+
+1. Use the repository explicitly named by the user, if any.
+2. Otherwise use the current git repository, if the current directory is inside one.
+3. Otherwise fall back to the current OpenClaw workspace only when workspace
+   fallback has been explicitly acknowledged.
+
+Do not hardcode machine-specific absolute paths or usernames in this skill.
+Resolve repository and workspace paths dynamically from the current runtime
+context.
+
+## Dispatch command
+
+Use the environment's agent orchestration entrypoint to create the worktree,
+branch, tmux session, and agent process.
+
+Example shape:
 
 ```bash
-/home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh <task-id> <agent> "<prompt>" [model]
+REPO_ROOT=/absolute/path/to/repo \
+$OPENCLAW_WORKSPACE/scripts/agent-orchestration/spawn-agent.sh \
+  <task-id> <agent-skill> [model] "<prompt>"
 ```
 
-**Example:**
+The exact workspace root should be resolved dynamically by the environment.
+Do not assume a fixed path such as `/home/admin/...`.
 
-```bash
-/home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh feat-auth opencode \
-  "Implement JWT authentication in src/api/auth.ts"
-```
+The caller should dispatch to an agent skill. The agent skill then defines how
+the underlying tool is launched.
 
----
+## Selection guidance
 
-## Parameters
+Pick the lightest suitable agent skill for the task.
 
-| Parameter | Required | Description |
-|-----------|----------|-------------|
-| `task-id` | Yes | Unique slug (e.g., `feat-auth`, `fix-login-bug`) |
-| `agent` | Yes | Agent type: `opencode`, `gemini`, `codex`, `claude` |
-| `prompt` | Yes | Task description (quoted) |
-| `model` | No | Override default model |
+- `opencode`: general implementation and broad execution work via deterministic one-shot automation
+- `gemini`: writing, analysis, and reasoning work via deterministic one-shot automation
+- `codex`: code analysis, refactoring, and review-heavy work via deterministic one-shot automation
 
----
-
-## What spawn-agent.sh Does
-
-1. **Creates isolated environment**
-   - Git worktree at `../agent-worktrees/<task-id>`
-   - New branch `agent/<task-id>`
-   
-2. **Sets up dependencies**
-   - Runs `pnpm install` or `npm install` if `package.json` exists
-
-3. **Starts agent session**
-   - Creates tmux session `agent-<task-id>`
-   - Launches agent with appropriate CLI and flags
-
-4. **Registers task**
-   - Adds to `.clawdbot/active-tasks.json`
-
----
-
-## Agent Types
-
-| Agent | CLI Command | Mode | Best For |
-|-------|-------------|------|----------|
-| `opencode` | `opencode run` | Default config | All code work, research, complex tasks |
-| `gemini` | `gemini --yolo` | Auto-approve | Docs, writing, polishing, translation |
-| `codex` | `codex exec --full-auto` | Auto-approve | Bug fixes, code review |
-| `claude` | `claude --dangerously-skip-permissions -p` | Non-interactive | Frontend, fast tasks |
-
-**Specialized Aliases:**
-- `code-reviewer` → Gemini with code review skill
-- `docs-writer` → Gemini with docs writing skill
-
----
+Add a task skill only when it clearly helps.
 
 ## Monitoring
 
-### Create Monitoring Cron Job
+After dispatch succeeds, create monitoring immediately.
 
-After dispatching, create a temporary cron job to monitor the agent:
+Monitoring is separate from the spawn step. Use a temporary cron job to check
+status every five minutes and remove itself on completion or failure.
 
-```python
-cron.add(
-    name=f"Monitor {task_id}",
-    sessionTarget="isolated",
-    schedule={"kind": "every", "everyMs": 300000},  # 5 minutes
-    payload={
-        "kind": "agentTurn",
-        "message": f"""Check the status of task {task_id} and AUTO-DELETE this cron job when complete.
+## Failure handling
 
-**CRITICAL: You MUST read this entire prompt before starting.**
+Stop on the first hard failure and report:
 
-Your goal: Check if task {task_id} is complete, and if so, DELETE this cron job.
+- failed step,
+- exact error,
+- task ID,
+- selected agent skill,
+- next action or retry option.
 
-**Step 1: Get this cron job's ID**
-- Call: cron.list()
-- Find the job with name="Monitor {task_id}"
-- Remember the job ID (you'll need it to delete)
+## User report
 
-**Step 2: Check if tmux session is running**
-- Run: tmux list-sessions | grep agent-{task_id}
-- If session exists, task is still running
-- Report progress and STOP (do NOT delete cron yet)
+After dispatching, report:
 
-**Step 3: If session NOT running, check completion**
-- Check for new commits: cd /home/admin/openclaw/workspace/../agent-worktrees/{task_id} && git log --oneline -5
-- Check for PR: gh pr view agent/{task_id} --json url 2>/dev/null || echo "No PR"
-
-**Step 4: Decide what to do**
-- If PR exists → Task COMPLETE
-- If session ended with new commits → Task COMPLETE (check manually)
-- If session ended without commits → Task FAILED
-
-**Step 5: DELETE this cron job (MANDATORY - NOT OPTIONAL)**
-
-You MUST execute this EXACT tool call when task is complete or failed:
-
-```
-Tool: cron
-Action: remove
-Parameters: {"action": "remove", "jobId": "<job-id-from-step-1>"}
-```
-
-**Example (replace with actual job ID):**
-```
-cron.remove(jobId="d037ed80-56eb-43be-a8c0-e95132b9e426")
-```
-
-**CRITICAL:**
-- This is NOT optional - you MUST delete the cron job
-- If you don't call cron.remove(), the monitoring job will run forever
-- Execute the tool call IMMEDIATELY after reporting status
-- Do NOT just say "I will delete" - you MUST actually call the tool
-
-Use tools: cron.list, tmux, git, gh, cron.remove""",
-        "model": "generic/glm-5",
-        "timeoutSeconds": 120  # 2 minutes - need time to think and delete cron
-    },
-    delivery={"mode": "announce", "channel": "telegram", "to": "<chat-id>"}
-)
-```
-
-### Important Notes
-
-- **MANDATORY**: Agent MUST call `cron.remove()` when task completes or fails
-- **NOT OPTIONAL**: Saying "I will delete" is NOT enough - must execute the tool
-- **Timeout**: `timeoutSeconds: 120` gives agent enough time to think and delete
-- **No Auto-Delete**: OpenClaw does not support automatic deletion based on exit codes
-
----
-
-## Manual Checks (Optional)
-
-```bash
-# Check all active agents
-./scripts/agent-orchestration/check-agents.sh
-
-# Attach to a running session
-tmux attach -t agent-<task-id>
-
-# View agent logs
-tmux capture-pane -t agent-<task-id> -p | tail -50
-```
-
----
-
-## Failure Recovery (Ralph Loop)
-
-When monitoring detects a session ended without a PR:
-
-1. **Triggers** `ralph-loop.sh`
-2. **Analyzes** failure and gathers context
-3. **Restarts** agent with added context
-4. **Retries** up to 3 times
-5. **Notifies** you of permanent failure if all retries exhausted
-
----
-
-## Reporting to User
-
-After dispatching, **IMMEDIATELY** report to the user in this structured format:
-
-**Required Information:**
-
-1. **Dispatch Status**
-   - Task ID (for follow-up)
-   - Agent selected (which agent is running)
-   - Dispatch result (success/failure)
-
-2. **Monitoring Details**
-   - Cron job created (yes/no)
-   - Job ID (for manual cleanup)
-   - Monitoring frequency (e.g., "every 5 minutes")
-   - Next check time (estimated)
-   - Auto-delete enabled (yes/no)
-
-3. **Agent Environment**
-   - Worktree path
-   - Branch name (e.g., `agent/<task-id>`)
-   - Tmux session name
-
-4. **Follow-up Commands**
-   - How to check progress manually
-   - How to attach to tmux session
-   - How to view monitoring job status
-
-**Example Report:**
-
-```
-✅ Task Dispatched Successfully
-
-📋 Task Details:
-- Task ID: feat-auth
-- Agent: OpenCode (claude-sonnet-4.6)
-- Status: Running
-
-🔍 Monitoring:
-- Cron Job: ✅ Created
-- Job ID: d037ed80-56eb-43be-a8c0-e95132b9e426
-- Frequency: Every 5 minutes
-- Next Check: ~5 minutes
-- Auto-delete: ✅ Enabled (when task completes)
-
-📁 Environment:
-- Worktree: /home/admin/openclaw/workspace/../agent-worktrees/feat-auth
-- Branch: agent/feat-auth
-- Tmux: agent-feat-auth
-
-🛠️ Manual Commands:
-- Check progress: tmux attach -t agent-feat-auth
-- View monitoring: cron.list()
-- View worktree: cd ../agent-worktrees/feat-auth
-```
-
-**Important:**
-- Report IMMEDIATELY after dispatch (don't wait for first monitoring cycle)
-- Include ALL details in first report
-- If dispatch fails, report error immediately
-- If monitoring creation fails, report it but continue with task
-
----
-
-## Checklist Before Dispatching
-
-- [ ] Task is complex enough (simple queries should not spawn agents)
-- [ ] Agent is selected correctly (consult dispatch table in `TOOLS.md`)
-- [ ] Prompt is clear and specific (vague prompts waste agent time)
-- [ ] Monitoring cron job is created (otherwise you'll lose track)
-
----
-
-*Last updated: 2026-03-12*
+- success or failure,
+- task ID,
+- selected agent skill,
+- repo root,
+- base branch,
+- worktree path,
+- branch name,
+- tmux session,
+- monitoring status.

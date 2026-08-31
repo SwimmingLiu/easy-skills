@@ -1,35 +1,141 @@
 # Easy Skills
 
-A curated collection of reusable AI agent skills for productivity, documentation, image generation, and scientific writing.
+🚀 A curated collection of high-quality AI agent skills for enhanced productivity and automation.
+
+## Overview
+
+Easy Skills provides a set of powerful, ready-to-use agent skills designed to streamline your workflow. Each skill is carefully crafted to handle specific tasks efficiently, from code analysis to academic writing assistance.
 
 ## Skills
 
-### Image
+### Meta Skills
 
-- [Image Gen Rightcodes](./skills/image/image-gen-rightcodes/SKILL.md) - RightAPI asynchronous image-generation and editing fallback.
+Skills for building and governing other Agent Skills.
 
-### Knowledge
+#### [Skill Lifecycle](./skills/meta/skill-lifecycle/SKILL.md)
 
-- [Knowledge Base](./skills/knowledge/knowledge-base/SKILL.md) - Maintain a Codex-native Markdown and Obsidian knowledge base.
+Discover, create, review, evaluate, optimize, and maintain Agent Skills through explicit evidence, quality gates, versioned state, and rollback-safe decisions.
 
-### Language
+```bash
+# Install from this checkout
+npx skills add ./skills/meta/skill-lifecycle -g -y
 
-- [Baoyu Translate](./skills/language/baoyu-translate/SKILL.md) - Translate articles and documents with quick, normal, and refined workflows.
+# Install from GitHub
+npx skills add https://github.com/SwimmingLiu/easy-skills@skills/meta/skill-lifecycle -g -y
+```
 
-### Markdown
+### 🤖 Subagent Skills
 
-- [Baoyu Format Markdown](./skills/markdown/baoyu-format-markdown/SKILL.md) - Format plain text and Markdown documents.
-- [Baoyu Markdown to HTML](./skills/markdown/baoyu-markdown-to-html/SKILL.md) - Convert Markdown to styled, WeChat-compatible HTML.
+AI-powered subagent integrations with automatic fallback support.
 
-### Scientific Writing
+#### [Agent Dispatch](./skills/subagent/agent-dispatch/SKILL.md)
+Dispatch tasks to execution agents (OpenCode, Gemini, Codex) via isolated worktrees, branches, and tmux sessions with automatic monitoring and failure recovery.
+
+**Features:**
+- Cross-repo worktree dispatch with explicit `REPO_ROOT` support
+- Automatic target repo detection from the current git repository
+- Prompt handoff via prompt file + runner script to avoid shell parsing bugs
+- Safe handling for multi-line prompts, fenced code blocks, quotes, and backticks
+- Isolated worktree + branch + tmux session creation
+- Automatic monitoring via cron jobs
+- Failure recovery guidance for failed runs
+
+#### [OpenCode](./skills/subagent/opencode/SKILL.md)
+Launch the OpenCode terminal UI inside a dedicated tmux session for interactive project work.
+
+**Features:**
+- Detached tmux session creation
+- Prompt handoff through tmux buffer staging
+- Machine-readable session metadata
+- Explicit exit codes for setup failures
+
+#### [Gemini](./skills/subagent/gemini/SKILL.md)
+Launch the Gemini terminal UI inside a dedicated tmux session for interactive project work.
+
+**Features:**
+- Detached tmux session creation
+- Prompt handoff through tmux buffer staging
+- Machine-readable session metadata
+- Explicit exit codes for setup failures
+
+#### [Codex](./skills/subagent/codex/SKILL.md)
+Launch the Codex terminal UI inside a dedicated tmux session for interactive project work.
+
+**Features:**
+- Detached tmux session creation
+- Prompt handoff through tmux buffer staging
+- Machine-readable session metadata
+- Explicit exit codes for setup failures
+
+#### [GLM Eyes](./skills/subagent/glm-eyes/SKILL.md)
+Vision fallback for text-only main models (e.g. GLM-5.2). Spawns a sub-agent that calls any multimodal Claude-compatible provider to read an image and return a text description.
+
+**Features:**
+- Model-agnostic: auto-discovers any vision-capable provider in your CC-Switch routes (Kimi, Claude, GPT-4o, Qwen-VL, GLM-4V, Gemini, …); add a provider in CC-Switch and it just works
+- Reads credentials live from the CC-Switch database — no hardcoded API keys
+- Automatic failover across available multimodal providers (no dead end on a single 503)
+- Refuses to call non-vision models to avoid wasting a request
+- Zero third-party dependencies (Python standard library only)
+
+### 🖼️ Image Skills
+
+Image-generation integrations and fallback workflows.
+
+#### [Image Gen Rightcodes](./skills/image/image-gen-rightcodes/SKILL.md)
+Use RightAPI's asynchronous image-generation protocol as an explicit CLI fallback for image generation and editing.
+
+### 🌐 Language Skills
+
+Translation and localization tools.
+
+#### [Baoyu Translate](./skills/language/baoyu-translate/SKILL.md)
+Multi-mode translation skill with quick, normal, and refined workflows.
+
+**Features:**
+- Three modes: quick (direct), normal (analyze then translate), refined (full review)
+- Custom glossaries and terminology consistency
+- Supports document and article translation
+
+### 📝 Markdown Skills
+
+Markdown processing and conversion tools.
+
+#### [Baoyu Format Markdown](./skills/markdown/baoyu-format-markdown/SKILL.md)
+Format plain text or markdown with frontmatter, titles, summaries, and proper structure.
+
+**Features:**
+- Adds frontmatter, headings, bold, lists, code blocks
+- Preserves original content, only adjusts formatting
+- Outputs to {filename}-formatted.md
+
+#### [Baoyu Markdown to HTML](./skills/markdown/baoyu-markdown-to-html/SKILL.md)
+Convert Markdown to styled HTML with WeChat-compatible themes.
+
+**Features:**
+- Code highlighting, math, PlantUML support
+- Footnotes, alerts, infographics
+- Optional bottom citations for external links
+
+### 🔬 Scientific Writing Skills
 
 - [Check AI Write](./skills/scientific/check-ai-write/SKILL.md) - Detect and reduce common AI-writing patterns.
 - [Correct Wrong Words](./skills/scientific/correct-wrong-words/SKILL.md) - Check and correct Chinese and English typos while protecting technical terms.
 - [Paper Rewrite](./skills/scientific/paper-rewrite/SKILL.md) - Rewrite and polish academic papers.
 
+### 🧠 Knowledge Skills
+
+#### [Knowledge Base](./skills/knowledge/knowledge-base/SKILL.md)
+Operate a Codex-native Markdown and Obsidian personal knowledge base with durable sources and traceable synthesis.
+
+**Features:**
+- Deterministic, idempotent source ingestion
+- Connected Wiki notes with explicit source links
+- Local retrieval with provenance and health checks
+- Codex Agent Skill metadata and standard-library Python tooling
+
 ### External Skill Repositories
 
-These skills are tracked as Git submodules. Their source remains in the original repositories, so updates do not create a second copy to maintain.
+These skills are tracked as Git submodules. Their source remains in the original repositories, so the project stores only submodule pointers and configuration.
 
 #### [StoryWeave](https://github.com/SwimmingLiu/StoryWeave)
 
@@ -45,35 +151,40 @@ StoryWeave provides three independent skills for 16:9 presentations:
 
 ## Installation
 
-### For Agents
+### For Agents (Automatic Installation)
 
-Install a skill globally with the `skills` CLI:
+Agents can install skills directly from this repository using the `skills` CLI:
 
 ```bash
+# Install a specific skill globally
 npx skills add https://github.com/SwimmingLiu/easy-skills@<skill-path> -g -y
-```
 
-Examples:
-
-```bash
-npx skills add https://github.com/SwimmingLiu/easy-skills@skills/knowledge/knowledge-base -g -y
+# Examples:
+npx skills add https://github.com/SwimmingLiu/easy-skills@skills/meta/skill-lifecycle -g -y
 npx skills add https://github.com/SwimmingLiu/easy-skills@skills/image/image-gen-rightcodes -g -y
 ```
 
-### For Humans
+### For Humans (Manual Installation)
 
-Clone the repository with its submodules and install from local paths:
-
+1. Clone this repository with its submodules:
 ```bash
 git clone --recurse-submodules https://github.com/SwimmingLiu/easy-skills.git
 cd easy-skills
-npx skills add ./skills/knowledge/knowledge-base -g -y
 ```
 
 If the repository was cloned without submodules, initialize them with:
 
 ```bash
 git submodule update --init --recursive
+```
+
+2. Install a skill to your agent:
+```bash
+# From local path
+npx skills add ./skills/subagent/opencode -g -y
+
+# Or copy the skill directory to your agent's skills folder
+cp -r skills/subagent/opencode ~/.agents/skills/
 ```
 
 Install the external skills with:
@@ -91,24 +202,48 @@ To update the external repositories to their configured `main` branches:
 git submodule update --remote --merge skills/storyweave skills/voiceforge
 ```
 
-Or copy a skill directory to your agent's skills folder:
-
-```bash
-cp -r skills/knowledge/knowledge-base ~/.agents/skills/
-```
-
 ### Verify Installation
 
+After installation, verify the skill is available:
 ```bash
 npx skills list
 ```
 
-Each skill contains a detailed `SKILL.md` with usage instructions, examples, and configuration details.
+The skill should appear in the list and will be automatically loaded by your agent.
+
+## Usage
+
+Each skill includes a detailed `SKILL.md` file with usage instructions, examples, and configuration options. Navigate to the skill directory to learn more.
+
+For `agent-dispatch`, prefer these usage patterns:
+
+```bash
+# Dispatch against the current git repo
+/home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh \
+  fix-login codex "Fix the login redirect bug in src/auth/login.ts"
+
+# Dispatch against another project explicitly
+REPO_ROOT=/home/admin/projects/ClassPets \
+/home/admin/openclaw/workspace/scripts/agent-orchestration/spawn-agent.sh \
+  feat-auth opencode "Implement JWT authentication in src/api/auth.ts"
+```
+
+`agent-dispatch` now writes prompts to a prompt file and lets the runner script
+read them inside tmux. This avoids quoting bugs where multi-line prompts or
+TypeScript code blocks could be misread as shell input.
 
 ## Contributing
 
-Contributions are welcome. Please open an issue or pull request with a clear description of the proposed change.
+We welcome contributions! Please feel free to submit a Pull Request.
 
 ## License
 
-This project is licensed under the terms specified in [LICENSE](LICENSE).
+This project is licensed under the terms specified in the [LICENSE](LICENSE) file.
+
+## Support
+
+If you encounter any issues or have questions, please open an issue on GitHub.
+
+---
+
+Made with ❤️ by the Easy Skills team
