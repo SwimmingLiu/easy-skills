@@ -1,18 +1,12 @@
 # Easy Skills
 
-A curated collection of reusable AI agent skills for productivity, documentation, diagrams, frontend design, image generation, and scientific writing.
+A curated collection of reusable AI agent skills for productivity, documentation, image generation, and scientific writing.
 
 ## Skills
 
 ### Image
 
 - [Image Gen Rightcodes](./skills/image/image-gen-rightcodes/SKILL.md) - RightAPI asynchronous image-generation and editing fallback.
-
-### Diagrams
-
-- [Draw.io](./skills/diagram/drawio/SKILL.md) - Generate editable draw.io diagrams and export them to PNG, SVG, or PDF.
-- [Mermaid Diagrams](./skills/diagram/mermaid-diagrams/SKILL.md) - Create software architecture and process diagrams with Mermaid.
-- [Mermaid Correction](./skills/diagram/mermaid-correction/SKILL.md) - Validate, diagnose, and repair Mermaid syntax.
 
 ### Knowledge
 
@@ -33,27 +27,21 @@ A curated collection of reusable AI agent skills for productivity, documentation
 - [Correct Wrong Words](./skills/scientific/correct-wrong-words/SKILL.md) - Check and correct Chinese and English typos while protecting technical terms.
 - [Paper Rewrite](./skills/scientific/paper-rewrite/SKILL.md) - Rewrite and polish academic papers.
 
-### Frontend
+### External Skill Repositories
 
-Selected frontend skills adapted from the [Impeccable](https://github.com/pbakaus/impeccable) design language and command set.
+These skills are tracked as Git submodules. Their source remains in the original repositories, so updates do not create a second copy to maintain.
 
-| Skill | Purpose |
-| --- | --- |
-| [Adapt](./skills/frontend/adapt/SKILL.md) | Adapt interfaces across devices and screen sizes. |
-| [Animate](./skills/frontend/animate/SKILL.md) | Add purposeful animation and motion. |
-| [Audit](./skills/frontend/audit/SKILL.md) | Audit accessibility, performance, theming, and responsive behavior. |
-| [Bolder](./skills/frontend/bolder/SKILL.md) | Make safe or bland designs more expressive. |
-| [Clarify](./skills/frontend/clarify/SKILL.md) | Improve UX copy, labels, and error messages. |
-| [Colorize](./skills/frontend/colorize/SKILL.md) | Add strategic color to monochromatic interfaces. |
-| [Critique](./skills/frontend/critique/SKILL.md) | Review UX hierarchy, information architecture, and visual quality. |
-| [Delight](./skills/frontend/delight/SKILL.md) | Add personality and memorable interaction details. |
-| [Distill](./skills/frontend/distill/SKILL.md) | Remove unnecessary complexity from a design. |
-| [Extract](./skills/frontend/extract/SKILL.md) | Extract reusable components, tokens, and patterns. |
-| [Harden](./skills/frontend/harden/SKILL.md) | Improve error handling, i18n, overflow, and edge-case behavior. |
-| [Onboard](./skills/frontend/onboard/SKILL.md) | Design onboarding flows, empty states, and first-run experiences. |
-| [Optimize](./skills/frontend/optimize/SKILL.md) | Improve frontend loading, rendering, and bundle performance. |
-| [Polish](./skills/frontend/polish/SKILL.md) | Perform a final pass on alignment, spacing, and visual details. |
-| [Quieter](./skills/frontend/quieter/SKILL.md) | Reduce visual intensity while preserving design quality. |
+#### [StoryWeave](https://github.com/SwimmingLiu/StoryWeave)
+
+StoryWeave provides three independent skills for 16:9 presentations:
+
+- [StoryWeave HTML](./skills/storyweave/skills/storyweave-html/SKILL.md) - Create editable standalone HTML slides.
+- [StoryWeave Imagegen](./skills/storyweave/skills/storyweave-imagegen/SKILL.md) - Create image-based presentation pages and exports.
+- [StoryWeave Express](./skills/storyweave/skills/storyweave-express/SKILL.md) - Package existing HTML or image pages for Bento.
+
+#### [Voiceforge](https://github.com/SwimmingLiu/Voiceforge)
+
+- [Voiceforge](./skills/voiceforge/SKILL.md) - Draft, rewrite, polish, and edit Chinese or English reader-facing content.
 
 ## Installation
 
@@ -68,25 +56,45 @@ npx skills add https://github.com/SwimmingLiu/easy-skills@<skill-path> -g -y
 Examples:
 
 ```bash
-npx skills add https://github.com/SwimmingLiu/easy-skills@skills/frontend/polish -g -y
 npx skills add https://github.com/SwimmingLiu/easy-skills@skills/knowledge/knowledge-base -g -y
 npx skills add https://github.com/SwimmingLiu/easy-skills@skills/image/image-gen-rightcodes -g -y
 ```
 
 ### For Humans
 
-Clone the repository and install from a local path:
+Clone the repository with its submodules and install from local paths:
 
 ```bash
-git clone https://github.com/SwimmingLiu/easy-skills.git
+git clone --recurse-submodules https://github.com/SwimmingLiu/easy-skills.git
 cd easy-skills
-npx skills add ./skills/frontend/polish -g -y
+npx skills add ./skills/knowledge/knowledge-base -g -y
+```
+
+If the repository was cloned without submodules, initialize them with:
+
+```bash
+git submodule update --init --recursive
+```
+
+Install the external skills with:
+
+```bash
+npx skills add ./skills/storyweave/skills/storyweave-html -g -y
+npx skills add ./skills/storyweave/skills/storyweave-imagegen -g -y
+npx skills add ./skills/storyweave/skills/storyweave-express -g -y
+npx skills add ./skills/voiceforge -g -y
+```
+
+To update the external repositories to their configured `main` branches:
+
+```bash
+git submodule update --remote --merge skills/storyweave skills/voiceforge
 ```
 
 Or copy a skill directory to your agent's skills folder:
 
 ```bash
-cp -r skills/frontend/polish ~/.agents/skills/
+cp -r skills/knowledge/knowledge-base ~/.agents/skills/
 ```
 
 ### Verify Installation

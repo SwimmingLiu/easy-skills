@@ -1,0 +1,8 @@
+[submodule "skills/voiceforge"]
+	path = skills/voiceforge
+	url = https://github.com/SwimmingLiu/Voiceforge.git
+	branch = main
+[submodule "skills/storyweave"]
+	path = skills/storyweave
+	url = https://github.com/SwimmingLiu/StoryWeave.git
+	branch = main
